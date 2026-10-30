@@ -1,0 +1,1340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amitabh Pandey — AI Factory & HPC Infrastructure</title>
+<meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional. NVIDIA-Certified Professional in AI Infrastructure, AI Operations and AI Networking; certified BeeGFS and WEKA parallel storage engineer." />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Amitabh Pandey — AI Factory & HPC Infrastructure" />
+<meta property="og:description" content="NVIDIA-certified AI infrastructure professional. From enterprise Linux and networking to AI factories and GPU-powered computing platforms." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Ctext x='5' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23ffffff'%3EAP%3C/text%3E%3Ccircle cx='26.5' cy='21' r='2.4' fill='%2393c5fd'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* Light, airy and blue: white cards on a cool off-white page, with a cobalt accent. */
+:root {
+    --font-body: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-display: "Bricolage Grotesque", "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
+    --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --page: #f7f9fd;
+    --page-2: #eef3fc;
+    --card: #ffffff;
+    --plate: #ffffff;
+    --ink: #0d1b33;
+    --ink-2: #283750;
+    --ink-3: #4b5a72;
+    --ink-4: #75839a;
+    --line: #d6dfee;
+    --line-2: #e6ecf6;
+
+    --blue: #2563eb;
+    --blue-strong: #1d4ed8;
+    --blue-deep: #1e3a8a;
+    --blue-soft: #60a5fa;
+    --blue-wash: #e9f0ff;
+    --blue-wash-2: #f3f7ff;
+    --blue-line: #bfd3fb;
+
+    --ok: #15803d;
+    --radius: 16px;
+    --shadow: 0 1px 2px rgb(13 27 51 / 0.04), 0 12px 32px -18px rgb(37 99 235 / 0.28);
+    --shadow-lift: 0 2px 4px rgb(13 27 51 / 0.04), 0 22px 44px -20px rgb(37 99 235 / 0.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--page);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; }
+a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+img { display: block; max-width: 100%; }
+ul, ol { list-style: none; }
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 4px; }
+svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
+
+.skip-link {
+    position: fixed; left: 16px; top: -60px; z-index: 100;
+    background: var(--blue-strong); color: #fff; padding: 10px 14px; border-radius: 8px; font-size: 14px;
+}
+.skip-link:focus { top: 16px; }
+
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: 32px; }
+.mono { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--font-body); font-weight: 600; font-size: 15px;
+    padding: 12px 20px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink);
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+}
+.btn:hover { border-color: var(--blue-line); color: var(--blue-strong); }
+.btn-signal { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 8px 20px -10px rgb(37 99 235 / 0.7); }
+.btn-signal:hover { background: var(--blue-strong); border-color: var(--blue-strong); color: #fff; }
+.btn-sm { font-size: 14px; padding: 8px 15px; }
+.arrow-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 600; color: var(--blue-strong);
+}
+.arrow-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Header ---------- */
+.site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, #ffffff 82%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-2);
+}
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; white-space: nowrap; }
+.brand-mark {
+    position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue-soft), var(--blue-strong)); color: #fff; font-size: 13.5px; font-weight: 800;
+    box-shadow: 0 6px 14px -6px rgb(37 99 235 / 0.7);
+}
+.main-nav ul { display: flex; gap: 2px; }
+.main-nav a { display: block; padding: 8px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-3); transition: color 0.15s, background 0.15s; }
+.main-nav a:hover { color: var(--blue-strong); background: var(--blue-wash); }
+.main-nav a.is-key { color: var(--blue-strong); background: var(--blue-wash); }
+.header-right { display: flex; align-items: center; gap: 8px; }
+.icon-btn { display: flex; padding: 9px; border-radius: 999px; color: var(--ink-4); font-size: 18px; }
+.icon-btn:hover { color: var(--blue-strong); background: var(--blue-wash); }
+.menu-toggle { display: none; padding: 8px; border: 0; background: none; color: var(--ink); border-radius: 8px; cursor: pointer; font-size: 24px; }
+.mobile-nav { display: none; border-top: 1px solid var(--line-2); padding: 8px 16px 20px; background: #fff; }
+.mobile-nav.is-open { display: block; }
+.mobile-nav a.nav-item { display: block; padding: 12px; border-radius: 10px; font-weight: 500; color: var(--ink-3); }
+.mobile-nav a.nav-item:hover { background: var(--blue-wash); color: var(--blue-strong); }
+.mobile-nav .btn { width: 100%; margin-top: 12px; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #ffffff, var(--page)); }
+.hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-image:
+        linear-gradient(var(--line-2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 75% 35%, black, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 80% at 75% 35%, black, transparent 75%);
+}
+.hero::after {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    width: 720px; height: 720px; right: -180px; top: -260px; border-radius: 50%;
+    background: radial-gradient(circle, rgb(96 165 250 / 0.28), transparent 65%);
+}
+.hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; padding-block: 88px 56px; }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--ink-3); }
+.kicker .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px rgb(37 99 235 / 0.16); }
+.hero h1 { margin-top: 26px; font-size: clamp(54px, 7.4vw, 100px); line-height: 0.95; font-weight: 700; letter-spacing: -0.045em; }
+.hero h1 em { font-style: normal; color: var(--blue); }
+.hero-lede { margin-top: 26px; max-width: 540px; font-size: 19px; line-height: 1.65; color: var(--ink-3); }
+.hero-lede strong { color: var(--ink); font-weight: 600; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+/* Hero credential panel: the NVIDIA track. */
+.track {
+    border: 1px solid var(--line); border-radius: 22px; padding: 22px;
+    background: rgb(255 255 255 / 0.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    box-shadow: var(--shadow-lift);
+}
+.track-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--ink-4); }
+.track-head b { color: var(--blue-strong); font-weight: 500; }
+.track-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.track-item {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    padding: 16px 10px 14px; border-radius: 16px; border: 1px solid var(--line-2);
+    background: linear-gradient(180deg, var(--blue-wash-2), #fff); color: var(--ink);
+    transition: transform 0.2s, border-color 0.2s;
+}
+.track-item:hover { transform: translateY(-3px); border-color: var(--blue-line); }
+.track-item img { width: 104px; height: 104px; object-fit: contain; }
+.track-item .mono { font-size: 12px; color: var(--blue-strong); font-weight: 500; }
+.track-item small { font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ink-3); }
+.track-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-2); font-size: 13.5px; color: var(--ink-3); }
+.track-foot a { color: var(--blue-strong); font-weight: 600; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.track-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dot-ok { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; margin-right: 8px; box-shadow: 0 0 0 3px rgb(34 197 94 / 0.18); }
+
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 56px; }
+.hero-stats > div { padding: 20px 22px 22px; border: 1px solid var(--line-2); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+.hero-stats strong { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.hero-stats strong span { color: var(--blue); }
+.hero-stats p { margin-top: 4px; font-size: 14px; color: var(--ink-3); }
+
+.rise { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+.rise.d1 { animation-delay: 0.12s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Badge ribbon ---------- */
+.ribbon { border-block: 1px solid var(--line-2); background: #fff; padding-block: 22px; }
+.marquee {
+    --gap: 28px; --duration: 60s;
+    display: flex; gap: var(--gap); overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+.marquee-track { display: flex; flex-shrink: 0; align-items: center; gap: var(--gap); min-width: 100%; justify-content: space-around; animation: marquee var(--duration) linear infinite; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(calc(-100% - var(--gap))); } }
+.marquee a { display: block; flex-shrink: 0; transition: transform 0.15s; }
+.marquee a:hover { transform: scale(1.08); }
+.marquee img { width: 76px; height: 76px; object-fit: contain; }
+
+/* ---------- Sections ---------- */
+.section { padding-block: 104px; scroll-margin-top: 68px; }
+.section.is-alt { background: var(--page-2); }
+.section-head { display: grid; grid-template-columns: 1fr minmax(0, 380px); gap: 40px; align-items: end; margin-bottom: 52px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--blue-strong); font-weight: 500; }
+.eyebrow b { display: inline-grid; place-items: center; min-width: 30px; height: 22px; padding-inline: 6px; border-radius: 6px; background: var(--blue); color: #fff; font-weight: 500; font-size: 11.5px; }
+.section-head h2 { margin-top: 16px; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; }
+.section-head p { font-size: 16.5px; line-height: 1.7; color: var(--ink-3); }
+
+/* ---------- Credentials ---------- */
+.tier + .tier { margin-top: 64px; }
+.tier-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px; padding-bottom: 16px; margin-bottom: 22px; border-bottom: 1px solid var(--line); position: relative; }
+.tier-head::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 96px; height: 3px; border-radius: 3px; background: var(--blue); }
+.tier-head h3 { font-size: 26px; letter-spacing: -0.03em; }
+.tier-head .mono { color: var(--ink-4); }
+.tier-head .tier-num { color: var(--blue-strong); }
+.tier-head .tier-right { margin-left: auto; color: var(--ink-3); }
+
+.plate { display: grid; place-items: center; flex-shrink: 0; background: var(--plate); border: 1px solid var(--line-2); border-radius: 12px; }
+.plate img { object-fit: contain; }
+.code { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 6px; background: var(--blue-wash); color: var(--blue-strong); }
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--ok); }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.verify { display: inline-flex; align-items: center; gap: 5px; font-size: 13.5px; font-weight: 600; color: var(--blue-strong); }
+.verify:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Lead cards: the NVIDIA professional track. */
+.lead-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.lead {
+    position: relative; display: flex; flex-direction: column;
+    border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow);
+    overflow: hidden; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.lead:hover { transform: translateY(-4px); border-color: var(--blue-line); box-shadow: var(--shadow-lift); }
+.lead .plate { border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0; height: 190px; background: radial-gradient(circle at 50% 60%, #fff 30%, var(--blue-wash-2)); }
+.lead .plate img { width: 150px; height: 150px; }
+.lead-body { display: flex; flex-direction: column; gap: 10px; padding: 18px 18px 20px; flex: 1; }
+.lead-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.lead h4 { font-size: 18.5px; line-height: 1.25; letter-spacing: -0.02em; }
+.lead .dates { font-size: 13.5px; color: var(--ink-3); }
+.lead .verify { margin-top: auto; padding-top: 4px; }
+.lead.is-pro::before { content: "Professional"; position: absolute; top: 12px; left: 12px; z-index: 1; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 999px; }
+
+/* Standard cards: badge left, details right. */
+.card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+.card-grid.is-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cert {
+    display: flex; align-items: center; gap: 16px; padding: 16px;
+    border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.cert:hover { border-color: var(--blue-line); transform: translateY(-2px); box-shadow: var(--shadow); }
+.cert .plate { width: 84px; height: 84px; }
+.cert .plate img { width: 72px; height: 72px; }
+.cert-body { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.cert-issuer { font-size: 12.5px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.05em; }
+.cert h4 { font-size: 16px; line-height: 1.3; letter-spacing: -0.015em; }
+.cert-line { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 13px; color: var(--ink-3); }
+.card-grid.is-four .cert { flex-direction: column; align-items: start; }
+.card-grid.is-four .cert .plate { width: 100%; height: 120px; background: radial-gradient(circle at 50% 55%, #fff 30%, var(--blue-wash-2)); }
+.card-grid.is-four .cert .plate img { width: 100px; height: 100px; }
+
+/* HPC storage & cluster management: matching showcase cards. */
+.sub-label { margin: 34px 0 14px; color: var(--blue-strong); }
+.hpc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.hpc {
+    display: flex; flex-direction: column; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 20px; background: var(--card);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.hpc:hover { transform: translateY(-4px); border-color: var(--blue-line); box-shadow: var(--shadow-lift); }
+.hpc-media {
+    position: relative; display: flex; justify-content: center; align-items: center; gap: 14px;
+    height: 140px; overflow: hidden; border-bottom: 1px solid var(--line-2);
+    background: radial-gradient(circle at 50% 45%, #fff 25%, var(--blue-wash) 100%);
+}
+.hpc-media img { object-fit: contain; transition: transform 0.3s; }
+.hpc:hover .hpc-media img { transform: scale(1.05); }
+.hpc-logo { width: 150px; height: 95px; }
+.hpc-media.is-pair img { width: 112px; height: 112px; }
+.hpc-media.is-wide img { width: 300px; height: 169px; max-width: none; }
+.hpc-body { display: flex; flex-direction: column; gap: 6px; padding: 20px 20px 22px; flex: 1; }
+.hpc-body h4 { font-size: 21px; letter-spacing: -0.02em; line-height: 1.2; }
+.hpc-body > p { font-size: 14px; line-height: 1.55; color: var(--ink-3); }
+.hpc-items { display: grid; gap: 6px; margin-top: auto; padding-top: 12px; }
+.hpc-items.is-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.hpc-items li { display: flex; flex-direction: column; gap: 1px; padding: 7px 11px; border-radius: 12px; background: var(--blue-wash-2); border: 1px solid var(--line-2); }
+.hpc-items b { font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+.hpc-items span { font-family: var(--font-mono); font-size: 11.5px; color: var(--blue-strong); }
+/* The downloaded legacy Citrix artwork includes generous background space. */
+.plate.citrix-plate { overflow: hidden; }
+.plate.citrix-plate img { object-fit: cover; transform: scale(1.9); }
+
+/* Foundation: showcase tiles. */
+.found-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.found {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: flex; flex-direction: column; gap: 10px; padding: 22px 20px 20px;
+    border: 1px solid var(--line); border-radius: 20px; background: var(--card);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.found::before {
+    content: ""; position: absolute; z-index: -1; right: -60px; top: -60px; width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, var(--blue-wash), transparent 70%);
+    transition: transform 0.4s;
+}
+.found::after {
+    content: ""; position: absolute; left: 20px; right: 20px; top: 0; height: 3px; border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--blue-soft), var(--blue-deep)); opacity: 0; transition: opacity 0.25s;
+}
+.found:hover { transform: translateY(-5px); border-color: var(--blue-line); box-shadow: var(--shadow-lift); }
+.found:hover::before { transform: scale(1.35); }
+.found:hover::after { opacity: 1; }
+.found-top { display: flex; justify-content: space-between; align-items: start; gap: 10px; margin-bottom: 6px; }
+.found .plate { width: 76px; height: 76px; border-radius: 20px; box-shadow: 0 10px 22px -12px rgb(30 58 138 / 0.6); }
+.found .plate img { width: 62px; height: 62px; }
+.found-date { font-family: var(--font-mono); font-size: 12px; color: var(--blue-strong); background: var(--blue-wash); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.found h4 { font-size: 17px; line-height: 1.3; letter-spacing: -0.015em; }
+.found p { font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+.found-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); }
+.found-foot .muted { font-size: 13px; color: var(--ink-4); }
+
+.cred-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding: 18px 22px; border: 1px dashed var(--blue-line); border-radius: var(--radius); background: var(--blue-wash-2); font-size: 14.5px; color: var(--ink-3); }
+
+/* ---------- About ---------- */
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
+.about-copy p { font-size: 18px; line-height: 1.8; color: var(--ink-2); }
+.about-copy p + p { margin-top: 18px; }
+.about-quote { margin-top: 34px; padding: 24px 28px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--blue); font-family: var(--font-display); font-size: 23px; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); box-shadow: var(--shadow); }
+.about-quote span { color: var(--blue); }
+.facts { padding: 6px 24px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
+.facts div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
+.facts div:last-child { border-bottom: 0; }
+.facts dt { color: var(--blue-strong); padding-top: 3px; }
+.facts dd { font-size: 15.5px; color: var(--ink-3); }
+.facts dd b { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--ink); letter-spacing: -0.015em; }
+
+/* ---------- Capability stack ---------- */
+.stack { border: 1px solid var(--line); border-radius: 22px; background: var(--card); overflow: hidden; box-shadow: var(--shadow); }
+.stack-cap { display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; background: linear-gradient(90deg, var(--blue-wash), var(--blue-wash-2)); color: var(--ink-4); border-bottom: 1px solid var(--line-2); }
+.stack-cap b { color: var(--blue-strong); font-weight: 500; }
+.layer {
+    position: relative; display: grid; grid-template-columns: 54px minmax(0, 1.05fr) minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px;
+    align-items: start; padding: 24px; border-top: 1px solid var(--line-2);
+}
+.layer:first-of-type { border-top: 0; }
+.layer.is-core { background: linear-gradient(90deg, var(--blue-wash), transparent 60%); }
+.layer.is-core::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--blue); }
+.layer-ix { font-family: var(--font-mono); font-size: 13px; color: var(--ink-4); padding-top: 4px; }
+.layer.is-core .layer-ix { color: var(--blue-strong); font-weight: 500; }
+.layer h3 { font-size: 20px; letter-spacing: -0.02em; line-height: 1.25; }
+.layer h3 + p { margin-top: 6px; font-size: 14.5px; line-height: 1.6; color: var(--ink-3); }
+.core-tag { display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 999px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span { font-size: 13.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink-2); white-space: nowrap; }
+.proof-label { display: block; margin-bottom: 8px; color: var(--ink-4); font-size: 11px; }
+.proof { display: flex; flex-wrap: wrap; gap: 6px; }
+.proof a, .proof span { font-family: var(--font-mono); font-size: 12px; padding: 3px 8px; border-radius: 6px; background: var(--blue); color: #fff; white-space: nowrap; transition: background 0.15s; }
+.proof a:hover { background: var(--blue-deep); }
+.proof span { background: var(--blue-wash); color: var(--blue-strong); }
+.stack-base { display: flex; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid var(--line-2); background: var(--page); color: var(--ink-4); }
+
+/* ---------- Journey ---------- */
+.journey li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 32px; padding-block: 26px; border-top: 1px solid var(--line); }
+.journey li:last-child { border-bottom: 1px solid var(--line); }
+.journey .yr { font-family: var(--font-display); font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
+.journey li.is-now .yr { color: var(--blue); }
+.journey h3 { font-size: 21px; letter-spacing: -0.02em; line-height: 1.3; }
+.journey p { margin-top: 6px; font-size: 15.5px; line-height: 1.65; color: var(--ink-3); max-width: 760px; }
+.journey .chips { margin-top: 12px; }
+
+/* ---------- Work ---------- */
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.work { display: flex; flex-direction: column; padding: 30px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); transition: border-color 0.2s, box-shadow 0.2s; }
+.work:hover { border-color: var(--blue-line); box-shadow: var(--shadow); }
+.work.is-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: linear-gradient(135deg, var(--blue-wash), #fff 60%); border-color: var(--blue-line); }
+.work .mono { color: var(--ink-4); }
+.work.is-feature .mono { color: var(--blue-strong); }
+.work h3 { margin-top: 12px; font-size: 26px; line-height: 1.2; letter-spacing: -0.03em; }
+.work p { margin-top: 12px; font-size: 15.5px; line-height: 1.7; color: var(--ink-3); }
+.work .chips { margin-top: auto; padding-top: 20px; }
+.points { display: grid; gap: 10px; align-content: start; }
+.points li { display: flex; gap: 12px; font-size: 15px; line-height: 1.55; color: var(--ink-2); padding-bottom: 10px; border-bottom: 1px solid var(--line-2); }
+.points li:last-child { border-bottom: 0; }
+.points li::before { content: "→"; color: var(--blue); }
+
+/* ---------- Recognition ---------- */
+.award-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.award { padding: 22px 24px 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; transition: border-color 0.2s; }
+.award:hover { border-color: var(--blue-line); }
+.award .mono { display: flex; justify-content: space-between; gap: 10px; color: var(--ink-4); }
+.award .mono span:last-child { color: var(--blue-strong); }
+.award h3 { margin-top: 10px; font-size: 19px; letter-spacing: -0.02em; line-height: 1.3; }
+.award p { margin-top: 6px; font-size: 14.5px; line-height: 1.6; color: var(--ink-3); }
+.recs { display: grid; grid-template-columns: 0.8fr 1fr 1fr; gap: 18px; margin-top: 56px; }
+.recs-count strong { display: block; font-family: var(--font-display); font-size: 84px; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; }
+.recs-count strong span { color: var(--blue); }
+.recs-count p { margin-top: 12px; font-size: 15px; line-height: 1.6; color: var(--ink-3); }
+.recs-count .arrow-link { margin-top: 14px; }
+.rec { padding: 26px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.rec::before { content: "“"; display: block; font-family: var(--font-display); font-size: 56px; line-height: 0.6; color: var(--blue); margin-bottom: 8px; }
+.rec p { font-family: var(--font-display); font-size: 18.5px; line-height: 1.5; letter-spacing: -0.015em; }
+.rec footer { margin-top: 16px; font-size: 14px; color: var(--ink-3); }
+.rec footer b { color: var(--ink); }
+
+/* ---------- Learning ---------- */
+.learn-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.learn { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.learn h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 18px; letter-spacing: -0.02em; }
+.learn h3 span { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--blue-strong); }
+.learn ul { margin-top: 14px; }
+.learn li { display: flex; justify-content: space-between; gap: 12px; padding-block: 8px; border-top: 1px solid var(--line-2); font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.learn li:first-child { border-top: 0; padding-top: 0; }
+.learn li code { flex-shrink: 0; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-4); padding-top: 2px; }
+
+/* ---------- Contact ---------- */
+.contact { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, var(--page), var(--blue-wash)); }
+.contact::after { content: ""; position: absolute; z-index: -1; left: -200px; bottom: -320px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgb(96 165 250 / 0.25), transparent 65%); }
+.contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: center; }
+.contact h2 { margin-top: 16px; font-size: clamp(38px, 4.8vw, 64px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; }
+.contact h2 em { font-style: normal; color: var(--blue); }
+.contact-copy { margin-top: 20px; font-size: 17px; line-height: 1.7; color: var(--ink-3); max-width: 560px; }
+.contact-panel { display: grid; gap: 12px; }
+.contact-link { display: flex; align-items: center; gap: 16px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); transition: border-color 0.2s, transform 0.2s; }
+.contact-link:hover { border-color: var(--blue-line); transform: translateX(4px); }
+.contact-link .ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--blue-soft), var(--blue-strong)); color: #fff; font-size: 20px; flex-shrink: 0; }
+.contact-link strong { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--ink); }
+.contact-link span { font-size: 14px; color: var(--ink-3); }
+.contact-link > svg { margin-left: auto; color: var(--blue); font-size: 18px; }
+
+.site-footer { background: #fff; color: var(--ink-3); border-top: 1px solid var(--line-2); }
+.footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 26px; font-size: 14px; }
+.footer-row a:hover { color: var(--blue-strong); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1120px) {
+    .main-nav { display: none; }
+    .menu-toggle { display: flex; }
+    .lead-grid, .card-grid.is-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card-grid, .found-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hpc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hpc:last-child { grid-column: 1 / -1; }
+    .learn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .layer { grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.2fr); }
+    .layer .proof-wrap { grid-column: 2 / -1; }
+}
+@media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; padding-block: 64px 48px; }
+    .track { max-width: 520px; }
+    .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .section-head { grid-template-columns: 1fr; gap: 18px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .work.is-feature { grid-template-columns: 1fr; gap: 24px; }
+    .award-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .recs { grid-template-columns: 1fr 1fr; }
+    .recs-count { grid-column: 1 / -1; }
+}
+@media (max-width: 720px) {
+    .wrap { padding-inline: 16px; }
+    .header-row { height: 60px; }
+    .header-right .btn, .header-right .icon-btn { display: none; }
+    .section { padding-block: 72px; }
+    .hero h1 { font-size: clamp(46px, 13vw, 64px); }
+    .hero-lede { font-size: 17px; }
+    .track { padding: 14px; border-radius: 18px; }
+    .track-item img { width: 80px; height: 80px; }
+    .track-foot { flex-direction: column; align-items: start; }
+    .hero-stats { gap: 10px; padding-bottom: 40px; }
+    .hero-stats > div { padding: 16px; }
+    .hero-stats strong { font-size: 21px; }
+    .marquee img { width: 60px; height: 60px; }
+    .lead-grid, .card-grid, .card-grid.is-four, .learn-grid, .work-grid, .award-grid, .recs { grid-template-columns: 1fr; }
+    .lead { flex-direction: row; }
+    .lead .plate { width: 116px; height: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line-2); }
+    .lead .plate img { width: 92px; height: 92px; }
+    .lead.is-pro::before { top: auto; bottom: 10px; left: 10px; font-size: 9.5px; padding: 1px 6px; }
+    .lead-body { padding: 14px 16px 16px; }
+    .lead h4 { font-size: 16.5px; }
+    .card-grid.is-four .cert { flex-direction: row; align-items: center; }
+    .card-grid.is-four .cert .plate { width: 84px; height: 84px; }
+    .card-grid.is-four .cert .plate img { width: 72px; height: 72px; }
+    .hpc-grid { grid-template-columns: 1fr; }
+    .hpc:last-child { grid-column: auto; }
+    .hpc-media { height: 132px; }
+    .found-grid { gap: 10px; }
+    .found { padding: 16px 14px; border-radius: 16px; gap: 8px; }
+    .found .plate { width: 60px; height: 60px; border-radius: 16px; }
+    .found .plate img { width: 48px; height: 48px; }
+    .found-top { flex-direction: column; gap: 10px; }
+    .found h4 { font-size: 15px; }
+    .found p { font-size: 13px; }
+    .cred-foot { flex-direction: column; align-items: start; }
+    .facts { padding: 4px 18px; }
+    .facts div { grid-template-columns: 1fr; gap: 4px; }
+    .stack-cap, .stack-base { padding-inline: 16px; }
+    .stack-cap span:last-child, .stack-base span:last-child { display: none; }
+    .layer { grid-template-columns: 1fr; gap: 12px; padding: 20px 16px; }
+    .layer .proof-wrap { grid-column: auto; }
+    .journey li { grid-template-columns: 1fr; gap: 6px; }
+    .journey .yr { font-size: 24px; }
+    .work { padding: 22px; }
+    .contact-link { padding: 16px; }
+    .footer-row { flex-direction: column; align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise { animation: none; }
+    .marquee { overflow-x: auto; }
+    .marquee-track { animation: none; }
+    .marquee-track[aria-hidden="true"] { display: none; }
+}
+</style>
+</head>
+<body>
+<!-- Inline icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+    <div class="wrap header-row">
+        <a href="#top" class="brand" aria-label="Amitabh Pandey — home">
+            <span class="brand-mark" aria-hidden="true">AP</span>
+            <span>Amitabh Pandey</span>
+        </a>
+        <nav class="main-nav" aria-label="Main">
+            <ul>
+                <li><a class="is-key" href="#credentials">Certifications</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#capabilities">Capabilities</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#recognition">Recognition</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <a class="icon-btn" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
+            <a class="btn btn-sm" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-badge"/></svg> Credly wallet</a>
+            <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon"><use href="#i-menu"/></svg>
+            </button>
+        </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Main">
+        <a class="nav-item" href="#credentials">Certifications</a>
+        <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#capabilities">Capabilities</a>
+        <a class="nav-item" href="#journey">Journey</a>
+        <a class="nav-item" href="#work">Work</a>
+        <a class="nav-item" href="#recognition">Recognition</a>
+        <a class="nav-item" href="#contact">Contact</a>
+        <a class="btn btn-signal" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> Connect on LinkedIn</a>
+    </nav>
+</header>
+
+<main id="main">
+    <!-- Hero -->
+    <section id="top" class="hero">
+        <div class="wrap">
+            <div class="hero-grid">
+                <div class="rise">
+                    <p class="kicker mono"><span class="pulse"></span> HPC · AI Factory · Platform architecture <span aria-hidden="true">/</span> Singapore</p>
+                    <h1>Amitabh<br />Pandey<em>.</em></h1>
+                    <p class="hero-lede">
+                        I work on the infrastructure behind high-performance computing and modern AI: <strong>GPU compute, high-speed fabrics
+                        and parallel storage</strong>, built on more than 23 years of Linux, cloud and enterprise operations.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-signal" href="#credentials">View certifications <svg class="icon"><use href="#i-arrow-r"/></svg></a>
+                        <a class="btn" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> LinkedIn</a>
+                    </div>
+                </div>
+
+                <aside class="track rise d1" aria-label="NVIDIA AI infrastructure certifications">
+                    <div class="track-head mono"><b>NVIDIA AI infrastructure</b><span>2026</span></div>
+                    <div class="track-grid">
+                        <a class="track-item" href="https://www.credly.com/badges/ce25aa9e-2093-4a22-8838-c1083aa1e99e" target="_blank" rel="noreferrer">
+                            <img src="badges/nvidia-ncp-aii.png" alt="NVIDIA-Certified Professional: AI Infrastructure badge" width="104" height="104" />
+                            <span class="mono">NCP-AII</span><small>Professional · AI Infrastructure</small>
+                        </a>
+                        <a class="track-item" href="https://www.credly.com/badges/e28bc4dd-e37b-4a42-90ac-50857a7f5315" target="_blank" rel="noreferrer">
+                            <img src="badges/nvidia-ncp-aio.png" alt="NVIDIA-Certified Professional: AI Operations badge" width="104" height="104" />
+                            <span class="mono">NCP-AIO</span><small>Professional · AI Operations</small>
+                        </a>
+                        <a class="track-item" href="https://www.credly.com/badges/dbc5fa16-b33e-4a7f-b36e-36b1e3913e1f" target="_blank" rel="noreferrer">
+                            <img src="badges/nvidia-ncp-ain.png" alt="NVIDIA-Certified Professional: AI Networking badge" width="104" height="104" />
+                            <span class="mono">NCP-AIN</span><small>Professional · AI Networking</small>
+                        </a>
+                        <a class="track-item" href="https://www.credly.com/badges/b4130902-d0e2-415f-b258-f0604ec06a57" target="_blank" rel="noreferrer">
+                            <img src="badges/nvidia-nca-aiio.png" alt="NVIDIA-Certified Associate: AI Infrastructure and Operations badge" width="104" height="104" />
+                            <span class="mono">NCA-AIIO</span><small>Associate · AI Infra &amp; Ops</small>
+                        </a>
+                    </div>
+                    <div class="track-foot">
+                        <span><span class="dot-ok"></span>All four active through 2028</span>
+                        <a href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="hero-stats">
+                <div><strong>HPC</strong><p>Supercomputing · University of Edinburgh &amp; PRACE</p></div>
+                <div><strong>4<span>×</span> NVIDIA</strong><p>AI infrastructure certifications, active to 2028</p></div>
+                <div><strong>BeeGFS<span>·</span>WEKA</strong><p>Certified on HPC parallel file systems</p></div>
+                <div><strong>23<span>+</span></strong><p>Years in infrastructure</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Badge ribbon -->
+    <div class="ribbon" aria-label="Certification badges">
+        <div class="marquee">
+            <div class="marquee-track" id="badge-track">
+                <a href="#credentials" title="NVIDIA-Certified Professional: AI Infrastructure"><img src="badges/nvidia-ncp-aii.png" alt="NVIDIA-Certified Professional: AI Infrastructure" width="76" height="76" /></a>
+                <a href="#credentials" title="NVIDIA-Certified Professional: AI Operations"><img src="badges/nvidia-ncp-aio.png" alt="NVIDIA-Certified Professional: AI Operations" width="76" height="76" /></a>
+                <a href="#credentials" title="NVIDIA-Certified Professional: AI Networking"><img src="badges/nvidia-ncp-ain.png" alt="NVIDIA-Certified Professional: AI Networking" width="76" height="76" /></a>
+                <a href="#credentials" title="NVIDIA-Certified Associate: AI Infrastructure and Operations"><img src="badges/nvidia-nca-aiio.png" alt="NVIDIA-Certified Associate: AI Infrastructure and Operations" width="76" height="76" /></a>
+                <a href="#credentials" title="Rafay Certified GPU Cloud Professional"><img src="badges/rafay-gpu-cloud-professional.png" alt="Rafay Certified GPU Cloud Professional" width="76" height="76" /></a>
+                <a href="#credentials" title="Rafay Certified Associate"><img src="badges/rafay-certified-associate.png" alt="Rafay Certified Associate" width="76" height="76" /></a>
+                <a href="#credentials" title="AI Tokenomics Fundamentals 2026"><img src="badges/lf-ai-tokenomics.png" alt="AI Tokenomics Fundamentals 2026" width="76" height="76" /></a>
+                <a href="#credentials" title="AWS Certified Solutions Architect – Professional"><img src="badges/aws-sa-pro.png" alt="AWS Certified Solutions Architect – Professional" width="76" height="76" /></a>
+                <a href="#credentials" title="AWS Certified DevOps Engineer – Professional"><img src="badges/aws-devops-pro.png" alt="AWS Certified DevOps Engineer – Professional" width="76" height="76" /></a>
+                <a href="#credentials" title="CKA: Certified Kubernetes Administrator"><img src="badges/cka.png" alt="CKA: Certified Kubernetes Administrator" width="76" height="76" /></a>
+                <a href="#credentials" title="CKAD: Certified Kubernetes Application Developer"><img src="badges/ckad.png" alt="CKAD: Certified Kubernetes Application Developer" width="76" height="76" /></a>
+                <a href="#credentials" title="AWS Certified Solutions Architect – Associate"><img src="badges/aws-sa-associate.png" alt="AWS Certified Solutions Architect – Associate" width="76" height="76" /></a>
+                <a href="#credentials" title="AWS Certified SysOps Administrator – Associate"><img src="badges/aws-sysops-associate.png" alt="AWS Certified SysOps Administrator – Associate" width="76" height="76" /></a>
+                <a href="#credentials" title="AWS Certified Developer – Associate"><img src="badges/aws-developer-associate.png" alt="AWS Certified Developer – Associate" width="76" height="76" /></a>
+                <a href="#credentials" title="HashiCorp Certified: Terraform Associate"><img src="badges/terraform-associate.png" alt="HashiCorp Certified: Terraform Associate" width="76" height="76" /></a>
+                <a href="#credentials" title="NetApp Certified Data Administrator, Data ONTAP 7-Mode"><img src="badges/netapp-ncda.png" alt="NetApp Certified Data Administrator" width="76" height="76" /></a>
+                <a href="#credentials" title="PRINCE2 Registered Practitioner"><img src="badges/prince2-practitioner.png" alt="PRINCE2 Registered Practitioner" width="76" height="76" /></a>
+            </div>
+            <!-- A copy of the track is appended by script for a seamless loop. -->
+        </div>
+    </div>
+
+    <!-- 01 Certifications -->
+    <section id="credentials" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>01</b> Certifications</span>
+                    <h2>Certified where AI infrastructure is built.</h2>
+                </div>
+                <p>Exam-based certifications first, ordered by relevance to AI factories today. Credly-issued badges link to their verification record.</p>
+            </div>
+
+            <!-- Tier 1 -->
+            <div class="tier">
+                <div class="tier-head">
+                    <span class="mono tier-num">Tier 1</span>
+                    <h3>AI factory, GPU cloud &amp; HPC</h3>
+                    <span class="mono tier-right">Current focus</span>
+                </div>
+                <div class="lead-grid">
+                    <article class="lead is-pro">
+                        <div class="plate"><img src="badges/nvidia-ncp-aii.png" alt="NCP-AII badge" width="150" height="150" loading="lazy" /></div>
+                        <div class="lead-body">
+                            <div class="lead-meta"><span class="code">NCP-AII</span><span class="status">Active</span></div>
+                            <h4>NVIDIA-Certified Professional: AI Infrastructure</h4>
+                            <p class="dates">Issued Mar 2026 · valid to Mar 2028</p>
+                            <a class="verify" href="https://www.credly.com/badges/ce25aa9e-2093-4a22-8838-c1083aa1e99e" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        </div>
+                    </article>
+                    <article class="lead is-pro">
+                        <div class="plate"><img src="badges/nvidia-ncp-aio.png" alt="NCP-AIO badge" width="150" height="150" loading="lazy" /></div>
+                        <div class="lead-body">
+                            <div class="lead-meta"><span class="code">NCP-AIO</span><span class="status">Active</span></div>
+                            <h4>NVIDIA-Certified Professional: AI Operations</h4>
+                            <p class="dates">Issued Feb 2026 · valid to Feb 2028</p>
+                            <a class="verify" href="https://www.credly.com/badges/e28bc4dd-e37b-4a42-90ac-50857a7f5315" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        </div>
+                    </article>
+                    <article class="lead is-pro">
+                        <div class="plate"><img src="badges/nvidia-ncp-ain.png" alt="NCP-AIN badge" width="150" height="150" loading="lazy" /></div>
+                        <div class="lead-body">
+                            <div class="lead-meta"><span class="code">NCP-AIN</span><span class="status">Active</span></div>
+                            <h4>NVIDIA-Certified Professional: AI Networking</h4>
+                            <p class="dates">Issued Jan 2026 · valid to Jan 2028</p>
+                            <a class="verify" href="https://www.credly.com/badges/dbc5fa16-b33e-4a7f-b36e-36b1e3913e1f" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        </div>
+                    </article>
+                    <article class="lead">
+                        <div class="plate"><img src="badges/nvidia-nca-aiio.png" alt="NCA-AIIO badge" width="150" height="150" loading="lazy" /></div>
+                        <div class="lead-body">
+                            <div class="lead-meta"><span class="code">NCA-AIIO</span><span class="status">Active</span></div>
+                            <h4>NVIDIA-Certified Associate: AI Infrastructure and Operations</h4>
+                            <p class="dates">Issued Jan 2026 · valid to Jan 2028</p>
+                            <a class="verify" href="https://www.credly.com/badges/b4130902-d0e2-415f-b258-f0604ec06a57" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="card-grid">
+                    <article class="cert">
+                        <div class="plate"><img src="badges/rafay-gpu-cloud-professional.png" alt="Rafay GPU Cloud Professional badge" width="72" height="72" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">Rafay Systems</span>
+                            <h4>Rafay Certified GPU Cloud Professional</h4>
+                            <div class="cert-line"><span>Nov 2025 – Nov 2027</span><a class="verify" href="https://www.credly.com/badges/c9d189a7-f789-4067-8b57-424b208b318c" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/rafay-certified-associate.png" alt="Rafay Certified Associate badge" width="72" height="72" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">Rafay Systems</span>
+                            <h4>Rafay Certified Associate</h4>
+                            <div class="cert-line"><span>Dec 2025 – Dec 2027</span><a class="verify" href="https://www.credly.com/badges/3a28a911-05e0-4cd2-aea4-4c3d5636b1d8" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/lf-ai-tokenomics.png" alt="AI Tokenomics Fundamentals badge" width="72" height="72" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">Linux Foundation · Tokenomics Foundation</span>
+                            <h4>AI Tokenomics Fundamentals</h4>
+                            <div class="cert-line"><span>Sep 2026 – Sep 2027</span><a class="verify" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="sub-label mono">HPC storage &amp; cluster management</p>
+                <div class="hpc-grid">
+                    <article class="hpc">
+                        <!-- Official product logo; a public engineer badge was not available. -->
+                        <div class="hpc-media"><img class="hpc-logo" src="badges/beegfs-logo.png" alt="BeeGFS logo" width="158" height="100" loading="lazy" /></div>
+                        <div class="hpc-body">
+                            <span class="cert-issuer">ThinkParQ</span>
+                            <h4>BeeGFS</h4>
+                            <p>Parallel file system built for HPC and AI workloads.</p>
+                            <ul class="hpc-items">
+                                <li><b>Certified System Engineer</b><span>Oct 2024</span></li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="hpc">
+                        <div class="hpc-media is-pair">
+                            <img src="badges/weka-technical-xpert.png" alt="WEKA Technical Xpert Certified badge" width="112" height="112" loading="lazy" />
+                            <img src="badges/weka-technical-xplorer.png" alt="WEKA Technical Xplorer Certified badge" width="112" height="112" loading="lazy" />
+                        </div>
+                        <div class="hpc-body">
+                            <span class="cert-issuer">WEKA</span>
+                            <h4>WEKA Data Platform</h4>
+                            <p>High-performance data platform for AI and HPC storage.</p>
+                            <ul class="hpc-items is-two">
+                                <li><b>Technical Xpert</b><span>Certified</span></li>
+                                <li><b>Technical Xplorer</b><span>Certified</span></li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="hpc">
+                        <!-- Official issuer logo for the four historical Bright certifications. -->
+                        <div class="hpc-media is-wide"><img src="badges/bright-computing-logo.svg" alt="Bright Computing logo" width="300" height="169" loading="lazy" /></div>
+                        <div class="hpc-body">
+                            <span class="cert-issuer">Bright Computing · now NVIDIA</span>
+                            <h4>Bright Cluster Manager</h4>
+                            <p>HPC cluster provisioning and management, now NVIDIA Base Command Manager.</p>
+                            <ul class="hpc-items is-two">
+                                <li><b>Basic Admin</b><span>Aug 2021</span></li>
+                                <li><b>OpenStack</b><span>Aug 2021</span></li>
+                                <li><b>Data Science</b><span>Aug 2021</span></li>
+                                <li><b>Bright 8.0 Admin</b><span>Apr 2020</span></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="tier">
+                <div class="tier-head">
+                    <span class="mono tier-num">Tier 2</span>
+                    <h3>Cloud &amp; cloud native</h3>
+                    <span class="mono tier-right">Earned 2020 – 2021 · exam-based</span>
+                </div>
+                <div class="card-grid is-four">
+                    <article class="cert">
+                        <div class="plate"><img src="badges/aws-sa-pro.png" alt="AWS Solutions Architect Professional badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">AWS · Professional</span>
+                            <h4>Solutions Architect – Professional</h4>
+                            <div class="cert-line"><span>Nov 2020</span><a class="verify" href="https://www.credly.com/badges/79c37040-79ea-4b3d-81f3-1081c4aafc4c" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/aws-devops-pro.png" alt="AWS DevOps Engineer Professional badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">AWS · Professional</span>
+                            <h4>DevOps Engineer – Professional</h4>
+                            <div class="cert-line"><span>Nov 2020</span><a class="verify" href="https://www.credly.com/badges/26829b3c-0d7a-4fdf-abf5-11b99a051221" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/cka.png" alt="CKA badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">The Linux Foundation · CNCF</span>
+                            <h4>CKA: Certified Kubernetes Administrator</h4>
+                            <div class="cert-line"><span>Jan 2021</span><a class="verify" href="https://www.credly.com/badges/434bbf9d-7832-4eba-8361-c55e58e38108" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/ckad.png" alt="CKAD badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">The Linux Foundation · CNCF</span>
+                            <h4>CKAD: Certified Kubernetes Application Developer</h4>
+                            <div class="cert-line"><span>Aug 2021</span><a class="verify" href="https://www.credly.com/badges/6647e7b8-38b7-41cc-955c-78439c498539" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="card-grid is-four">
+                    <article class="cert">
+                        <div class="plate"><img src="badges/aws-sa-associate.png" alt="AWS Solutions Architect Associate badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">AWS · Associate</span>
+                            <h4>Solutions Architect – Associate</h4>
+                            <div class="cert-line"><span>Oct 2020</span><a class="verify" href="https://www.credly.com/badges/8a297261-a28b-4964-a43d-04f7c4e869f1" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/aws-sysops-associate.png" alt="AWS SysOps Administrator Associate badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">AWS · Associate</span>
+                            <h4>SysOps Administrator – Associate</h4>
+                            <div class="cert-line"><span>Nov 2020</span><a class="verify" href="https://www.credly.com/badges/96c49d65-4b66-45cf-9bc2-7a8b2a282499" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/aws-developer-associate.png" alt="AWS Developer Associate badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">AWS · Associate</span>
+                            <h4>Developer – Associate</h4>
+                            <div class="cert-line"><span>Dec 2020</span><a class="verify" href="https://www.credly.com/badges/7afdee74-a269-4194-b6f6-f672b1ab0cd5" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/terraform-associate.png" alt="Terraform Associate badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">HashiCorp</span>
+                            <h4>Terraform Associate</h4>
+                            <div class="cert-line"><span>Jan 2021</span><a class="verify" href="https://www.credly.com/badges/f791a663-7b91-4f11-af83-d46b4bf733e9" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="tier">
+                <div class="tier-head">
+                    <span class="mono tier-num">Tier 3</span>
+                    <h3>Enterprise foundation</h3>
+                    <span class="mono tier-right">Linux · virtualization · storage · delivery</span>
+                </div>
+                <div class="found-grid">
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/rhcsa.png" alt="Red Hat Certified System Administrator badge" width="62" height="62" loading="lazy" /></span></div>
+                        <h4>Red Hat Certified System Administrator</h4>
+                        <p>Linux systems administration on Red Hat Enterprise Linux.</p>
+                        <div class="found-foot"><span class="cert-issuer">Red Hat</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/vmware-vcp5.png" alt="VMware Certified Professional – Data Center Virtualization legacy logo" width="62" height="62" loading="lazy" /></span><span class="found-date">Jul 2012</span></div>
+                        <h4>VMware Certified Professional on vSphere 5</h4>
+                        <p>VCP-510: enterprise virtualization on vSphere.</p>
+                        <div class="found-foot"><span class="cert-issuer">VMware</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/vmware-vcp-cloud.png" alt="VMware Certified Professional – Cloud legacy logo" width="62" height="62" loading="lazy" /></span></div>
+                        <h4>VMware Certified Professional – Cloud</h4>
+                        <p>VCP-Cloud: private cloud infrastructure on VMware.</p>
+                        <div class="found-foot"><span class="cert-issuer">VMware</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/netapp-ncda.png" alt="NetApp NCDA badge" width="62" height="62" loading="lazy" /></span><span class="found-date">Jul 2012</span></div>
+                        <h4>NetApp Certified Data Administrator</h4>
+                        <p>Data ONTAP 7-Mode storage administration.</p>
+                        <div class="found-foot"><span class="cert-issuer">NetApp</span><a class="verify" href="https://www.credly.com/badges/147618cb-8186-4291-982a-ae00b41c139b" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate citrix-plate"><img src="badges/citrix-cca.png" alt="Citrix Certified Administrator legacy logo" width="62" height="62" loading="lazy" /></span></div>
+                        <h4>Citrix Certified Administrator for XenServer 6</h4>
+                        <p>Server virtualization on Citrix XenServer.</p>
+                        <div class="found-foot"><span class="cert-issuer">Citrix</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/prince2-practitioner.png" alt="PRINCE2 Practitioner badge" width="62" height="62" loading="lazy" /></span><span class="found-date">Jun 2014</span></div>
+                        <h4>PRINCE2® Registered Practitioner</h4>
+                        <p>Project management, with PRINCE2® Foundation.</p>
+                        <div class="found-foot"><span class="cert-issuer">PeopleCert</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/itil-foundation-v3.png" alt="ITIL Foundation V3 logo" width="62" height="62" loading="lazy" /></span><span class="found-date">Dec 2007</span></div>
+                        <h4>ITIL Foundation v3</h4>
+                        <p>IT service management fundamentals.</p>
+                        <div class="found-foot"><span class="cert-issuer">EXIN</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/exin-cloud-foundation.png" alt="EXIN Cloud Computing Foundation badge" width="62" height="62" loading="lazy" /></span></div>
+                        <h4>EXIN Cloud Computing Foundation</h4>
+                        <p>Cloud computing concepts and service models.</p>
+                        <div class="found-foot"><span class="cert-issuer">EXIN</span><span class="muted">Certificate</span></div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="cred-foot">
+                <span>Course completions from the Linux Foundation, NVIDIA and universities are listed separately under <a class="arrow-link" href="#learning">Continuous learning</a>.</span>
+                <a class="btn btn-sm" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-badge"/></svg> Full Credly wallet <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 About -->
+    <section id="about" class="section is-alt">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>02</b> Profile</span>
+                    <h2>Behind the infrastructure.</h2>
+                </div>
+            </div>
+            <div class="about-grid">
+                <div class="about-copy">
+                    <p>
+                        My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational
+                        resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.
+                    </p>
+                    <p>
+                        I'm interested in the engineering layers that make demanding compute platforms dependable: hardware, networks, storage,
+                        orchestration, observability, and the processes that keep services running. The common thread is a systems perspective,
+                        designing and operating the foundations that applications and compute workloads depend on.
+                    </p>
+                    <blockquote class="about-quote">From enterprise Linux and networking to AI factories and GPU-powered computing platforms<span>.</span></blockquote>
+                </div>
+                <dl class="facts">
+                    <div><dt class="mono">Focus</dt><dd><b>AI Factory · HPC</b>Platform architecture &amp; engineering leadership</dd></div>
+                    <div><dt class="mono">Experience</dt><dd><b>23+ years</b>Enterprise infrastructure to AI platforms</dd></div>
+                    <div><dt class="mono">Certified</dt><dd><b>NVIDIA · BeeGFS · WEKA</b>4 NVIDIA AI infrastructure certifications, plus HPC parallel storage</dd></div>
+                    <div><dt class="mono">Studied</dt><dd><b>Supercomputing</b>The University of Edinburgh &amp; PRACE, 2018</dd></div>
+                    <div><dt class="mono">Recognised</dt><dd><b>J.P. Morgan</b>Outstanding Performance &amp; Service Milestone awards</dd></div>
+                    <div><dt class="mono">Location</dt><dd><b>Singapore</b>Career across Singapore, Bengaluru &amp; Greater Delhi</dd></div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 Capabilities -->
+    <section id="capabilities" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>03</b> Capabilities</span>
+                    <h2>The stack, layer by layer.</h2>
+                </div>
+                <p>Every layer of an AI factory, from the platform down to the operating system, and the certifications that back each one. The highlighted layers are the current focus.</p>
+            </div>
+
+            <div class="stack">
+                <div class="stack-cap mono"><b>↑ Workloads &amp; platform</b><span>skills · backed by</span></div>
+
+                <div class="layer">
+                    <span class="layer-ix">L7</span>
+                    <div><h3>AI platform &amp; economics</h3><p>Running GPU capacity as a cloud service and measuring the value of the tokens it produces.</p></div>
+                    <div class="chips"><span>GPU cloud platforms</span><span>Kubernetes cluster lifecycle</span><span>AI tokenomics</span><span>Kubeflow</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <a href="https://www.credly.com/badges/c9d189a7-f789-4067-8b57-424b208b318c" target="_blank" rel="noreferrer">Rafay GPU Cloud Pro</a>
+                        <a href="https://www.credly.com/badges/3a28a911-05e0-4cd2-aea4-4c3d5636b1d8" target="_blank" rel="noreferrer">Rafay Associate</a>
+                        <a href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b" target="_blank" rel="noreferrer">AI Tokenomics</a>
+                    </div></div>
+                </div>
+
+                <div class="layer is-core">
+                    <span class="layer-ix">L6</span>
+                    <div><h3>AI compute &amp; operations</h3><p>GPU clusters for training and inference, and the cluster management that keeps them running.</p><span class="core-tag">Core focus</span></div>
+                    <div class="chips"><span>GPU infrastructure</span><span>AI cluster operations</span><span>Base Command Manager</span><span>Bright Cluster Manager</span><span>HPC</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <a href="https://www.credly.com/badges/ce25aa9e-2093-4a22-8838-c1083aa1e99e" target="_blank" rel="noreferrer">NCP-AII</a>
+                        <a href="https://www.credly.com/badges/e28bc4dd-e37b-4a42-90ac-50857a7f5315" target="_blank" rel="noreferrer">NCP-AIO</a>
+                        <a href="https://www.credly.com/badges/b4130902-d0e2-415f-b258-f0604ec06a57" target="_blank" rel="noreferrer">NCA-AIIO</a>
+                        <span>Bright ×4</span>
+                    </div></div>
+                </div>
+
+                <div class="layer is-core">
+                    <span class="layer-ix">L5</span>
+                    <div><h3>AI networking</h3><p>High-bandwidth fabrics that connect GPUs, on a long record in routing, segmentation and failover.</p><span class="core-tag">Core focus</span></div>
+                    <div class="chips"><span>Mellanox InfiniBand</span><span>AI fabrics</span><span>Routing &amp; VLAN</span><span>Firewalls &amp; VPN</span><span>WAN failover</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <a href="https://www.credly.com/badges/dbc5fa16-b33e-4a7f-b36e-36b1e3913e1f" target="_blank" rel="noreferrer">NCP-AIN</a>
+                        <span>2006 router project</span>
+                    </div></div>
+                </div>
+
+                <div class="layer is-core">
+                    <span class="layer-ix">L4</span>
+                    <div><h3>Storage &amp; parallel file systems</h3><p>Feeding data to GPUs fast enough, from parallel file systems to enterprise arrays.</p><span class="core-tag">Core focus</span></div>
+                    <div class="chips"><span>BeeGFS</span><span>WEKA</span><span>Spectrum Scale (GPFS)</span><span>NetApp ONTAP</span><span>HPE DMF</span><span>ZFS</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <span>BeeGFS Engineer</span>
+                        <span>WEKA Xpert</span>
+                        <a href="https://www.credly.com/badges/147618cb-8186-4291-982a-ae00b41c139b" target="_blank" rel="noreferrer">NetApp NCDA</a>
+                    </div></div>
+                </div>
+
+                <div class="layer">
+                    <span class="layer-ix">L3</span>
+                    <div><h3>Cloud native &amp; automation</h3><p>Containers, orchestration and infrastructure as code, on public cloud and on premises.</p></div>
+                    <div class="chips"><span>Kubernetes</span><span>AWS</span><span>Terraform</span><span>Argo</span><span>Tekton</span><span>Containers</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <a href="https://www.credly.com/badges/434bbf9d-7832-4eba-8361-c55e58e38108" target="_blank" rel="noreferrer">CKA</a>
+                        <a href="https://www.credly.com/badges/6647e7b8-38b7-41cc-955c-78439c498539" target="_blank" rel="noreferrer">CKAD</a>
+                        <a href="https://www.credly.com/badges/79c37040-79ea-4b3d-81f3-1081c4aafc4c" target="_blank" rel="noreferrer">AWS SA Pro</a>
+                        <a href="https://www.credly.com/badges/26829b3c-0d7a-4fdf-abf5-11b99a051221" target="_blank" rel="noreferrer">AWS DevOps Pro</a>
+                        <a href="https://www.credly.com/badges/f791a663-7b91-4f11-af83-d46b4bf733e9" target="_blank" rel="noreferrer">Terraform</a>
+                    </div></div>
+                </div>
+
+                <div class="layer">
+                    <span class="layer-ix">L2</span>
+                    <div><h3>Virtualization &amp; Linux</h3><p>The operating layer underneath it all: Linux, Unix and enterprise virtualization.</p></div>
+                    <div class="chips"><span>RHEL</span><span>Linux / FreeBSD</span><span>Solaris</span><span>VMware vSphere</span><span>vCloud &amp; SRM</span><span>Citrix XenServer</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <span>RHCSA</span><span>VCP-510</span><span>VCP-Cloud</span><span>Citrix CCA</span>
+                    </div></div>
+                </div>
+
+                <div class="layer">
+                    <span class="layer-ix">L1</span>
+                    <div><h3>Delivery &amp; service management</h3><p>Running infrastructure as a service: change, continuity, coordination and leadership.</p></div>
+                    <div class="chips"><span>PRINCE2</span><span>ITIL</span><span>Patching &amp; change</span><span>Project coordination</span><span>Six Sigma Green Belt course</span></div>
+                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
+                        <span>PRINCE2 Practitioner</span><span>ITIL v3</span>
+                    </div></div>
+                </div>
+
+                <div class="stack-base mono"><span>↓ Bare metal &amp; data centre</span><span>23+ years deep</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 Journey -->
+    <section id="journey" class="section is-alt">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>04</b> Journey</span>
+                    <h2>Through every generation of infrastructure.</h2>
+                </div>
+                <p>Each stage added a layer, from Linux and network resilience to enterprise operations, cloud and Kubernetes, and now AI factories. <a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Full role history on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a></p>
+            </div>
+            <ol class="journey">
+                <li class="is-now">
+                    <span class="yr">Now</span>
+                    <div>
+                        <h3>AI Factory &amp; HPC infrastructure</h3>
+                        <p>Platform architecture and leadership at an AI infrastructure company (associated with Firmus Technologies).</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2026</span>
+                    <div>
+                        <h3>NVIDIA AI infrastructure track</h3>
+                        <p>NVIDIA-Certified Associate in AI Infrastructure &amp; Operations, then Professional in AI Networking, AI Operations and AI Infrastructure, January to March. AI Tokenomics Fundamentals followed in September.</p>
+                        <div class="chips"><span>NCA-AIIO</span><span>NCP-AIN</span><span>NCP-AIO</span><span>NCP-AII</span></div>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2024–25</span>
+                    <div>
+                        <h3>GPU cloud &amp; parallel storage</h3>
+                        <p>Certified BeeGFS System Engineer (2024) and Rafay Certified GPU Cloud Professional (2025), with NVIDIA Base Command Manager, Kubeflow, Argo and Tekton training.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2020–21</span>
+                    <div>
+                        <h3>Cloud &amp; Kubernetes</h3>
+                        <p>Five AWS certifications in three months, including Solutions Architect and DevOps Engineer Professional, then CKA, CKAD, Terraform Associate and Bright Cluster Manager.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2018</span>
+                    <div>
+                        <h3>Supercomputing study</h3>
+                        <p>Supercomputing with The University of Edinburgh &amp; PRACE, and High Performance Computing in the Cloud with Dublin City University.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2012–14</span>
+                    <div>
+                        <h3>Virtualization, storage &amp; delivery</h3>
+                        <p>VMware Certified Professional on vSphere 5 and NetApp NCDA in 2012; PRINCE2 Foundation and Registered Practitioner in 2014.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2007–09</span>
+                    <div>
+                        <h3>J.P. Morgan · Bengaluru</h3>
+                        <p>Service Milestone Award (2007) and an Outstanding Performance Award for DST server patching (2009). ITIL Foundation v3 (2007).</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="yr">2006</span>
+                    <div>
+                        <h3>Mercantila Software Services · Bangalore</h3>
+                        <p>Built an open-source Linux router and firewall with ISP failover. Best Performer award.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 05 Work -->
+    <section id="work" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>05</b> Selected work</span>
+                    <h2>Systems that stay up.</h2>
+                </div>
+                <p><a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Projects on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a></p>
+            </div>
+            <div class="work-grid">
+                <article class="work is-feature">
+                    <div>
+                        <span class="mono">Completed · Mar – May 2006 · Mercantila Software Services</span>
+                        <h3>Open-source Linux router &amp; firewall</h3>
+                        <p>A Linux-based routing and firewall platform bringing monitoring, segmentation, traffic control, intrusion detection and ISP failover into a single network design.</p>
+                        <div class="chips"><span>Linux</span><span>FreeBSD</span><span>iptables</span><span>OpenVPN</span><span>Snort</span><span>Squid</span></div>
+                    </div>
+                    <ul class="points">
+                        <li>Four NICs: one LAN, two WAN, one DMZ</li>
+                        <li>Security policy and routing with iptables</li>
+                        <li>DMZ and VLAN segmentation of Linux servers</li>
+                        <li>Site connectivity over an OpenVPN tunnel</li>
+                        <li>Snort IDS, Squid and class-based queuing</li>
+                        <li>Automatic failover to a secondary ISP</li>
+                    </ul>
+                </article>
+                <article class="work">
+                    <span class="mono">Focus area · Current</span>
+                    <h3>AI Factory &amp; HPC infrastructure</h3>
+                    <p>The compute, networking, storage and operating practices underpinning modern AI factories and high-performance computing systems.</p>
+                    <div class="chips"><span>AI factory</span><span>HPC</span><span>GPU</span><span>InfiniBand</span></div>
+                </article>
+                <article class="work">
+                    <span class="mono">Focus area · Career foundation</span>
+                    <h3>Enterprise infrastructure operations</h3>
+                    <p>Infrastructure operations, virtualization, patching and service delivery, including recognition from J.P. Morgan and specialist vendor training.</p>
+                    <div class="chips"><span>Virtualization</span><span>Patching</span><span>ITIL</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 Recognition -->
+    <section id="recognition" class="section is-alt">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>06</b> Recognition</span>
+                    <h2>Recognition through delivery.</h2>
+                </div>
+                <p>Awards and appreciation earned for operational work, leadership and delivering on time.</p>
+            </div>
+            <div class="award-grid">
+                <div class="award"><p class="mono"><span>J.P. Morgan</span><span>2009</span></p><h3>Outstanding Performance Award</h3><p>For outstanding performance on DST server patching, Bangalore.</p></div>
+                <div class="award"><p class="mono"><span>J.P. Morgan</span><span>2007</span></p><h3>Service Milestone Award</h3><p>Marking three years of service.</p></div>
+                <div class="award"><p class="mono"><span>Mercantila</span><span>2006</span></p><h3>Best Performer</h3><p>Mercantila Software Services, Bangalore.</p></div>
+                <div class="award"><p class="mono"><span>J.P. Morgan</span><span>Leadership</span></p><h3>Excel Leadership Award</h3><p>Recognition from the J.P. Morgan Excel leadership programme.</p></div>
+                <div class="award"><p class="mono"><span>J.P. Morgan</span><span>Appreciation</span></p><h3>Letter of appreciation</h3><p>From the Global Co-CEO / CIO (Investment Banking) and GTI.</p></div>
+                <div class="award"><p class="mono"><span>Fujitsu Asia</span><span>Service</span></p><h3>Long Service Award</h3><p>For completing five years of service.</p></div>
+            </div>
+
+            <div class="recs">
+                <div class="recs-count">
+                    <strong>12<span>.</span></strong>
+                    <p>Recommendations from colleagues and collaborators on LinkedIn, across technical infrastructure and client-facing delivery.</p>
+                    <a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Read them on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                </div>
+                <figure class="rec">
+                    <p>Highlights his AI infrastructure, HPC, AI Factory and GPU computing work, across bare-metal and cloud, and his problem-solving.</p>
+                    <footer><b>Alexis Ralphael</b> · paraphrased</footer>
+                </figure>
+                <figure class="rec">
+                    <p>Highlights how he handles difficult clients, and his consulting-style communication.</p>
+                    <footer><b>Sanjay K Mohindroo</b> · paraphrased</footer>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 Learning -->
+    <section id="learning" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>07</b> Continuous learning</span>
+                    <h2>Courses, kept apart from the exams.</h2>
+                </div>
+                <p>Course completions and vendor training. They are listed here for completeness and not counted as certifications above.</p>
+            </div>
+            <div class="learn-grid">
+                <div class="learn">
+                    <h3>Linux Foundation <span>2021–25</span></h3>
+                    <ul>
+                        <li>DevOps &amp; Workflow Management with Argo <code>LFS256</code></li>
+                        <li>CI/CD with Tekton <code>LFS274</code></li>
+                        <li>Intro to AI/ML Toolkits with Kubeflow <code>LFS147</code></li>
+                        <li>Kubernetes Security Essentials <code>LFS260</code></li>
+                        <li>Containers Fundamentals <code>LFS253</code></li>
+                        <li>Kubernetes for Developers <code>LFD259</code></li>
+                        <li>Kubernetes Fundamentals <code>LFS258</code></li>
+                        <li>Fundamentals of Quantum Computing <code>LFQ101</code></li>
+                        <li>Quantum Computing for Senior Leaders <code>LFQ102</code></li>
+                    </ul>
+                </div>
+                <div class="learn">
+                    <h3>NVIDIA <span>2020–24</span></h3>
+                    <ul>
+                        <li>Base Command Manager Administration <code>2024</code></li>
+                        <li>Introduction to Base Command Manager <code>2024</code></li>
+                        <li>NVIDIA AI Enterprise Administration <code>v3.0</code></li>
+                        <li>AI Infrastructure &amp; Operations Fundamentals</li>
+                        <li>Introduction to AI in the Data Center <code>2020</code></li>
+                    </ul>
+                </div>
+                <div class="learn">
+                    <h3>HPC &amp; cloud <span>2018+</span></h3>
+                    <ul>
+                        <li>Supercomputing <code>Edinburgh &amp; PRACE</code></li>
+                        <li>HPC in the Cloud <code>DCU</code></li>
+                        <li>HPC with Containers: Singularity &amp; Docker</li>
+                        <li>IBM Cloud: Microservices with Kubernetes <code>Coursera</code></li>
+                        <li>LXC/LXD Deep Dive <code>A Cloud Guru</code></li>
+                        <li>Python 3 for System Administrators <code>A Cloud Guru</code></li>
+                    </ul>
+                </div>
+                <div class="learn">
+                    <h3>Storage &amp; clustering <span>07</span></h3>
+                    <ul>
+                        <li>IBM Spectrum Scale 4.1 (GPFS) <code>H005G</code></li>
+                        <li>IBM Platform Symphony <code>H050G</code></li>
+                        <li>HPE DMF Administration <code>H6LG1S</code></li>
+                        <li>Oracle Solaris 10 ZFS <code>SA-2290</code></li>
+                        <li>Red Hat Clustering &amp; Storage <code>RH436</code></li>
+                        <li>Red Hat Enterprise Virtualization <code>RH318</code></li>
+                        <li>Veritas Cluster Server <code>5.0</code></li>
+                    </ul>
+                </div>
+                <div class="learn">
+                    <h3>VMware &amp; Solaris <span>07</span></h3>
+                    <ul>
+                        <li>vSphere: Install, Configure, Manage <code>v5.0</code></li>
+                        <li>vSphere: Troubleshooting Workshop <code>v5.1</code></li>
+                        <li>vCloud Director Fundamentals <code>v5.1</code></li>
+                        <li>vCenter Site Recovery Manager <code>v5.1</code></li>
+                        <li>Solaris Containers <code>SA-355</code></li>
+                        <li>Solaris 10 Logical Domains <code>SA-345</code></li>
+                        <li>Opsware Server Automation System</li>
+                    </ul>
+                </div>
+                <div class="learn">
+                    <h3>Management &amp; data <span>05</span></h3>
+                    <ul>
+                        <li>Six Sigma Green Belt</li>
+                        <li>Excel Leadership Training <code>JPMC</code></li>
+                        <li>ITIL Foundation v3</li>
+                        <li>PRINCE2 Foundation &amp; Practitioner</li>
+                        <li>Cloudera Administrator for Apache Hadoop</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 08 Contact -->
+    <section id="contact" class="section contact">
+        <div class="wrap contact-grid">
+            <div>
+                <span class="eyebrow mono"><b>08</b> Get in touch</span>
+                <h2>Let’s talk AI infrastructure<em>.</em></h2>
+                <p class="contact-copy">
+                    I'm interested in the platforms and engineering practices behind large-scale AI systems, especially compute, networking, storage,
+                    cloud and high-performance infrastructure. For professional conversations, connect with me on LinkedIn.
+                </p>
+            </div>
+            <div class="contact-panel">
+                <a class="contact-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">
+                    <span class="ico"><svg class="icon"><use href="#i-linkedin"/></svg></span>
+                    <span><strong>LinkedIn</strong><span>linkedin.com/in/amitabhmca</span></span>
+                    <svg class="icon"><use href="#i-arrow-ur"/></svg>
+                </a>
+                <a class="contact-link" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">
+                    <span class="ico"><svg class="icon"><use href="#i-badge"/></svg></span>
+                    <span><strong>Credly</strong><span>Verify every badge</span></span>
+                    <svg class="icon"><use href="#i-arrow-ur"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap footer-row">
+        <span>© 2026 Amitabh Pandey · Singapore</span>
+        <a href="#top">Back to top ↑</a>
+    </div>
+</footer>
+
+<script>
+    // Seamless marquee: append a hidden copy of the badge track.
+    (function () {
+        var track = document.getElementById("badge-track");
+        var copy = track.cloneNode(true);
+        copy.removeAttribute("id");
+        copy.setAttribute("aria-hidden", "true");
+        copy.querySelectorAll("a").forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+        copy.querySelectorAll("img").forEach(function (img) { img.alt = ""; });
+        track.parentNode.appendChild(copy);
+    })();
+
+    // Mobile menu.
+    (function () {
+        var toggle = document.querySelector(".menu-toggle");
+        var nav = document.getElementById("mobile-nav");
+        var use = toggle.querySelector("use");
+        function set(open) {
+            nav.classList.toggle("is-open", open);
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+            use.setAttribute("href", open ? "#i-close" : "#i-menu");
+        }
+        toggle.addEventListener("click", function () { set(!nav.classList.contains("is-open")); });
+        nav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
+    })();
+</script>
+</body>
+</html>
