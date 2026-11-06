@@ -16,3 +16,18 @@ Downloaded on 30 October 2026 and served locally by `index.html`. These are stan
 | `exin-cloud-foundation.png` | Official EXIN Cloud Computing Foundation badge from the [issuer's qualification page](https://www.exin.com/technologies-software/exin-cloud-computing/exin-cloud-computing-foundation). | [PNG](https://www.exin.com/app/uploads/2022/05/EXIN_Badge_ModuleFoundation_CloudCom-1024x1024.png) |
 
 All downloads are preserved as supplied by their hosts. Certification names and personal dates come from the portfolio source content and the user's supplied list. The logos and badge artwork remain the property of their respective owners.
+
+
+## NVIDIA wallet refresh — 6 November 2026
+
+Verified against [Amitabh Pandey’s public NVIDIA wallet](https://www.credential.net/profile/amitabhmca/wallet). These are the issuer badge images referenced by each credential's badge design, downloaded unchanged and served locally. Verification links throughout the NVIDIA certification cards, hero and capability references now point to the issuer's credential records.
+
+| Local file | NVIDIA credential | Issued | Expires | Original badge download |
+| --- | --- | --- | --- | --- |
+| `nvidia-ncp-ari.png` | [NCP-ARI — AI Rack and Interconnect](https://credential.nvidia.com/f6d357cc-a7d3-4caa-8c11-a9c7968f1faa) | 2026-10-31 | 2028-10-31 | [PNG](https://accredible-api-templates.s3-external-1.amazonaws.com/17893279056077170327902372600881.png) |
+| `nvidia-ncp-aii.png` | [NCP-AII — AI Infrastructure](https://credential.nvidia.com/5e0afc7d-471b-4c30-a4f6-f71ef4bc761e) | 2026-03-07 | 2028-03-07 | [PNG](https://accredible-api-templates.s3-external-1.amazonaws.com/17893278218266987130037924471206.png) |
+| `nvidia-ncp-aio.png` | [NCP-AIO — AI Operations](https://credential.nvidia.com/250a727e-8280-4a31-aad9-b1e5886d46c7) | 2026-02-15 | 2028-02-15 | [PNG](https://accredible-api-templates.s3-external-1.amazonaws.com/17893272255469173311553316696914.png) |
+| `nvidia-nca-aiio.png` | [NCA-AIIO — AI Infrastructure and Operations](https://credential.nvidia.com/e8455c5c-7cfa-4f63-8a02-37ea5b690d3d) | 2026-01-31 | 2028-01-31 | [PNG](https://accredible-api-templates.s3-external-1.amazonaws.com/1789158445488663539779535243013.png) |
+| `nvidia-ncp-ain.png` | [NCP-AIN — AI Networking](https://credential.nvidia.com/e92e82a9-4c79-4b2d-9fc6-17c51301bd9a) | 2026-01-20 | 2028-01-20 | [PNG](https://accredible-api-templates.s3-external-1.amazonaws.com/17893278396845276629928417634731.png) |
+
+The wallet contains five issuer certifications plus a user-uploaded Introduction to AI in the Data Center course badge (27 September 2020). That course already appears under Continuous learning and is excluded from the certification count.
