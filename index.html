@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Amitabh Pandey — AI Factory & HPC Infrastructure</title>
-<meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional. NVIDIA-Certified Professional in AI Infrastructure, AI Operations and AI Networking; certified BeeGFS and WEKA parallel storage engineer." />
+<meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional with five NVIDIA certifications, including AI Rack and Interconnect, AI Infrastructure, AI Operations and AI Networking; certified BeeGFS and WEKA parallel storage engineer." />
 <meta name="theme-color" content="#ffffff" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Amitabh Pandey — AI Factory & HPC Infrastructure" />
@@ -40,6 +40,10 @@
     --blue-line: #bfd3fb;
 
     --ok: #15803d;
+    --nvidia: #76b900;
+    --nvidia-ink: #284600;
+    --nvidia-wash: #f2f9e7;
+    --nvidia-line: #b5d77d;
     --radius: 16px;
     --shadow: 0 1px 2px rgb(13 27 51 / 0.04), 0 12px 32px -18px rgb(37 99 235 / 0.28);
     --shadow-lift: 0 2px 4px rgb(13 27 51 / 0.04), 0 22px 44px -20px rgb(37 99 235 / 0.4);
@@ -85,6 +89,8 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .btn-signal { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 8px 20px -10px rgb(37 99 235 / 0.7); }
 .btn-signal:hover { background: var(--blue-strong); border-color: var(--blue-strong); color: #fff; }
 .btn-sm { font-size: 14px; padding: 8px 15px; }
+.btn-nvidia { background: var(--nvidia); border-color: var(--nvidia); color: #142400; box-shadow: 0 6px 18px -10px rgb(76 119 0 / 0.6); }
+.btn-nvidia:hover { background: #8acb19; border-color: #8acb19; color: #142400; }
 .arrow-link {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 14px; font-weight: 600; color: var(--blue-strong);
@@ -135,10 +141,27 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     width: 720px; height: 720px; right: -180px; top: -260px; border-radius: 50%;
     background: radial-gradient(circle, rgb(96 165 250 / 0.28), transparent 65%);
 }
-.hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; padding-block: 88px 56px; }
+.hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; align-items: center; padding-block: 88px 56px; }
 .kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--ink-3); }
 .kicker .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px rgb(37 99 235 / 0.16); }
-.hero h1 { margin-top: 26px; font-size: clamp(54px, 7.4vw, 100px); line-height: 0.95; font-weight: 700; letter-spacing: -0.045em; }
+.hero-id { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 30px); margin-top: 28px; }
+.portrait {
+    position: relative; flex-shrink: 0; width: clamp(132px, 13.5vw, 172px); aspect-ratio: 1; padding: 5px; border-radius: 30px;
+    background: linear-gradient(140deg, var(--blue-soft), var(--blue-strong) 70%);
+    box-shadow: 0 22px 40px -22px rgb(29 78 216 / 0.75);
+}
+.portrait-frame { display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: #fff; }
+/* Crop the square source to head and shoulders and hide its thin edge frame. */
+.portrait img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.32); transform-origin: 50% 22%; }
+.portrait-tag {
+    position: absolute; left: 50%; bottom: -13px; transform: translateX(-50%);
+    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    padding: 4px 10px; border-radius: 999px; border: 1px solid var(--nvidia-line); background: #fff;
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nvidia-ink);
+    box-shadow: 0 6px 14px -8px rgb(76 119 0 / 0.5);
+}
+.portrait-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--nvidia); }
+.hero h1 { font-size: clamp(54px, 7vw, 92px); line-height: 0.95; font-weight: 700; letter-spacing: -0.045em; }
 .hero h1 em { font-style: normal; color: var(--blue); }
 .hero-lede { margin-top: 26px; max-width: 540px; font-size: 19px; line-height: 1.65; color: var(--ink-3); }
 .hero-lede strong { color: var(--ink); font-weight: 600; }
@@ -163,6 +186,12 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .track-item img { width: 104px; height: 104px; object-fit: contain; }
 .track-item .mono { font-size: 12px; color: var(--blue-strong); font-weight: 500; }
 .track-item small { font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ink-3); }
+.track-item.is-latest { grid-column: 1 / -1; flex-direction: row; gap: 16px; padding: 12px 16px; border-color: var(--nvidia-line); background: var(--nvidia-wash); }
+.track-item.is-latest img { width: 84px; height: 84px; }
+.track-copy { display: flex; flex-direction: column; gap: 5px; }
+.track-item.is-latest .mono { color: var(--nvidia-ink); }
+.track-item.is-latest small { text-align: left; font-size: 14px; color: var(--ink); }
+.track-issued { font-size: 12px; color: var(--ink-3); }
 .track-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-2); font-size: 13.5px; color: var(--ink-3); }
 .track-foot a { color: var(--blue-strong); font-weight: 600; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .track-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -220,7 +249,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .verify:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Lead cards: the NVIDIA professional track. */
-.lead-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.lead-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
 .lead {
     position: relative; display: flex; flex-direction: column;
     border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow);
@@ -235,6 +264,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .lead .dates { font-size: 13.5px; color: var(--ink-3); }
 .lead .verify { margin-top: auto; padding-top: 4px; }
 .lead.is-pro::before { content: "Professional"; position: absolute; top: 12px; left: 12px; z-index: 1; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 999px; }
+.lead.is-latest { border-color: var(--nvidia-line); }
+.lead.is-latest::before { content: "Latest · Professional"; background: var(--nvidia); color: #142400; }
+.lead.is-latest .plate { background: radial-gradient(circle at 50% 60%, #fff 30%, var(--nvidia-wash)); }
 
 /* Standard cards: badge left, details right. */
 .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
@@ -422,13 +454,17 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .contact-link strong { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--ink); }
 .contact-link span { font-size: 14px; color: var(--ink-3); }
 .contact-link > svg { margin-left: auto; color: var(--blue); font-size: 18px; }
+.contact-link.is-nvidia { border: 2px solid var(--nvidia); background: linear-gradient(120deg, var(--nvidia-wash), #fff); box-shadow: 0 12px 28px -18px rgb(76 119 0 / 0.55); }
+.contact-link.is-nvidia:hover { border-color: #588b00; }
+.contact-link.is-nvidia .ico { background: var(--nvidia); color: #142400; }
+.contact-link.is-nvidia strong, .contact-link.is-nvidia > svg { color: var(--nvidia-ink); }
 
 .site-footer { background: #fff; color: var(--ink-3); border-top: 1px solid var(--line-2); }
 .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 26px; font-size: 14px; }
 .footer-row a:hover { color: var(--blue-strong); }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1120px) {
+@media (max-width: 1200px) {
     .main-nav { display: none; }
     .menu-toggle { display: flex; }
     .lead-grid, .card-grid.is-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -453,9 +489,17 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 @media (max-width: 720px) {
     .wrap { padding-inline: 16px; }
     .header-row { height: 60px; }
-    .header-right .btn, .header-right .icon-btn { display: none; }
+    .header-right .icon-btn { display: none; }
+    .header-right .btn-nvidia { font-size: 13px; padding: 7px 12px; gap: 6px; }
     .section { padding-block: 72px; }
-    .hero h1 { font-size: clamp(46px, 13vw, 64px); }
+    .hero h1 { font-size: clamp(42px, 12vw, 60px); }
+    .hero-id { gap: 16px; margin-top: 22px; }
+    .kicker { display: block; line-height: 1.9; }
+    .kicker .pulse { display: inline-block; margin-right: 10px; vertical-align: 1px; }
+    .portrait { width: clamp(96px, 27vw, 120px); padding: 4px; border-radius: 24px; }
+    .portrait-frame { border-radius: 20px; }
+    .portrait-tag { font-size: 9.5px; padding: 3px 8px; bottom: -11px; }
+    .portrait-tag .tag-long { display: none; }
     .hero-lede { font-size: 17px; }
     .track { padding: 14px; border-radius: 18px; }
     .track-item img { width: 80px; height: 80px; }
@@ -469,6 +513,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .lead .plate { width: 116px; height: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line-2); }
     .lead .plate img { width: 92px; height: 92px; }
     .lead.is-pro::before { top: auto; bottom: 10px; left: 10px; font-size: 9.5px; padding: 1px 6px; }
+    .lead.is-latest::before { content: "Latest · Pro"; }
     .lead-body { padding: 14px 16px 16px; }
     .lead h4 { font-size: 16.5px; }
     .card-grid.is-four .cert { flex-direction: row; align-items: center; }
@@ -497,6 +542,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .contact-link { padding: 16px; }
     .footer-row { flex-direction: column; align-items: start; }
 }
+@media (max-width: 440px) {
+    .brand-name { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .rise { animation: none; }
@@ -524,7 +572,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     <div class="wrap header-row">
         <a href="#top" class="brand" aria-label="Amitabh Pandey — home">
             <span class="brand-mark" aria-hidden="true">AP</span>
-            <span>Amitabh Pandey</span>
+            <span class="brand-name">Amitabh Pandey</span>
         </a>
         <nav class="main-nav" aria-label="Main">
             <ul>
@@ -539,7 +587,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         </nav>
         <div class="header-right">
             <a class="icon-btn" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
-            <a class="btn btn-sm" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-badge"/></svg> Credly wallet</a>
+            <a class="btn btn-sm btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
             <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
                 <svg class="icon"><use href="#i-menu"/></svg>
             </button>
@@ -553,6 +601,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         <a class="nav-item" href="#work">Work</a>
         <a class="nav-item" href="#recognition">Recognition</a>
         <a class="nav-item" href="#contact">Contact</a>
+        <a class="btn" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Credly wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn btn-signal" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> Connect on LinkedIn</a>
     </nav>
 </header>
@@ -564,7 +613,13 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             <div class="hero-grid">
                 <div class="rise">
                     <p class="kicker mono"><span class="pulse"></span> HPC · AI Factory · Platform architecture <span aria-hidden="true">/</span> Singapore</p>
-                    <h1>Amitabh<br />Pandey<em>.</em></h1>
+                    <div class="hero-id">
+                        <figure class="portrait">
+                            <span class="portrait-frame"><img src="images/amitabh-pandey.jpg" alt="Portrait of Amitabh Pandey" width="400" height="400" fetchpriority="high" /></span>
+                            <figcaption class="portrait-tag">5× NVIDIA<span class="tag-long">&nbsp;certified</span></figcaption>
+                        </figure>
+                        <h1>Amitabh<br />Pandey<em>.</em></h1>
+                    </div>
                     <p class="hero-lede">
                         I work on the infrastructure behind high-performance computing and modern AI: <strong>GPU compute, high-speed fabrics
                         and parallel storage</strong>, built on more than 23 years of Linux, cloud and enterprise operations.
@@ -578,33 +633,37 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 <aside class="track rise d1" aria-label="NVIDIA AI infrastructure certifications">
                     <div class="track-head mono"><b>NVIDIA AI infrastructure</b><span>2026</span></div>
                     <div class="track-grid">
-                        <a class="track-item" href="https://www.credly.com/badges/ce25aa9e-2093-4a22-8838-c1083aa1e99e" target="_blank" rel="noreferrer">
+                        <a class="track-item is-latest" href="https://credential.nvidia.com/f6d357cc-a7d3-4caa-8c11-a9c7968f1faa" target="_blank" rel="noreferrer">
+                            <img src="badges/nvidia-ncp-ari.png" alt="NVIDIA-Certified Professional: AI Rack and Interconnect badge" width="84" height="84" />
+                            <span class="track-copy"><span class="mono">NCP-ARI · Latest</span><small>Professional · AI Rack and Interconnect</small><span class="track-issued">Issued Oct 2026 · valid to Oct 2028</span></span>
+                        </a>
+                        <a class="track-item" href="https://credential.nvidia.com/5e0afc7d-471b-4c30-a4f6-f71ef4bc761e" target="_blank" rel="noreferrer">
                             <img src="badges/nvidia-ncp-aii.png" alt="NVIDIA-Certified Professional: AI Infrastructure badge" width="104" height="104" />
                             <span class="mono">NCP-AII</span><small>Professional · AI Infrastructure</small>
                         </a>
-                        <a class="track-item" href="https://www.credly.com/badges/e28bc4dd-e37b-4a42-90ac-50857a7f5315" target="_blank" rel="noreferrer">
+                        <a class="track-item" href="https://credential.nvidia.com/250a727e-8280-4a31-aad9-b1e5886d46c7" target="_blank" rel="noreferrer">
                             <img src="badges/nvidia-ncp-aio.png" alt="NVIDIA-Certified Professional: AI Operations badge" width="104" height="104" />
                             <span class="mono">NCP-AIO</span><small>Professional · AI Operations</small>
                         </a>
-                        <a class="track-item" href="https://www.credly.com/badges/dbc5fa16-b33e-4a7f-b36e-36b1e3913e1f" target="_blank" rel="noreferrer">
+                        <a class="track-item" href="https://credential.nvidia.com/e92e82a9-4c79-4b2d-9fc6-17c51301bd9a" target="_blank" rel="noreferrer">
                             <img src="badges/nvidia-ncp-ain.png" alt="NVIDIA-Certified Professional: AI Networking badge" width="104" height="104" />
                             <span class="mono">NCP-AIN</span><small>Professional · AI Networking</small>
                         </a>
-                        <a class="track-item" href="https://www.credly.com/badges/b4130902-d0e2-415f-b258-f0604ec06a57" target="_blank" rel="noreferrer">
+                        <a class="track-item" href="https://credential.nvidia.com/e8455c5c-7cfa-4f63-8a02-37ea5b690d3d" target="_blank" rel="noreferrer">
                             <img src="badges/nvidia-nca-aiio.png" alt="NVIDIA-Certified Associate: AI Infrastructure and Operations badge" width="104" height="104" />
                             <span class="mono">NCA-AIIO</span><small>Associate · AI Infra &amp; Ops</small>
                         </a>
                     </div>
                     <div class="track-foot">
-                        <span><span class="dot-ok"></span>All four active through 2028</span>
-                        <a href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        <span><span class="dot-ok"></span>All five active through 2028</span>
+                        <a href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer">NVIDIA wallet <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                     </div>
                 </aside>
             </div>
 
             <div class="hero-stats">
                 <div><strong>HPC</strong><p>Supercomputing · University of Edinburgh &amp; PRACE</p></div>
-                <div><strong>4<span>×</span> NVIDIA</strong><p>AI infrastructure certifications, active to 2028</p></div>
+                <div><strong>5<span>×</span> NVIDIA</strong><p>AI infrastructure certifications, active to 2028</p></div>
                 <div><strong>BeeGFS<span>·</span>WEKA</strong><p>Certified on HPC parallel file systems</p></div>
                 <div><strong>23<span>+</span></strong><p>Years in infrastructure</p></div>
             </div>
@@ -615,6 +674,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     <div class="ribbon" aria-label="Certification badges">
         <div class="marquee">
             <div class="marquee-track" id="badge-track">
+                <a href="#credentials" title="NVIDIA-Certified Professional: AI Rack and Interconnect"><img src="badges/nvidia-ncp-ari.png" alt="NVIDIA-Certified Professional: AI Rack and Interconnect" width="76" height="76" /></a>
                 <a href="#credentials" title="NVIDIA-Certified Professional: AI Infrastructure"><img src="badges/nvidia-ncp-aii.png" alt="NVIDIA-Certified Professional: AI Infrastructure" width="76" height="76" /></a>
                 <a href="#credentials" title="NVIDIA-Certified Professional: AI Operations"><img src="badges/nvidia-ncp-aio.png" alt="NVIDIA-Certified Professional: AI Operations" width="76" height="76" /></a>
                 <a href="#credentials" title="NVIDIA-Certified Professional: AI Networking"><img src="badges/nvidia-ncp-ain.png" alt="NVIDIA-Certified Professional: AI Networking" width="76" height="76" /></a>
@@ -645,7 +705,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <span class="eyebrow mono"><b>01</b> Certifications</span>
                     <h2>Certified where AI infrastructure is built.</h2>
                 </div>
-                <p>Exam-based certifications first, ordered by relevance to AI factories today. Credly-issued badges link to their verification record.</p>
+                <p>Exam-based certifications first, ordered by relevance to AI factories today. NVIDIA credentials link to their issuer records; other digital badges link to Credly.</p>
             </div>
 
             <!-- Tier 1 -->
@@ -656,13 +716,22 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <span class="mono tier-right">Current focus</span>
                 </div>
                 <div class="lead-grid">
+                    <article class="lead is-pro is-latest">
+                        <div class="plate"><img src="badges/nvidia-ncp-ari.png" alt="NCP-ARI badge" width="150" height="150" loading="lazy" /></div>
+                        <div class="lead-body">
+                            <div class="lead-meta"><span class="code">NCP-ARI</span><span class="status">Active</span></div>
+                            <h4>NVIDIA-Certified Professional: AI Rack and Interconnect</h4>
+                            <p class="dates">Issued Oct 2026 · valid to Oct 2028</p>
+                            <a class="verify" href="https://credential.nvidia.com/f6d357cc-a7d3-4caa-8c11-a9c7968f1faa" target="_blank" rel="noreferrer">Verify on NVIDIA <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        </div>
+                    </article>
                     <article class="lead is-pro">
                         <div class="plate"><img src="badges/nvidia-ncp-aii.png" alt="NCP-AII badge" width="150" height="150" loading="lazy" /></div>
                         <div class="lead-body">
                             <div class="lead-meta"><span class="code">NCP-AII</span><span class="status">Active</span></div>
                             <h4>NVIDIA-Certified Professional: AI Infrastructure</h4>
                             <p class="dates">Issued Mar 2026 · valid to Mar 2028</p>
-                            <a class="verify" href="https://www.credly.com/badges/ce25aa9e-2093-4a22-8838-c1083aa1e99e" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                            <a class="verify" href="https://credential.nvidia.com/5e0afc7d-471b-4c30-a4f6-f71ef4bc761e" target="_blank" rel="noreferrer">Verify on NVIDIA <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                         </div>
                     </article>
                     <article class="lead is-pro">
@@ -671,7 +740,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="lead-meta"><span class="code">NCP-AIO</span><span class="status">Active</span></div>
                             <h4>NVIDIA-Certified Professional: AI Operations</h4>
                             <p class="dates">Issued Feb 2026 · valid to Feb 2028</p>
-                            <a class="verify" href="https://www.credly.com/badges/e28bc4dd-e37b-4a42-90ac-50857a7f5315" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                            <a class="verify" href="https://credential.nvidia.com/250a727e-8280-4a31-aad9-b1e5886d46c7" target="_blank" rel="noreferrer">Verify on NVIDIA <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                         </div>
                     </article>
                     <article class="lead is-pro">
@@ -680,7 +749,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="lead-meta"><span class="code">NCP-AIN</span><span class="status">Active</span></div>
                             <h4>NVIDIA-Certified Professional: AI Networking</h4>
                             <p class="dates">Issued Jan 2026 · valid to Jan 2028</p>
-                            <a class="verify" href="https://www.credly.com/badges/dbc5fa16-b33e-4a7f-b36e-36b1e3913e1f" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                            <a class="verify" href="https://credential.nvidia.com/e92e82a9-4c79-4b2d-9fc6-17c51301bd9a" target="_blank" rel="noreferrer">Verify on NVIDIA <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                         </div>
                     </article>
                     <article class="lead">
@@ -689,7 +758,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="lead-meta"><span class="code">NCA-AIIO</span><span class="status">Active</span></div>
                             <h4>NVIDIA-Certified Associate: AI Infrastructure and Operations</h4>
                             <p class="dates">Issued Jan 2026 · valid to Jan 2028</p>
-                            <a class="verify" href="https://www.credly.com/badges/b4130902-d0e2-415f-b258-f0604ec06a57" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                            <a class="verify" href="https://credential.nvidia.com/e8455c5c-7cfa-4f63-8a02-37ea5b690d3d" target="_blank" rel="noreferrer">Verify on NVIDIA <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                         </div>
                     </article>
                 </div>
@@ -936,7 +1005,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 <dl class="facts">
                     <div><dt class="mono">Focus</dt><dd><b>AI Factory · HPC</b>Platform architecture &amp; engineering leadership</dd></div>
                     <div><dt class="mono">Experience</dt><dd><b>23+ years</b>Enterprise infrastructure to AI platforms</dd></div>
-                    <div><dt class="mono">Certified</dt><dd><b>NVIDIA · BeeGFS · WEKA</b>4 NVIDIA AI infrastructure certifications, plus HPC parallel storage</dd></div>
+                    <div><dt class="mono">Certified</dt><dd><b>NVIDIA · BeeGFS · WEKA</b>5 NVIDIA AI infrastructure certifications, plus HPC parallel storage</dd></div>
                     <div><dt class="mono">Studied</dt><dd><b>Supercomputing</b>The University of Edinburgh &amp; PRACE, 2018</dd></div>
                     <div><dt class="mono">Recognised</dt><dd><b>J.P. Morgan</b>Outstanding Performance &amp; Service Milestone awards</dd></div>
                     <div><dt class="mono">Location</dt><dd><b>Singapore</b>Career across Singapore, Bengaluru &amp; Greater Delhi</dd></div>
@@ -973,11 +1042,12 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 <div class="layer is-core">
                     <span class="layer-ix">L6</span>
                     <div><h3>AI compute &amp; operations</h3><p>GPU clusters for training and inference, and the cluster management that keeps them running.</p><span class="core-tag">Core focus</span></div>
-                    <div class="chips"><span>GPU infrastructure</span><span>AI cluster operations</span><span>Base Command Manager</span><span>Bright Cluster Manager</span><span>HPC</span></div>
+                    <div class="chips"><span>GPU infrastructure</span><span>Rack &amp; interconnect deployment</span><span>AI cluster operations</span><span>Base Command Manager</span><span>Bright Cluster Manager</span><span>HPC</span></div>
                     <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <a href="https://www.credly.com/badges/ce25aa9e-2093-4a22-8838-c1083aa1e99e" target="_blank" rel="noreferrer">NCP-AII</a>
-                        <a href="https://www.credly.com/badges/e28bc4dd-e37b-4a42-90ac-50857a7f5315" target="_blank" rel="noreferrer">NCP-AIO</a>
-                        <a href="https://www.credly.com/badges/b4130902-d0e2-415f-b258-f0604ec06a57" target="_blank" rel="noreferrer">NCA-AIIO</a>
+                        <a href="https://credential.nvidia.com/f6d357cc-a7d3-4caa-8c11-a9c7968f1faa" target="_blank" rel="noreferrer">NCP-ARI</a>
+                        <a href="https://credential.nvidia.com/5e0afc7d-471b-4c30-a4f6-f71ef4bc761e" target="_blank" rel="noreferrer">NCP-AII</a>
+                        <a href="https://credential.nvidia.com/250a727e-8280-4a31-aad9-b1e5886d46c7" target="_blank" rel="noreferrer">NCP-AIO</a>
+                        <a href="https://credential.nvidia.com/e8455c5c-7cfa-4f63-8a02-37ea5b690d3d" target="_blank" rel="noreferrer">NCA-AIIO</a>
                         <span>Bright ×4</span>
                     </div></div>
                 </div>
@@ -987,7 +1057,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <div><h3>AI networking</h3><p>High-bandwidth fabrics that connect GPUs, on a long record in routing, segmentation and failover.</p><span class="core-tag">Core focus</span></div>
                     <div class="chips"><span>Mellanox InfiniBand</span><span>AI fabrics</span><span>Routing &amp; VLAN</span><span>Firewalls &amp; VPN</span><span>WAN failover</span></div>
                     <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <a href="https://www.credly.com/badges/dbc5fa16-b33e-4a7f-b36e-36b1e3913e1f" target="_blank" rel="noreferrer">NCP-AIN</a>
+                        <a href="https://credential.nvidia.com/e92e82a9-4c79-4b2d-9fc6-17c51301bd9a" target="_blank" rel="noreferrer">NCP-AIN</a>
                         <span>2006 router project</span>
                     </div></div>
                 </div>
@@ -1061,8 +1131,8 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <span class="yr">2026</span>
                     <div>
                         <h3>NVIDIA AI infrastructure track</h3>
-                        <p>NVIDIA-Certified Associate in AI Infrastructure &amp; Operations, then Professional in AI Networking, AI Operations and AI Infrastructure, January to March. AI Tokenomics Fundamentals followed in September.</p>
-                        <div class="chips"><span>NCA-AIIO</span><span>NCP-AIN</span><span>NCP-AIO</span><span>NCP-AII</span></div>
+                        <p>Earned NVIDIA certifications in AI Networking, AI Infrastructure &amp; Operations, AI Operations and AI Infrastructure from January to March. AI Tokenomics Fundamentals followed in September, then NVIDIA-Certified Professional: AI Rack and Interconnect in October.</p>
+                        <div class="chips"><span>NCP-AIN</span><span>NCA-AIIO</span><span>NCP-AIO</span><span>NCP-AII</span><span>NCP-ARI</span></div>
                     </div>
                 </li>
                 <li>
@@ -1287,6 +1357,11 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 </p>
             </div>
             <div class="contact-panel">
+                <a class="contact-link is-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer">
+                    <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span>
+                    <span><strong>NVIDIA wallet</strong><span>5 active certifications · View issuer records</span></span>
+                    <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg>
+                </a>
                 <a class="contact-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">
                     <span class="ico"><svg class="icon"><use href="#i-linkedin"/></svg></span>
                     <span><strong>LinkedIn</strong><span>linkedin.com/in/amitabhmca</span></span>
@@ -1294,7 +1369,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 </a>
                 <a class="contact-link" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">
                     <span class="ico"><svg class="icon"><use href="#i-badge"/></svg></span>
-                    <span><strong>Credly</strong><span>Verify every badge</span></span>
+                    <span><strong>Credly wallet</strong><span>Explore cloud, Linux &amp; other credentials</span></span>
                     <svg class="icon"><use href="#i-arrow-ur"/></svg>
                 </a>
             </div>
