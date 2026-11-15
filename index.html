@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Amitabh Pandey — AI Factory, HPC & Supercomputing Architect | Delivered 4.134 EFLOPS (FP16) AI Factories</title>
+<title>Amitabh Pandey — AI Factory, HPC & Supercomputing Architect, Delivered 4.134 EFLOPS (FP16) AI Factories</title>
 <meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional with five NVIDIA certifications, including AI Rack and Interconnect, AI Infrastructure, AI Operations and AI Networking; Certified BeeGFS and WEKA parallel storage engineer." />
 <meta name="theme-color" content="#ffffff" />
 <meta property="og:type" content="website" />
@@ -13,7 +13,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -118,6 +117,15 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .brand-mark { padding: 2px; }
 .brand-photo { display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 8px; background: #fff; }
 .brand-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); transform-origin: 50% 18%; }
+.brand-name { display: flex; flex-direction: column; line-height: 1; }
+.brand-title { font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); }
+.brand-title b { font-weight: 800; background: linear-gradient(90deg, var(--blue-strong), var(--blue) 45%, var(--nvidia) 100%); background-size: 220% 100%; background-position: 0 0; -webkit-background-clip: text; background-clip: text; color: transparent; transition: background-position 0.6s ease; }
+.brand-sub { margin-top: 5px; font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-4); transition: color 0.3s; }
+.brand:hover .brand-title b { background-position: 100% 0; }
+.brand:hover .brand-sub { color: var(--nvidia-ink); }
+.brand-mark { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.brand:hover .brand-mark { transform: rotate(-4deg) scale(1.06); box-shadow: 0 8px 18px -6px rgb(118 185 0 / 0.6); }
+@media (prefers-reduced-motion: reduce) { .brand-title b, .brand-sub, .brand-mark { transition: none; } }
 .main-nav ul { display: flex; gap: 2px; }
 .main-nav a { display: block; padding: 8px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-3); transition: color 0.15s, background 0.15s; }
 .main-nav a:hover { color: var(--blue-strong); background: var(--blue-wash); }
@@ -640,9 +648,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 
 <header class="site-header">
     <div class="wrap header-row">
-        <a href="#top" class="brand" aria-label="Amitabh Pandey — home">
+        <a href="#top" class="brand" aria-label=" — home">
             <span class="brand-mark" aria-hidden="true"><span class="brand-photo"><img src="images/amitabh-pandey.jpg" alt="" width="34" height="34"></span></span>
-            <span class="brand-name">Amitabh Pandey</span>
+            <span class="brand-name"><span class="brand-title">Amitabh <b>Pandey</b></span><span class="brand-sub">AI Factory | HPC Architect</span></span>
         </a>
         <nav class="main-nav" aria-label="Main">
             <ul>
@@ -685,7 +693,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <p class="kicker mono"><span class="pulse"></span> AI Factory · Supercomputing · HPC · Platform Architect <span aria-hidden="true">/</span> Singapore</p>
                     <div class="hero-id">
                         <figure class="portrait">
-                            <span class="portrait-frame"><img src="images/amitabh-pandey.jpg" alt="Portrait of Amitabh Pandey" width="400" height="400" fetchpriority="high" /></span>
+                            <span class="portrait-frame"><img src="images/amitabh-pandey.jpg" alt="Portrait of " width="400" height="400" fetchpriority="high" /></span>
                             <figcaption class="portrait-tag">5× NVIDIA<span class="tag-long">&nbsp;certified</span></figcaption>
                         </figure>
                         <h1>Amitabh<br />Pandey<em>.</em></h1>
@@ -1067,7 +1075,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     
                 <!-- ===== About intro: paste in place of the three hero-lede paragraphs ===== -->
                 <div class="about-intro">
-                    <p class="ai-hello"><span class="ai-wave" aria-hidden="true">👋</span> Hi, I’m <span class="ai-name">Amitabh Pandey</span></p>
+                    <p class="ai-hello"><span class="ai-wave" aria-hidden="true">👋</span> Hi, I’m <span class="ai-name"></span></p>
                     <p class="ai-lead">I architect, build, operate &amp; scale <span class="ai-mark">AI factories</span> and <span class="ai-mark">supercomputing platforms</span>.</p>
                 
                     <div class="ai-stats">
