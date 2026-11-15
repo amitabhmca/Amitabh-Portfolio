@@ -2,7 +2,7 @@
 
 A one-page portfolio for **Amitabh Pandey**, a Singapore-based AI infrastructure and HPC professional (AI Factory · HPC · Platform architecture).
 
-**Live site:** https://zhengyu89.github.io/Amitabh-Portfolio/ (available once GitHub Pages is enabled; the address changes if the repository moves to another account)
+**Live site:** https://amitabhmca.github.io/Amitabh-Portfolio/ (available once GitHub Pages is enabled; the address changes if the repository moves to another account)
 
 ## What's on the page
 
