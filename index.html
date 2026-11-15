@@ -355,6 +355,26 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .about-copy p + p { margin-top: 18px; }
 .about-quote { margin-top: 34px; padding: 24px 28px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--blue); font-family: var(--font-display); font-size: 23px; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); box-shadow: var(--shadow); }
 .about-quote span { color: var(--blue); }
+/* ---------- Platforms table (About section) ---------- */
+.platform-table-wrap { margin-top: 22px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
+.platform-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.platform-table thead th { padding: 12px 18px; text-align: left; background: var(--ink); color: #fff; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.platform-table tbody th, .platform-table tbody td { padding: 14px 18px; border-top: 1px solid var(--line); vertical-align: middle; text-align: left; }
+.platform-table tbody tr:nth-child(even) > * { background: var(--page); }
+.platform-table tbody tr:hover > * { background: var(--nvidia-wash); }
+.platform-table tbody th { width: 38%; font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); border-left: 3px solid var(--nvidia); }
+.platform-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.platform-tags span { font-family: var(--font-mono); font-size: 12.5px; font-weight: 500; padding: 3px 9px; border-radius: 6px; background: var(--nvidia-wash); color: var(--nvidia-ink); border: 1px solid var(--nvidia-line); white-space: nowrap; }
+.platform-tags span.is-text { font-family: var(--font-body); font-size: 13.5px; background: var(--blue-wash); color: var(--blue-strong); border-color: var(--blue-line); }
+@media (max-width: 640px) {
+    .platform-table thead { display: none; }
+    .platform-table, .platform-table tbody, .platform-table tr, .platform-table th, .platform-table td { display: block; width: 100%; }
+    .platform-table tbody tr { border-top: 1px solid var(--line); border-left: 3px solid var(--nvidia); }
+    .platform-table tbody tr:first-child { border-top: 0; }
+    .platform-table tbody th, .platform-table tbody td { border-top: 0; }
+    .platform-table tbody th { width: 100%; padding-bottom: 6px; border-left: 0; }
+    .platform-table tbody td { padding-top: 0; }
+}
 .facts { padding: 6px 24px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
 .facts div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
 .facts div:last-child { border-bottom: 0; }
@@ -1002,6 +1022,20 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                         For 14 of those years, my focus has been on <strong>designing, building, benchmarking and scaling GPU infrastructure</strong>. <br>
                         My experience includes
                     </p>
+                <div class="platform-table-wrap">
+                     <table class="platform-table">
+                     <thead><tr><th scope="col">Platform</th><th scope="col">Systems &amp; technologies</th></tr></thead>
+                     <tbody>
+                         <tr><th scope="row">NVIDIA AI factories</th><td><div class="platform-tags"><span class="is-text">GPU compute</span><span class="is-text">Networking</span><span class="is-text">Storage</span></div></td></tr>
+                         <tr><th scope="row">GPU cloud platforms</th><td><div class="platform-tags"><span class="is-text">Rafay</span><span class="is-text">Kubernetes</span></div></td></tr>
+                         <tr><th scope="row">NVIDIA DGX</th><td><div class="platform-tags"><span>H100</span><span>V100</span></div></td></tr>
+                         <tr><th scope="row">NVIDIA MGX</th><td><div class="platform-tags"><span>GB300</span><span>GB200</span></div></td></tr>
+                         <tr><th scope="row">NVIDIA HGX</th><td><div class="platform-tags"><span>B300</span><span>B200</span><span>H200</span><span>H100</span><span>A100</span></div></td></tr>
+                         <tr><th scope="row">Other NVIDIA GPUs</th><td><div class="platform-tags"><span>L40S</span><span>Tesla K80</span><span>Tesla K40</span></div></td></tr>
+                         <tr><th scope="row">Supercomputing</th><td><div class="platform-tags"><span class="is-text">HPE Cray systems</span></div></td></tr>
+                     </tbody>
+                     </table>
+                </div>
                     <p>
                         My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational
                         resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.
