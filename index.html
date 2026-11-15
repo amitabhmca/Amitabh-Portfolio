@@ -376,7 +376,10 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .platform-table tbody td { padding-top: 0; }
 }
 @media (min-width: 641px) { .nscc-table tbody th { width: 24%; } .nscc-table td:last-child { width: 1%; white-space: nowrap; } }
-.about-copy .nscc-intro { margin-top: 26px; font-size: 16.5px; }
+.about-copy .nscc-intro { margin-top: 30px; font-size: 16px; line-height: 1.3; container-type: inline-size; }
+.nscc-intro .nscc-kicker { display: block; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.nscc-intro strong { display: block; margin-top: 6px; font-family: var(--font-display); font-size: min(23.5px, 4.05cqi); white-space: nowrap; font-weight: 700; letter-spacing: -0.02em; color: #e2231a; }
+@media (max-width: 640px) { .nscc-intro strong { font-size: 20px; white-space: normal; } }
 /* ---------- About intro ---------- */
 .about-intro { display: grid; gap: 22px; }
 .about-copy .about-intro p { margin: 0; }
@@ -1118,7 +1121,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                      </tbody>
                      </table>
                 </div>
-                    <p class="nscc-intro">Led 4 HPC | AI Supercomputers — <strong style="color: #e2231a;">National Supercomputing Centre (NSCC), Singapore</strong></p>
+                    <p class="nscc-intro"><span class="nscc-kicker">Led 4 HPC | AI Supercomputers at</span><strong>National Supercomputing Centre (NSCC) Singapore</strong></p>
                     <div class="platform-table-wrap">
                         <table class="platform-table nscc-table">
                             <thead><tr><th scope="col">System</th><th scope="col">Platform</th><th scope="col">Peak</th></tr></thead>
