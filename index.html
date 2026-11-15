@@ -377,7 +377,44 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 }
 @media (min-width: 641px) { .nscc-table tbody th { width: 24%; } .nscc-table td:last-child { width: 1%; white-space: nowrap; } }
 .about-copy .nscc-intro { margin-top: 26px; font-size: 16.5px; }
-@media (min-width: 961px) { .about-copy .nscc-intro { white-space: nowrap; } }
+/* ---------- About intro ---------- */
+.about-intro { display: grid; gap: 22px; }
+.about-copy .about-intro p { margin: 0; }
+.ai-hello { font-family: var(--font-mono); font-size: 13px !important; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3) !important; }
+.ai-name { color: var(--blue-strong); font-weight: 500; }
+.ai-wave { display: inline-block; transform-origin: 70% 70%; }
+.about-intro:hover .ai-wave { animation: ai-wave 1.2s ease-in-out; }
+@keyframes ai-wave { 0%,60%,100% { transform: rotate(0); } 10%,30% { transform: rotate(14deg); } 20% { transform: rotate(-8deg); } 40% { transform: rotate(-4deg); } 50% { transform: rotate(10deg); } }
+
+.ai-lead { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 30px) !important; font-weight: 600; line-height: 1.3 !important; letter-spacing: -0.025em; color: var(--ink) !important; }
+.ai-mark { background: linear-gradient(90deg, var(--blue), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent;
+    background-size: 200% 100%; background-position: 0 0; transition: background-position 0.6s ease; box-shadow: inset 0 -3px 0 var(--blue-wash); }
+.ai-mark:hover { background-position: 100% 0; }
+
+.ai-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ai-stat { position: relative; padding: 18px 20px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+    border-top: 3px solid var(--blue); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.ai-stat.is-gpu { border-top-color: var(--nvidia); }
+.ai-stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.ai-stat b { display: block; font-family: var(--font-display); font-size: 42px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+.ai-stat.is-gpu b { color: var(--nvidia-ink); }
+.ai-stat > span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
+
+.ai-body { font-size: 17px !important; line-height: 1.7 !important; color: var(--ink-2) !important; }
+
+.ai-verbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0; list-style: none; counter-reset: v; }
+.ai-verbs li { counter-increment: v; display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: 999px;
+    font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); background: var(--card); border: 1px solid var(--line);
+    cursor: default; transition: transform 0.18s ease, background 0.18s, color 0.18s, border-color 0.18s;
+    animation: ai-pulse 6s ease-in-out infinite; animation-delay: calc(var(--i) * 1.2s); }
+.ai-verbs li::before { content: "0" counter(v); font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--ink-4); }
+.ai-verbs li:not(:last-child)::after { content: "→"; margin-left: 2px; color: var(--ink-4); font-weight: 400; }
+.ai-verbs li:hover { transform: translateY(-2px); background: var(--nvidia); border-color: var(--nvidia); color: #fff; animation-play-state: paused; }
+.ai-verbs li:hover::before, .ai-verbs li:hover::after { color: rgb(255 255 255 / 0.8); }
+@keyframes ai-pulse { 0%, 22%, 100% { border-color: var(--line); box-shadow: none; } 8%, 14% { border-color: var(--nvidia-line); box-shadow: 0 0 0 4px var(--nvidia-wash); } }
+
+@media (max-width: 640px) { .ai-stats { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .ai-verbs li, .about-intro:hover .ai-wave { animation: none; } .ai-mark, .ai-stat { transition: none; } }
 .facts { padding: 6px 24px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
 .facts div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
 .facts div:last-child { border-bottom: 0; }
@@ -1017,15 +1054,56 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             </div>
             <div class="about-grid">
                 <div class="about-copy">
-                    <p class="hero-lede" style="max-width: none;">
-                    Hi, I’m Amitabh Pandey, and I architect, build, operate &amp; scale <strong>AI factories and supercomputing platforms</strong>. <br>
-                    </p>
-                    <p class="hero-lede" style="max-width: none;">
-                    Over 24 years, I have worked across Linux, HPC grid computing, AI cloud and GPU infrastructure, taking projects from initial design through to commissioning and day-to-day operations.
-                    </p>
-                    <p class="hero-lede" style="max-width: none;">
-                        For 14 of those years, my focus has been to <strong>Design, Build, Validate, Benchmark &amp; Scale GPU infrastructure</strong>.
-                    </p>
+                    
+                <!-- ===== About intro: paste in place of the three hero-lede paragraphs ===== -->
+                <div class="about-intro">
+                    <p class="ai-hello"><span class="ai-wave" aria-hidden="true">👋</span> Hi, I’m <span class="ai-name">Amitabh Pandey</span></p>
+                    <p class="ai-lead">I architect, build, operate &amp; scale <span class="ai-mark">AI factories</span> and <span class="ai-mark">supercomputing platforms</span>.</p>
+                
+                    <div class="ai-stats">
+                        <div class="ai-stat">
+                            <b><span class="ai-count" data-to="24">24</span>+</b>
+                            <span>years across Linux, HPC grid computing, AI cloud &amp; GPU infrastructure</span>
+                        </div>
+                        <div class="ai-stat is-gpu">
+                            <b><span class="ai-count" data-to="14">14</span></b>
+                            <span>of those years focused on GPU infrastructure</span>
+                        </div>
+                    </div>
+                
+                    <p class="ai-body">Taking projects from initial design through to commissioning and day-to-day operations.</p>
+                
+                    <ol class="ai-verbs" aria-label="GPU infrastructure lifecycle">
+                        <li style="--i:0">Design</li>
+                        <li style="--i:1">Build</li>
+                        <li style="--i:2">Validate</li>
+                        <li style="--i:3">Benchmark</li>
+                        <li style="--i:4">Scale</li>
+                    </ol>
+                </div>
+                
+                <script>
+                /* Count-up for the year figures when the intro scrolls into view */
+                (() => {
+                    const els = document.querySelectorAll('.ai-count');
+                    if (!els.length || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+                    const io = new IntersectionObserver((entries) => {
+                        entries.forEach((e) => {
+                            if (!e.isIntersecting) return;
+                            const el = e.target, to = +el.dataset.to, t0 = performance.now(), dur = 1200;
+                            const tick = (t) => {
+                                const k = Math.min(1, (t - t0) / dur);
+                                el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+                                if (k < 1) requestAnimationFrame(tick);
+                            };
+                            requestAnimationFrame(tick);
+                            io.unobserve(el);
+                        });
+                    }, { threshold: 0.6 });
+                    els.forEach((el) => { el.textContent = '0'; io.observe(el); });
+                })();
+                </script>
+                    
                 <div class="platform-table-wrap">
                      <table class="platform-table">
                      <thead><tr><th scope="col">Platform</th><th scope="col">Systems &amp; technologies</th></tr></thead>
