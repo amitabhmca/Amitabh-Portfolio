@@ -663,6 +663,41 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .marquee-track { animation: none; }
     .marquee-track[aria-hidden="true"] { display: none; }
 }
+/* ---------- NSCC systems (interactive) ---------- */
+.nscc-x { position: relative; isolation: isolate; overflow: hidden; margin-top: 18px; padding: 10px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.nscc-x::before { content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, #e2231a, var(--blue) 45%, var(--nvidia)); }
+.nscc-x::after { content: ""; position: absolute; z-index: -1; inset: auto -20% -60% auto; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgb(118 185 0 / 0.12), transparent 65%); }
+.nscc-x .nx-cpu { --c: var(--blue);   --wash: var(--blue-wash);   --ink: var(--blue-strong); --ln: var(--blue-line); }
+.nscc-x .nx-gpu { --c: var(--nvidia); --wash: var(--nvidia-wash); --ink: var(--nvidia-ink);  --ln: var(--nvidia-line); }
+.nx-list { list-style: none; margin: 0; padding: 0; counter-reset: nx; }
+.nx-item { display: grid; grid-template-columns: 46px 1fr 132px; align-items: center; gap: 14px; padding: 12px 12px; border-radius: 12px; transition: background 0.25s, transform 0.25s; }
+.nx-item + .nx-item { margin-top: 2px; }
+.nx-item:hover { background: var(--wash); transform: translateX(3px); }
+.nx-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; color: var(--ink); background: var(--wash); border: 1px solid var(--ln); transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s; }
+.nx-icon svg { width: 24px; height: 24px; }
+.nx-item:hover .nx-icon { background: var(--c); color: #fff; border-color: var(--c); transform: rotate(-6deg) scale(1.06); box-shadow: 0 10px 20px -10px var(--c); }
+.nx-main { min-width: 0; }
+.nx-name { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 17px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); }
+.nx-item .nx-name { color: var(--ink-1, #0d1b33); }
+.nx-name em { font-style: normal; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 999px; color: var(--ink); background: var(--wash); border: 1px solid var(--ln); }
+.nx-plat { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.4; color: var(--ink-3); }
+.nx-peak b { display: flex; align-items: baseline; justify-content: flex-end; gap: 5px; font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+.nx-peak small { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-4); }
+.nx-bar { display: block; height: 6px; margin-top: 8px; border-radius: 99px; background: var(--line-2, #e8eef7); overflow: hidden; }
+.nx-bar i { display: block; height: 100%; width: var(--w); border-radius: inherit; background: linear-gradient(90deg, var(--ln), var(--c)); transition: width 1.3s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i) * 120ms); }
+.nx-item:hover .nx-bar i { box-shadow: 0 0 10px var(--c); }
+.nx-anim .nx-bar i { width: 0; }
+.nx-anim.is-in .nx-bar i { width: var(--w); }
+.nx-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 6px; padding: 12px 12px 4px; border-top: 1px dashed var(--line); font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--ink-4); }
+.nx-foot span { display: inline-flex; align-items: center; gap: 6px; }
+.nx-foot b { color: var(--ink); font-weight: 500; }
+.nx-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-left: 4px; }
+@media (max-width: 640px) {
+    .nx-item { grid-template-columns: 42px 1fr; }
+    .nx-peak { grid-column: 2; }
+    .nx-peak b { justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) { .nx-item, .nx-icon, .nx-bar i { transition: none; } .nx-item:hover, .nx-item:hover .nx-icon { transform: none; } }
 </style>
 </head>
 <body>
@@ -1170,17 +1205,52 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                      </table>
                 </div>
                     <p class="nscc-intro"><span class="nscc-kicker">Led 4 HPC | AI Supercomputers at</span><strong>National Supercomputing Centre (NSCC) Singapore</strong></p>
-                    <div class="platform-table-wrap">
-                        <table class="platform-table nscc-table">
-                            <thead><tr><th scope="col">System</th><th scope="col">Platform</th><th scope="col">Peak</th></tr></thead>
-                            <tbody>
-                                <tr><th scope="row">ASPIRE1</th><td>Fujitsu Supercomputer</td><td><div class="platform-tags"><span>1 PFLOPS</span></div></td></tr>
-                                <tr><th scope="row">ASPIRE1 AI</th><td>NVIDIA DGX-1 V100 AI Supercomputer</td><td><div class="platform-tags"><span>6 PFLOPS</span></div></td></tr>
-                                <tr><th scope="row">ASPIRE2A</th><td>HPE Cray Exascale Supercomputer</td><td><div class="platform-tags"><span>10 PFLOPS</span></div></td></tr>
-                                <tr><th scope="row">ASPIRE2A+</th><td>NVIDIA DGX SuperPOD H100 Supercomputer</td><td><div class="platform-tags"><span>20 PFLOPS</span></div></td></tr>
-                            </tbody>
-                        </table>
-                    </div> 
+<div class="nscc-x">
+                    <ol class="nx-list" aria-label="NSCC supercomputers">
+                        <li class="nx-item nx-cpu" style="--i:0; --w:5%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 8.5h16M4 14.5h16"/><path d="M7.5 5.5h.01M7.5 11.5h.01M7.5 17.5h.01M11 5.5h5.5M11 11.5h5.5M11 17.5h5.5"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE1 <em>HPC</em></span><span class="nx-plat">Fujitsu Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="1">1</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-gpu" style="--i:1; --w:30%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE1 AI <em>AI</em></span><span class="nx-plat">NVIDIA DGX-1 V100 AI Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="6">6</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-cpu" style="--i:2; --w:50%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE2A <em>HPC</em></span><span class="nx-plat">HPE Cray Exascale Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="10">10</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-gpu" style="--i:3; --w:100%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="16" y="9.5" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><rect x="16" y="16" width="5" height="5" rx="1"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE2A+ <em>AI</em></span><span class="nx-plat">NVIDIA DGX SuperPOD H100 Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="20">20</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                    </ol>
+                    <div class="nx-foot"><span><i class="nx-dot nx-cpu"></i>HPC <i class="nx-dot nx-gpu"></i>AI</span><span>Σ <b>37 PFLOPS</b> peak across 4 systems</span></div>
+                    </div>
+<script>
+/* NSCC systems: animate bars and count up PFLOPS when scrolled into view */
+(() => {
+    const box = document.querySelector('.nscc-x');
+    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    box.classList.add('nx-anim');
+    const nums = box.querySelectorAll('.nx-num');
+    nums.forEach((n) => (n.textContent = '0'));
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        box.classList.add('is-in');
+        nums.forEach((n) => {
+            const to = +n.dataset.to, t0 = performance.now(), d = 1300;
+            const tick = (t) => { const k = Math.min(1, (t - t0) / d); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+            requestAnimationFrame(tick);
+        });
+        io.disconnect();
+    }), { threshold: 0.3 });
+    io.observe(box);
+})();
+</script> 
                     <p style="margin-top: 26px; text-align: justify; hyphens: auto;">
                         My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational
                         resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.
