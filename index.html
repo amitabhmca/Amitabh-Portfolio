@@ -375,6 +375,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .platform-table tbody th { width: 100%; padding-bottom: 6px; border-left: 0; }
     .platform-table tbody td { padding-top: 0; }
 }
+@media (min-width: 641px) { .nscc-table tbody th { width: 24%; } .nscc-table td:last-child { width: 1%; white-space: nowrap; } }
 .facts { padding: 6px 24px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
 .facts div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
 .facts div:last-child { border-bottom: 0; }
@@ -1037,6 +1038,18 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                      </tbody>
                      </table>
                 </div>
+                    <p style="margin-top: 26px;">Led and managed four supercomputers at the <strong>National Supercomputing Centre (NSCC) Singapore</strong>:</p>
+                    <div class="platform-table-wrap">
+                        <table class="platform-table nscc-table">
+                            <thead><tr><th scope="col">System</th><th scope="col">Platform</th><th scope="col">Peak</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">ASPIRE1</th><td>Fujitsu supercomputer</td><td><div class="platform-tags"><span>1 PFLOPS</span></div></td></tr>
+                                <tr><th scope="row">ASPIRE1 AI</th><td>NVIDIA DGX-1 AI supercomputer</td><td><div class="platform-tags"><span>6 PFLOPS</span></div></td></tr>
+                                <tr><th scope="row">ASPIRE2A</th><td>HPE Cray exascale-class supercomputer</td><td><div class="platform-tags"><span>10 PFLOPS</span></div></td></tr>
+                                <tr><th scope="row">ASPIRE2A+</th><td>NVIDIA DGX SuperPOD H100 supercomputer</td><td><div class="platform-tags"><span>20 PFLOPS</span></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p style="margin-top: 26px;">
                         My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational
                         resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.
