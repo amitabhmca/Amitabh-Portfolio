@@ -430,15 +430,40 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .ai-verbs li:hover { transform: translateY(-2px); background: var(--nvidia); border-color: var(--nvidia); color: #fff; animation-play-state: paused; }
 .ai-verbs li:hover::before, .ai-verbs li:hover::after { color: rgb(255 255 255 / 0.8); }
 @keyframes ai-pulse { 0%, 22%, 100% { border-color: var(--line); box-shadow: none; } 8%, 14% { border-color: var(--nvidia-line); box-shadow: 0 0 0 4px var(--nvidia-wash); } }
-
 @media (max-width: 640px) { .ai-stats { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .ai-verbs li, .about-intro:hover .ai-wave { animation: none; } .ai-mark, .ai-stat { transition: none; } }
-.facts { padding: 6px 24px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
-.facts div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
-.facts div:last-child { border-bottom: 0; }
-.facts dt { color: var(--blue-strong); padding-top: 3px; }
-.facts dd { font-size: 15.5px; color: var(--ink-3); }
-.facts dd b { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--ink); letter-spacing: -0.015em; }
+/* ---------- About: "At a glance" facts panel ---------- */
+.facts-x { position: relative; isolation: isolate; overflow: hidden; padding: 22px 18px 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
+.facts-x::before { content: ""; position: absolute; z-index: -1; inset: -40% -30% auto auto; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgb(118 185 0 / 0.16), transparent 65%); }
+.facts-x::after { content: ""; position: absolute; z-index: -1; inset: 0; background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 18px 18px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 22%); mask-image: linear-gradient(180deg, #000, transparent 22%); opacity: 0.7; }
+.fx-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 0 8px 16px; margin-bottom: 6px; border-bottom: 1px dashed var(--line); }
+.fx-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+.fx-legend { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-4); }
+.fx-legend i { width: 8px; height: 8px; border-radius: 50%; margin-left: 6px; background: var(--fx-c); }
+
+.facts-x .fx-pro  { --fx-c: var(--blue);   --fx-wash: var(--blue-wash);   --fx-ink: var(--blue-strong); --fx-line: var(--blue-line); }
+.facts-x .fx-ai   { --fx-c: var(--nvidia); --fx-wash: var(--nvidia-wash); --fx-ink: var(--nvidia-ink);  --fx-line: var(--nvidia-line); }
+.facts-x .fx-cred { --fx-c: #d97706;       --fx-wash: #fff7e6;            --fx-ink: #92400e;            --fx-line: #f5d08a; }
+
+.fx-list { position: relative; margin: 0; }
+.fx-list::before { content: ""; position: absolute; left: 31px; top: 30px; bottom: 30px; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--blue) 0 10%, #d97706 16% 26%, var(--nvidia) 32% 78%, #d97706 84% 92%, var(--blue) 97%); opacity: 0.35; }
+.fx-item { position: relative; padding: 14px 12px 14px 64px; border-radius: 14px; transition: background 0.25s ease, transform 0.25s ease; }
+.fx-item:hover { background: var(--fx-wash); transform: translateX(3px); }
+.fx-icon { position: absolute; left: 12px; top: 13px; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; color: var(--fx-ink); background: var(--fx-wash); border: 1px solid var(--fx-line); box-shadow: 0 0 0 4px var(--card); transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s; }
+.fx-icon svg { width: 20px; height: 20px; }
+.fx-item:hover .fx-icon { background: var(--fx-c); color: #fff; border-color: var(--fx-c); transform: rotate(-6deg) scale(1.06); box-shadow: 0 0 0 4px var(--fx-wash), 0 8px 18px -8px var(--fx-c); }
+.fx-label { display: block; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fx-ink); }
+.fx-item dd { margin: 0; }
+.fx-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.fx-chips span { font-family: var(--font-display); font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); padding: 3px 9px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); transition: border-color 0.2s, color 0.2s; }
+.fx-item:hover .fx-chips span { border-color: var(--fx-line); color: var(--fx-ink); }
+.fx-desc { display: block; margin-top: 7px; font-size: 14.5px; line-height: 1.55; color: var(--ink-3); }
+
+.fx-anim .fx-item { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.25s ease; transition-delay: calc(var(--i) * 55ms), calc(var(--i) * 55ms), 0s; }
+.fx-anim.is-in .fx-item { opacity: 1; transform: none; }
+.fx-anim.is-in .fx-item:hover { transform: translateX(3px); transition-delay: 0s; }
+@media (prefers-reduced-motion: reduce) { .fx-item, .fx-icon, .fx-chips span { transition: none; } .fx-item:hover, .fx-item:hover .fx-icon { transform: none; } }
+
 
 /* ---------- Capability stack ---------- */
 .stack { border: 1px solid var(--line); border-radius: 22px; background: var(--card); overflow: hidden; box-shadow: var(--shadow); }
@@ -1163,22 +1188,38 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <blockquote class="about-quote">Delivered AI/HPC Supercomputing workshops for Singapore Universities NUS, NTU, SUTD, SMU, SIT<span>.</span></blockquote>
                     
                 </div>
-                <dl class="facts"> 
-                    <div><dt class="mono">Focus</dt><dd><b>AI Factory, Supercomputing, HPC </b>Platform architecture &amp; engineering leadership</dd></div>
-                    <div><dt class="mono">Experience</dt><dd><b>24+ years</b>Enterprise infrastructure to AI platforms</dd></div>
-                    <div><dt class="mono">Certified</dt><dd><b>NVIDIA | BeeGFS | WEKA | Lustre</b>6 NVIDIA AI Infrastructure Certifications, plus HPC Parallel Storage</dd></div>
-                    <div><dt class="mono">Certified</dt><dd><b>CKA | CKAD |Terraform </b>Linux Foundation & HashiCorp Certifications</dd></div>
-                    <div><dt class="mono">AI Architectures</dt><dd><b>NVIDIA DGX, HGX, MGX </b>AI Factories based on NVIDIA accelerated computing and reference architectures</dd></div>
-                    <div><dt class="mono">AI Compute</dt><dd><b> DGX, HGX, MGX </b>AI factories built on NVIDIA reference architectures, delivered with OEM and ODM partners including Dell, Supermicro and Wiwynn.</dd></div>
-                    <div><dt class="mono">AI Storage</dt><dd><b> WEKA, GPFS, Lustre, BeeGFS  </b>AI factory storage built on WEKA, IBM Storage Scale (GPFS), BeeGFS and Lustre.</dd></div>
-                    <div><dt class="mono">AI Networking</dt><dd><b>Infiniband | Cumulus </b>AI data-centre networking across scale-up (NVLink, NVSwitch) and scale-out (InfiniBand, Spectrum-X), with BlueField-3 DPU and DOCA. </dd></div>
-                    <div><dt class="mono">AI Accelerators</dt><dd><b>V100, H100, H200, GB200, GB300 </b>AI Accelerator from Tesla (K40 | K80 | V100), DGX (V100 | H100), HGX (H100 | H200), MGX (GB200 | GB300) </dd></div>
-                    <div><dt class="mono">AI Schedulers</dt><dd><b>Slurm | PBS Pro | Symphony </b>Workload scheduling including Run.AI & KAI schedulers across HPC and AI platforms</dd></div>
-                    <div><dt class="mono">AI Cluster Mgr.</dt><dd><b>Warewulf | Bright Cluster | XCAT </b> AI Cluster provisioning: xCAT, HPE Performance Cluster Manager (HPCM)</dd></div>
-                    <div><dt class="mono">Studied</dt><dd><b>Certificate In Supercomputing</b>The University of Edinburgh &amp; PRACE, 2018</dd></div>
-                    <div><dt class="mono">Recognised</dt><dd><b>J.P. Morgan | Fujitsu </b>Appreciation Letter from J.P.Morgan Co-CEO-Bill Winters-Current CEO Of Standard Chartered Bank &amp; Outstanding Performance &amp; Service Milestone awards</dd></div>
-                    <div><dt class="mono">Location</dt><dd><b>Singapore</b>Career across Singapore, Bengaluru &amp; Greater Delhi</dd></div>
+<div class="facts-x">
+                    <div class="fx-head">
+                        <span class="fx-title">At a glance</span>
+                        <span class="fx-legend"><i class="fx-pro"></i>Profile <i class="fx-ai"></i>AI stack <i class="fx-cred"></i>Credentials</span>
+                    </div>
+                <dl class="fx-list">
+                    <div class="fx-item fx-pro" style="--i:0"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="fx-label">Focus</span></dt><dd><span class="fx-chips"><span>AI Factory</span><span>Supercomputing</span><span>HPC</span></span><span class="fx-desc">Platform architecture &amp; engineering leadership</span></dd></div>
+                    <div class="fx-item fx-pro" style="--i:1"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="fx-label">Experience</span></dt><dd><span class="fx-chips"><span>24+ years</span></span><span class="fx-desc">Enterprise infrastructure to AI platforms</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:2"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>NVIDIA</span><span>BeeGFS</span><span>WEKA</span><span>Lustre</span></span><span class="fx-desc">6 NVIDIA AI Infrastructure Certifications, plus HPC Parallel Storage</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:3"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>CKA</span><span>CKAD</span><span>Terraform</span></span><span class="fx-desc">Linux Foundation &amp; HashiCorp Certifications</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:4"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><span class="fx-label">AI Architectures</span></dt><dd><span class="fx-chips"><span>NVIDIA DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI Factories based on NVIDIA accelerated computing and reference architectures</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:5"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><span class="fx-label">AI Compute</span></dt><dd><span class="fx-chips"><span>DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI factories built on NVIDIA reference architectures, delivered with OEM and ODM partners including Dell, Supermicro and Wiwynn.</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:6"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="fx-label">AI Storage</span></dt><dd><span class="fx-chips"><span>WEKA</span><span>GPFS</span><span>Lustre</span><span>BeeGFS</span></span><span class="fx-desc">AI factory storage built on WEKA, IBM Storage Scale (GPFS), BeeGFS and Lustre.</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:7"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><circle cx="4.5" cy="19.5" r="2"/><circle cx="19.5" cy="19.5" r="2"/><circle cx="12" cy="13" r="2"/><path d="M12 6.5V11M10.6 14.4l-4.6 3.7M13.4 14.4l4.6 3.7"/></svg></span><span class="fx-label">AI Networking</span></dt><dd><span class="fx-chips"><span>InfiniBand</span><span>Cumulus</span></span><span class="fx-desc">AI data-centre networking across scale-up (NVLink, NVSwitch) and scale-out (InfiniBand, Spectrum-X), with BlueField-3 DPU and DOCA.</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:8"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><span class="fx-label">AI Accelerators</span></dt><dd><span class="fx-chips"><span>V100</span><span>H100</span><span>H200</span><span>GB200</span><span>GB300</span></span><span class="fx-desc">AI Accelerator from Tesla (K40 | K80 | V100), DGX (V100 | H100), HGX (H100 | H200), MGX (GB200 | GB300)</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:9"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7.5 13.5h3M7.5 17h6"/></svg></span><span class="fx-label">AI Schedulers</span></dt><dd><span class="fx-chips"><span>Slurm</span><span>PBS Pro</span><span>Symphony</span></span><span class="fx-desc">Workload scheduling including Run.AI &amp; KAI schedulers across HPC and AI platforms</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:10"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg></span><span class="fx-label">AI Cluster Mgr.</span></dt><dd><span class="fx-chips"><span>Warewulf</span><span>Bright Cluster</span><span>xCAT</span></span><span class="fx-desc">AI Cluster provisioning: xCAT, HPE Performance Cluster Manager (HPCM)</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:11"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span><span class="fx-label">Studied</span></dt><dd><span class="fx-chips"><span>Certificate in Supercomputing</span></span><span class="fx-desc">The University of Edinburgh &amp; PRACE, 2018</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:12"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8L12 2.5Z"/></svg></span><span class="fx-label">Recognised</span></dt><dd><span class="fx-chips"><span>J.P. Morgan</span><span>Fujitsu</span></span><span class="fx-desc">Appreciation Letter from J.P.Morgan Co-CEO-Bill Winters-Current CEO Of Standard Chartered Bank &amp; Outstanding Performance &amp; Service Milestone awards</span></dd></div>
+                    <div class="fx-item fx-pro" style="--i:13"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="fx-label">Location</span></dt><dd><span class="fx-chips"><span>Singapore</span></span><span class="fx-desc">Career across Singapore, Bengaluru &amp; Greater Delhi</span></dd></div>
                 </dl>
+                </div>
+<script>
+/* Staggered reveal for the "At a glance" panel */
+(() => {
+    const list = document.querySelector('.fx-list');
+    if (!list || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    list.classList.add('fx-anim');
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { list.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.1 });
+    io.observe(list);
+})();
+</script>
             </div>
         </div>
     </section>
