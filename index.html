@@ -654,8 +654,17 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .footer-row { flex-direction: column; align-items: start; }
 }
 @media (max-width: 440px) {
-    .brand-name { display: none; }
+    .brand { gap: 8px; }
+    .brand-title { font-size: 16px; white-space: nowrap; }
+    .brand-sub { margin-top: 4px; font-size: 8px; letter-spacing: 0.06em; white-space: nowrap; }
+    .btn-nvidia .btn-wallet-word, .btn-nvidia .icon:last-child { display: none; }
 }
+@media (max-width: 350px) {
+    .brand-title { font-size: 14px; }
+    .brand-sub { font-size: 7px; letter-spacing: 0.04em; }
+    .brand-mark { width: 30px; height: 30px; }
+    .header-row { gap: 8px; }
+}    
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .rise { animation: none; }
@@ -796,6 +805,25 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .cx-card.is-expired .cx-left::before { background: var(--ink-4); animation: none; }
 @keyframes cx-pulse { 50% { box-shadow: 0 0 0 6px transparent; } }
 @media (prefers-reduced-motion: reduce) { .cx .cx-card, .cx .cx-card .plate, .cx .cx-card .plate::after, .cx-valid i { transition: none; } .cx .cx-card:hover, .cx .cx-card:hover .plate { transform: none; } .cx-left::before { animation: none; } }
+/* ---------- Header menu (interactive) ---------- */
+.nav-x ul { position: relative; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgb(255 255 255 / 0.7); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 1px 2px rgb(13 27 51 / 0.04), 0 8px 24px -14px rgb(37 99 235 / 0.25); }
+.nav-x li { position: relative; z-index: 1; }
+.nav-x .nav-pill { position: absolute; z-index: 0; top: 4px; left: 0; height: calc(100% - 8px); width: 0; border-radius: 999px; pointer-events: none; opacity: 0;
+    background: linear-gradient(135deg, var(--blue-wash), #eef6e2); border: 1px solid var(--blue-line); box-shadow: 0 6px 16px -8px rgb(37 99 235 / 0.45);
+    transition: transform 0.35s cubic-bezier(.3,.9,.3,1), width 0.35s cubic-bezier(.3,.9,.3,1), opacity 0.2s; }
+.nav-x.has-pill .nav-pill { opacity: 1; }
+.nav-x a, .nav-x a.is-key, .nav-x a:hover { background: transparent; }
+.nav-x a { position: relative; color: var(--ink-3); transition: color 0.2s; }
+.nav-x a:hover, .nav-x a.is-active { color: var(--blue-strong); }
+.nav-x a.is-active::after { content: ""; position: absolute; left: 50%; bottom: 3px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--nvidia); box-shadow: 0 0 6px var(--nvidia); }
+.nav-x.has-pill a.is-key:not(.is-active):not(:hover) { color: var(--ink-3); }
+.nav-x:not(.has-pill) a.is-key { color: var(--blue-strong); background: var(--blue-wash); }
+.icon-btn.icon-li { color: #0a66c2; transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s; }
+.icon-btn.icon-li:hover { color: #fff; background: #0a66c2; transform: translateY(-2px); box-shadow: 0 8px 16px -8px #0a66c2; }
+.btn-nvidia { position: relative; overflow: hidden; }
+.btn-nvidia::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / 0.55) 50%, transparent 65%); transform: translateX(-120%); transition: transform 0.7s ease; pointer-events: none; }
+.btn-nvidia:hover::after { transform: translateX(120%); }
+@media (prefers-reduced-motion: reduce) { .nav-x .nav-pill, .icon-btn.icon-li, .btn-nvidia::after { transition: none; } .icon-btn.icon-li:hover { transform: none; } }
 </style>
 </head>
 <body>
@@ -818,8 +846,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             <span class="brand-mark" aria-hidden="true"><span class="brand-photo"><img src="images/amitabh-pandey.jpg" alt="" width="34" height="34"></span></span>
             <span class="brand-name"><span class="brand-title">Amitabh <b>Pandey</b></span><span class="brand-sub">AI Factory | HPC Architect</span></span>
         </a>
-        <nav class="main-nav" aria-label="Main">
+        <nav class="main-nav nav-x" aria-label="Main">
             <ul>
+                <li class="nav-pill" aria-hidden="true"></li>
                 <li><a class="is-key" href="#credentials">Certifications</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
@@ -830,8 +859,8 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             </ul>
         </nav>
         <div class="header-right">
-            <a class="icon-btn" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
-            <a class="btn btn-sm btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a class="icon-btn icon-li" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
+            <a class="btn btn-sm btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> <span>NVIDIA<span class="btn-wallet-word"> wallet</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
             <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
                 <svg class="icon"><use href="#i-menu"/></svg>
             </button>
@@ -1861,6 +1890,37 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         toggle.addEventListener("click", function () { set(!nav.classList.contains("is-open")); });
         nav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
     })();
+</script>
+<script>
+/* Header menu: sliding highlight that follows the pointer and the section in view */
+(() => {
+    const nav = document.querySelector('.nav-x');
+    if (!nav) return;
+    const pill = nav.querySelector('.nav-pill'), links = [...nav.querySelectorAll('a[href^="#"]')];
+    let active = null;
+    const moveTo = (a) => {
+        if (!a) { nav.classList.remove('has-pill'); return; }
+        const u = nav.querySelector('ul').getBoundingClientRect(), r = a.getBoundingClientRect();
+        pill.style.width = r.width + 'px';
+        pill.style.transform = `translateX(${r.left - u.left}px)`;
+        nav.classList.add('has-pill');
+    };
+    const setActive = (a) => { links.forEach((l) => { l.classList.toggle('is-active', l === a); l.toggleAttribute('aria-current', l === a); }); active = a; moveTo(a); };
+    links.forEach((a) => { a.addEventListener('pointerenter', () => moveTo(a)); a.addEventListener('focus', () => moveTo(a)); });
+    nav.addEventListener('pointerleave', () => moveTo(active));
+    window.addEventListener('resize', () => moveTo(active));
+    const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    if ('IntersectionObserver' in window && sections.length) {
+        const seen = new Map();
+        const io = new IntersectionObserver((es) => {
+            es.forEach((e) => seen.set(e.target, e.isIntersecting ? e.intersectionRatio : 0));
+            let best = null, bestR = 0;
+            seen.forEach((r, el) => { if (r > bestR) { bestR = r; best = el; } });
+            setActive(best ? links.find((a) => a.getAttribute('href') === '#' + best.id) : null);
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.01, 0.25, 0.5, 1] });
+        sections.forEach((s) => io.observe(s));
+    }
+})();
 </script>
 </body>
 </html>
