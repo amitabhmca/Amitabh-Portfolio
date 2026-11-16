@@ -808,6 +808,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 /* ---------- Header menu (interactive) ---------- */
 .nav-x ul { position: relative; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgb(255 255 255 / 0.7); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 1px 2px rgb(13 27 51 / 0.04), 0 8px 24px -14px rgb(37 99 235 / 0.25); }
 .nav-x li { position: relative; z-index: 1; }
+.nav-x a { padding-inline: 11px; }
 .nav-x .nav-pill { position: absolute; z-index: 0; top: 4px; left: 0; height: calc(100% - 8px); width: 0; border-radius: 999px; pointer-events: none; opacity: 0;
     background: linear-gradient(135deg, var(--blue-wash), #eef6e2); border: 1px solid var(--blue-line); box-shadow: 0 6px 16px -8px rgb(37 99 235 / 0.45);
     transition: transform 0.35s cubic-bezier(.3,.9,.3,1), width 0.35s cubic-bezier(.3,.9,.3,1), opacity 0.2s; }
@@ -903,8 +904,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         <nav class="main-nav nav-x" aria-label="Main">
             <ul>
                 <li class="nav-pill" aria-hidden="true"></li>
-                <li><a class="is-key" href="#credentials">Certifications</a></li>
+                <li><a href="#top">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a class="is-key" href="#credentials">Certifications</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#journey">Journey</a></li>
                 <li><a href="#work">Work</a></li>
@@ -921,8 +923,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         </div>
     </div>
     <nav id="mobile-nav" class="mobile-nav" aria-label="Main">
-        <a class="nav-item" href="#credentials">Certifications</a>
+        <a class="nav-item" href="#top">Home</a>
         <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#credentials">Certifications</a>
         <a class="nav-item" href="#capabilities">Capabilities</a>
         <a class="nav-item" href="#journey">Journey</a>
         <a class="nav-item" href="#work">Work</a>
@@ -1066,12 +1069,192 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         </div>
     </div>
 
-    <!-- 01 Certifications -->
-    <section id="credentials" class="section">
+    <!-- 01 About -->
+    <section id="about" class="section">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>01</b> Certifications</span>
+                    <span class="eyebrow mono"><b>01</b> About</span>
+                    <h2>Behind the infrastructure.</h2>
+                </div>
+            </div>
+            <div class="about-grid">
+                <div class="about-copy">
+                    
+                <!-- ===== About intro: paste in place of the three hero-lede paragraphs ===== -->
+                <div class="about-intro">
+                    <p class="ai-hello"><span class="ai-wave" aria-hidden="true">👋</span> Hi, I’m Amitabh Pandey<span class="ai-name"></span></p>
+                    <p class="ai-lead">I architect, build, operate &amp; scale <span class="ai-mark">AI factories</span> and <span class="ai-mark">supercomputing platforms</span>.</p>
+                
+                    <div class="ai-stats">
+                        <div class="ai-stat">
+                            <b><span class="ai-count" data-to="24">24</span>+</b>
+                            <span>years across Linux, HPC grid computing, AI cloud &amp; GPU infrastructure</span>
+                        </div>
+                        <div class="ai-stat is-gpu">
+                            <b><span class="ai-count" data-to="14">14</span></b>
+                            <span>of those years focused on GPU infrastructure</span>
+                        </div>
+                    </div>
+                
+                    <p class="ai-lead">Taking projects from <span class="ai-mark">initial design</span> through to commissioning and <span class="ai-mark">day-to-day operations</span>.</p>
+                
+                    <ol class="ai-verbs" aria-label="GPU infrastructure lifecycle">
+                        <li style="--i:0">Design</li>
+                        <li style="--i:1">Build</li>
+                        <li style="--i:2">Validate</li>
+                        <li style="--i:3">Benchmark</li>
+                        <li style="--i:4">Scale</li>
+                    </ol>
+                </div>
+                
+                <script>
+                /* Count-up for the year figures when the intro scrolls into view */
+                (() => {
+                    const els = document.querySelectorAll('.ai-count');
+                    if (!els.length || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+                    const io = new IntersectionObserver((entries) => {
+                        entries.forEach((e) => {
+                            if (!e.isIntersecting) return;
+                            const el = e.target, to = +el.dataset.to, t0 = performance.now(), dur = 1200;
+                            const tick = (t) => {
+                                const k = Math.min(1, (t - t0) / dur);
+                                el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+                                if (k < 1) requestAnimationFrame(tick);
+                            };
+                            requestAnimationFrame(tick);
+                            io.unobserve(el);
+                        });
+                    }, { threshold: 0.6 });
+                    els.forEach((el) => { el.textContent = '0'; io.observe(el); });
+                })();
+                </script>
+<div class="plat-x">
+                <ul class="px-list" aria-label="Platforms and technologies">
+                    <li class="px-item px-plat" style="--i:0"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V10l5 3V4h3v17H3Z"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span><span class="px-name">NVIDIA AI factories</span><span class="px-chips"><span>GPU compute</span><span>Networking</span><span>Storage</span></span></li>
+                    <li class="px-item px-plat" style="--i:1"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5H7Z"/><path d="M9.5 14.5h5M12 12v5"/></svg></span><span class="px-name">GPU cloud platforms</span><span class="px-chips"><span>Rafay</span><span>Kubernetes</span></span></li>
+                    <li class="px-item px-gpu" style="--i:2"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M6.5 6.5h.01M6.5 11.5h.01M6.5 16.5h.01M10 6.5h7.5M10 11.5h7.5M10 16.5h7.5"/></svg></span><span class="px-name">NVIDIA DGX</span><span class="px-chips"><span>H100</span><span>V100</span></span></li>
+                    <li class="px-item px-gpu" style="--i:3"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M17 13v8M13 17h8"/></svg></span><span class="px-name">NVIDIA MGX</span><span class="px-chips"><span>GB300</span><span>GB200</span></span></li>
+                    <li class="px-item px-gpu" style="--i:4"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><rect x="5" y="7.5" width="3" height="3" rx=".5"/><rect x="9" y="7.5" width="3" height="3" rx=".5"/><rect x="13" y="7.5" width="3" height="3" rx=".5"/><rect x="17" y="7.5" width="2.5" height="3" rx=".5"/><rect x="5" y="13.5" width="3" height="3" rx=".5"/><rect x="9" y="13.5" width="3" height="3" rx=".5"/><rect x="13" y="13.5" width="3" height="3" rx=".5"/><rect x="17" y="13.5" width="2.5" height="3" rx=".5"/></svg></span><span class="px-name">NVIDIA HGX</span><span class="px-chips"><span>B300</span><span>B200</span><span>H200</span><span>H100</span><span>A100</span></span></li>
+                    <li class="px-item px-gpu" style="--i:5"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span><span class="px-name">Other NVIDIA GPUs</span><span class="px-chips"><span>L40S</span><span>Tesla K80</span><span>Tesla K40</span></span></li>
+                    <li class="px-item px-plat" style="--i:6"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span><span class="px-name">Supercomputing</span><span class="px-chips"><span>HPE Cray systems</span></span></li>
+                </ul>
+                <div class="px-foot"><span><i class="px-dot px-plat"></i>Platforms <i class="px-dot px-gpu"></i>NVIDIA hardware</span><span><b>11</b> NVIDIA GPU models · K40 → B300</span></div>
+                </div>
+<script>
+/* Platforms panel: staggered reveal on scroll */
+(() => {
+    const box = document.querySelector('.plat-x');
+    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    box.classList.add('px-anim');
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { box.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.2 });
+    io.observe(box);
+})();
+</script>                    
+                    <p class="nscc-intro"><span class="nscc-kicker">Led 4 HPC | AI Supercomputers at</span><strong>National Supercomputing Centre (NSCC) Singapore</strong></p>
+<div class="nscc-x">
+                    <ol class="nx-list" aria-label="NSCC supercomputers">
+                        <li class="nx-item nx-cpu" style="--i:0; --w:5%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 8.5h16M4 14.5h16"/><path d="M7.5 5.5h.01M7.5 11.5h.01M7.5 17.5h.01M11 5.5h5.5M11 11.5h5.5M11 17.5h5.5"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE1 <em>HPC</em></span><span class="nx-plat">Fujitsu Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="1">1</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-gpu" style="--i:1; --w:30%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE1 AI <em>AI</em></span><span class="nx-plat">NVIDIA DGX-1 V100 AI Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="6">6</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-cpu" style="--i:2; --w:50%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE2A <em>HPC</em></span><span class="nx-plat">HPE Cray Exascale Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="10">10</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-gpu" style="--i:3; --w:100%">
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="16" y="9.5" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><rect x="16" y="16" width="5" height="5" rx="1"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE2A+ <em>AI</em></span><span class="nx-plat">NVIDIA DGX SuperPOD H100 Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="20">20</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                    </ol>
+                    <div class="nx-foot"><span><i class="nx-dot nx-cpu"></i>HPC <i class="nx-dot nx-gpu"></i>AI</span><span>Σ <b>37 PFLOPS</b> peak across 4 systems</span></div>
+                    </div>
+<script>
+/* NSCC systems: animate bars and count up PFLOPS when scrolled into view */
+(() => {
+    const box = document.querySelector('.nscc-x');
+    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    box.classList.add('nx-anim');
+    const nums = box.querySelectorAll('.nx-num');
+    nums.forEach((n) => (n.textContent = '0'));
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        box.classList.add('is-in');
+        nums.forEach((n) => {
+            const to = +n.dataset.to, t0 = performance.now(), d = 1300;
+            const tick = (t) => { const k = Math.min(1, (t - t0) / d); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+            requestAnimationFrame(tick);
+        });
+        io.disconnect();
+    }), { threshold: 0.3 });
+    io.observe(box);
+})();
+</script> 
+                    <p style="margin-top: 26px; text-align: justify; hyphens: auto;">
+                        My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational
+                        resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.
+                    </p>
+                    <p style="text-align: justify; hyphens: auto;">
+                        I'm interested in the engineering layers that make demanding compute platforms dependable: hardware, networks, storage,
+                        orchestration, observability, and the processes that keep services running. The common thread is a systems perspective,
+                        designing and operating the foundations that applications and compute workloads depend on.
+                    </p>
+                    <blockquote class="about-quote">From enterprise Linux and networking to AI factories and GPU-powered computing platforms<span>.</span></blockquote>
+                    <blockquote class="about-quote">Singapore’s first and only holder of 6 NVIDIA AI Infrastructure certifications (NVIDIA Certification Directory).<span>.</span></blockquote>
+                    <blockquote class="about-quote">Delivered 4.134 EFLOPS (FP16) AI Factories on NVIDIA DGX | HGX Architectures <span>.</span></blockquote>                    
+                    <blockquote class="about-quote">Delivered AI/HPC Supercomputing workshops for Singapore Universities NUS, NTU, SUTD, SMU, SIT<span>.</span></blockquote>
+                    
+                </div>
+<div class="facts-x">
+                    <div class="fx-head">
+                        <span class="fx-title">At a glance</span>
+                        <span class="fx-legend"><i class="fx-pro"></i>Profile <i class="fx-ai"></i>AI stack <i class="fx-cred"></i>Credentials</span>
+                    </div>
+                <dl class="fx-list">
+                    <div class="fx-item fx-pro" style="--i:0"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="fx-label">Focus</span></dt><dd><span class="fx-chips"><span>AI Factory</span><span>Supercomputing</span><span>HPC</span></span><span class="fx-desc">Platform architecture &amp; engineering leadership</span></dd></div>
+                    <div class="fx-item fx-pro" style="--i:1"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="fx-label">Experience</span></dt><dd><span class="fx-chips"><span>24+ years</span></span><span class="fx-desc">Enterprise infrastructure to AI platforms</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:2"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>NVIDIA</span><span>BeeGFS</span><span>WEKA</span><span>Lustre</span></span><span class="fx-desc">6 NVIDIA AI Infrastructure Certifications, plus HPC Parallel Storage</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:3"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>CKA</span><span>CKAD</span><span>Terraform</span></span><span class="fx-desc">Linux Foundation &amp; HashiCorp Certifications</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:4"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><span class="fx-label">AI Architectures</span></dt><dd><span class="fx-chips"><span>NVIDIA DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI Factories based on NVIDIA accelerated computing and reference architectures</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:5"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><span class="fx-label">AI Compute</span></dt><dd><span class="fx-chips"><span>DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI factories built on NVIDIA reference architectures, delivered with OEM and ODM partners including Dell, Supermicro and Wiwynn.</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:6"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="fx-label">AI Storage</span></dt><dd><span class="fx-chips"><span>WEKA</span><span>GPFS</span><span>Lustre</span><span>BeeGFS</span></span><span class="fx-desc">AI factory storage built on WEKA, IBM Storage Scale (GPFS), BeeGFS and Lustre.</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:7"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><circle cx="4.5" cy="19.5" r="2"/><circle cx="19.5" cy="19.5" r="2"/><circle cx="12" cy="13" r="2"/><path d="M12 6.5V11M10.6 14.4l-4.6 3.7M13.4 14.4l4.6 3.7"/></svg></span><span class="fx-label">AI Networking</span></dt><dd><span class="fx-chips"><span>InfiniBand</span><span>Cumulus</span></span><span class="fx-desc">AI data-centre networking across scale-up (NVLink, NVSwitch) and scale-out (InfiniBand, Spectrum-X), with BlueField-3 DPU and DOCA.</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:8"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><span class="fx-label">AI Accelerators</span></dt><dd><span class="fx-chips"><span>V100</span><span>H100</span><span>H200</span><span>GB200</span><span>GB300</span></span><span class="fx-desc">AI Accelerator from Tesla (K40 | K80 | V100), DGX (V100 | H100), HGX (H100 | H200), MGX (GB200 | GB300)</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:9"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7.5 13.5h3M7.5 17h6"/></svg></span><span class="fx-label">AI Schedulers</span></dt><dd><span class="fx-chips"><span>Slurm</span><span>PBS Pro</span><span>Symphony</span></span><span class="fx-desc">Workload scheduling including Run.AI &amp; KAI schedulers across HPC and AI platforms</span></dd></div>
+                    <div class="fx-item fx-ai" style="--i:10"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg></span><span class="fx-label">AI Cluster Mgr.</span></dt><dd><span class="fx-chips"><span>Warewulf</span><span>Bright Cluster</span><span>xCAT</span></span><span class="fx-desc">AI Cluster provisioning: xCAT, HPE Performance Cluster Manager (HPCM)</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:11"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span><span class="fx-label">Studied</span></dt><dd><span class="fx-chips"><span>Certificate in Supercomputing</span></span><span class="fx-desc">The University of Edinburgh &amp; PRACE, 2018</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:12"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8L12 2.5Z"/></svg></span><span class="fx-label">Recognised</span></dt><dd><span class="fx-chips"><span>J.P. Morgan</span><span>Fujitsu</span></span><span class="fx-desc">Appreciation Letter from J.P.Morgan Co-CEO-Bill Winters-Current CEO Of Standard Chartered Bank &amp; Outstanding Performance &amp; Service Milestone awards</span></dd></div>
+                    <div class="fx-item fx-pro" style="--i:13"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="fx-label">Location</span></dt><dd><span class="fx-chips"><span>Singapore</span></span><span class="fx-desc">Career across Singapore, Bengaluru &amp; Greater Delhi</span></dd></div>
+                </dl>
+                </div>
+<script>
+/* Staggered reveal for the "At a glance" panel */
+(() => {
+    const list = document.querySelector('.fx-list');
+    if (!list || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    list.classList.add('fx-anim');
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { list.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.1 });
+    io.observe(list);
+})();
+</script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 Certifications -->
+    <section id="credentials" class="section is-alt">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>02</b> Certifications</span>
                     <h2>Certified where AI infrastructure is built.</h2>
                 </div>
                 <p>Exam-based certifications first, ordered by relevance to AI factories today. NVIDIA credentials link to their issuer records; other digital badges link to Credly.</p>
@@ -1364,186 +1547,6 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             <div class="cred-foot">
                 <span>Course completions from the Linux Foundation, NVIDIA and universities are listed separately under <a class="arrow-link" href="#learning">Continuous learning</a>.</span>
                 <a class="btn btn-sm" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-badge"/></svg> Full Credly wallet <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 02 About -->
-    <section id="about" class="section is-alt">
-        <div class="wrap">
-            <div class="section-head">
-                <div>
-                    <span class="eyebrow mono"><b>02</b> About</span>
-                    <h2>Behind the infrastructure.</h2>
-                </div>
-            </div>
-            <div class="about-grid">
-                <div class="about-copy">
-                    
-                <!-- ===== About intro: paste in place of the three hero-lede paragraphs ===== -->
-                <div class="about-intro">
-                    <p class="ai-hello"><span class="ai-wave" aria-hidden="true">👋</span> Hi, I’m Amitabh Pandey<span class="ai-name"></span></p>
-                    <p class="ai-lead">I architect, build, operate &amp; scale <span class="ai-mark">AI factories</span> and <span class="ai-mark">supercomputing platforms</span>.</p>
-                
-                    <div class="ai-stats">
-                        <div class="ai-stat">
-                            <b><span class="ai-count" data-to="24">24</span>+</b>
-                            <span>years across Linux, HPC grid computing, AI cloud &amp; GPU infrastructure</span>
-                        </div>
-                        <div class="ai-stat is-gpu">
-                            <b><span class="ai-count" data-to="14">14</span></b>
-                            <span>of those years focused on GPU infrastructure</span>
-                        </div>
-                    </div>
-                
-                    <p class="ai-lead">Taking projects from <span class="ai-mark">initial design</span> through to commissioning and <span class="ai-mark">day-to-day operations</span>.</p>
-                
-                    <ol class="ai-verbs" aria-label="GPU infrastructure lifecycle">
-                        <li style="--i:0">Design</li>
-                        <li style="--i:1">Build</li>
-                        <li style="--i:2">Validate</li>
-                        <li style="--i:3">Benchmark</li>
-                        <li style="--i:4">Scale</li>
-                    </ol>
-                </div>
-                
-                <script>
-                /* Count-up for the year figures when the intro scrolls into view */
-                (() => {
-                    const els = document.querySelectorAll('.ai-count');
-                    if (!els.length || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-                    const io = new IntersectionObserver((entries) => {
-                        entries.forEach((e) => {
-                            if (!e.isIntersecting) return;
-                            const el = e.target, to = +el.dataset.to, t0 = performance.now(), dur = 1200;
-                            const tick = (t) => {
-                                const k = Math.min(1, (t - t0) / dur);
-                                el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
-                                if (k < 1) requestAnimationFrame(tick);
-                            };
-                            requestAnimationFrame(tick);
-                            io.unobserve(el);
-                        });
-                    }, { threshold: 0.6 });
-                    els.forEach((el) => { el.textContent = '0'; io.observe(el); });
-                })();
-                </script>
-<div class="plat-x">
-                <ul class="px-list" aria-label="Platforms and technologies">
-                    <li class="px-item px-plat" style="--i:0"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V10l5 3V4h3v17H3Z"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span><span class="px-name">NVIDIA AI factories</span><span class="px-chips"><span>GPU compute</span><span>Networking</span><span>Storage</span></span></li>
-                    <li class="px-item px-plat" style="--i:1"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5H7Z"/><path d="M9.5 14.5h5M12 12v5"/></svg></span><span class="px-name">GPU cloud platforms</span><span class="px-chips"><span>Rafay</span><span>Kubernetes</span></span></li>
-                    <li class="px-item px-gpu" style="--i:2"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M6.5 6.5h.01M6.5 11.5h.01M6.5 16.5h.01M10 6.5h7.5M10 11.5h7.5M10 16.5h7.5"/></svg></span><span class="px-name">NVIDIA DGX</span><span class="px-chips"><span>H100</span><span>V100</span></span></li>
-                    <li class="px-item px-gpu" style="--i:3"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M17 13v8M13 17h8"/></svg></span><span class="px-name">NVIDIA MGX</span><span class="px-chips"><span>GB300</span><span>GB200</span></span></li>
-                    <li class="px-item px-gpu" style="--i:4"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><rect x="5" y="7.5" width="3" height="3" rx=".5"/><rect x="9" y="7.5" width="3" height="3" rx=".5"/><rect x="13" y="7.5" width="3" height="3" rx=".5"/><rect x="17" y="7.5" width="2.5" height="3" rx=".5"/><rect x="5" y="13.5" width="3" height="3" rx=".5"/><rect x="9" y="13.5" width="3" height="3" rx=".5"/><rect x="13" y="13.5" width="3" height="3" rx=".5"/><rect x="17" y="13.5" width="2.5" height="3" rx=".5"/></svg></span><span class="px-name">NVIDIA HGX</span><span class="px-chips"><span>B300</span><span>B200</span><span>H200</span><span>H100</span><span>A100</span></span></li>
-                    <li class="px-item px-gpu" style="--i:5"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span><span class="px-name">Other NVIDIA GPUs</span><span class="px-chips"><span>L40S</span><span>Tesla K80</span><span>Tesla K40</span></span></li>
-                    <li class="px-item px-plat" style="--i:6"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span><span class="px-name">Supercomputing</span><span class="px-chips"><span>HPE Cray systems</span></span></li>
-                </ul>
-                <div class="px-foot"><span><i class="px-dot px-plat"></i>Platforms <i class="px-dot px-gpu"></i>NVIDIA hardware</span><span><b>11</b> NVIDIA GPU models · K40 → B300</span></div>
-                </div>
-<script>
-/* Platforms panel: staggered reveal on scroll */
-(() => {
-    const box = document.querySelector('.plat-x');
-    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-    box.classList.add('px-anim');
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { box.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.2 });
-    io.observe(box);
-})();
-</script>                    
-                    <p class="nscc-intro"><span class="nscc-kicker">Led 4 HPC | AI Supercomputers at</span><strong>National Supercomputing Centre (NSCC) Singapore</strong></p>
-<div class="nscc-x">
-                    <ol class="nx-list" aria-label="NSCC supercomputers">
-                        <li class="nx-item nx-cpu" style="--i:0; --w:5%">
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 8.5h16M4 14.5h16"/><path d="M7.5 5.5h.01M7.5 11.5h.01M7.5 17.5h.01M11 5.5h5.5M11 11.5h5.5M11 17.5h5.5"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE1 <em>HPC</em></span><span class="nx-plat">Fujitsu Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="1">1</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                        <li class="nx-item nx-gpu" style="--i:1; --w:30%">
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE1 AI <em>AI</em></span><span class="nx-plat">NVIDIA DGX-1 V100 AI Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="6">6</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                        <li class="nx-item nx-cpu" style="--i:2; --w:50%">
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE2A <em>HPC</em></span><span class="nx-plat">HPE Cray Exascale Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="10">10</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                        <li class="nx-item nx-gpu" style="--i:3; --w:100%">
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="16" y="9.5" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><rect x="16" y="16" width="5" height="5" rx="1"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE2A+ <em>AI</em></span><span class="nx-plat">NVIDIA DGX SuperPOD H100 Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="20">20</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                    </ol>
-                    <div class="nx-foot"><span><i class="nx-dot nx-cpu"></i>HPC <i class="nx-dot nx-gpu"></i>AI</span><span>Σ <b>37 PFLOPS</b> peak across 4 systems</span></div>
-                    </div>
-<script>
-/* NSCC systems: animate bars and count up PFLOPS when scrolled into view */
-(() => {
-    const box = document.querySelector('.nscc-x');
-    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-    box.classList.add('nx-anim');
-    const nums = box.querySelectorAll('.nx-num');
-    nums.forEach((n) => (n.textContent = '0'));
-    const io = new IntersectionObserver((es) => es.forEach((e) => {
-        if (!e.isIntersecting) return;
-        box.classList.add('is-in');
-        nums.forEach((n) => {
-            const to = +n.dataset.to, t0 = performance.now(), d = 1300;
-            const tick = (t) => { const k = Math.min(1, (t - t0) / d); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
-            requestAnimationFrame(tick);
-        });
-        io.disconnect();
-    }), { threshold: 0.3 });
-    io.observe(box);
-})();
-</script> 
-                    <p style="margin-top: 26px; text-align: justify; hyphens: auto;">
-                        My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational
-                        resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.
-                    </p>
-                    <p style="text-align: justify; hyphens: auto;">
-                        I'm interested in the engineering layers that make demanding compute platforms dependable: hardware, networks, storage,
-                        orchestration, observability, and the processes that keep services running. The common thread is a systems perspective,
-                        designing and operating the foundations that applications and compute workloads depend on.
-                    </p>
-                    <blockquote class="about-quote">From enterprise Linux and networking to AI factories and GPU-powered computing platforms<span>.</span></blockquote>
-                    <blockquote class="about-quote">Singapore’s first and only holder of 6 NVIDIA AI Infrastructure certifications (NVIDIA Certification Directory).<span>.</span></blockquote>
-                    <blockquote class="about-quote">Delivered 4.134 EFLOPS (FP16) AI Factories on NVIDIA DGX | HGX Architectures <span>.</span></blockquote>                    
-                    <blockquote class="about-quote">Delivered AI/HPC Supercomputing workshops for Singapore Universities NUS, NTU, SUTD, SMU, SIT<span>.</span></blockquote>
-                    
-                </div>
-<div class="facts-x">
-                    <div class="fx-head">
-                        <span class="fx-title">At a glance</span>
-                        <span class="fx-legend"><i class="fx-pro"></i>Profile <i class="fx-ai"></i>AI stack <i class="fx-cred"></i>Credentials</span>
-                    </div>
-                <dl class="fx-list">
-                    <div class="fx-item fx-pro" style="--i:0"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="fx-label">Focus</span></dt><dd><span class="fx-chips"><span>AI Factory</span><span>Supercomputing</span><span>HPC</span></span><span class="fx-desc">Platform architecture &amp; engineering leadership</span></dd></div>
-                    <div class="fx-item fx-pro" style="--i:1"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="fx-label">Experience</span></dt><dd><span class="fx-chips"><span>24+ years</span></span><span class="fx-desc">Enterprise infrastructure to AI platforms</span></dd></div>
-                    <div class="fx-item fx-cred" style="--i:2"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>NVIDIA</span><span>BeeGFS</span><span>WEKA</span><span>Lustre</span></span><span class="fx-desc">6 NVIDIA AI Infrastructure Certifications, plus HPC Parallel Storage</span></dd></div>
-                    <div class="fx-item fx-cred" style="--i:3"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>CKA</span><span>CKAD</span><span>Terraform</span></span><span class="fx-desc">Linux Foundation &amp; HashiCorp Certifications</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:4"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><span class="fx-label">AI Architectures</span></dt><dd><span class="fx-chips"><span>NVIDIA DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI Factories based on NVIDIA accelerated computing and reference architectures</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:5"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><span class="fx-label">AI Compute</span></dt><dd><span class="fx-chips"><span>DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI factories built on NVIDIA reference architectures, delivered with OEM and ODM partners including Dell, Supermicro and Wiwynn.</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:6"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="fx-label">AI Storage</span></dt><dd><span class="fx-chips"><span>WEKA</span><span>GPFS</span><span>Lustre</span><span>BeeGFS</span></span><span class="fx-desc">AI factory storage built on WEKA, IBM Storage Scale (GPFS), BeeGFS and Lustre.</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:7"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><circle cx="4.5" cy="19.5" r="2"/><circle cx="19.5" cy="19.5" r="2"/><circle cx="12" cy="13" r="2"/><path d="M12 6.5V11M10.6 14.4l-4.6 3.7M13.4 14.4l4.6 3.7"/></svg></span><span class="fx-label">AI Networking</span></dt><dd><span class="fx-chips"><span>InfiniBand</span><span>Cumulus</span></span><span class="fx-desc">AI data-centre networking across scale-up (NVLink, NVSwitch) and scale-out (InfiniBand, Spectrum-X), with BlueField-3 DPU and DOCA.</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:8"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><span class="fx-label">AI Accelerators</span></dt><dd><span class="fx-chips"><span>V100</span><span>H100</span><span>H200</span><span>GB200</span><span>GB300</span></span><span class="fx-desc">AI Accelerator from Tesla (K40 | K80 | V100), DGX (V100 | H100), HGX (H100 | H200), MGX (GB200 | GB300)</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:9"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7.5 13.5h3M7.5 17h6"/></svg></span><span class="fx-label">AI Schedulers</span></dt><dd><span class="fx-chips"><span>Slurm</span><span>PBS Pro</span><span>Symphony</span></span><span class="fx-desc">Workload scheduling including Run.AI &amp; KAI schedulers across HPC and AI platforms</span></dd></div>
-                    <div class="fx-item fx-ai" style="--i:10"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg></span><span class="fx-label">AI Cluster Mgr.</span></dt><dd><span class="fx-chips"><span>Warewulf</span><span>Bright Cluster</span><span>xCAT</span></span><span class="fx-desc">AI Cluster provisioning: xCAT, HPE Performance Cluster Manager (HPCM)</span></dd></div>
-                    <div class="fx-item fx-cred" style="--i:11"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span><span class="fx-label">Studied</span></dt><dd><span class="fx-chips"><span>Certificate in Supercomputing</span></span><span class="fx-desc">The University of Edinburgh &amp; PRACE, 2018</span></dd></div>
-                    <div class="fx-item fx-cred" style="--i:12"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8L12 2.5Z"/></svg></span><span class="fx-label">Recognised</span></dt><dd><span class="fx-chips"><span>J.P. Morgan</span><span>Fujitsu</span></span><span class="fx-desc">Appreciation Letter from J.P.Morgan Co-CEO-Bill Winters-Current CEO Of Standard Chartered Bank &amp; Outstanding Performance &amp; Service Milestone awards</span></dd></div>
-                    <div class="fx-item fx-pro" style="--i:13"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="fx-label">Location</span></dt><dd><span class="fx-chips"><span>Singapore</span></span><span class="fx-desc">Career across Singapore, Bengaluru &amp; Greater Delhi</span></dd></div>
-                </dl>
-                </div>
-<script>
-/* Staggered reveal for the "At a glance" panel */
-(() => {
-    const list = document.querySelector('.fx-list');
-    if (!list || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-    list.classList.add('fx-anim');
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { list.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.1 });
-    io.observe(list);
-})();
-</script>
             </div>
         </div>
     </section>
@@ -1925,8 +1928,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         <nav class="ff-col" aria-label="Footer">
             <span class="ff-h">Explore</span>
             <ul>
-                <li><a href="#credentials">Certifications</a></li>
+                <li><a href="#top">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#credentials">Certifications</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#journey">Journey</a></li>
                 <li><a href="#work">Work</a></li>
