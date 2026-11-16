@@ -771,6 +771,31 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .hs-anim.is-in .hs-card { opacity: 1; transform: none; transition: opacity 0.6s ease calc(var(--i) * 90ms), transform 0.6s ease calc(var(--i) * 90ms), box-shadow 0.3s, border-color 0.3s; }
 .hs-anim.is-in .hs-card:hover { transform: translateY(-5px); transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) { .hs-card, .hs-card::after, .hs-icon { transition: none; } .hs-card:hover, .hs-card:hover .hs-icon { transform: none; } }
+/* ---------- Other certifications (interactive cards) ---------- */
+.cx .cx-rafay { --c: #0f766e; --wash: #e6f6f4; --ink: #0f5f58; --ln: #9fd8cf; }
+.cx .cx-lf    { --c: #4f46e5; --wash: #eef0ff; --ink: #3730a3; --ln: #c7cbfb; }
+.cx .cx-card { position: relative; isolation: isolate; overflow: hidden; border-top: 3px solid var(--c); transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, border-color 0.3s; }
+.cx .cx-card::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 0; transition: opacity 0.3s; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), var(--wash), transparent 70%); }
+.cx .cx-card:hover { transform: translateY(-5px); border-color: var(--ln); border-top-color: var(--c); box-shadow: 0 18px 36px -18px var(--c); }
+.cx .cx-card:hover::before { opacity: 1; }
+.cx .cx-card .cert-issuer { color: var(--ink); }
+.cx .cx-card .plate { position: relative; overflow: hidden; transition: transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s; }
+.cx .cx-card .plate::after { content: ""; position: absolute; inset: -50%; background: linear-gradient(115deg, transparent 40%, rgb(255 255 255 / 0.75) 50%, transparent 60%); transform: translateX(-100%); transition: transform 0.8s ease; }
+.cx .cx-card:hover .plate { transform: perspective(500px) rotateY(-14deg) rotateX(6deg) scale(1.06); box-shadow: 0 12px 22px -12px var(--c); }
+.cx .cx-card:hover .plate::after { transform: translateX(100%); }
+.cx .cx-card .verify { padding: 3px 10px; border-radius: 999px; color: var(--ink); background: var(--wash); border: 1px solid var(--ln); transition: background 0.2s, color 0.2s; }
+.cx .cx-card .verify svg { transition: transform 0.2s; }
+.cx .cx-card .verify:hover { text-decoration: none; background: var(--c); color: #fff; border-color: var(--c); }
+.cx .cx-card .verify:hover svg { transform: translate(2px, -2px); }
+.cx-valid { flex: none; display: block; width: 100%; height: 5px; margin-top: 4px; border-radius: 99px; background: var(--line-2, #e8eef7); overflow: hidden; }
+.cx-valid i { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--ln), var(--c)); transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+.cx-card[style*="--used"] .cx-valid i { width: var(--used); }
+.cx-left { flex: none; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--ink); }
+.cx-left::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px var(--wash); vertical-align: 1px; animation: cx-pulse 2.4s ease-in-out infinite; }
+.cx-card.is-expired .cx-left { color: var(--ink-4); }
+.cx-card.is-expired .cx-left::before { background: var(--ink-4); animation: none; }
+@keyframes cx-pulse { 50% { box-shadow: 0 0 0 6px transparent; } }
+@media (prefers-reduced-motion: reduce) { .cx .cx-card, .cx .cx-card .plate, .cx .cx-card .plate::after, .cx-valid i { transition: none; } .cx .cx-card:hover, .cx .cx-card:hover .plate { transform: none; } .cx-left::before { animation: none; } }
 </style>
 </head>
 <body>
@@ -1023,34 +1048,53 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                         </div>
                     </article>
                 </div>
-
-                <div class="card-grid">
-                    <article class="cert">
+<div class="card-grid cx">
+                    <article class="cert cx-card cx-rafay" data-from="2025-11" data-to="2027-11">
                         <div class="plate"><img src="badges/rafay-gpu-cloud-professional.png" alt="Rafay GPU Cloud Professional badge" width="72" height="72" loading="lazy" /></div>
                         <div class="cert-body">
                             <span class="cert-issuer">Rafay Systems</span>
                             <h4>Rafay Certified GPU Cloud Professional</h4>
-                            <div class="cert-line"><span>Nov 2025 – Nov 2027</span><a class="verify" href="https://www.credly.com/badges/c9d189a7-f789-4067-8b57-424b208b318c" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                            <div class="cert-line"><span>Nov 2025 – Nov 2027</span><a class="verify" href="https://www.credly.com/badges/c9d189a7-f789-4067-8b57-424b208b318c" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div><span class="cx-valid" aria-hidden="true"><i></i></span><span class="cx-left"></span>
                         </div>
                     </article>
-                    <article class="cert">
+                    <article class="cert cx-card cx-rafay" data-from="2025-12" data-to="2027-12">
                         <div class="plate"><img src="badges/rafay-certified-associate.png" alt="Rafay Certified Associate badge" width="72" height="72" loading="lazy" /></div>
                         <div class="cert-body">
                             <span class="cert-issuer">Rafay Systems</span>
                             <h4>Rafay Certified Associate</h4>
-                            <div class="cert-line"><span>Dec 2025 – Dec 2027</span><a class="verify" href="https://www.credly.com/badges/3a28a911-05e0-4cd2-aea4-4c3d5636b1d8" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                            <div class="cert-line"><span>Dec 2025 – Dec 2027</span><a class="verify" href="https://www.credly.com/badges/3a28a911-05e0-4cd2-aea4-4c3d5636b1d8" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div><span class="cx-valid" aria-hidden="true"><i></i></span><span class="cx-left"></span>
                         </div>
                     </article>
-                    <article class="cert">
+                    <article class="cert cx-card cx-lf" data-from="2026-09" data-to="2027-09">
                         <div class="plate"><img src="badges/lf-ai-tokenomics.png" alt="AI Tokenomics Fundamentals badge" width="72" height="72" loading="lazy" /></div>
                         <div class="cert-body">
                             <span class="cert-issuer">Linux Foundation · Tokenomics Foundation</span>
                             <h4>AI Tokenomics Fundamentals</h4>
-                            <div class="cert-line"><span>Sep 2026 – Sep 2027</span><a class="verify" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                            <div class="cert-line"><span>Sep 2026 – Sep 2027</span><a class="verify" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div><span class="cx-valid" aria-hidden="true"><i></i></span><span class="cx-left"></span>
                         </div>
                     </article>
                 </div>
-
+<script>
+/* Cert cards: validity bar, time left and cursor spotlight */
+(() => {
+    const cards = document.querySelectorAll('.cx-card');
+    const now = new Date(), fmt = (m) => m >= 12 ? `${Math.floor(m / 12)}y ${m % 12 ? (m % 12) + 'm ' : ''}left` : `${m} month${m === 1 ? '' : 's'} left`;
+    cards.forEach((c) => {
+        const [fy, fm] = c.dataset.from.split('-').map(Number), [ty, tm] = c.dataset.to.split('-').map(Number);
+        const from = new Date(fy, fm - 1, 1), to = new Date(ty, tm - 1, 1);
+        const pct = Math.min(100, Math.max(0, (now - from) / (to - from) * 100));
+        const left = Math.max(0, (ty - now.getFullYear()) * 12 + (tm - 1 - now.getMonth()));
+        c.style.setProperty('--used', pct.toFixed(1) + '%');
+        c.querySelector('.cx-left').textContent = now < to ? 'Valid · ' + fmt(left) : 'Expired';
+        if (now >= to) c.classList.add('is-expired');
+        c.addEventListener('pointermove', (e) => {
+            const r = c.getBoundingClientRect();
+            c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+    });
+})();
+</script>
                 <p class="sub-label mono">HPC storage &amp; cluster management</p>
                 <div class="hpc-grid">
                     <article class="hpc">
