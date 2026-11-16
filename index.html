@@ -728,6 +728,26 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .px-chips { grid-column: 2; }
 }
 @media (prefers-reduced-motion: reduce) { .px-item, .px-icon, .px-chips span { transition: none; } .px-item:hover, .px-item:hover .px-icon, .px-chips span:hover { transform: none; } }
+/* ---------- Hero: interactive stack paragraph ---------- */
+.hero-stack { max-width: 640px; line-height: 2 !important; }
+.hero-stack .hk-af { background: linear-gradient(90deg, var(--blue-strong), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hk-c { --c: var(--nvidia); --wash: var(--nvidia-wash); --ink: var(--nvidia-ink); --ln: var(--nvidia-line); }
+.hk-f { --c: var(--blue);   --wash: var(--blue-wash);   --ink: var(--blue-strong); --ln: var(--blue-line); }
+.hk-s { --c: #d97706;       --wash: #fff7e6;            --ink: #92400e;            --ln: #f5d08a; }
+.hk-o { --c: #0d1b33;       --wash: #eef1f6;            --ink: #0d1b33;            --ln: #d6dfee; }
+.hk { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px 2px 8px; margin: 0 1px; border-radius: 8px; vertical-align: 1px;
+      font-size: 0.86em; font-weight: 600; line-height: 1.5; white-space: nowrap; color: var(--ink); background: var(--wash); border: 1px solid var(--ln);
+      cursor: default; transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s, opacity 0.25s, filter 0.25s; }
+.hk svg { width: 15px; height: 15px; flex: none; transition: transform 0.3s; }
+.hk:hover { background: var(--c); color: #fff; border-color: var(--c); transform: translateY(-2px); box-shadow: 0 8px 16px -8px var(--c); }
+.hk:hover svg { transform: rotate(-10deg) scale(1.15); }
+/* hovering one layer spotlights its group and fades the others */
+.hero-stack:has(.hk-c:hover) .hk:not(.hk-c),
+.hero-stack:has(.hk-f:hover) .hk:not(.hk-f),
+.hero-stack:has(.hk-s:hover) .hk:not(.hk-s),
+.hero-stack:has(.hk-o:hover) .hk:not(.hk-o) { opacity: 0.45; filter: saturate(0.4); }
+.hero-stack:has(.hk-f:hover) .hk-f, .hero-stack:has(.hk-s:hover) .hk-s { background: var(--c); color: #fff; border-color: var(--c); }
+@media (prefers-reduced-motion: reduce) { .hk, .hk svg { transition: none; } .hk:hover, .hk:hover svg { transform: none; } }
 </style>
 </head>
 <body>
@@ -797,9 +817,12 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                         <h1>Amitabh<br />Pandey</h1>
                     </div>
                     <p class="hero-welcome">Welcome. I’m Amitabh Pandey, an AI Factory, HPC and Supercomputing Architect.</p>
-                    <p class="hero-lede">                        
-                        I work on the infrastructure behind high-performance computing and modern AI: <strong>GPU compute, high-speed fabrics
-                        and parallel storage</strong>, built on more than 24 years of Linux, cloud and enterprise operations.
+                    <p class="hero-lede hero-stack">
+                        I work on the infrastructure behind <strong>High Performance Computing</strong> and modern AI <span class="hk-amp">—</span> <strong class="hk-af">AI&nbsp;Factories</strong>:
+                        <span class="hk hk-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><path d="M14 9.5h5M14 12h5M14 14.5h3"/></svg>NVIDIA GPU compute</span>,
+                        <span class="hk hk-f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M7 11l10-5M7 13l10 5M19 7.2v9.6"/></svg>InfiniBand</span> and <span class="hk hk-f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/><circle cx="14" cy="12" r="1.2" fill="currentColor"/><circle cx="10" cy="17" r="1.2" fill="currentColor"/></svg>Spectrum-X Ethernet</span> fabrics,
+                        and parallel storage such as <span class="hk hk-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>WEKA</span> <span class="hk hk-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>GPFS</span> <span class="hk hk-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Lustre</span>,
+                        built on <span class="hk hk-o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="m6.5 9 3 3-3 3M12 15h5"/></svg>24+ years</span> of Linux, cloud and enterprise operations.
                     </p>
                     <div class="hero-actions">
                         <a class="btn btn-signal" href="#credentials">View certifications <svg class="icon"><use href="#i-arrow-r"/></svg></a>
