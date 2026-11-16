@@ -748,6 +748,29 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .hero-stack:has(.hk-o:hover) .hk:not(.hk-o) { opacity: 0.45; filter: saturate(0.4); }
 .hero-stack:has(.hk-f:hover) .hk-f, .hero-stack:has(.hk-s:hover) .hk-s { background: var(--c); color: #fff; border-color: var(--c); }
 @media (prefers-reduced-motion: reduce) { .hk, .hk svg { transition: none; } .hk:hover, .hk:hover svg { transform: none; } }
+/* ---------- Hero stats (interactive) ---------- */
+.hs-x .hs-hpc { --c: #d97706;       --wash: #fff7e6;            --ink: #92400e;            --ln: #f5d08a; }
+.hs-x .hs-nv  { --c: var(--nvidia); --wash: var(--nvidia-wash); --ink: var(--nvidia-ink);  --ln: var(--nvidia-line); }
+.hs-x .hs-st  { --c: var(--blue);   --wash: var(--blue-wash);   --ink: var(--blue-strong); --ln: var(--blue-line); }
+.hs-x .hs-yr  { --c: #7c3aed;       --wash: #f3effe;            --ink: #5b21b6;            --ln: #d9ccfb; }
+.hs-x > .hs-card { position: relative; isolation: isolate; overflow: hidden; border-top: 3px solid var(--c); transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, border-color 0.3s; }
+.hs-card::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 0; transition: opacity 0.3s;
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 0%), var(--wash), transparent 70%); }
+.hs-card::after { content: ""; position: absolute; z-index: -1; right: -30px; bottom: -40px; width: 120px; height: 120px; border-radius: 50%; border: 18px solid var(--wash); opacity: 0.8; transition: transform 0.4s; }
+.hs-card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px -18px var(--c); border-color: var(--ln); border-top-color: var(--c); }
+.hs-card:hover::before { opacity: 1; }
+.hs-card:hover::after { transform: scale(1.25); }
+.hs-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.hs-kicker { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.hs-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; color: var(--ink); background: var(--wash); border: 1px solid var(--ln); transition: background 0.3s, color 0.3s, transform 0.3s; }
+.hs-icon svg { width: 19px; height: 19px; }
+.hs-card:hover .hs-icon { background: var(--c); color: #fff; border-color: var(--c); transform: rotate(-8deg) scale(1.08); }
+.hs-x strong span { color: var(--c); }
+.hs-x strong .hs-num { color: inherit; font-variant-numeric: tabular-nums; }
+.hs-anim .hs-card { opacity: 0; transform: translateY(14px); }
+.hs-anim.is-in .hs-card { opacity: 1; transform: none; transition: opacity 0.6s ease calc(var(--i) * 90ms), transform 0.6s ease calc(var(--i) * 90ms), box-shadow 0.3s, border-color 0.3s; }
+.hs-anim.is-in .hs-card:hover { transform: translateY(-5px); transition-delay: 0s; }
+@media (prefers-reduced-motion: reduce) { .hs-card, .hs-card::after, .hs-icon { transition: none; } .hs-card:hover, .hs-card:hover .hs-icon { transform: none; } }
 </style>
 </head>
 <body>
@@ -860,13 +883,51 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     </div>
                 </aside>
             </div>
-
-            <div class="hero-stats">
-                <div><strong>HPC</strong><p>Supercomputing · University of Edinburgh &amp; PRACE</p></div>
-                <div><strong>5<span>×</span> NVIDIA</strong><p>AI infrastructure certifications, active to 2028</p></div>
-                <div><strong>BeeGFS<span>·</span>WEKA</strong><p>Certified on HPC parallel file systems</p></div>
-                <div><strong>24<span>+</span></strong><p>Years in infrastructure</p></div>
+<div class="hero-stats hs-x">
+                <div class="hs-card hs-hpc" style="--i:0">
+                    <span class="hs-top"><span class="hs-kicker">Studied</span><span class="hs-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span></span>
+                    <strong>HPC</strong><p>Supercomputing · University of Edinburgh &amp; PRACE</p>
+                </div>
+                <div class="hs-card hs-nv" style="--i:1">
+                    <span class="hs-top"><span class="hs-kicker">Certified</span><span class="hs-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/><path d="m9.5 9 1.7 1.7L14.5 7.5"/></svg></span></span>
+                    <strong><span class="hs-num" data-to="5">5</span><span>×</span> NVIDIA</strong><p>AI infrastructure certifications, active to 2028</p>
+                </div>
+                <div class="hs-card hs-st" style="--i:2">
+                    <span class="hs-top"><span class="hs-kicker">Certified</span><span class="hs-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span></span>
+                    <strong>BeeGFS<span>·</span>WEKA</strong><p>Certified on HPC parallel file systems</p>
+                </div>
+                <div class="hs-card hs-yr" style="--i:3">
+                    <span class="hs-top"><span class="hs-kicker">Experience</span><span class="hs-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></span>
+                    <strong><span class="hs-num" data-to="24">24</span><span>+</span></strong><p>Years in infrastructure</p>
+                </div>
             </div>
+<script>
+/* Hero stats: cursor spotlight, count-up and staggered reveal */
+(() => {
+    const wrap = document.querySelector('.hs-x');
+    if (!wrap) return;
+    wrap.querySelectorAll('.hs-card').forEach((c) => c.addEventListener('pointermove', (e) => {
+        const r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }));
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    wrap.classList.add('hs-anim');
+    const nums = wrap.querySelectorAll('.hs-num');
+    nums.forEach((n) => (n.textContent = '0'));
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        wrap.classList.add('is-in');
+        nums.forEach((n) => {
+            const to = +n.dataset.to, t0 = performance.now(), d = 1200;
+            const tick = (t) => { const k = Math.min(1, (t - t0) / d); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+            requestAnimationFrame(tick);
+        });
+        io.disconnect();
+    }), { threshold: 0.3 });
+    io.observe(wrap);
+})();
+</script>
         </div>
     </section>
 
