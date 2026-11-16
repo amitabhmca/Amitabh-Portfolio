@@ -879,6 +879,62 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 @media (max-width: 860px) { .ff-grid { grid-template-columns: 1fr 1fr; gap: 36px; } .ff-brand { grid-column: 1 / -1; } }
 @media (max-width: 540px) { .ff-grid { grid-template-columns: 1fr; padding-block: 44px 28px; } .ff-bottom { flex-direction: column-reverse; align-items: flex-start; } .to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; } }
 @media (prefers-reduced-motion: reduce) { .ff-glow, .ff-photo, .ff-link, .ff-ico, .ff-go, .ff-top-btn, .to-top { transition: none; } .ff-status i, .ff-top:hover .ff-top-btn svg, .to-top:hover > svg:last-child { animation: none; } }
+/* ---------- Journey timeline (interactive) ---------- */
+.tl-ai    { --c: var(--nvidia); --wash: var(--nvidia-wash); --ink: var(--nvidia-ink);  --ln: var(--nvidia-line); }
+.tl-cloud { --c: var(--blue);   --wash: var(--blue-wash);   --ink: var(--blue-strong); --ln: var(--blue-line); }
+.tl-hpc   { --c: #d97706;       --wash: #fff7e6;            --ink: #92400e;            --ln: #f5d08a; }
+.tl-ent   { --c: #7c3aed;       --wash: #f3effe;            --ink: #5b21b6;            --ln: #d9ccfb; }
+.tl-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 34px; }
+.tl-filter button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; border-radius: 999px; font: 500 14px/1 var(--font-body); color: var(--ink-3); background: var(--card); border: 1px solid var(--line); cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
+.tl-filter button i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.tl-filter button:hover { transform: translateY(-2px); border-color: var(--blue-line); color: var(--ink); }
+.tl-filter button.is-on { color: #fff; background: #0d1b33; border-color: #0d1b33; }
+.tl { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.tl-rail { position: absolute; top: 8px; bottom: 8px; left: 50%; width: 3px; margin-left: -1.5px; border-radius: 3px; background: var(--line); }
+.tl-rail span { display: block; width: 100%; height: 0; border-radius: inherit; background: linear-gradient(180deg, var(--nvidia), var(--blue) 45%, #d97706 65%, #7c3aed); box-shadow: 0 0 12px rgb(118 185 0 / 0.5); }
+.tl-item { position: relative; display: grid; grid-template-columns: 1fr 64px 1fr; align-items: center; transition: opacity 0.35s, filter 0.35s; }
+.tl-item + .tl-item { margin-top: -64px; }
+.tl-node { grid-column: 2; z-index: 1; justify-self: center; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; color: var(--ink-4); background: var(--card); border: 2px solid var(--line); box-shadow: 0 0 0 6px var(--page, #f7f9fd); transition: background 0.4s, color 0.4s, border-color 0.4s, transform 0.4s, box-shadow 0.4s; }
+.section.is-alt .tl-node { box-shadow: 0 0 0 6px var(--page-2); }
+.tl-node svg { width: 21px; height: 21px; }
+.tl-item.is-on .tl-node { color: #fff; background: var(--c); border-color: var(--c); transform: scale(1.06); }
+.tl-card { position: relative; grid-row: 1; padding: 20px 22px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, border-color 0.3s; }
+.tl-item:nth-child(even) .tl-card { grid-column: 1; }
+.tl-item:nth-child(odd) .tl-card { grid-column: 3; }
+.tl-card::before { content: ""; position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; background: inherit; border: inherit; border-width: 0 0 1px 1px; }
+.tl-item:nth-child(even) .tl-card::before { right: -8px; transform: rotate(-135deg); }
+.tl-item:nth-child(odd) .tl-card::before { left: -8px; transform: rotate(45deg); }
+.tl-card:hover { transform: translateY(-4px); border-color: var(--ln); box-shadow: 0 20px 40px -22px var(--c); }
+.tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.tl-yr { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(90deg, var(--ink), var(--c)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tl-tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; color: var(--ink); background: var(--wash); border: 1px solid var(--ln); }
+.tl-live { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nvidia-ink); }
+.tl-live i { width: 8px; height: 8px; border-radius: 50%; background: var(--nvidia); animation: tl-pulse 1.8s ease-in-out infinite; }
+@keyframes tl-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(118 185 0 / 0.55); } 50% { box-shadow: 0 0 0 7px rgb(118 185 0 / 0); } }
+.tl-card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: #0d1b33; }
+.tl-card p { margin-top: 6px; font-size: 15px; line-height: 1.6; color: var(--ink-3); }
+.tl-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tl-chips span { font-family: var(--font-mono); font-size: 12px; padding: 3px 9px; border-radius: 7px; color: var(--ink); background: var(--wash); border: 1px solid var(--ln); transition: background 0.2s, color 0.2s, transform 0.2s; }
+.tl-chips span:hover { background: var(--c); color: #fff; transform: translateY(-2px); }
+.tl-item.is-now .tl-card { border-color: var(--nvidia-line); background: linear-gradient(135deg, #fff, var(--nvidia-wash)); }
+.tl-item.is-now .tl-node { animation: tl-pulse 1.8s ease-in-out infinite; }
+.tl:not([data-filter="all"]) .tl-item { opacity: 0.28; filter: grayscale(0.9); }
+.tl[data-filter="ai"] .tl-ai, .tl[data-filter="cloud"] .tl-cloud, .tl[data-filter="hpc"] .tl-hpc, .tl[data-filter="ent"] .tl-ent { opacity: 1; filter: none; }
+.tl-anim .tl-item .tl-card { opacity: 0; transform: translateX(28px); }
+.tl-anim .tl-item:nth-child(even) .tl-card { transform: translateX(-28px); }
+.tl-anim .tl-item.is-in .tl-card { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, border-color 0.3s; }
+.tl-anim .tl-item.is-in .tl-card:hover { transform: translateY(-4px); }
+@media (max-width: 860px) {
+    .tl-rail { left: 23px; }
+    .tl-item { grid-template-columns: 46px 1fr; gap: 16px; align-items: start; }
+    .tl-item + .tl-item { margin-top: 0; }
+    .tl-node { grid-column: 1; margin-top: 18px; }
+    .tl-item:nth-child(n) .tl-card { grid-column: 2; }
+    .tl-item:nth-child(n) .tl-card::before { left: -8px; right: auto; top: 34px; transform: rotate(45deg); }
+    .tl-anim .tl-item:nth-child(n) .tl-card { transform: translateX(20px); }
+    .tl-anim .tl-item.is-in .tl-card { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .tl-card, .tl-node, .tl-item, .tl-chips span, .tl-filter button { transition: none; } .tl-live i, .tl-item.is-now .tl-node { animation: none; } .tl-card:hover { transform: none; } }
 </style>
 </head>
 <body>
@@ -1656,63 +1712,79 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 </div>
                 <p>Each stage added a layer, from Linux and network resilience to enterprise operations, cloud and Kubernetes, and now AI factories. <a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Full role history on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a></p>
             </div>
-            <ol class="journey">
-                <li class="is-now">
-                    <span class="yr">Now</span>
-                    <div>
+            <div class="tl-filter" role="group" aria-label="Filter journey">
+                <button type="button" class="is-on" data-f="all">All</button>
+                <button type="button" data-f="ai"><i class="tl-ai"></i>AI &amp; GPU</button>
+                <button type="button" data-f="cloud"><i class="tl-cloud"></i>Cloud</button>
+                <button type="button" data-f="hpc"><i class="tl-hpc"></i>HPC</button>
+                <button type="button" data-f="ent"><i class="tl-ent"></i>Enterprise</button>
+            </div>
+            <ol class="tl" data-filter="all">
+                <li class="tl-rail" aria-hidden="true"><span></span></li>
+                <li class="tl-item tl-ai is-now" style="--i:0">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V10l5 3V4h3v17H3Z"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">Now</span><span class="tl-tag">AI &amp; GPU</span><span class="tl-live"><i></i>Current</span></div>
                         <h3>AI Factory &amp; HPC infrastructure</h3>
                         <p>Platform architecture and leadership at an AI infrastructure company (associated with Firmus Technologies).</p>
-                    </div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2026</span>
-                    <div>
+                <li class="tl-item tl-ai" style="--i:1">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/><path d="m9.5 9 1.7 1.7L14.5 7.5"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2026</span><span class="tl-tag">AI &amp; GPU</span></div>
                         <h3>NVIDIA AI infrastructure track</h3>
                         <p>Earned NVIDIA certifications in AI Networking, AI Infrastructure &amp; Operations, AI Operations and AI Infrastructure from January to March. AI Tokenomics Fundamentals followed in September, then NVIDIA-Certified Professional: AI Rack and Interconnect in October.</p>
-                        <div class="chips"><span>NCP-AIN</span><span>NCA-AIIO</span><span>NCP-AIO</span><span>NCP-AII</span><span>NCP-ARI</span></div>
-                    </div>
+                        <div class="tl-chips"><span>NCP-AIN</span><span>NCA-AIIO</span><span>NCP-AIO</span><span>NCP-AII</span><span>NCP-ARI</span></div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2024–25</span>
-                    <div>
+                <li class="tl-item tl-ai" style="--i:2">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2024–25</span><span class="tl-tag">AI &amp; GPU</span></div>
                         <h3>GPU cloud &amp; parallel storage</h3>
                         <p>Certified BeeGFS System Engineer (2024) and Rafay Certified GPU Cloud Professional (2025), with NVIDIA Base Command Manager, Kubeflow, Argo and Tekton training.</p>
-                    </div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2020–21</span>
-                    <div>
+                <li class="tl-item tl-cloud" style="--i:3">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5H7Z"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2020–21</span><span class="tl-tag">Cloud</span></div>
                         <h3>Cloud &amp; Kubernetes</h3>
                         <p>Five AWS certifications in three months, including Solutions Architect and DevOps Engineer Professional, then CKA, CKAD, Terraform Associate and Bright Cluster Manager.</p>
-                    </div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2018</span>
-                    <div>
+                <li class="tl-item tl-hpc" style="--i:4">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2018</span><span class="tl-tag">HPC</span></div>
                         <h3>Supercomputing study</h3>
                         <p>Supercomputing with The University of Edinburgh &amp; PRACE, and High Performance Computing in the Cloud with Dublin City University.</p>
-                    </div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2012–14</span>
-                    <div>
+                <li class="tl-item tl-ent" style="--i:5">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2012–14</span><span class="tl-tag">Enterprise</span></div>
                         <h3>Virtualization, storage &amp; delivery</h3>
                         <p>VMware Certified Professional on vSphere 5 and NetApp NCDA in 2012; PRINCE2 Foundation and Registered Practitioner in 2014.</p>
-                    </div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2007–09</span>
-                    <div>
+                <li class="tl-item tl-ent" style="--i:6">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2007–09</span><span class="tl-tag">Enterprise</span></div>
                         <h3>J.P. Morgan · Bengaluru</h3>
                         <p>Service Milestone Award (2007) and an Outstanding Performance Award for DST server patching (2009). ITIL Foundation v3 (2007).</p>
-                    </div>
+                    </article>
                 </li>
-                <li>
-                    <span class="yr">2006</span>
-                    <div>
+                <li class="tl-item tl-ent" style="--i:7">
+                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 16.5h.01M11 16.5h.01M17 13V9"/><path d="M14.2 6.2a4 4 0 0 1 5.6 0M12.4 4.2a6.8 6.8 0 0 1 9.2 0"/></svg></span>
+                    <article class="tl-card">
+                        <div class="tl-meta"><span class="tl-yr">2006</span><span class="tl-tag">Enterprise</span></div>
                         <h3>Mercantila Software Services · Bangalore</h3>
                         <p>Built an open-source Linux router and firewall with ISP failover. Best Performer award.</p>
-                    </div>
+                    </article>
                 </li>
             </ol>
         </div>
@@ -2029,6 +2101,34 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     };
     window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     update();
+})();
+</script>
+<script>
+/* Journey timeline: scroll-driven rail, node activation, reveal and era filter */
+(() => {
+    const tl = document.querySelector('.tl');
+    if (!tl) return;
+    const items = [...tl.querySelectorAll('.tl-item')], fill = tl.querySelector('.tl-rail span');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+    const update = () => {
+        const r = tl.getBoundingClientRect(), mid = innerHeight * 0.6;
+        const p = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+        fill.style.height = (p * 100).toFixed(2) + '%';
+        items.forEach((it) => { const n = it.querySelector('.tl-node').getBoundingClientRect(); it.classList.toggle('is-on', n.top + n.height / 2 < mid); });
+        ticking = false;
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update); update();
+    if (!reduce && 'IntersectionObserver' in window) {
+        tl.classList.add('tl-anim');
+        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: 0.2 });
+        items.forEach((it) => io.observe(it));
+    }
+    document.querySelectorAll('.tl-filter button').forEach((b, _, all) => b.addEventListener('click', () => {
+        all.forEach((x) => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
+        tl.dataset.filter = b.dataset.f;
+    }));
 })();
 </script>
 </body>
