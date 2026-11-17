@@ -322,6 +322,14 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 /* Standard cards: badge left, details right. */
 .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
 .card-grid.is-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-grid.is-five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.tier-sub { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 26px; }
+.tier-sub:first-of-type { margin-top: 4px; }
+.tier-sub-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+.tier-sub .mono { font-size: 11.5px; letter-spacing: .06em; color: var(--ink-4); }
+.tier-sub + .card-grid { margin-top: 12px; }
+.cert.is-aws-pro { border-color: rgb(255 153 0 / .55); box-shadow: 0 10px 26px -18px rgb(255 153 0 / .7); }
+.cert.is-aws-pro .cert-issuer { color: #b45309; font-weight: 600; }
 .cert {
     display: flex; align-items: center; gap: 16px; padding: 16px;
     border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
@@ -708,6 +716,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .main-nav { display: none; }
     .menu-toggle { display: flex; }
     .lead-grid, .card-grid.is-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card-grid.is-five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .card-grid, .found-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .hpc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .hpc:last-child { grid-column: 1 / -1; }
@@ -748,7 +757,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     .hero-stats > div { padding: 16px; }
     .hero-stats strong { font-size: 21px; }
     .marquee img { width: 60px; height: 60px; }
-    .lead-grid, .card-grid, .card-grid.is-four, .learn-grid, .work-grid, .award-grid, .recs { grid-template-columns: 1fr; }
+    .lead-grid, .card-grid, .card-grid.is-four, .card-grid.is-five, .learn-grid, .work-grid, .award-grid, .recs { grid-template-columns: 1fr; }
     .lead { flex-direction: row; }
     .lead .plate { width: 116px; height: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line-2); }
     .lead .plate img { width: 92px; height: 92px; }
@@ -1777,8 +1786,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     <h3>Cloud &amp; cloud native</h3>
                     <span class="mono tier-right">Earned 2020 – 2021 · exam-based</span>
                 </div>
+                <div class="tier-sub"><span class="tier-sub-name">Amazon Web Services</span><span class="mono">2 Professional · 2 Associate · Oct – Nov 2020</span></div>
                 <div class="card-grid is-four">
-                    <article class="cert">
+                    <article class="cert is-aws-pro">
                         <div class="plate"><img src="badges/aws-sa-pro.png" alt="AWS Solutions Architect Professional badge" width="100" height="100" loading="lazy" /></div>
                         <div class="cert-body">
                             <span class="cert-issuer">AWS · Professional</span>
@@ -1786,7 +1796,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="cert-line"><span>Nov 2020</span><a class="verify" href="https://www.credly.com/badges/79c37040-79ea-4b3d-81f3-1081c4aafc4c" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
                         </div>
                     </article>
-                    <article class="cert">
+                    <article class="cert is-aws-pro">
                         <div class="plate"><img src="badges/aws-devops-pro.png" alt="AWS DevOps Engineer Professional badge" width="100" height="100" loading="lazy" /></div>
                         <div class="cert-body">
                             <span class="cert-issuer">AWS · Professional</span>
@@ -1794,24 +1804,6 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="cert-line"><span>Nov 2020</span><a class="verify" href="https://www.credly.com/badges/26829b3c-0d7a-4fdf-abf5-11b99a051221" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
                         </div>
                     </article>
-                    <article class="cert">
-                        <div class="plate"><img src="badges/cka.png" alt="CKA badge" width="100" height="100" loading="lazy" /></div>
-                        <div class="cert-body">
-                            <span class="cert-issuer">The Linux Foundation · CNCF</span>
-                            <h4>CKA: Certified Kubernetes Administrator</h4>
-                            <div class="cert-line"><span>Jan 2021</span><a class="verify" href="https://www.credly.com/badges/434bbf9d-7832-4eba-8361-c55e58e38108" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
-                        </div>
-                    </article>
-                    <article class="cert">
-                        <div class="plate"><img src="badges/ckad.png" alt="CKAD badge" width="100" height="100" loading="lazy" /></div>
-                        <div class="cert-body">
-                            <span class="cert-issuer">The Linux Foundation · CNCF</span>
-                            <h4>CKAD: Certified Kubernetes Application Developer</h4>
-                            <div class="cert-line"><span>Aug 2021</span><a class="verify" href="https://www.credly.com/badges/6647e7b8-38b7-41cc-955c-78439c498539" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="card-grid is-four">
                     <article class="cert">
                         <div class="plate"><img src="badges/aws-sa-associate.png" alt="AWS Solutions Architect Associate badge" width="100" height="100" loading="lazy" /></div>
                         <div class="cert-body">
@@ -1828,12 +1820,23 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="cert-line"><span>Nov 2020</span><a class="verify" href="https://www.credly.com/badges/96c49d65-4b66-45cf-9bc2-7a8b2a282499" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
                         </div>
                     </article>
+                </div>
+                <div class="tier-sub"><span class="tier-sub-name">Kubernetes, infrastructure as code &amp; development</span><span class="mono">CNCF · HashiCorp · AWS · 2020 – 2021</span></div>
+                <div class="card-grid is-four">
                     <article class="cert">
-                        <div class="plate"><img src="badges/aws-developer-associate.png" alt="AWS Developer Associate badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="plate"><img src="badges/cka.png" alt="CKA badge" width="100" height="100" loading="lazy" /></div>
                         <div class="cert-body">
-                            <span class="cert-issuer">AWS · Associate</span>
-                            <h4>Developer – Associate</h4>
-                            <div class="cert-line"><span>Dec 2020</span><a class="verify" href="https://www.credly.com/badges/7afdee74-a269-4194-b6f6-f672b1ab0cd5" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                            <span class="cert-issuer">The Linux Foundation · CNCF</span>
+                            <h4>CKA: Certified Kubernetes Administrator</h4>
+                            <div class="cert-line"><span>Jan 2021</span><a class="verify" href="https://www.credly.com/badges/434bbf9d-7832-4eba-8361-c55e58e38108" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/ckad.png" alt="CKAD badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">The Linux Foundation · CNCF</span>
+                            <h4>CKAD: Certified Kubernetes Application Developer</h4>
+                            <div class="cert-line"><span>Aug 2021</span><a class="verify" href="https://www.credly.com/badges/6647e7b8-38b7-41cc-955c-78439c498539" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
                         </div>
                     </article>
                     <article class="cert">
@@ -1844,6 +1847,15 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="cert-line"><span>Jan 2021</span><a class="verify" href="https://www.credly.com/badges/f791a663-7b91-4f11-af83-d46b4bf733e9" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
                         </div>
                     </article>
+                    <article class="cert">
+                        <div class="plate"><img src="badges/aws-developer-associate.png" alt="AWS Developer Associate badge" width="100" height="100" loading="lazy" /></div>
+                        <div class="cert-body">
+                            <span class="cert-issuer">AWS · Associate</span>
+                            <h4>Developer – Associate</h4>
+                            <div class="cert-line"><span>Dec 2020</span><a class="verify" href="https://www.credly.com/badges/7afdee74-a269-4194-b6f6-f672b1ab0cd5" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                        </div>
+                    </article>
+                </div>
                 </div>
             </div>
 
