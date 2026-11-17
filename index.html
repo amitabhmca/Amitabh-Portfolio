@@ -791,6 +791,18 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 26px; font-size: 14px; }
 .footer-row a:hover { color: var(--blue-strong); }
 
+/* Header: logo left, menu right, aligned on one centre line */
+.header-row { gap: 24px; }
+.header-row .brand { flex: none; }
+@media (min-width: 1201px) { .header-row .main-nav { margin-left: auto; display: flex; align-items: center; } .header-right { display: none; } }
+@media (max-width: 1200px) { .header-right { margin-left: auto; } }
+/* Hero CTA: LinkedIn brand button */
+.btn-linkedin { background: #0a66c2; border-color: #0a66c2; color: #fff; box-shadow: 0 6px 18px -10px rgb(10 102 194 / .7); }
+.btn-linkedin:hover { background: #004182; border-color: #004182; color: #fff; transform: translateY(-1px); }
+/* NVIDIA card footer: wallet as NVIDIA-green pill */
+.track-foot a.track-wallet { gap: 6px; padding: 7px 13px; border-radius: 999px; background: var(--nvidia); color: #142400; font-size: 13.5px; box-shadow: 0 6px 16px -10px rgb(76 119 0 / .7); transition: background .2s, transform .2s, box-shadow .2s; }
+.track-foot a.track-wallet:hover { background: #8acb19; text-decoration: none; transform: translateY(-1px); box-shadow: 0 10px 20px -10px rgb(76 119 0 / .8); }
+.track-foot a.track-wallet .icon { width: 15px; height: 15px; }
 /* ---------- Responsive ---------- */
 @media (max-width: 1200px) {
     .main-nav { display: none; }
@@ -1323,8 +1335,6 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             </ul>
         </nav>
         <div class="header-right">
-            <a class="icon-btn icon-li" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
-            <a class="btn btn-sm btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> <span>NVIDIA<span class="btn-wallet-word"> wallet</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
             <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
                 <svg class="icon"><use href="#i-menu"/></svg>
             </button>
@@ -1339,6 +1349,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         <a class="nav-item" href="#work">Work</a>
         <a class="nav-item" href="#recognition">Recognition</a>
         <a class="nav-item" href="#contact">Contact</a>
+        <a class="btn btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Credly wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn btn-signal" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> Connect on LinkedIn</a>
     </nav>
@@ -1369,7 +1380,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     </p>
                     <div class="hero-actions">
                         <a class="btn btn-signal" href="#credentials">View certifications <svg class="icon"><use href="#i-arrow-r"/></svg></a>
-                        <a class="btn" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> LinkedIn</a>
+                        <a class="btn btn-linkedin" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
                     </div>
                 </div>
 
@@ -1403,7 +1414,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                     </div>
                     <div class="track-foot">
                         <span><span class="dot-ok"></span>5 certifications active through 2028 · plus 1 course badge</span>
-                        <a href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer">NVIDIA wallet <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        <a class="track-wallet" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
                     </div>
                 </aside>
             </div>
