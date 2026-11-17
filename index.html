@@ -415,6 +415,44 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .nscc-intro strong { display: block; margin-top: 6px; font-family: var(--font-display); font-size: min(23.5px, 4.05cqi); white-space: nowrap; font-weight: 700; letter-spacing: -0.02em; color: #e2231a; }
 @media (max-width: 640px) { .nscc-intro strong { font-size: 20px; white-space: normal; } }
 
+
+/* ===== Background effects v1 ===== */
+/* Hero: GPU-cluster constellation */
+.hero-net { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, #000 0 7%, rgb(0 0 0 / 0.18) 13% 50%, #000 58% 100%); mask-image: linear-gradient(90deg, #000 0 7%, rgb(0 0 0 / 0.18) 13% 50%, #000 58% 100%); opacity: 0; transition: opacity 1.2s ease; }
+.hero-net.is-ready { opacity: 1; }
+/* Journey: packet at the rail tip + fibre traces */
+#journey { position: relative; isolation: isolate; overflow: hidden; }
+#journey::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background:
+    repeating-linear-gradient(90deg, transparent 0 119px, rgb(37 99 235 / 0.07) 119px 120px),
+    repeating-linear-gradient(0deg, transparent 0 239px, rgb(118 185 0 / 0.06) 239px 240px);
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 30%, transparent 70%, #000); mask-image: linear-gradient(90deg, #000, transparent 30%, transparent 70%, #000); }
+#journey::after { content: ""; position: absolute; z-index: -1; pointer-events: none; left: 0; right: 0; height: 160px; top: -160px; background: linear-gradient(180deg, transparent, rgb(37 99 235 / 0.06), transparent); animation: jr-scan 9s linear infinite; }
+@keyframes jr-scan { to { transform: translateY(calc(100vh + 2000px)); } }
+.tl-rail span { position: relative; }
+.tl-rail span::after { content: ""; position: absolute; left: 50%; bottom: -7px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px var(--blue), 0 0 18px 6px rgb(37 99 235 / 0.55), 0 0 40px 10px rgb(118 185 0 / 0.3); animation: jr-packet 1.6s ease-in-out infinite; }
+.tl-rail span::before { content: ""; position: absolute; left: 50%; bottom: 0; width: 9px; margin-left: -4.5px; height: 90px; max-height: 100%; border-radius: 9px; background: linear-gradient(180deg, transparent, rgb(37 99 235 / 0.45)); filter: blur(3px); }
+@keyframes jr-packet { 50% { transform: scale(1.25); box-shadow: 0 0 0 3px var(--nvidia), 0 0 24px 8px rgb(118 185 0 / 0.55), 0 0 46px 12px rgb(37 99 235 / 0.3); } }
+/* Contact: dark showpiece panel (matches NSCC banner) */
+.contact.is-dark { background: radial-gradient(110% 120% at 0% 0%, #1b2a55 0%, #0c1430 50%, #070b1c 100%); color: #fff; }
+.contact.is-dark::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px); background-size: 40px 40px; -webkit-mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 15%, transparent 75%); mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 15%, transparent 75%); animation: ct-grid 22s linear infinite; }
+.contact.is-dark::after { left: auto; right: -160px; bottom: auto; top: -260px; width: 620px; height: 620px; background: radial-gradient(circle, rgb(226 35 26 / 0.35), transparent 65%); animation: ct-float 12s ease-in-out infinite; }
+.contact.is-dark .ct-orb { position: absolute; z-index: -1; left: -140px; bottom: -280px; width: 640px; height: 640px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgb(47 107 255 / 0.4), transparent 65%); animation: ct-float 14s ease-in-out infinite reverse; }
+.contact.is-dark .ct-edge { position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, #e2231a, #4f7cff 45%, #76b900 80%, #e2231a); background-size: 300% 100%; animation: nh-border 8s linear infinite; }
+.contact.is-dark .eyebrow { color: #9db8ff; }
+.contact.is-dark h2 { color: #fff; }
+.contact.is-dark h2 em { color: #76b900; }
+.contact.is-dark .contact-copy { color: rgb(255 255 255 / 0.72); }
+.contact.is-dark .contact-link { background: rgb(255 255 255 / 0.06); border-color: rgb(255 255 255 / 0.14); box-shadow: 0 14px 30px -18px rgb(0 0 0 / 0.7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.contact.is-dark .contact-link:hover { border-color: rgb(157 184 255 / 0.6); background: rgb(255 255 255 / 0.1); }
+.contact.is-dark .contact-link strong { color: #fff; }
+.contact.is-dark .contact-link span span, .contact.is-dark .contact-link > span > span { color: rgb(255 255 255 / 0.62); }
+.contact.is-dark .contact-link > svg { color: #9db8ff; }
+.contact.is-dark .contact-link.is-nvidia { background: linear-gradient(120deg, rgb(118 185 0 / 0.22), rgb(255 255 255 / 0.05)); border-color: #76b900; }
+.contact.is-dark .contact-link.is-nvidia strong, .contact.is-dark .contact-link.is-nvidia > svg { color: #b6f36a; }
+@keyframes ct-grid { to { background-position: 40px 40px, 40px 40px; } }
+@keyframes ct-float { 50% { transform: translate(-24px, 18px) scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { #journey::after, .tl-rail span::after, .contact.is-dark::before, .contact.is-dark::after, .contact.is-dark .ct-orb, .contact.is-dark .ct-edge { animation: none; } #journey::after { display: none; } }
+
 /* NSCC hero banner */
 .nscc-hero { position: relative; isolation: isolate; overflow: hidden; container-type: inline-size; margin-top: 30px; padding: 26px 28px 24px; border-radius: var(--radius); background: radial-gradient(120% 140% at 0% 0%, #1b2a55 0%, #0c1430 45%, #070b1c 100%); color: #fff; box-shadow: 0 18px 40px -18px rgb(7 11 28 / 0.55), inset 0 0 0 1px rgb(255 255 255 / 0.06); }
 .nscc-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; padding: 1.5px; background: linear-gradient(115deg, #e2231a, #4f7cff 45%, #76b900 80%, #e2231a); background-size: 300% 100%; animation: nh-border 8s linear infinite; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
@@ -441,6 +479,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 @keyframes nh-blink { 0%, 100% { opacity: .15; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.2); } }
 @keyframes nh-pulse { 70% { box-shadow: 0 0 0 9px rgb(255 59 48 / 0); } 100% { box-shadow: 0 0 0 0 rgb(255 59 48 / 0); } }
 @keyframes nh-shine { 0%, 20% { background-position: 100% 0; } 70%, 100% { background-position: 0% 0; } }
+@media (max-width: 760px) { .hero-net { -webkit-mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.35), rgb(0 0 0 / 0.35)); mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.35), rgb(0 0 0 / 0.35)); } }
 @media (max-width: 640px) { .nscc-hero { padding: 22px 20px 20px; } .nh-sub em { flex-basis: 100%; padding-left: 0; border-left: 0; } }
 @media (prefers-reduced-motion: reduce) { .nscc-hero::before, .nh-grid, .nh-orb, .nh-sweep, .nh-nodes i, .nh-live, .nh-title { animation: none; } .nh-sweep { display: none; } }
 /* ---------- About intro ---------- */
@@ -1068,6 +1107,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 <main id="main">
     <!-- Hero -->
     <section id="top" class="hero">
+        <canvas class="hero-net" aria-hidden="true"></canvas>
         <div class="wrap">
             <div class="hero-grid">
                 <div class="rise">
@@ -2065,7 +2105,8 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 08 Contact -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact is-dark">
+        <span class="ct-edge" aria-hidden="true"></span><span class="ct-orb" aria-hidden="true"></span>
         <div class="wrap contact-grid">
             <div>
                 <span class="eyebrow mono"><b>08</b> Get in touch</span>
@@ -2239,6 +2280,57 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
         all.forEach((x) => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
         tl.dataset.filter = b.dataset.f;
     }));
+})();
+</script>
+<script>
+/* Hero background: GPU-cluster constellation with packets on links */
+(() => {
+    const cv = document.querySelector('.hero-net'); if (!cv) return;
+    const hero = cv.parentElement, ctx = cv.getContext('2d');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const COLS = ['37,99,235', '118,185,0', '226,35,26'];
+    let W, H, dpr, nodes = [], packets = [], mx = 0, my = 0, run = false, raf;
+    const size = () => {
+        dpr = Math.min(2, devicePixelRatio || 1); W = hero.clientWidth; H = hero.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const n = Math.round(Math.min(W < 700 ? 34 : 90, Math.max(20, W * H / (W < 700 ? 11000 : 15000)))); nodes = [];
+        for (let i = 0; i < n; i++) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18, r: 1.6 + Math.random() * 2.2, c: Math.random() < .55 ? 0 : (Math.random() < .7 ? 1 : 2), ph: Math.random() * 6.28 });
+        packets = [];
+    };
+    const LINK = () => (W < 700 ? 110 : 165);
+    const frame = (t) => {
+        ctx.clearRect(0, 0, W, H);
+        const L = LINK(), ox = mx * 14, oy = my * 10;
+        for (const n of nodes) { if (!reduce) { n.x += n.vx; n.y += n.vy; if (n.x < 0 || n.x > W) n.vx *= -1; if (n.y < 0 || n.y > H) n.vy *= -1; } }
+        for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < L) {
+                ctx.strokeStyle = `rgba(37,99,235,${(1 - d / L) * .38})`; ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.moveTo(a.x + ox, a.y + oy); ctx.lineTo(b.x + ox, b.y + oy); ctx.stroke();
+                if (!reduce && packets.length < (W < 700 ? 6 : 14) && Math.random() < .0016) packets.push({ a, b, p: 0, s: .006 + Math.random() * .01, c: Math.random() < .6 ? 1 : 2 });
+            }
+        }
+        packets = packets.filter((k) => {
+            k.p += k.s; if (k.p >= 1 || Math.hypot(k.a.x - k.b.x, k.a.y - k.b.y) > L) return false;
+            const x = k.a.x + (k.b.x - k.a.x) * k.p + ox, y = k.a.y + (k.b.y - k.a.y) * k.p + oy;
+            const g = ctx.createRadialGradient(x, y, 0, x, y, 9); g.addColorStop(0, `rgba(${COLS[k.c]},.9)`); g.addColorStop(1, `rgba(${COLS[k.c]},0)`);
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 9, 0, 6.28); ctx.fill(); return true;
+        });
+        for (const n of nodes) {
+            const pulse = reduce ? 1 : .75 + .25 * Math.sin(t / 900 + n.ph);
+            ctx.fillStyle = `rgba(${COLS[n.c]},${.75 * pulse})`; ctx.beginPath(); ctx.arc(n.x + ox, n.y + oy, n.r, 0, 6.28); ctx.fill();
+            ctx.strokeStyle = `rgba(${COLS[n.c]},${.25 * pulse})`; ctx.beginPath(); ctx.arc(n.x + ox, n.y + oy, n.r + 4, 0, 6.28); ctx.stroke();
+        }
+        if (run && !reduce) raf = requestAnimationFrame(frame);
+    };
+    const start = () => { if (run) return; run = true; raf = requestAnimationFrame(frame); };
+    const stop = () => { run = false; cancelAnimationFrame(raf); };
+    size(); cv.classList.add('is-ready');
+    addEventListener('resize', () => { size(); if (reduce) frame(0); });
+    if (reduce) { frame(0); return; }
+    if (matchMedia('(pointer: fine)').matches) hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => (e.isIntersecting && !document.hidden ? start() : stop())).observe(hero); else start();
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
 })();
 </script>
 </body>
