@@ -1178,6 +1178,9 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .btn-nvidia:hover::after { transform: translateX(120%); }
 @media (prefers-reduced-motion: reduce) { .nav-x .nav-pill, .icon-btn.icon-li, .btn-nvidia::after { transition: none; } .icon-btn.icon-li:hover { transform: none; } }
 /* ---------- Footer (interactive) ---------- */
+.fx-footer { position: relative; isolation: isolate; overflow: hidden; background: #0b1729; color: #a9b6cc; border-top: 0; }
+.fx-footer::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, #e2231a, var(--blue) 35%, var(--nvidia)); }
+.fx-footer::after { content: ""; position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px); background-size: 40px 40px; -webkit-mask-image: radial-gradient(ellipse at 70% 0%, #000, transparent 70%); mask-image: radial-gradient(ellipse at 70% 0%, #000, transparent 70%); }
 .ff-glow { position: absolute; z-index: -1; width: 420px; height: 420px; left: var(--gx, 70%); top: var(--gy, 0%); transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgb(118 185 0 / 0.16), rgb(37 99 235 / 0.10) 40%, transparent 70%); pointer-events: none; transition: left 0.4s ease-out, top 0.4s ease-out; }
 .ff-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 1.2fr; gap: 48px; padding-block: 56px 36px; }
 .ff-id { display: inline-flex; align-items: center; gap: 14px; }
