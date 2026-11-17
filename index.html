@@ -213,6 +213,17 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .track-item.is-latest img { width: 84px; height: 84px; }
 .track-copy { display: flex; flex-direction: column; gap: 5px; }
 .track-item.is-latest .mono { color: var(--nvidia-ink); }
+.track-item.is-course { grid-column: 1 / -1; flex-direction: row; gap: 14px; padding: 10px 16px; border-style: dashed; }
+.track-item.is-course img { width: 60px; height: 60px; }
+.track-item.is-course .track-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.track-item.is-course small { text-align: left; }
+.lead.is-course { grid-column: 1 / -1; flex-direction: row; align-items: stretch; border-style: dashed; }
+.lead.is-course .plate { width: 120px; height: auto; flex: none; border-bottom: 0; border-right: 1px solid var(--line-2); background: #fff; }
+.lead.is-course .plate img { width: 84px; height: 84px; }
+.lead.is-course .lead-body { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 18px; padding: 14px 20px; }
+.lead.is-course h4 { font-size: 16px; }
+.lead.is-course .verify { margin: 0 0 0 auto; padding: 0; }
+.lead .status.is-course { background: var(--paper-2, #f1f3f5); color: var(--ink-3); border-color: var(--line, #dfe3e8); }
 .track-item.is-latest small { text-align: left; font-size: 14px; color: var(--ink); }
 .track-issued { font-size: 12px; color: var(--ink-3); }
 .track-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-2); font-size: 13.5px; color: var(--ink-3); }
@@ -1076,9 +1087,13 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <img src="badges/nvidia-nca-aiio.png" alt="NVIDIA-Certified Associate: AI Infrastructure and Operations badge" width="104" height="104" />
                             <span class="mono">NCA-AIIO</span><small>Associate · AI Infra &amp; Ops</small>
                         </a>
+                        <a class="track-item is-course" href="https://www.credly.com/badges/f3de53ce-90e4-4b48-a80f-2dedc7711cbb/public_url" target="_blank" rel="noreferrer">
+                            <img src="badges/nvidia-intro-ai-datacenter.png" alt="NVIDIA Introduction to AI in the Data Center course badge" width="60" height="60" />
+                            <span class="track-copy"><span class="mono">NVIDIA course badge</span><small>Introduction to AI in the Data Center · 2020</small></span>
+                        </a>
                     </div>
                     <div class="track-foot">
-                        <span><span class="dot-ok"></span>All five active through 2028</span>
+                        <span><span class="dot-ok"></span>5 certifications active through 2028 · plus 1 course badge</span>
                         <a href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer">NVIDIA wallet <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                     </div>
                 </aside>
@@ -1140,6 +1155,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 <a href="#credentials" title="NVIDIA-Certified Professional: AI Operations"><img src="badges/nvidia-ncp-aio.png" alt="NVIDIA-Certified Professional: AI Operations" width="76" height="76" /></a>
                 <a href="#credentials" title="NVIDIA-Certified Professional: AI Networking"><img src="badges/nvidia-ncp-ain.png" alt="NVIDIA-Certified Professional: AI Networking" width="76" height="76" /></a>
                 <a href="#credentials" title="NVIDIA-Certified Associate: AI Infrastructure and Operations"><img src="badges/nvidia-nca-aiio.png" alt="NVIDIA-Certified Associate: AI Infrastructure and Operations" width="76" height="76" /></a>
+                <a href="#credentials" title="NVIDIA course badge: Introduction to AI in the Data Center"><img src="badges/nvidia-intro-ai-datacenter.png" alt="NVIDIA Introduction to AI in the Data Center course badge" width="76" height="76" /></a>
                 <a href="#credentials" title="Rafay Certified GPU Cloud Professional"><img src="badges/rafay-gpu-cloud-professional.png" alt="Rafay Certified GPU Cloud Professional" width="76" height="76" /></a>
                 <a href="#credentials" title="Rafay Certified Associate"><img src="badges/rafay-certified-associate.png" alt="Rafay Certified Associate" width="76" height="76" /></a>
                 <a href="#credentials" title="AI Tokenomics Fundamentals 2026"><img src="badges/lf-ai-tokenomics.png" alt="AI Tokenomics Fundamentals 2026" width="76" height="76" /></a>
@@ -1315,7 +1331,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                         designing and operating the foundations that applications and compute workloads depend on.
                     </p>
                     <blockquote class="about-quote">From enterprise Linux and networking to AI factories and GPU-powered computing platforms<span>.</span></blockquote>
-                    <blockquote class="about-quote">Singapore’s first and only holder of 6 NVIDIA AI Infrastructure certifications (NVIDIA Certification Directory).<span>.</span></blockquote>
+                    <blockquote class="about-quote">Singapore’s first and only holder of 6 NVIDIA AI Infrastructure credentials (NVIDIA Certification Directory).</blockquote>
                     <blockquote class="about-quote">Delivered 4.134 EFLOPS (FP16) AI Factories on NVIDIA DGX | HGX Architectures <span>.</span></blockquote>                    
                     <blockquote class="about-quote">Delivered AI/HPC Supercomputing workshops for Singapore Universities NUS, NTU, SUTD, SMU, SIT<span>.</span></blockquote>
                     
@@ -1328,7 +1344,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 <dl class="fx-list">
                     <div class="fx-item fx-pro" style="--i:0"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><span class="fx-label">Focus</span></dt><dd><span class="fx-chips"><span>AI Factory</span><span>Supercomputing</span><span>HPC</span></span><span class="fx-desc">Platform architecture &amp; engineering leadership</span></dd></div>
                     <div class="fx-item fx-pro" style="--i:1"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="fx-label">Experience</span></dt><dd><span class="fx-chips"><span>24+ years</span></span><span class="fx-desc">Enterprise infrastructure to AI platforms</span></dd></div>
-                    <div class="fx-item fx-cred" style="--i:2"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>NVIDIA</span><span>BeeGFS</span><span>WEKA</span><span>Lustre</span></span><span class="fx-desc">6 NVIDIA AI Infrastructure Certifications, plus HPC Parallel Storage</span></dd></div>
+                    <div class="fx-item fx-cred" style="--i:2"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>NVIDIA</span><span>BeeGFS</span><span>WEKA</span><span>Lustre</span></span><span class="fx-desc">5 NVIDIA AI Infrastructure certifications + 1 NVIDIA course badge, plus HPC parallel storage</span></dd></div>
                     <div class="fx-item fx-cred" style="--i:3"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fx-label">Certified</span></dt><dd><span class="fx-chips"><span>CKA</span><span>CKAD</span><span>Terraform</span></span><span class="fx-desc">Linux Foundation &amp; HashiCorp Certifications</span></dd></div>
                     <div class="fx-item fx-ai" style="--i:4"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><span class="fx-label">AI Architectures</span></dt><dd><span class="fx-chips"><span>NVIDIA DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI Factories based on NVIDIA accelerated computing and reference architectures</span></dd></div>
                     <div class="fx-item fx-ai" style="--i:5"><dt><span class="fx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><span class="fx-label">AI Compute</span></dt><dd><span class="fx-chips"><span>DGX</span><span>HGX</span><span>MGX</span></span><span class="fx-desc">AI factories built on NVIDIA reference architectures, delivered with OEM and ODM partners including Dell, Supermicro and Wiwynn.</span></dd></div>
@@ -1418,6 +1434,15 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <h4>NVIDIA-Certified Associate: AI Infrastructure and Operations</h4>
                             <p class="dates">Issued Jan 2026 · valid to Jan 2028</p>
                             <a class="verify" href="https://credential.nvidia.com/e8455c5c-7cfa-4f63-8a02-37ea5b690d3d" target="_blank" rel="noreferrer">Verify on NVIDIA <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+                        </div>
+                    </article>
+                    <article class="lead is-course">
+                        <div class="plate"><img src="badges/nvidia-intro-ai-datacenter.png" alt="NVIDIA Introduction to AI in the Data Center badge" width="150" height="150" loading="lazy" /></div>
+                        <div class="lead-body">
+                            <div class="lead-meta"><span class="code">NVIDIA</span><span class="status is-course">Course</span></div>
+                            <h4>Introduction to AI in the Data Center</h4>
+                            <p class="dates">Completed 2020 · NVIDIA Academy course badge</p>
+                            <a class="verify" href="https://www.credly.com/badges/f3de53ce-90e4-4b48-a80f-2dedc7711cbb/public_url" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                         </div>
                     </article>
                 </div>
@@ -1953,7 +1978,6 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                         <li>Introduction to Base Command Manager <code>2024</code></li>
                         <li>NVIDIA AI Enterprise Administration <code>v3.0</code></li>
                         <li>AI Infrastructure &amp; Operations Fundamentals</li>
-                        <li>Introduction to AI in the Data Center <code>2020</code></li>
                     </ul>
                 </div>
                 <div class="learn">
