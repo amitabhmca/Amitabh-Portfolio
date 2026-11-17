@@ -417,7 +417,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     background-size: 200% 100%; background-position: 0 0; transition: background-position 0.6s ease; box-shadow: inset 0 -3px 0 var(--blue-wash); }
 .ai-mark:hover { background-position: 100% 0; }
 /* Lifecycle line: two lines on desktop, natural wrap on small screens */
-@media (min-width: 641px) { .ai-lead-2line { font-size: clamp(18px, 1.9vw, 25px) !important; } .ai-lead-2line .ai-line { display: block; white-space: nowrap; } }
+@media (min-width: 641px) { .ai-lead-2line { font-size: clamp(18px, 1.9vw, 25px) !important; } .ai-lead-2line .ai-lines { display: inline-block; } .ai-lead-2line .ai-line { display: block; white-space: nowrap; } .ai-lead-2line .ai-line-fit { text-align: justify; text-align-last: justify; } }
 
 .ai-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .ai-stat { position: relative; padding: 18px 20px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
@@ -1155,7 +1155,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                         </div>
                     </div>
                 
-                    <p class="ai-lead ai-lead-2line"><span class="ai-line">from initial design through commissioning,</span> <span class="ai-line"><span class="ai-mark">Day 0 (Design),</span> Day 1 (Build) <span class="ai-mark">&amp; Day 2 (Operate)</span>.</span></p>
+                    <p class="ai-lead ai-lead-2line"><span class="ai-lines"><span class="ai-line ai-line-fit">from initial design through commissioning,</span> <span class="ai-line"><span class="ai-mark">Day 0 (Design),</span> Day 1 (Build) <span class="ai-mark">&amp; Day 2 (Operate)</span>.</span></span></p>
                 
                     <ol class="ai-verbs" aria-label="GPU infrastructure lifecycle">
                         <li style="--i:0">Design</li>
