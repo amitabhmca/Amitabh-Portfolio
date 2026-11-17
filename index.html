@@ -7,7 +7,7 @@
 <meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional with five NVIDIA certifications, including AI Rack and Interconnect, AI Infrastructure, AI Operations and AI Networking; Certified BeeGFS and WEKA parallel storage engineer." />
 <meta name="theme-color" content="#ffffff" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Amitabh Pandey —  AI Factory, HPC & Supercomputing Architect | Delivered 4.134 EFLOPS (FP16) AI Factories" />
+<meta property="og:title" content="Amitabh Pandey — AI Factory, HPC & Supercomputing Architect | Delivered 4.134 EFLOPS (FP16) AI Factories" />
 <meta property="og:description" content="NVIDIA-Certified AI infrastructure professional. From enterprise Linux and networking to AI factories and GPU-powered computing platforms." />
 <meta property="og:url" content="https://amitabhpandey.com/" />
 <meta property="og:site_name" content="Amitabh Pandey" />
@@ -1447,12 +1447,38 @@ html:not([data-theme-pref]) .theme-btn .ti-system,html[data-theme-pref="system"]
 @media (max-width:960px){.theme-btn .theme-lbl{display:none}.theme-btn{padding:0 9px}}
 @media (min-width:1201px){.header-row .main-nav{margin-left:auto}.header-row .header-right{display:flex;margin-left:12px}.header-right .menu-toggle{display:none}}
 @media (prefers-reduced-motion:reduce){.theme-menu,.theme-btn .chev{transition:none}}
+
+/* ---- Share ---- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+button.contact-link, button.ff-link { width: 100%; font: inherit; text-align: left; cursor: pointer; color: inherit; }
+.contact-link.is-share .ico { background: linear-gradient(135deg, #7c8cff, #4f7cff); }
+.contact.is-dark .contact-link.is-share { border-style: dashed; }
+.ff-link.ff-sh { --c: #6d7cff; }
+.share-pop { position: fixed; z-index: 120; width: 240px; padding: 8px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: 0 24px 48px -18px rgb(10 18 34 / .45), 0 2px 6px rgb(10 18 34 / .08); opacity: 0; transform: translateY(6px) scale(.98); transform-origin: var(--ox, 50%) var(--oy, 100%); transition: opacity .16s, transform .16s; }
+.share-pop.is-open { opacity: 1; transform: none; }
+.share-pop[hidden], .share-pop [hidden] { display: none !important; }
+.share-h { margin: 4px 8px 6px; font: 500 11px/1.2 var(--font-mono, monospace); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
+.share-pop a, .share-pop button { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 44px; padding: 6px 8px; border: 0; border-radius: 10px; background: none; font: 500 14.5px/1.2 var(--font-body, system-ui); color: var(--ink); text-align: left; text-decoration: none; cursor: pointer; }
+.share-pop a:hover, .share-pop button:hover, .share-pop a:focus-visible, .share-pop button:focus-visible { background: var(--blue-wash); outline: none; }
+.sp-ico { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 9px; color: #fff; font-size: 17px; background: var(--c, var(--blue)); }
+.sp-li { --c: #0a66c2; } .sp-wa { --c: #1fa855; } .sp-x { --c: #111; } .sp-mail { --c: #64748b; } .sp-copy { --c: var(--blue); } .sp-more { --c: #8b95a7; }
+html[data-theme="dark"] .sp-x { --c: #2a3446; }
+.sp-copy.is-done { color: var(--ok, #16a34a); }
+.sp-copy.is-done .sp-ico { background: var(--ok, #16a34a); }
+@media (max-width: 420px) { .share-pop { width: calc(100vw - 24px); } }
+@media (prefers-reduced-motion: reduce) { .share-pop { transition: none; } }
 </style>
 </head>
 <body>
 <!-- Inline icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-arrow-ur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4"/></g></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1c0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.3l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></g></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5a4.5 4.5 0 0 0 6.4.4l3-3a4.5 4.5 0 0 0-6.4-6.4l-1.2 1.2"/><path d="M14 10.5a4.5 4.5 0 0 0-6.4-.4l-3 3a4.5 4.5 0 0 0 6.4 6.4l1.2-1.2"/></g></symbol>
+<symbol id="i-dots" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></g></symbol>
+<symbol id="i-arrow-ur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></symbol>
     <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"/><path d="m8 12 3 3 5-6"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
@@ -2533,6 +2559,11 @@ html:not([data-theme-pref]) .theme-btn .ti-system,html[data-theme-pref="system"]
                     <span><strong>Credly wallet</strong><span>Explore cloud, Linux &amp; other credentials</span></span>
                     <svg class="icon"><use href="#i-arrow-ur"/></svg>
                 </a>
+                <button type="button" class="contact-link is-share" data-share aria-haspopup="menu" aria-expanded="false">
+                    <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></span>
+                    <span><strong>Share this profile</strong><span>LinkedIn, WhatsApp, X, email or copy link</span></span>
+                    <svg class="icon" aria-hidden="true"><use href="#i-arrow-r"/></svg>
+                </button>
             </div>
         </div>
     </section>
@@ -2568,6 +2599,7 @@ html:not([data-theme-pref]) .theme-btn .ti-system,html[data-theme-pref="system"]
                 <a class="ff-link ff-li" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><span class="ff-ico"><svg class="icon"><use href="#i-linkedin"/></svg></span><span><b>LinkedIn</b><small>in/amitabhmca</small></span><svg class="icon ff-go"><use href="#i-arrow-ur"/></svg></a>
                 <a class="ff-link ff-nv" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><span class="ff-ico"><svg class="icon"><use href="#i-badge"/></svg></span><span><b>NVIDIA wallet</b><small>Verified certifications</small></span><svg class="icon ff-go"><use href="#i-arrow-ur"/></svg></a>
                 <a class="ff-link ff-cr" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer"><span class="ff-ico"><svg class="icon"><use href="#i-check"/></svg></span><span><b>Credly wallet</b><small>Digital badges</small></span><svg class="icon ff-go"><use href="#i-arrow-ur"/></svg></a>
+                <button type="button" class="ff-link ff-sh" data-share aria-haspopup="menu" aria-expanded="false"><span class="ff-ico"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></span><span><b>Share profile</b><small>Send this page to someone</small></span><svg class="icon ff-go" aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
             </div>
         </div>
     </div>
@@ -2866,5 +2898,42 @@ document.addEventListener('click',function(e){if(!pick.contains(e.target))open(f
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&pick.classList.contains('is-open')){open(false);btn.focus()}});
 try{mq.addEventListener('change',function(){if((r.dataset.themePref||'system')==='system')apply()})}catch(e){}
 window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h==='light'||h==='dark'){r.dataset.themePref=h;apply()}});apply();})();</script>
+<div class="share-pop" id="share-pop" role="menu" aria-label="Share this profile" hidden>
+    <p class="share-h">Share this profile</p>
+    <a role="menuitem" class="sp-li" data-net="linkedin" target="_blank" rel="noopener noreferrer"><span class="sp-ico"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></span>LinkedIn</a>
+    <a role="menuitem" class="sp-wa" data-net="whatsapp" target="_blank" rel="noopener noreferrer"><span class="sp-ico"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></span>WhatsApp</a>
+    <a role="menuitem" class="sp-x" data-net="x" target="_blank" rel="noopener noreferrer"><span class="sp-ico"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>X</a>
+    <a role="menuitem" class="sp-mail" data-net="email"><span class="sp-ico"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>Email</a>
+    <button type="button" role="menuitem" class="sp-copy" data-net="copy"><span class="sp-ico"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg></span><span class="sp-copy-t">Copy link</span></button>
+    <button type="button" role="menuitem" class="sp-more" data-net="more" hidden><span class="sp-ico"><svg class="icon" aria-hidden="true"><use href="#i-dots"/></svg></span>More options…</button>
+</div>
+<p class="sr-only" id="share-status" aria-live="polite"></p>
+<script>/* Share: native share sheet on touch devices, menu elsewhere */
+(function(){var URL_='https://amitabhpandey.com/',TITLE='Amitabh Pandey — AI Factory, HPC & Supercomputing Architect',TEXT='Amitabh Pandey — AI Factory, HPC & Supercomputing Architect. NVIDIA-certified AI infrastructure professional.';
+var pop=document.getElementById('share-pop'),status=document.getElementById('share-status'),triggers=[].slice.call(document.querySelectorAll('[data-share]'));if(!pop||!triggers.length)return;
+var e=encodeURIComponent,links={linkedin:'https://www.linkedin.com/sharing/share-offsite/?url='+e(URL_),whatsapp:'https://wa.me/?text='+e(TITLE+' '+URL_),x:'https://x.com/intent/post?text='+e(TITLE)+'&url='+e(URL_),email:'mailto:?subject='+e(TITLE)+'&body='+e(TEXT+'\n\n'+URL_)};
+[].forEach.call(pop.querySelectorAll('a[data-net]'),function(a){a.href=links[a.dataset.net]});
+var canNative=!!navigator.share,touch=window.matchMedia&&matchMedia('(pointer: coarse)').matches,cur=null,copyT=pop.querySelector('.sp-copy-t'),copyB=pop.querySelector('.sp-copy');
+if(canNative)pop.querySelector('.sp-more').hidden=false;
+function items(){return [].slice.call(pop.querySelectorAll('a,button')).filter(function(x){return !x.hidden})}
+function place(t){var r=t.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight,m=12,left=Math.min(Math.max(m,r.left+Math.min(r.width,w)/2-w/2+(r.width>w?r.width/2-w/2:0)),innerWidth-w-m),below=r.bottom+8+h<=innerHeight-m,top=below?r.bottom+8:Math.max(m,r.top-8-h);
+pop.style.left=left+'px';pop.style.top=top+'px';pop.style.setProperty('--oy',below?'0%':'100%');}
+function open(t,kb){cur=t;pop.hidden=false;place(t);requestAnimationFrame(function(){pop.classList.add('is-open')});t.setAttribute('aria-expanded','true');if(kb)items()[0].focus();}
+function close(back){if(!cur)return;pop.classList.remove('is-open');pop.hidden=true;cur.setAttribute('aria-expanded','false');if(back)cur.focus();cur=null;}
+function nativeShare(t){try{return navigator.share({title:TITLE,text:TEXT,url:URL_}).catch(function(err){if(t&&(!err||err.name!=='AbortError'))open(t,false)})}catch(err){if(t)open(t,false)}}
+triggers.forEach(function(t){t.addEventListener('click',function(ev){ev.stopPropagation();if(cur===t){close(true);return}close(false);
+ if(canNative&&touch){nativeShare(t);return}open(t,ev.detail===0)})});
+function say(m){status.textContent='';setTimeout(function(){status.textContent=m},30)}
+function copied(){copyB.classList.add('is-done');copyT.textContent='Link copied';say('Link copied to clipboard');setTimeout(function(){copyB.classList.remove('is-done');copyT.textContent='Copy link';close(false)},1400)}
+copyB.addEventListener('click',function(ev){ev.stopPropagation();var done=false;
+ function fallback(){var ta=document.createElement('textarea');ta.value=URL_;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{done=document.execCommand('copy')}catch(x){}document.body.removeChild(ta);if(done)copied();else{copyT.textContent=URL_;}}
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(URL_).then(copied,fallback)}else fallback();});
+pop.querySelector('.sp-more').addEventListener('click',function(){close(false);nativeShare()});
+[].forEach.call(pop.querySelectorAll('a[data-net]'),function(a){a.addEventListener('click',function(){setTimeout(function(){close(false)},50)})});
+document.addEventListener('click',function(ev){if(cur&&!pop.contains(ev.target))close(false)});
+document.addEventListener('keydown',function(ev){if(!cur)return;if(ev.key==='Escape'){ev.preventDefault();close(true);return}
+ if(ev.key==='ArrowDown'||ev.key==='ArrowUp'){ev.preventDefault();var it=items(),i=it.indexOf(document.activeElement);i=ev.key==='ArrowDown'?(i+1)%it.length:(i<=0?it.length-1:i-1);it[i].focus()}
+ if(ev.key==='Tab'&&!pop.contains(document.activeElement)){close(false)}});
+addEventListener('resize',function(){close(false)});addEventListener('scroll',function(){if(cur)place(cur)},{passive:true});})();</script>
 </body>
 </html>
