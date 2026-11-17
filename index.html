@@ -421,6 +421,19 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .about-copy p + p { margin-top: 18px; }
 .about-quote { margin-top: 34px; padding: 24px 28px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--blue); font-family: var(--font-display); font-size: 23px; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); box-shadow: var(--shadow); }
 .about-quote span { color: var(--blue); }
+/* 01 About: data-centre floor-plan background */
+#about { position: relative; isolation: isolate; overflow: hidden; }
+#about::before { content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22132%22%20height%3D%2296%22%20viewBox%3D%220%200%20132%2096%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%232563eb%22%20stroke-opacity%3D%22.11%22%20stroke-width%3D%221%22%3E%3Crect%20x%3D%228.5%22%20y%3D%2212.5%22%20width%3D%2248%22%20height%3D%2270%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2266.5%22%20y%3D%2212.5%22%20width%3D%2248%22%20height%3D%2270%22%20rx%3D%223%22/%3E%3Cpath%20d%3D%22M14%2022h36M14%2030h36M14%2038h36M14%2046h36M14%2054h36M14%2062h36M72%2022h36M72%2030h36M72%2038h36M72%2046h36M72%2054h36M72%2062h36%22/%3E%3C/g%3E%3Cg%20fill%3D%22%2376b900%22%20fill-opacity%3D%22.22%22%3E%3Ccircle%20cx%3D%2248%22%20cy%3D%2272%22%20r%3D%221.6%22/%3E%3Ccircle%20cx%3D%22106%22%20cy%3D%2272%22%20r%3D%221.6%22/%3E%3C/g%3E%3C/svg%3E"); background-size: 132px 96px; -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, transparent 30%, #000 85%), linear-gradient(#000, #000); -webkit-mask-composite: source-in; mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, transparent 30%, #000 85%); opacity: .9; }
+#about::after { content: ""; position: absolute; inset: -20%; z-index: -3; pointer-events: none; background: radial-gradient(40% 35% at 18% 20%, rgb(37 99 235 / .10), transparent 70%), radial-gradient(38% 32% at 85% 70%, rgb(118 185 0 / .10), transparent 70%), radial-gradient(30% 28% at 70% 10%, rgb(226 35 26 / .05), transparent 70%); animation: ab-aurora 26s ease-in-out infinite alternate; }
+@keyframes ab-aurora { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(3%, 2%) scale(1.05); } 100% { transform: translate(-2%, 3%) scale(1.02); } }
+.ab-fx { position: absolute; inset: 0; z-index: -1; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(50% - 600px), transparent calc(50% - 560px), transparent calc(50% + 560px), #000 calc(50% + 600px)); mask-image: linear-gradient(90deg, #000 0, #000 calc(50% - 600px), transparent calc(50% - 560px), transparent calc(50% + 560px), #000 calc(50% + 600px)); }
+.ab-fx i { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb(37 99 235 / .14) 15%, rgb(118 185 0 / .14) 85%, transparent); }
+.ab-fx i::after { content: ""; position: absolute; top: -2px; left: 0; width: 120px; height: 5px; border-radius: 5px; background: linear-gradient(90deg, transparent, rgb(118 185 0 / .9), #fff); filter: drop-shadow(0 0 6px rgb(118 185 0 / .8)); animation: ab-packet 9s linear infinite; }
+.ab-fx i:nth-child(1) { top: 14%; } .ab-fx i:nth-child(1)::after { animation-delay: -2s; }
+.ab-fx i:nth-child(2) { top: 47%; } .ab-fx i:nth-child(2)::after { animation-duration: 12s; animation-delay: -7s; background: linear-gradient(90deg, transparent, rgb(37 99 235 / .9), #fff); filter: drop-shadow(0 0 6px rgb(37 99 235 / .8)); }
+.ab-fx i:nth-child(3) { top: 82%; } .ab-fx i:nth-child(3)::after { animation-duration: 10s; animation-delay: -4s; }
+@keyframes ab-packet { from { transform: translateX(-140px); } to { transform: translateX(100vw); } }
+@media (prefers-reduced-motion: reduce) { #about::after, .ab-fx i::after { animation: none; } .ab-fx i::after { display: none; } }
 /* About: executive bio layout */
 .ab { display: grid; gap: 56px; }
 .ab-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 64px; align-items: start; }
@@ -1424,6 +1437,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 
     <!-- 01 About -->
     <section id="about" class="section">
+        <div class="ab-fx" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="wrap">
             <div class="section-head">
                 <div>
