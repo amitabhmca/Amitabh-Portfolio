@@ -280,6 +280,8 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--blue-strong); font-weight: 500; }
 .eyebrow b { display: inline-grid; place-items: center; min-width: 30px; height: 22px; padding-inline: 6px; border-radius: 6px; background: var(--blue); color: #fff; font-weight: 500; font-size: 11.5px; }
 .section-head h2 { margin-top: 16px; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; }
+#about .section-head { grid-template-columns: 1fr; }
+#about .about-title { max-width: none; text-wrap: balance; }
 .section-head p { font-size: 16.5px; line-height: 1.7; color: var(--ink-3); }
 
 /* ---------- Credentials ---------- */
@@ -1428,7 +1430,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
             <div class="section-head">
                 <div>
                     <span class="eyebrow mono"><b>01</b> About</span>
-                    <h2>Meet Amitabh. The architect behind AI factories.</h2>
+                    <h2 class="about-title">Meet Amitabh.<br> The architect behind AI&nbsp;factories.</h2>
                 </div>
             </div>
             <div class="ab">
