@@ -960,8 +960,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .plat-x .px-foot b { color: #fff; }
 .plat-x .px-dot.px-hpe { background: #01a982; }
 /* Platforms panel: vendor brand colours */
-@font-face { font-family: "Archivo"; src: url("fonts/Archivo.woff") format("woff"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
-.plat-x { --pv-font: "Archivo", var(--font-body); --pv-cond: "Archivo", var(--font-body); font-family: var(--pv-font); --kh: "Archivo", var(--font-body); --kh-w: 800; --kh-s: 72%; --kt: "Archivo", var(--font-body); --kt-w: 800; --kt-s: 118%; --ku: "Archivo", var(--font-body); --ku-s: 85%; }
+.plat-x { --kh-w: 700; --kt-w: 800; }
 /* Platforms panel: NVIDIA keynote typography */
 .plat-x .kn-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 10px 12px 14px; margin-bottom: 6px; border-bottom: 1px solid rgb(255 255 255 / .1); }
 .kn-head span { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: #76b900; }
@@ -982,6 +981,22 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .plat-x .pv-read b { font-family: var(--kt); font-stretch: var(--kt-s); font-weight: var(--kt-w); font-size: 19px; color: #b6f36a; letter-spacing: .04em; }
 .plat-x .px-foot { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 13px; letter-spacing: .12em; }
 .plat-x .px-foot > span:last-child { display: none; }
+/* Platforms panel: use the site's own fonts, matching the NSCC cards */
+.plat-x { --kh: var(--font-display); --kh-s: 100%; --kt: var(--font-display); --kt-s: 100%; --ku: var(--font-body); --ku-s: 100%; --pv-font: var(--font-body); --pv-cond: var(--font-display); font-family: var(--font-body); }
+.kn-head span { font-family: var(--font-mono); font-weight: 500; font-size: 12.5px; letter-spacing: .1em; }
+.kn-head strong { font-weight: 800; font-size: 34px; letter-spacing: -0.035em; text-transform: none; }
+.kn-head em { font-weight: 800; letter-spacing: -0.03em; }
+.kn-head em small { font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; }
+.plat-x .px-name { font-weight: 700; font-size: 17px; letter-spacing: -0.015em; text-transform: none; line-height: 1.2; }
+.plat-x .px-chips span { font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: 0; }
+.plat-x .px-gpu .px-chips span { font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: -0.01em; }
+.plat-x .px-hpe .px-chips span { text-transform: none; letter-spacing: 0; }
+.plat-x .pv-arch-label { font-family: var(--font-mono); font-weight: 500; font-size: 11.5px; letter-spacing: .1em; }
+.plat-x .pv-arch button { font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0; text-transform: none; border-radius: 999px; }
+.plat-x .pv-arch button small { font-family: var(--font-mono); font-weight: 500; font-size: 11.5px; }
+.plat-x .pv-read { font-family: var(--font-body); font-weight: 500; font-size: 14.5px; letter-spacing: 0; }
+.plat-x .pv-read b { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.01em; }
+.plat-x .px-foot { font-family: var(--font-mono); font-weight: 500; font-size: 11.5px; letter-spacing: .04em; text-transform: none; }
 @media (max-width: 640px) { .kn-head em small { max-width: 120px; margin-left: auto; } .kn-head strong { font-size: 24px; } .kn-head em { font-size: 28px; } .plat-x .px-name { font-size: 17px; } .plat-x .px-gpu .px-chips span { font-size: 15.5px; } }
 .plat-x .px-nv, .plat-x .px-gpu { --c: #76b900; --wash: rgb(118 185 0 / 0.14); --ink: #c2f57f; --ln: rgb(118 185 0 / 0.45); }
 .plat-x .px-plat { --c: #5b8cff; --wash: rgb(91 140 255 / 0.12); --ink: #c6d4ff; --ln: rgb(91 140 255 / 0.38); }
