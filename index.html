@@ -260,6 +260,21 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 
 /* ---------- Sections ---------- */
 .section { padding-block: 104px; scroll-margin-top: 68px; }
+/* Section dividers: fibre-trace line with section label */
+.sx-wrap { position: relative; z-index: 3; height: 0; }
+.sx-div { position: absolute; z-index: 2; left: 50%; top: 0; width: min(1140px, calc(100% - 48px)); transform: translate(-50%, -50%); display: flex; align-items: center; gap: 14px; pointer-events: none; }
+.sx-line { flex: 1; height: 1px; transform: scaleX(0); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+.sx-l { background: linear-gradient(90deg, transparent, var(--blue-line) 40%, var(--blue)); transform-origin: 100% 50%; }
+.sx-r { background: linear-gradient(90deg, var(--nvidia), var(--nvidia-line) 60%, transparent); transform-origin: 0 50%; }
+.sx-tag { display: inline-flex; align-items: center; gap: 8px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: #fff; box-shadow: 0 6px 16px -10px rgb(15 23 42 / .35); font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; opacity: 0; transform: translateY(4px); transition: opacity .5s .25s, transform .5s .25s; }
+.sx-tag b { display: inline-grid; place-items: center; min-width: 30px; height: 22px; padding-inline: 6px; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--nvidia)); color: #fff; font-weight: 600; font-size: 10.5px; letter-spacing: .04em; }
+.sx-dot { position: absolute; left: 0; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px var(--blue), 0 0 12px 3px rgb(37 99 235 / .55); opacity: 0; }
+.sx-div.is-in .sx-line { transform: scaleX(1); }
+.sx-div.is-in .sx-tag { opacity: 1; transform: none; }
+.sx-div.is-in .sx-dot { animation: sx-run 2.6s .9s cubic-bezier(.45,0,.2,1) forwards; }
+@keyframes sx-run { 0% { left: 0; opacity: 0; } 8% { opacity: 1; } 45% { box-shadow: 0 0 0 2px var(--blue), 0 0 12px 3px rgb(37 99 235 / .55); } 60% { box-shadow: 0 0 0 2px var(--nvidia), 0 0 14px 4px rgb(118 185 0 / .6); } 92% { opacity: 1; } 100% { left: calc(100% - 6px); opacity: 0; } }
+@media (max-width: 640px) { .sx-div { width: calc(100% - 32px); gap: 10px; } .sx-tag { font-size: 10px; letter-spacing: .1em; } }
+@media (prefers-reduced-motion: reduce) { .sx-line { transform: none; transition: none; } .sx-tag { opacity: 1; transform: none; transition: none; } .sx-dot { display: none; } }
 .section.is-alt { background: var(--page-2); }
 .section-head { display: grid; grid-template-columns: 1fr minmax(0, 380px); gap: 40px; align-items: end; margin-bottom: 52px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--blue-strong); font-weight: 500; }
@@ -1587,6 +1602,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 02 Certifications -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>02</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="credentials" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
@@ -1898,6 +1914,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 03 Capabilities -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>03</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="capabilities" class="section">
         <div class="wrap">
             <div class="section-head">
@@ -1993,6 +2010,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 04 Journey -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>04</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="journey" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
@@ -2081,6 +2099,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 05 Work -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>05</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="work" class="section">
         <div class="wrap">
             <div class="section-head">
@@ -2124,6 +2143,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 06 Recognition -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>06</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="recognition" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
@@ -2161,6 +2181,7 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     </section>
 
     <!-- 07 Learning -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>07</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="learning" class="section">
         <div class="wrap">
             <div class="section-head">
@@ -2552,6 +2573,16 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     fit();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     let r; addEventListener('resize', () => { cancelAnimationFrame(r); r = requestAnimationFrame(fit); });
+})();
+</script>
+<script>
+/* Section dividers: draw the line and run the dot once when scrolled into view */
+(() => {
+    const ds = document.querySelectorAll('.sx-div');
+    if (!ds.length) return;
+    if (!('IntersectionObserver' in window)) { ds.forEach((d) => d.classList.add('is-in')); return; }
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
+    ds.forEach((d) => io.observe(d));
 })();
 </script>
 </body>
