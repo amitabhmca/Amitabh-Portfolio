@@ -890,6 +890,79 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .px-anim .px-item { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.25s; transition-delay: calc(var(--i) * 70ms), calc(var(--i) * 70ms), 0s; }
 .px-anim.is-in .px-item { opacity: 1; transform: none; }
 .px-anim.is-in .px-item:hover { transform: translateX(3px); transition-delay: 0s; }
+/* Platforms panel: dark interactive theme */
+.plat-x { margin-top: 22px; padding: 12px; border: 0; color: #fff; background: radial-gradient(120% 110% at 0% 0%, #1b2a55 0%, #0c1430 50%, #070b1c 100%); box-shadow: 0 18px 40px -18px rgb(7 11 28 / 0.55), inset 0 0 0 1px rgb(255 255 255 / 0.06); --mx: 70%; --my: 30%; }
+.plat-x::before { inset: 0; height: auto; border-radius: inherit; padding: 1.5px; background: linear-gradient(115deg, #4f7cff, #76b900 45%, #01a982 70%, #4f7cff); background-size: 300% 100%; animation: nh-border 9s linear infinite; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.plat-x::after { inset: auto -20% -50% auto; width: 70%; background: radial-gradient(circle, rgb(118 185 0 / 0.28), transparent 65%); filter: blur(10px); animation: nh-float 12s ease-in-out infinite; }
+.plat-x .pv-glow { position: absolute; z-index: -1; left: -120px; top: -120px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgb(47 107 255 / 0.35), transparent 65%); filter: blur(10px); pointer-events: none; animation: nh-float 10s ease-in-out infinite reverse; }
+.plat-x .pv-grid { position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: radial-gradient(rgb(255 255 255 / 0.13) 1px, transparent 1.2px); background-size: 18px 18px; -webkit-mask-image: radial-gradient(ellipse 85% 85% at 60% 40%, #000 20%, transparent 80%); mask-image: radial-gradient(ellipse 85% 85% at 60% 40%, #000 20%, transparent 80%); }
+.plat-x .pv-spot { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 0.3s; background: radial-gradient(260px circle at var(--mx) var(--my), rgb(118 185 0 / 0.16), rgb(79 124 255 / 0.08) 40%, transparent 70%); }
+.plat-x:hover .pv-spot { opacity: 1; }
+.plat-x .px-plat { --c: #5b8cff; --wash: rgb(91 140 255 / 0.14); --ink: #b9cbff; --ln: rgb(91 140 255 / 0.42); }
+.plat-x .px-gpu  { --c: #76b900; --wash: rgb(118 185 0 / 0.14); --ink: #c2f57f; --ln: rgb(118 185 0 / 0.45); }
+.plat-x .px-hpe  { --c: #01a982; --wash: rgb(1 169 130 / 0.16); --ink: #8ff0d6; --ln: rgb(1 169 130 / 0.5); }
+.plat-x .px-item { position: relative; border: 1px solid transparent; }
+.plat-x .px-item:hover, .plat-x .px-item.is-hit { background: rgb(255 255 255 / 0.06); border-color: rgb(255 255 255 / 0.1); }
+.plat-x .px-item::before { content: ""; position: absolute; left: -12px; top: 50%; width: 3px; height: 0; border-radius: 3px; background: var(--c); box-shadow: 0 0 10px var(--c); transition: height 0.25s, transform 0.25s; transform: translateY(-50%); }
+.plat-x .px-item:hover::before, .plat-x .px-item.is-hit::before { height: 60%; }
+.plat-x .px-name { color: #fff; }
+.plat-x .px-chips span { cursor: pointer; transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s, opacity 0.25s, filter 0.25s; }
+.plat-x .px-chips span:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+.plat-x .px-chips span.is-hit { background: var(--c); color: #0b1020; border-color: var(--c); transform: translateY(-2px); box-shadow: 0 0 0 3px rgb(255 255 255 / 0.06), 0 8px 18px -6px var(--c); }
+.plat-x .px-plat .px-chips span.is-hit, .plat-x .px-hpe .px-chips span.is-hit { color: #fff; }
+.plat-x.is-filter .px-chips span:not(.is-hit) { opacity: 0.28; filter: saturate(0.3); }
+.plat-x.is-filter .px-item:not(.is-hit) .px-name, .plat-x.is-filter .px-item:not(.is-hit) .px-icon { opacity: 0.4; }
+.pv-arch { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; padding: 12px 12px 0; border-top: 1px dashed rgb(255 255 255 / 0.14); }
+.pv-arch-label { margin-right: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.5); }
+.pv-arch button { display: inline-flex; align-items: baseline; gap: 5px; padding: 5px 10px; font: 500 12.5px var(--font-body); color: rgb(255 255 255 / 0.82); background: rgb(255 255 255 / 0.05); border: 1px solid rgb(255 255 255 / 0.14); border-radius: 999px; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s; }
+.pv-arch button small { font-family: var(--font-mono); font-size: 10.5px; color: rgb(255 255 255 / 0.45); }
+.pv-arch button:hover { border-color: rgb(118 185 0 / 0.6); color: #fff; }
+.pv-arch button[aria-pressed="true"] { background: #76b900; border-color: #76b900; color: #0b1020; box-shadow: 0 6px 16px -6px #76b900; }
+.pv-arch button[aria-pressed="true"] small { color: rgb(11 16 32 / 0.7); }
+.pv-read { display: flex; align-items: center; gap: 8px; min-height: 40px; margin: 10px 12px 0; padding: 9px 12px; border-radius: 10px; background: rgb(0 0 0 / 0.28); border: 1px solid rgb(255 255 255 / 0.08); font-family: var(--font-mono); font-size: 12.5px; color: rgb(255 255 255 / 0.62); }
+.pv-read b { color: #fff; font-weight: 500; }
+.pv-read em { font-style: normal; color: var(--rc, #c2f57f); }
+.pv-caret { color: #76b900; animation: nh-blink 1.1s steps(2) infinite; }
+.plat-x .px-foot { border-top: 0; color: rgb(255 255 255 / 0.55); }
+.plat-x .px-foot b { color: #fff; }
+.plat-x .px-dot.px-hpe { background: #01a982; }
+/* Platforms panel: vendor brand colours */
+@font-face { font-family: "Archivo"; src: url("fonts/Archivo.woff") format("woff"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+.plat-x { --pv-font: "Archivo", var(--font-body); --pv-cond: "Archivo", var(--font-body); font-family: var(--pv-font); --kh: "Archivo", var(--font-body); --kh-w: 800; --kh-s: 72%; --kt: "Archivo", var(--font-body); --kt-w: 800; --kt-s: 118%; --ku: "Archivo", var(--font-body); --ku-s: 85%; }
+/* Platforms panel: NVIDIA keynote typography */
+.plat-x .kn-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 10px 12px 14px; margin-bottom: 6px; border-bottom: 1px solid rgb(255 255 255 / .1); }
+.kn-head span { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: #76b900; }
+.kn-head strong { display: block; margin-top: 4px; font-family: var(--kh); font-stretch: var(--kh-s); font-weight: var(--kh-w); font-size: 30px; line-height: 1; letter-spacing: .01em; text-transform: uppercase; background: linear-gradient(90deg, #fff 0%, #fff 55%, #b6f36a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kn-head em { font-style: normal; font-family: var(--kt); font-stretch: var(--kt-s); font-weight: var(--kt-w); font-size: 34px; line-height: 1; color: #76b900; text-shadow: 0 0 22px rgb(118 185 0 / .55); text-align: right; }
+.kn-head em small { display: block; margin-top: 2px; font-size: 11px; letter-spacing: .14em; color: rgb(255 255 255 / .55); text-shadow: none; font-family: var(--ku); font-stretch: var(--ku-s); }
+.plat-x .px-name { font-family: var(--kh); font-stretch: var(--kh-s); font-weight: var(--kh-w); font-size: 19px; letter-spacing: .03em; text-transform: uppercase; line-height: 1.05; }
+.plat-x .px-nv .px-name, .plat-x .px-gpu .px-name { background: linear-gradient(90deg, #fff 60%, #c2f57f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.plat-x .px-chips span { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 15px; letter-spacing: .03em; padding: 5px 11px; }
+.plat-x .px-gpu .px-chips span { font-family: var(--kt); font-stretch: var(--kt-s); font-weight: var(--kt-w); font-size: 17px; letter-spacing: .04em; padding: 6px 12px; color: #e2ffb8; background: linear-gradient(180deg, rgb(118 185 0 / .32), rgb(118 185 0 / .08)); border: 1px solid rgb(118 185 0 / .65); border-left: 3px solid #76b900; text-shadow: 0 0 12px rgb(118 185 0 / .6); box-shadow: inset 0 1px 0 rgb(255 255 255 / .12); }
+.plat-x .px-gpu .px-chips span:hover, .plat-x .px-gpu .px-chips span.is-hit { background: #76b900; color: #0b1020; text-shadow: none; box-shadow: 0 0 0 3px rgb(118 185 0 / .2), 0 10px 24px -6px #76b900; }
+.plat-x .px-hpe .px-chips span { text-transform: uppercase; letter-spacing: .06em; }
+.plat-x .pv-arch-label { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 12px; letter-spacing: .18em; color: #76b900; }
+.plat-x .pv-arch button { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px; border-radius: 6px; }
+.plat-x .pv-arch button small { font-family: var(--ku); font-stretch: var(--ku-s); font-size: 13px; font-weight: 600; color: #9ad94a; }
+.plat-x .pv-arch button[aria-pressed="true"] small { color: #0b1020; }
+.plat-x .pv-read { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 600; font-size: 16px; letter-spacing: .02em; border-left: 3px solid #76b900; }
+.plat-x .pv-read b { font-family: var(--kt); font-stretch: var(--kt-s); font-weight: var(--kt-w); font-size: 19px; color: #b6f36a; letter-spacing: .04em; }
+.plat-x .px-foot { font-family: var(--ku); font-stretch: var(--ku-s); font-weight: 700; font-size: 13px; letter-spacing: .12em; }
+.plat-x .px-foot > span:last-child { display: none; }
+@media (max-width: 640px) { .kn-head em small { max-width: 120px; margin-left: auto; } .kn-head strong { font-size: 24px; } .kn-head em { font-size: 28px; } .plat-x .px-name { font-size: 17px; } .plat-x .px-gpu .px-chips span { font-size: 15.5px; } }
+.plat-x .px-nv, .plat-x .px-gpu { --c: #76b900; --wash: rgb(118 185 0 / 0.14); --ink: #c2f57f; --ln: rgb(118 185 0 / 0.45); }
+.plat-x .px-plat { --c: #5b8cff; --wash: rgb(91 140 255 / 0.12); --ink: #c6d4ff; --ln: rgb(91 140 255 / 0.38); }
+.plat-x .b-rafay { --c: #08a898; --wash: rgb(8 168 152 / 0.16); --ink: #7fe6da; --ln: rgb(8 168 152 / 0.55); }
+.plat-x .b-k8s   { --c: #326ce5; --wash: rgb(50 108 229 / 0.2); --ink: #a9c3ff; --ln: rgb(50 108 229 / 0.6); }
+.plat-x .px-item.px-hpe { --c: #01a982; --wash: rgb(1 169 130 / 0.16); --ink: #8ff0d6; --ln: rgb(1 169 130 / 0.5); }
+.plat-x .px-dot.px-hpe { border-radius: 2px; }
+.plat-x .px-dot.b-rafay { background: #08a898; } .plat-x .px-dot.b-k8s { background: #326ce5; } .plat-x .px-dot.px-gpu { background: #76b900; }
+.plat-x .px-hpe .px-chips span { font-weight: 600; color: #fff; background: #01a982; border-color: #01a982; border-radius: 2px; }
+.plat-x .px-hpe .px-chips span:hover, .plat-x .px-hpe .px-chips span.is-hit { background: #00c296; }
+.plat-x .px-chips .b-rafay, .plat-x .px-chips .b-k8s { font-weight: 600; }
+.plat-x .px-gpu .px-chips span.is-hit { color: #0b1020; }
+.pv-caret { font-family: var(--font-mono); }
+@media (prefers-reduced-motion: reduce) { .plat-x::before, .plat-x::after, .plat-x .pv-glow, .pv-caret { animation: none; } }
 @media (max-width: 640px) {
     .px-item { grid-template-columns: 42px 1fr; row-gap: 8px; }
     .px-chips { grid-column: 2; }
@@ -1368,16 +1441,29 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                 })();
                 </script>
 <div class="plat-x">
+                <span class="pv-grid" aria-hidden="true"></span><span class="pv-glow" aria-hidden="true"></span><span class="pv-spot" aria-hidden="true"></span>
+                <div class="kn-head"><div><span>Accelerated computing</span><strong>Platforms &amp; GPUs</strong></div><em>11<small>GPU models · K40 → B300</small></em></div>
                 <ul class="px-list" aria-label="Platforms and technologies">
-                    <li class="px-item px-plat" style="--i:0"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V10l5 3V4h3v17H3Z"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span><span class="px-name">NVIDIA AI factories</span><span class="px-chips"><span>GPU compute</span><span>Networking</span><span>Storage</span></span></li>
-                    <li class="px-item px-plat" style="--i:1"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5H7Z"/><path d="M9.5 14.5h5M12 12v5"/></svg></span><span class="px-name">GPU cloud platforms</span><span class="px-chips"><span>Rafay</span><span>Kubernetes</span></span></li>
+                    <li class="px-item px-nv" style="--i:0"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V10l5 3V4h3v17H3Z"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span><span class="px-name">NVIDIA AI factories</span><span class="px-chips"><span>GPU compute</span><span>Networking</span><span>Storage</span></span></li>
+                    <li class="px-item px-plat" style="--i:1"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5H7Z"/><path d="M9.5 14.5h5M12 12v5"/></svg></span><span class="px-name">GPU cloud platforms</span><span class="px-chips"><span class="b-rafay">Rafay</span><span class="b-k8s">Kubernetes</span></span></li>
                     <li class="px-item px-gpu" style="--i:2"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M6.5 6.5h.01M6.5 11.5h.01M6.5 16.5h.01M10 6.5h7.5M10 11.5h7.5M10 16.5h7.5"/></svg></span><span class="px-name">NVIDIA DGX</span><span class="px-chips"><span>H100</span><span>V100</span></span></li>
                     <li class="px-item px-gpu" style="--i:3"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M17 13v8M13 17h8"/></svg></span><span class="px-name">NVIDIA MGX</span><span class="px-chips"><span>GB300</span><span>GB200</span></span></li>
                     <li class="px-item px-gpu" style="--i:4"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><rect x="5" y="7.5" width="3" height="3" rx=".5"/><rect x="9" y="7.5" width="3" height="3" rx=".5"/><rect x="13" y="7.5" width="3" height="3" rx=".5"/><rect x="17" y="7.5" width="2.5" height="3" rx=".5"/><rect x="5" y="13.5" width="3" height="3" rx=".5"/><rect x="9" y="13.5" width="3" height="3" rx=".5"/><rect x="13" y="13.5" width="3" height="3" rx=".5"/><rect x="17" y="13.5" width="2.5" height="3" rx=".5"/></svg></span><span class="px-name">NVIDIA HGX</span><span class="px-chips"><span>B300</span><span>B200</span><span>H200</span><span>H100</span><span>A100</span></span></li>
                     <li class="px-item px-gpu" style="--i:5"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span><span class="px-name">Other NVIDIA GPUs</span><span class="px-chips"><span>L40S</span><span>Tesla K80</span><span>Tesla K40</span></span></li>
-                    <li class="px-item px-plat" style="--i:6"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span><span class="px-name">Supercomputing</span><span class="px-chips"><span>HPE Cray systems</span></span></li>
+                    <li class="px-item px-plat px-hpe" style="--i:6"><span class="px-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span><span class="px-name">Supercomputing</span><span class="px-chips"><span>HPE Cray systems</span></span></li>
                 </ul>
-                <div class="px-foot"><span><i class="px-dot px-plat"></i>Platforms <i class="px-dot px-gpu"></i>NVIDIA hardware</span><span><b>11</b> NVIDIA GPU models · K40 → B300</span></div>
+                <div class="pv-arch" role="group" aria-label="Highlight GPUs by NVIDIA architecture">
+                    <span class="pv-arch-label">Architecture</span>
+                    <button type="button" data-arch="kepler">Kepler<small>2012</small></button>
+                    <button type="button" data-arch="volta">Volta<small>2017</small></button>
+                    <button type="button" data-arch="ampere">Ampere<small>2020</small></button>
+                    <button type="button" data-arch="hopper">Hopper<small>2022</small></button>
+                    <button type="button" data-arch="ada">Ada Lovelace<small>2022</small></button>
+                    <button type="button" data-arch="blackwell">Blackwell<small>2024</small></button>
+                    <button type="button" data-arch="ultra">Blackwell Ultra<small>2025</small></button>
+                </div>
+                <div class="pv-read" aria-live="polite"><span class="pv-caret">&gt;</span><span class="pv-text">Hover a GPU or platform, or pick an architecture</span></div>
+                <div class="px-foot"><span><i class="px-dot px-gpu"></i>NVIDIA <i class="px-dot px-hpe"></i>HPE <i class="px-dot b-rafay"></i>Rafay <i class="px-dot b-k8s"></i>Kubernetes</span><span><b>11</b> NVIDIA GPU models · K40 → B300</span></div>
                 </div>
 <script>
 /* Platforms panel: staggered reveal on scroll */
@@ -2382,6 +2468,71 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
     if (matchMedia('(pointer: fine)').matches) hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; });
     if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => (e.isIntersecting && !document.hidden ? start() : stop())).observe(hero); else start();
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+})();
+</script>
+<script>
+/* Platforms panel: architecture filter, cross-highlight, readout, cursor spotlight */
+(() => {
+    const box = document.querySelector('.plat-x'); if (!box) return;
+    const read = box.querySelector('.pv-text');
+    if (!matchMedia('(pointer: fine)').matches) read.textContent = 'Tap a GPU or platform, or pick an architecture';
+    const def = read.innerHTML;
+    const GPU = {
+        'H100': ['hopper', 'Hopper', 2022], 'H200': ['hopper', 'Hopper', 2024], 'V100': ['volta', 'Volta', 2017],
+        'A100': ['ampere', 'Ampere', 2020], 'B200': ['blackwell', 'Blackwell', 2024], 'B300': ['ultra', 'Blackwell Ultra', 2025],
+        'GB200': ['blackwell', 'Grace Blackwell', 2024], 'GB300': ['ultra', 'Grace Blackwell Ultra', 2025],
+        'L40S': ['ada', 'Ada Lovelace', 2023], 'Tesla K80': ['kepler', 'Kepler', 2014], 'Tesla K40': ['kepler', 'Kepler', 2013]
+    };
+    const INFO = {
+        'GPU compute': 'Dense GPU racks for training and inference', 'Networking': 'NVLink scale-up · InfiniBand & Spectrum-X scale-out',
+        'Storage': 'WEKA · GPFS · Lustre · BeeGFS parallel file systems', 'Rafay': 'GPU cloud orchestration and self-service',
+        'Kubernetes': 'Container orchestration for AI and HPC workloads', 'HPE Cray systems': 'HPE Cray EX supercomputers · ASPIRE2A at NSCC'
+    };
+    const chips = [...box.querySelectorAll('.px-chips span')];
+    chips.forEach((c) => {
+        const t = c.textContent.trim(), g = GPU[t];
+        c.tabIndex = 0;
+        if (g) { c.dataset.arch = g[0]; c.dataset.model = t; }
+    });
+    const rowName = (c) => c.closest('.px-item').querySelector('.px-name').textContent.trim();
+    const clear = () => { box.classList.remove('is-filter'); box.querySelectorAll('.is-hit').forEach((e) => e.classList.remove('is-hit')); };
+    const hit = (list) => { clear(); box.classList.add('is-filter'); list.forEach((c) => { c.classList.add('is-hit'); c.closest('.px-item').classList.add('is-hit'); }); };
+    let pinned = null;
+    const showChip = (c) => {
+        const t = c.textContent.trim(), g = GPU[t];
+        if (g) {
+            const same = chips.filter((x) => x.dataset.model === t), where = [...new Set(same.map(rowName))].join(' · ');
+            hit(same);
+            read.innerHTML = `<b>${t}</b> &nbsp;<em>${g[1]}</em> · ${g[2]} · in ${where}`;
+        } else {
+            hit([c]);
+            read.innerHTML = `<b>${t}</b> &nbsp;<em style="--rc:${getComputedStyle(c).getPropertyValue('--ink').trim() || '#b9cbff'}">${rowName(c)}</em> · ${INFO[t] || ''}`;
+        }
+    };
+    const showArch = (b) => {
+        const list = chips.filter((c) => c.dataset.arch === b.dataset.arch);
+        hit(list);
+        read.innerHTML = `<em>${b.firstChild.textContent}</em> · ${b.querySelector('small').textContent} · <b>${list.map((c) => c.textContent.trim()).filter((v, i, a) => a.indexOf(v) === i).join(', ')}</b>`;
+    };
+    const reset = () => { if (pinned) return pinned.tagName === 'BUTTON' ? showArch(pinned) : showChip(pinned); clear(); read.innerHTML = def; };
+    chips.forEach((c) => {
+        c.addEventListener('mouseenter', () => showChip(c)); c.addEventListener('focus', () => showChip(c));
+        c.addEventListener('mouseleave', reset); c.addEventListener('blur', reset);
+        c.addEventListener('click', () => { pinned = pinned === c ? null : c; arch.forEach((x) => x.setAttribute('aria-pressed', 'false')); reset(); });
+    });
+    const arch = [...box.querySelectorAll('.pv-arch button')];
+    arch.forEach((b) => {
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('mouseenter', () => showArch(b)); b.addEventListener('mouseleave', reset);
+        b.addEventListener('click', () => {
+            const on = pinned !== b; pinned = on ? b : null;
+            arch.forEach((x) => x.setAttribute('aria-pressed', String(x === b && on))); reset();
+        });
+    });
+    if (matchMedia('(pointer: fine)').matches) box.addEventListener('pointermove', (e) => {
+        const r = box.getBoundingClientRect();
+        box.style.setProperty('--mx', (e.clientX - r.left) + 'px'); box.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
 })();
 </script>
 </body>
