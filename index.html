@@ -405,6 +405,13 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 .found p { font-size: 14px; line-height: 1.5; color: var(--ink-3); }
 .found-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); }
 .found-foot .muted { font-size: 13px; color: var(--ink-4); }
+/* Tier 3: align logo, title, description and footer across each row */
+.found .plate:not(.citrix-plate) img { object-fit: contain; }
+.found-top { min-height: 76px; }
+@supports (grid-template-rows: subgrid) {
+    .found { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 10px; }
+    .found-foot { margin-top: 0; align-self: end; }
+}
 
 .cred-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding: 18px 22px; border: 1px dashed var(--blue-line); border-radius: var(--radius); background: var(--blue-wash-2); font-size: 14.5px; color: var(--ink-3); }
 
@@ -1855,7 +1862,6 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
                             <div class="cert-line"><span>Jan 2021</span><a class="verify" href="https://www.credly.com/badges/f791a663-7b91-4f11-af83-d46b4bf733e9" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
                         </div>
                     </article>
-                </div>
                 </div>
             </div>
 
