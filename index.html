@@ -619,6 +619,12 @@ svg.icon { width: 1em; height: 1em; flex-shrink: 0; }
 @keyframes ai-drift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
 @keyframes ai-dash { to { stroke-dashoffset: -556; } }
 @keyframes ai-float { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 0.7; } 100% { transform: translateY(-110px); opacity: 0; } }
+/* Lifecycle steps: always one line, scaled to the box width */
+.ai-flow { container-type: inline-size; }
+.ai-verbs { flex-wrap: nowrap; justify-content: space-between; gap: clamp(2px, 0.8cqi, 6px); }
+.ai-verbs li { flex: 0 1 auto; min-width: 0; white-space: nowrap; font-size: clamp(10.5px, 2.45cqi, 14px); gap: 0.35em; padding: 0.42em 0.62em; }
+.ai-verbs li::before { font-size: 0.78em; }
+@container (max-width: 380px) { .ai-verbs li:not(:last-child)::after { display: none; } .ai-verbs li { font-size: clamp(10px, 3.1cqi, 13px); } }
 @media (prefers-reduced-motion: reduce) { .ai-verbs li, .ai-verbs li::after, .ai-circuit .pulse { animation: none; } .ai-verbs.ai-fx:not(.is-in) li { opacity: 1; } .ai-circuit .pulse, .ai-particles { display: none; } }
 /* ---------- About: "At a glance" facts panel ---------- */
 
