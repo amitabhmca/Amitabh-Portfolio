@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Amitabh Pandey — AI Factory, HPC & Supercomputing Architect, Delivered 4.134 EFLOPS (FP16) AI Factories</title>
-<meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional with five NVIDIA certifications, including AI Rack and Interconnect, AI Infrastructure, AI Operations and AI Networking; Certified BeeGFS and WEKA parallel storage engineer." />
+<meta name="description" content="Amitabh Pandey is a Singapore-based AI infrastructure and HPC professional with six NVIDIA certifications, including AI Rack and Interconnect, AI Infrastructure, AI Operations and AI Networking; Certified BeeGFS and WEKA parallel storage engineer." />
 <meta name="theme-color" content="#ffffff" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Amitabh Pandey — AI Factory, HPC & Supercomputing Architect | Delivered 4.134 EFLOPS (FP16) AI Factories" />
@@ -1467,6 +1467,215 @@ html[data-theme="dark"] .sp-x { --c: #2a3446; }
 .sp-copy.is-done .sp-ico { background: var(--ok, #16a34a); }
 @media (max-width: 420px) { .share-pop { width: calc(100vw - 24px); } }
 @media (prefers-reduced-motion: reduce) { .share-pop { transition: none; } }
+
+/* ---- Professional summary (hero) ---- */
+.ps-grad { background: linear-gradient(90deg, var(--blue-strong), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+.ps-panel { grid-column: 1 / -1; margin-top: -8px; padding: 30px 34px 14px; border: 1px solid var(--line); border-radius: var(--radius, 20px); background: color-mix(in srgb, var(--card) 86%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: var(--shadow); }
+.hero-lede.ps-lead { margin-top: 24px; max-width: none; width: 100%; font-family: var(--font-display); font-size: clamp(17px, 0.95rem + 0.3vw, 19.5px); font-weight: 400; line-height: 1.68; letter-spacing: -0.005em; color: var(--ink-3); text-wrap: pretty; }
+.ps-lead .pl-line { display: block; margin-top: 10px; }
+.ps-lead .pl-a { color: var(--blue-strong); font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ps-lead .pl-a:hover { color: var(--blue); }
+.ps-lead strong { font-weight: 700; color: var(--ink); }
+.ps-lead em { font-style: normal; font-weight: 600; color: var(--ink); background: linear-gradient(transparent 62%, color-mix(in srgb, var(--blue) 18%, transparent) 62%); padding: 0 2px; border-radius: 2px; }
+.ps-lead .ps-grad { font-weight: 600; }
+.hero-grid { align-items: center; }
+@media (max-width: 960px) { .hero-grid { align-items: start; } }
+@media (max-width: 560px) { .hero-lede.ps-lead { font-size: 17px; line-height: 1.65; } }
+.ps-title { margin: 0 0 12px; font: 500 11px/1.2 var(--font-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+.ps-grid { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; }
+@media (max-width: 960px) { .ps-panel { margin-top: 0; } .ps-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .ps-panel { padding: 16px 16px 6px; } }
+.ps-row { --c: var(--ink-3); --w: var(--card); --l: var(--line); display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 4px 14px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line-2); }
+.ps-c { --c: var(--nvidia-ink); --w: var(--nvidia-wash); --l: var(--nvidia-line); }
+.ps-f { --c: var(--blue-strong); --w: var(--blue-wash); --l: var(--blue-line); }
+.ps-s { --c: #92400e; --w: #fff7e6; --l: #f5d08a; }
+.ps-o { --c: var(--ink-2); --w: var(--page-2, #f3f6fb); --l: var(--line); }
+.ps-row dt { margin: 0; padding-top: 4px; font: 500 10.5px/1.3 var(--font-mono, monospace); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-4); }
+.ps-row dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ps-chip { display: inline-block; padding: 3px 9px; border: 1px solid var(--l); border-radius: 7px; background: var(--w); color: var(--c); font-size: 13px; font-weight: 500; line-height: 1.45; }
+html[data-theme="dark"] .ps-s { --c: #fcd38a; --w: #2a1d08; --l: #6b4a12; }
+html[data-theme="dark"] .ps-o { --c: var(--ink-2); --w: #16223a; --l: #2a3a58; }
+@media (max-width: 560px) { .ps-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } .ps-row dt { padding-top: 0; } }
+
+/* ---- Hero: full-width summary, NVIDIA panel below ---- */
+.hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-block: 72px 48px; }
+.hero-lede.ps-lead { font-size: clamp(17px, 0.95rem + 0.35vw, 20px); line-height: 1.7; }
+@media (min-width: 1100px) {
+  .hero-lede.ps-lead { column-count: 2; column-gap: 56px; column-rule: 1px solid var(--line-2); }
+  .hero-lede.ps-lead .pl-line { break-inside: avoid; }
+}
+.track { width: 100%; max-width: none; }
+.track-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.track-item.is-latest, .track-item.is-course { grid-column: auto; flex-direction: column; gap: 6px; padding: 14px 10px; }
+.track-item.is-latest img, .track-item.is-course img, .track-item img { width: 96px; height: 96px; }
+.track-item.is-latest .track-copy, .track-item.is-course .track-copy { align-items: center; text-align: center; gap: 4px; }
+.track-item.is-latest small, .track-item.is-course small { text-align: center; font-size: 12.5px; color: var(--ink-3); }
+.track-item.is-latest small { color: var(--ink-2); }
+@media (max-width: 1100px) { .track-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .track-item img, .track-item.is-latest img, .track-item.is-course img { width: 84px; height: 84px; } }
+
+/* ---- Hero: highlights beside the name ---- */
+@media (min-width: 1100px) { .hero-lede.ps-lead { column-count: 1 !important; column-rule: none; } }
+.hero-grid > .rise:first-child { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); column-gap: 56px; grid-template-areas: "kick kick" "id side" "welcome side" "lead lead" "actions actions"; align-items: start; }
+.hero-grid > .rise:first-child > .kicker { grid-area: kick; }
+.hero-grid > .rise:first-child > .hero-id { grid-area: id; }
+.hero-grid > .rise:first-child > .hero-welcome { grid-area: welcome; }
+.hero-grid > .rise:first-child > .hero-lede { grid-area: lead; }
+.hero-grid > .rise:first-child > .hero-actions { grid-area: actions; }
+.hero-side { grid-area: side; align-self: center; display: grid; gap: 14px; margin: 0 !important; }
+.hs-it { --a: var(--blue); position: relative; padding: 14px 18px 14px 20px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--card) 88%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: var(--shadow); }
+.hs-it::before { content: ""; position: absolute; left: -1px; top: 12px; bottom: 12px; width: 3px; border-radius: 3px; background: var(--a); }
+.hs-g { --a: var(--nvidia); } .hs-a { --a: #d97706; }
+.hs-k { display: block; margin-bottom: 4px; font: 500 10.5px/1.2 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-4); }
+.hs-it p { margin: 0; font-size: clamp(16px, .9rem + .3vw, 18.5px); line-height: 1.6; color: var(--ink-3); }
+@media (max-width: 1099px) {
+  .hero-grid > .rise:first-child { grid-template-columns: minmax(0, 1fr); grid-template-areas: "kick" "id" "welcome" "lead" "side" "actions"; }
+  .hero-side { margin-top: 22px !important; }
+}
+
+/* ---- Hero polish ---- */
+.hm { align-self: start; padding: 18px 24px 6px; border: 1px solid var(--line); border-radius: 20px; background: color-mix(in srgb, var(--card) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: var(--shadow-lift); }
+.hm-h { margin: 0 0 6px; font: 500 11px/1.2 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.hm-row { --a: var(--blue); display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 20px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line-2); }
+.hm-row:first-of-type { border-top: 0; }
+.hm-g { --a: var(--nvidia); } .hm-a { --a: #d97706; } .hm-n { --a: var(--nvidia); } .hm-p { --a: #7c3aed; }
+html[data-theme="dark"] .hm-p { --a: #a78bfa; }
+.hm-n .hm-fig small { color: var(--nvidia-ink); }
+.hm-fig { padding-left: 14px; border-left: 3px solid var(--a); }
+.hm-fig b { font: 700 34px/1 var(--font-display); letter-spacing: -.03em; color: var(--ink); }
+.hm-a .hm-fig b { font-size: 26px; }
+.hm-fig small { margin-left: 6px; font: 600 12px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--a); }
+.hm-g .hm-fig small { color: var(--nvidia-ink); }
+.hm-fig span { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.35; color: var(--ink-4); }
+.hm-row p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-3); }
+.hm-row p a { color: var(--blue-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+/* calmer summary emphasis */
+.hero-lede.ps-lead em { background: none; padding: 0; font-weight: 600; color: var(--ink); }
+.hero-lede.ps-lead { color: var(--ink-3); font-size: clamp(17px, .95rem + .3vw, 19.5px); line-height: 1.75; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line-2); }
+.hero-welcome { margin-top: 26px; align-self: start; }
+@media (min-width: 1100px) {
+  .hero-grid > .rise:first-child { grid-template-areas: "kick kick" "id side" "welcome side" "actions side" "lead lead"; grid-template-rows: auto auto auto 1fr auto; }
+  .hero-grid > .rise:first-child > .hero-actions { align-self: start; margin-top: 28px; }
+}
+/* NVIDIA row: tighter, uniform */
+.track { padding: 20px 22px; }
+.track-grid { gap: 10px; margin-top: 14px; }
+.track-item { justify-content: flex-start; padding: 14px 10px 16px !important; }
+.track-item img, .track-item.is-latest img, .track-item.is-course img { width: 84px !important; height: 84px !important; margin-bottom: 4px; }
+.track-item .mono { font-size: 11.5px; letter-spacing: .06em; }
+.track-item small { font-size: 12px !important; }
+.track-item.is-latest { position: relative; }
+.track-item.is-latest .track-issued { font-size: 11px; }
+@media (max-width: 1099px) { .hm { margin-top: 26px !important; } }
+@media (max-width: 560px) { .hm { padding: 18px 18px 6px; } .hm-row { grid-template-columns: minmax(0,1fr); gap: 10px; } .hm-fig b { font-size: 30px; } }
+
+/* ---- Career highlights: KPI panel ---- */
+.kpi { align-self: center; padding: 20px 22px 16px; border: 1px solid var(--line); border-radius: 22px; background: color-mix(in srgb, var(--card) 92%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: var(--shadow-lift); }
+.kpi-h { display: flex; justify-content: space-between; align-items: center; padding: 0 2px 14px; font: 500 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.kpi-sg { color: var(--ink-4); }
+.kpi-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--line-2); border-radius: 16px; overflow: hidden; background: var(--line-2); gap: 1px; }
+.kp { --a: var(--blue); grid-column: span 2; position: relative; display: flex; flex-direction: column; gap: 6px; padding: 16px 16px 15px; background: var(--card); }
+.kp::before { content: ""; position: absolute; left: 16px; top: 0; width: 28px; height: 3px; border-radius: 0 0 3px 3px; background: var(--a); }
+.kp-big { grid-column: span 3; padding: 16px 18px 15px; }
+.kp-g, .kp-n { --a: var(--nvidia); } .kp-s { --a: #d97706; } .kp-p { --a: #7c3aed; }
+html[data-theme="dark"] .kp-p { --a: #a78bfa; }
+.kp-link { color: inherit; text-decoration: none; transition: background .2s; }
+.kp-link:hover { background: color-mix(in srgb, var(--a) 7%, var(--card)); }
+.kp-link:focus-visible { outline: 2px solid var(--a); outline-offset: -2px; }
+.kp-ver { display: inline-flex; align-items: center; gap: 4px; margin-top: auto; padding-top: 4px; font: 600 10.5px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--blue-strong); transition: color .2s, gap .2s; }
+.kp-ver svg { width: 11px; height: 11px; }
+.kp-n .kp-ver { color: var(--nvidia-ink); } .kp-p .kp-ver { color: var(--a); }
+.kp-link:hover .kp-ver { gap: 7px; text-decoration: underline; text-underline-offset: 3px; }
+.kp-k { font: 500 10px/1.2 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-4); }
+.kp-v { display: flex; align-items: baseline; gap: 6px; font: 700 30px/1 var(--font-display); letter-spacing: -.03em; color: var(--ink); white-space: nowrap; }
+.kp-big .kp-v { font-size: 38px; }
+.kp-v small { font: 600 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--a); }
+.kp-g .kp-v small, .kp-n .kp-v small { color: var(--nvidia-ink); }
+.kp-d { font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
+.kp-big .kp-d { font-size: 13.5px; }
+.kpi-edu { display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 10px 14px; border: 1px solid var(--line-2); border-radius: 14px; background: color-mix(in srgb, #d97706 7%, var(--card)); }
+.kpi-ico { display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 10px; background: #d97706; color: #fff; }
+.kpi-ico svg { width: 19px; height: 19px; }
+.kpi-edu p { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
+.kpi-edu strong { color: var(--ink); font-weight: 600; }
+html[data-theme="dark"] .kpi-edu { background: #1f1a12; }
+.kpi-grid { grid-auto-flow: row dense; }
+@media (min-width: 561px) {
+.kpi-grid > .kp:not(.kp-big):nth-child(n+6):last-child:nth-child(3n+3) { grid-column: span 6; }
+.kpi-grid > .kp:not(.kp-big):nth-child(n+6):last-child:nth-child(3n+4) { grid-column: span 4; }
+.kpi-grid > .kp:not(.kp-big):nth-child(n+6):nth-last-child(2):nth-child(3n+3) { grid-column: span 2; }
+}
+.kpi-grid-more > :last-child:nth-child(3n+1) { grid-column: span 6; }
+.kpi-grid-more > :last-child:nth-child(3n+2) { grid-column: span 4; }
+.kpi { position: relative; }
+.kpi-h { height: 11px; box-sizing: content-box; }
+.kpi-more > summary { margin: -8px 0; }
+.kpi-more > summary { display: inline-flex; align-items: center; gap: 6px; list-style: none; cursor: pointer; padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; font: 600 10.5px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--blue-strong); background: var(--card); }
+.kpi-more > summary::-webkit-details-marker { display: none; }
+.kpi-more > summary:hover, .kpi-more[open] > summary { border-color: var(--blue-line); background: var(--blue-wash); }
+.kpi-more > summary svg { width: 12px; height: 12px; transition: transform .2s; }
+.kpi-more[open] > summary svg { transform: rotate(180deg); }
+.kpi-cnt { padding: 2px 6px; border-radius: 999px; background: var(--blue-strong); color: var(--card); }
+.kpi-pop { font: 400 14px/1.5 var(--font-body); letter-spacing: normal; text-transform: none; color: var(--ink); text-align: left; }
+.kpi-pop { position: absolute; z-index: 5; left: 22px; right: 22px; top: 50px; bottom: 16px; overflow: auto; padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: 0 24px 48px -20px rgb(10 18 34 / .35); }
+.kpi-pop-h { margin: 0 2px 10px; font: 500 10.5px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-4); }
+@media (max-width: 560px) { .kpi-pop { left: 12px; right: 12px; top: 46px; bottom: 12px; padding: 10px; } }
+.kpi-src { margin: 10px 4px 0; font-size: 11.5px; color: var(--ink-4); }
+.kpi-src a { color: var(--blue-strong); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 560px) {
+  .kpi { padding: 16px 14px 14px; }
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kp, .kp-big { grid-column: span 1; padding: 14px 12px; }
+  .kpi-grid > .kp:last-child:nth-child(odd) { grid-column: span 2; }
+  .kpi-grid > .kp:last-child:nth-child(even), .kpi-grid-more > .kp { grid-column: span 1; }
+  .kpi-grid-more > .kp:last-child:nth-child(odd) { grid-column: span 2; }
+  .kp-big .kp-v { font-size: 32px; } .kp-v { font-size: 26px; }
+}
+@media (max-width: 360px) { .kp-big .kp-v { font-size: 27px; } .kp-v { font-size: 23px; } .kp-v small { font-size: 10px; } .kp { padding: 13px 10px; } }
+
+/* ---- Hero v2: fixed top row + full-width highlights band ---- */
+@media (min-width: 1100px) {
+  .hero-grid > .rise:first-child { grid-template-areas: "kick kick" "id side" "welcome side" "actions side" "kpi kpi" !important; grid-template-rows: auto auto auto auto auto !important; column-gap: 64px; }
+  .hero-grid > .rise:first-child > .hero-lede.ps-lead { grid-area: side !important; align-self: center; margin: 0 !important; padding: 0 0 0 32px !important; border: 0 !important; border-left: 2px solid var(--line) !important; font-size: clamp(17px, .95rem + .3vw, 19.5px) !important; line-height: 1.75 !important; }
+}
+@media (max-width: 1099px) {
+  .hero-grid > .rise:first-child { grid-template-areas: "kick" "id" "welcome" "lead" "actions" "kpi" !important; }
+}
+.hero-grid > .rise:first-child > .kpi { grid-area: kpi !important; align-self: stretch; margin-top: 40px !important; padding: 22px 24px 18px; }
+.kpi-grid { display: flex !important; flex-wrap: wrap; gap: 1px; }
+.kpi-grid > .kp, .kpi-grid > .kp-big { flex: 1 1 190px; grid-column: auto !important; min-width: 0; padding: 18px 18px 16px; }
+.kpi-grid > .kp .kp-v { font-size: 32px; }
+.kpi-grid > .kp-big .kp-v { font-size: 38px; }
+.kpi-foot { display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; margin-top: 14px; flex-wrap: wrap; }
+.kpi-foot .kpi-edu { margin: 0; flex: 1 1 420px; }
+.kpi-foot .kpi-src { margin: 0; flex: 0 1 auto; }
+@media (max-width: 560px) {
+  .kpi-grid > .kp, .kpi-grid > .kp-big { flex: 1 1 140px; padding: 14px 12px; }
+  .kpi-grid > .kp .kp-v { font-size: 26px; } .kpi-grid > .kp-big .kp-v { font-size: 30px; }
+}
+@media (max-width: 360px) { .kpi-grid > .kp .kp-v, .kpi-grid > .kp-big .kp-v { font-size: 24px; } }
+
+/* ---- v3: left-aligned full-width summary, one-line educator ---- */
+@media (min-width: 1100px) {
+  .hero-grid > .rise:first-child { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) !important; column-gap: 48px !important; }
+  .hero-grid > .rise:first-child > .hero-lede.ps-lead { justify-self: stretch; width: 100%; max-width: none !important; padding: 0 !important; border-left: 0 !important; text-align: left; }
+}
+.kpi-foot { flex-direction: column; align-items: stretch; gap: 10px; }
+.kpi-foot .kpi-edu { flex: none; width: 100%; box-sizing: border-box; }
+.kpi-foot .kpi-edu p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kpi-foot .kpi-src { text-align: left; }
+@media (max-width: 1099px) { .kpi-foot .kpi-edu p { white-space: normal; } }
+
+/* ---- v4: welcome line on the right ---- */
+.kp-v { flex-wrap: wrap; row-gap: 4px; }
+@media (max-width: 600px) { .kpi-grid > .kp-big { flex-basis: 200px; } }
+@media (min-width: 1100px) {
+  .hero-grid > .rise:first-child { grid-template-areas: "kick kick" "id wel" "id side" "actions side" "kpi kpi" !important; grid-template-rows: auto auto 1fr auto auto !important; }
+  .hero-grid > .rise:first-child > .hero-welcome { grid-area: wel !important; align-self: end; margin: 0 0 18px !important; font-size: clamp(20px, 1rem + .45vw, 23px); line-height: 1.3; text-wrap: balance; }
+  .hero-grid > .rise:first-child > .hero-lede.ps-lead { align-self: start !important; }
+  .hero-grid > .rise:first-child > .hero-id { align-self: start; }
+  .hero-grid > .rise:first-child > .hero-actions { align-self: end; margin-top: 28px !important; }
+}
 </style>
 </head>
 <body>
@@ -1541,18 +1750,13 @@ html[data-theme="dark"] .sp-x { --c: #2a3446; }
                     <div class="hero-id">
                         <figure class="portrait">
                             <span class="portrait-frame"><img src="images/amitabh-pandey.jpg" alt="Portrait of " width="400" height="400" fetchpriority="high" /></span>
-                            <figcaption class="portrait-tag">5× NVIDIA<span class="tag-long">&nbsp;certified</span></figcaption>
+                            <figcaption class="portrait-tag">6× NVIDIA<span class="tag-long">&nbsp;certified</span></figcaption>
                         </figure>
                         <h1>Amitabh<br />Pandey</h1>
                     </div>
+                    <div class="hero-side kpi" aria-label="Career highlights"><div class="kpi-h"><span>Career highlights</span><span class=kpi-sg>Singapore</span></div><div class="kpi-grid"><div class="kp kp-b kp-big"><span class="kp-k">Scale · NSCC</span><b class="kp-v">37<small>PFLOPS</small></b><span class="kp-d">Led four HPC &amp; AI supercomputers at Singapore’s NSCC</span></div><div class="kp kp-g kp-big"><span class="kp-k">AI factories</span><b class="kp-v">4.134<small>EFLOPS</small></b><span class="kp-d">FP16 AI factory capacity on NVIDIA DGX &amp; HGX</span></div><div class="kp kp-s "><span class="kp-k">Experience</span><b class="kp-v">24<small>Years</small></b><span class="kp-d">Linux, AI cloud &amp; HPC · 14 on NVIDIA</span></div><a class="kp kp-n  kp-link" href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer" aria-label="Verify NVIDIA credentials (opens in new tab)"><span class="kp-k">NVIDIA certified</span><b class="kp-v">6<small>Certs</small></b><span class="kp-d">AI Infrastructure · first &amp; only in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a><a class="kp kp-p  kp-link" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer" aria-label="Verify Tokenomics badge on Credly (opens in new tab)"><span class="kp-k">AI Tokenomics</span><b class="kp-v">#4<small>World</small></b><span class="kp-d">Ranked #1 in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></div><div class="kpi-foot"><div class="kpi-edu"><span class="kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg></span><p><strong>Educator</strong> — Delivered AI/HPC supercomputing workshops for Singapore universities NUS, NTU, SUTD, SMU, SIT and research institute A*STAR.</p></div><p class="kpi-src">Verified at <a href="https://www.nscc.sg/" target="_blank" rel="noreferrer">nscc.sg</a> · <a href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer">NVIDIA Certification Directory</a> · <a href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer">Tokenomics Foundation (Credly)</a></p></div></div>
                     <p class="hero-welcome">Welcome. I’m Amitabh Pandey, an AI Factory, HPC and Supercomputing Architect.</p>
-                    <p class="hero-lede hero-stack">
-                        I work on the infrastructure behind <strong>High Performance Computing</strong> and modern AI <span class="hk-amp">—</span> <strong class="hk-af">AI&nbsp;Factories</strong>:
-                        <span class="hk hk-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><path d="M14 9.5h5M14 12h5M14 14.5h3"/></svg>NVIDIA GPU compute</span>,
-                        <span class="hk hk-f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M7 11l10-5M7 13l10 5M19 7.2v9.6"/></svg>InfiniBand</span> and <span class="hk hk-f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/><circle cx="14" cy="12" r="1.2" fill="currentColor"/><circle cx="10" cy="17" r="1.2" fill="currentColor"/></svg>Spectrum-X Ethernet</span> fabrics,
-                        and parallel storage such as <span class="hk hk-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>WEKA</span> <span class="hk hk-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>GPFS</span> <span class="hk hk-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Lustre</span>,
-                        built on <span class="hk hk-o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="m6.5 9 3 3-3 3M12 15h5"/></svg>24+ years</span> of Linux, cloud and enterprise operations.
-                    </p>
+                    <p class="hero-lede ps-lead"><strong>AI Factory, HPC and Platform Architect and Lead</strong> with <em>24 years</em> of experience architecting, operating and scaling Linux, AI cloud, HPC grid computing, and <span class="ps-grad">AI factory and supercomputing infrastructure</span> — including <em>14 years</em> delivering NVIDIA AI factories from bare metal to turnkey across compute, networking, storage and benchmarking.</p>
                     <div class="hero-actions">
                         <a class="btn btn-signal" href="#credentials">View certifications <svg class="icon"><use href="#i-arrow-r"/></svg></a>
                         <a class="btn btn-linkedin" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
@@ -1584,14 +1788,15 @@ html[data-theme="dark"] .sp-x { --c: #2a3446; }
                         </a>
                         <a class="track-item is-course" href="https://www.credly.com/badges/f3de53ce-90e4-4b48-a80f-2dedc7711cbb/public_url" target="_blank" rel="noreferrer">
                             <img src="badges/nvidia-intro-ai-datacenter.png" alt="NVIDIA Introduction to AI in the Data Center course badge" width="60" height="60" />
-                            <span class="track-copy"><span class="mono">NVIDIA course badge</span><small>Introduction to AI in the Data Center · 2020</small></span>
+                            <span class="track-copy"><span class="mono">NCA-AIDC</span><small>Introduction to AI in the Data Center · 2020</small></span>
                         </a>
                     </div>
                     <div class="track-foot">
-                        <span><span class="dot-ok"></span>5 certifications active through 2028 · plus 1 course badge</span>
+                        <span><span class="dot-ok"></span>6 NVIDIA certifications · 5 active through 2028</span>
                         <a class="track-wallet" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
                     </div>
                 </aside>
+                
             </div>
 <div class="hero-stats hs-x">
                 <div class="hs-card hs-hpc" style="--i:0">
@@ -1936,7 +2141,7 @@ html[data-theme="dark"] .sp-x { --c: #2a3446; }
                         <div class="lead-body">
                             <div class="lead-meta"><span class="code">NVIDIA</span><span class="status is-course">Course</span></div>
                             <h4>Introduction to AI in the Data Center</h4>
-                            <p class="dates">Completed 2020 · NVIDIA Academy course badge</p>
+                            <p class="dates">Completed 2020 · NVIDIA Academy · NCA-AIDC</p>
                             <a class="verify" href="https://www.credly.com/badges/f3de53ce-90e4-4b48-a80f-2dedc7711cbb/public_url" target="_blank" rel="noreferrer">Verify on Credly <svg class="icon"><use href="#i-arrow-ur"/></svg></a>
                         </div>
                     </article>
