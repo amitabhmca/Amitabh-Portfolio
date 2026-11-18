@@ -1701,6 +1701,35 @@ html[data-theme="dark"] .kpi-edu { background: #1f1a12; }
 .hero .hero-grid > .rise:first-child > .hero-lede.ps-lead { text-align: justify !important; hyphens: auto; -webkit-hyphens: auto; hyphenate-limit-chars: 7 3 3; text-wrap: wrap !important; }
 .hero-lede.ps-lead .ps-grad { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 @media (max-width: 560px) { .hero .hero-grid > .rise:first-child > .hero-lede.ps-lead { text-align: left !important; hyphens: manual; } }
+
+/* ---- v9: size tuned so justified lines stay evenly spaced ---- */
+@media (min-width: 1100px) { .hero .hero-grid > .rise:first-child > .hero-lede.ps-lead { font-size: var(--ps-fs, clamp(17px, .95rem + .3vw, 19.5px)) !important; } }
+.ps-lead .nw { white-space: nowrap; }
+
+/* ---- v10: special effects on the summary ---- */
+@keyframes psReveal { from { opacity: 0; transform: translateY(14px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes psFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes psLine { to { background-size: 100% 2px; } }
+.hero-lede.ps-lead { animation: psReveal .9s cubic-bezier(.2,.7,.2,1) .25s both; }
+.hero-lede.ps-lead .ps-grad {
+  background-image: linear-gradient(90deg, var(--blue-strong), #22d3ee, var(--nvidia), var(--blue-strong));
+  background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: psFlow 9s ease-in-out 1.2s infinite; transition: filter .3s, text-shadow .3s;
+}
+.hero-lede.ps-lead .ps-grad:hover { filter: drop-shadow(0 0 10px color-mix(in srgb, var(--blue) 45%, transparent)); }
+.hero-lede.ps-lead em {
+  background-image: linear-gradient(90deg, var(--blue), var(--nvidia)); background-repeat: no-repeat;
+  background-position: 0 100%; background-size: 0% 2px; padding-bottom: 2px;
+  animation: psLine .8s ease-out 1.1s forwards;
+}
+html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-gradient(90deg, #93c5fd, #67e8f9, #a3e635, #93c5fd); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-lede.ps-lead, .hero-lede.ps-lead .ps-grad { animation: none !important; }
+  .hero-lede.ps-lead em { animation: none; background-size: 100% 2px; }
+}
+
+/* ---- v11: even spacing; left-aligned with balanced line breaks ---- */
+.hero .hero-grid > .rise:first-child > .hero-lede.ps-lead { text-align: left !important; hyphens: manual !important; -webkit-hyphens: manual !important; text-wrap: pretty !important; }
 </style>
 </head>
 <body>
@@ -1781,7 +1810,7 @@ html[data-theme="dark"] .kpi-edu { background: #1f1a12; }
                     </div>
                     <div class="hero-side kpi" aria-label="Career highlights"><div class="kpi-h"><span>Career highlights</span><span class=kpi-sg>Singapore</span></div><div class="kpi-grid"><div class="kp kp-b kp-big"><span class="kp-k">Scale · NSCC</span><b class="kp-v">37<small>PFLOPS</small></b><span class="kp-d">Led four HPC &amp; AI supercomputers at Singapore’s NSCC</span></div><div class="kp kp-g kp-big"><span class="kp-k">AI factories</span><b class="kp-v">4.134<small>EFLOPS</small></b><span class="kp-d">FP16 AI factory capacity on NVIDIA DGX &amp; HGX</span></div><div class="kp kp-s "><span class="kp-k">Experience</span><b class="kp-v">24<small>Years</small></b><span class="kp-d">Linux, AI cloud &amp; HPC · 14 on NVIDIA</span></div><a class="kp kp-n  kp-link" href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer" aria-label="Verify NVIDIA credentials (opens in new tab)"><span class="kp-k">NVIDIA certified</span><b class="kp-v">6<small>Certs</small></b><span class="kp-d">AI Infrastructure · first &amp; only in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a><a class="kp kp-p  kp-link" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer" aria-label="Verify Tokenomics badge on Credly (opens in new tab)"><span class="kp-k">AI Tokenomics</span><b class="kp-v">#4<small>World</small></b><span class="kp-d">Ranked #1 in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></div><div class="kpi-foot"><div class="kpi-edu"><span class="kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg></span><p><strong>Educator</strong> — Delivered AI/HPC supercomputing workshops for Singapore universities NUS, NTU, SUTD, SMU, SIT and research institute A*STAR.</p></div><p class="kpi-src">Verified at <a href="https://www.nscc.sg/" target="_blank" rel="noreferrer">nscc.sg</a> · <a href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer">NVIDIA Certification Directory</a> · <a href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer">Tokenomics Foundation (Credly)</a></p></div></div>
                     
-                    <p class="hero-lede ps-lead"><em>24 years</em> of experience architecting, operating and scaling Linux, AI cloud, <span class="ps-grad">high-performance computing grid and Supercomputing infrastructure</span>, including <em>14 years</em> delivering AI factories from bare-metal compute to turnkey AI systems across <span class="ps-grad">AI Compute, AI Networking, AI Storage and AI&nbsp;Benchmarking</span>.</p>
+                    <p class="hero-lede ps-lead"><em>24 years</em> of experience architecting, operating and scaling Linux, AI cloud, <span class="ps-grad">high-performance computing grid and Supercomputing infrastructure</span>, with <span class="nw"><em>14 years</em>&nbsp;building</span> AI factories from bare-metal compute to turnkey AI&nbsp;systems across <span class="ps-grad">AI Compute, AI Networking, AI Storage and AI&nbsp;Benchmarking</span>.</p>
                     <div class="hero-actions">
                         <a class="btn btn-signal" href="#credentials">View certifications <svg class="icon"><use href="#i-arrow-r"/></svg></a>
                         <a class="btn btn-linkedin" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
