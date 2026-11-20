@@ -23,7 +23,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet" />
 <script>/* apply saved theme before first paint (no flash) */
 (function(){var r=document.documentElement,p='system';try{p=localStorage.getItem('theme')||'system'}catch(e){}
 var h=location.hash.slice(1);if(h==='light'||h==='dark')p=h;r.dataset.themePref=p;
@@ -1776,6 +1776,9 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
 @media (min-width: 761px) and (max-width: 1099px) { .hero-grid > .rise:first-child > .hero-actions { margin-left: 198px; } }
 @media (max-width: 760px) { .hero-grid > .rise:first-child > .hero-sum { grid-template-columns: minmax(0, 1fr); gap: 14px; } .hero-sum .hc-label br { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-grid > .rise:first-child > .hero-sum { animation: none !important; } }
+
+/* ---- hero v18: tagline in Young Serif ---- */
+.hero h1.hero-hello .hh-2 { font-family: "Young Serif", Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -0.01em; color: var(--ink-2); }
 </style>
 </head>
 <body>
