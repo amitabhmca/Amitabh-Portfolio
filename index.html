@@ -1789,6 +1789,49 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
   .hero-grid > .rise:first-child > .hero-sum, .hero-grid > .rise:first-child > .hero-cool { grid-template-columns: 236px minmax(0, 1fr); }
   .hero-grid > .rise:first-child > .hero-actions { margin-left: 264px !important; }
 }
+
+/* ---- 08 Education section ---- */
+.ed-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.ed-card { position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 28px 30px 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); box-shadow: 0 22px 48px -34px rgb(15 23 42 / .45); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.ed-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, #14b8a6, var(--blue)); }
+.ed-card.ed-bsc::before { background: linear-gradient(90deg, var(--blue), var(--nvidia)); }
+.ed-card:hover { transform: translateY(-3px); border-color: var(--blue-line); box-shadow: 0 28px 56px -34px rgb(29 78 216 / .45); }
+.ed-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.ed-ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 13px; color: #fff; background: linear-gradient(135deg, #14b8a6, var(--blue)); box-shadow: 0 8px 18px -10px rgb(20 184 166 / .8); }
+.ed-bsc .ed-ico { background: linear-gradient(135deg, var(--blue), var(--nvidia)); }
+.ed-ico svg { width: 23px; height: 23px; }
+.ed-yr { font: 500 13px/1 var(--font-mono); letter-spacing: .12em; color: var(--ink-3); padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; }
+.ed-deg { margin: 0; font: 700 clamp(34px, 2.2rem + .6vw, 44px)/1 var(--font-display); letter-spacing: -0.035em; background: linear-gradient(90deg, var(--blue-strong), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; }
+.ed-full { margin: 10px 0 0; font: 400 clamp(18px, 1rem + .3vw, 21px)/1.35 "Young Serif", Georgia, serif; color: var(--ink); }
+.ed-uni { margin: 18px 0 0; font-size: 16px; }
+.ed-uni a { display: inline-flex; align-items: center; gap: 5px; font-weight: 600; color: var(--blue-strong); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--blue) 30%, transparent); }
+.ed-uni a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+.ed-uni a svg { width: 14px; height: 14px; }
+.ed-loc { display: flex; align-items: center; gap: 6px; margin: 8px 0 0; font-size: 15px; color: var(--ink-3); }
+.ed-loc svg { width: 16px; height: 16px; flex: none; color: var(--ink-3); }
+.ed-chip { align-self: flex-start; margin-top: 18px; padding: 6px 12px; border-radius: 999px; font: 500 11.5px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--nvidia-ink); background: color-mix(in srgb, var(--nvidia) 12%, transparent); border: 1px solid var(--nvidia-line); }
+
+.ed-sub { display: flex; align-items: center; gap: 14px; margin: 40px 0 18px; font: 500 12px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.ed-sub::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.ed-cert::before { background: linear-gradient(90deg, #d97706, var(--blue)) !important; }
+.ed-cert .ed-ico { background: linear-gradient(135deg, #f59e0b, var(--blue)); box-shadow: 0 8px 18px -10px rgb(217 119 6 / .7); }
+.ed-cert .ed-deg { font-size: clamp(26px, 1.6rem + .5vw, 34px); background: linear-gradient(90deg, #b45309, var(--blue-strong)); -webkit-background-clip: text; background-clip: text; }
+html[data-theme="dark"] .ed-cert .ed-deg { background-image: linear-gradient(90deg, #fbbf24, #93c5fd); }
+.ed-cert .ed-full { font-size: clamp(16px, .95rem + .2vw, 18px); color: var(--ink-2); }
+@media (max-width: 760px) { .ed-sub { margin: 30px 0 14px; } }
+.ed-group { margin: 34px 0 14px; font: 500 12px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); display: flex; align-items: center; gap: 12px; }
+.ed-logo { display: grid; place-items: center; width: 76px; height: 76px; padding: 10px; box-sizing: border-box; border-radius: 18px; background: #fff; border: 1px solid var(--line); box-shadow: 0 10px 22px -16px rgb(15 23 42 / .45); }
+.ed-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px 24px -14px rgb(0 0 0 / .8); }
+@media (max-width: 760px) { .ed-logo { width: 64px; height: 64px; padding: 7px; border-radius: 15px; } }
+.ed-group::after { content: ""; flex: 1; height: 1px; background: var(--line-2); }
+.section-head + .ed-group { margin-top: 0; }
+.ed-cert .ed-deg { font-size: clamp(28px, 1.7rem + .5vw, 36px); }
+.ed-cert .ed-ico { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 8px 18px -10px rgb(217 119 6 / .8); }
+.ed-cert::before { background: linear-gradient(90deg, #f59e0b, var(--blue)); }
+@media (max-width: 760px) { .ed-group { margin-top: 26px; } }
+@media (max-width: 760px) { .ed-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .ed-card { padding: 22px 20px; } .ed-top { margin-bottom: 16px; } }
+@media (prefers-reduced-motion: reduce) { .ed-card { transition: none; } .ed-card:hover { transform: none; } }
 </style>
 </head>
 <body>
@@ -1827,6 +1870,7 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
                 <li><a href="#journey">Journey</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#recognition">Recognition</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -1845,6 +1889,7 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
         <a class="nav-item" href="#journey">Journey</a>
         <a class="nav-item" href="#work">Work</a>
         <a class="nav-item" href="#recognition">Recognition</a>
+        <a class="nav-item" href="#education">Education</a>
         <a class="nav-item" href="#contact">Contact</a>
         <a class="btn btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Credly wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
@@ -2848,12 +2893,65 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
         </div>
     </section>
 
-    <!-- 08 Contact -->
+
+    <!-- 08 Education -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>08</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="education" class="section is-alt">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow mono"><b>08</b> Education</span>
+                    <h2>Grounded in computing and science.</h2>
+                </div>
+                <p>A master’s in computer applications on a foundation of physics, chemistry and mathematics, extended with supercomputing and HPC study in the UK and Ireland.</p>
+            </div>
+            <p class="ed-group">Degrees</p>
+            <div class="ed-grid">
+                <article class="ed-card ed-mca">
+                    <div class="ed-top"><span class="ed-logo"><img src="images/edu/ggu.png" alt="Guru Ghasidas University logo" width="72" height="72" loading="lazy" decoding="async"></span><span class="ed-yr">2003</span></div>
+                    <h3 class="ed-deg">MCA</h3>
+                    <p class="ed-full">Master of Computer Applications</p>
+                    <p class="ed-uni"><a href="https://www.ggu.ac.in" target="_blank" rel="noopener">Guru Ghasidas University<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
+                    <p class="ed-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Bilaspur, Chhattisgarh, India</p>
+                    <span class="ed-chip">First Division</span>
+                </article>
+                <article class="ed-card ed-bsc">
+                    <div class="ed-top"><span class="ed-logo"><img src="images/edu/dhsgsu.png" alt="Dr. Hari Singh Gour University logo" width="72" height="72" loading="lazy" decoding="async"></span><span class="ed-yr">1999</span></div>
+                    <h3 class="ed-deg">B.Sc.</h3>
+                    <p class="ed-full">Physics, Chemistry &amp; Mathematics</p>
+                    <p class="ed-uni"><a href="https://www.dhsgsu.ac.in" target="_blank" rel="noopener">Dr. Hari Singh Gour University<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
+                    <p class="ed-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Sagar, Madhya Pradesh, India</p>
+                    
+                </article>
+            </div>
+            <p class="ed-group">Certificates</p>
+            <div class="ed-grid">
+                <article class="ed-card ed-cert ed-uoe">
+                    <div class="ed-top"><span class="ed-logo"><img src="images/edu/uoe.png" alt="The University of Edinburgh logo" width="72" height="72" loading="lazy" decoding="async"></span><span class="ed-yr">2018</span></div>
+                    <h3 class="ed-deg">Supercomputing</h3>
+                    <p class="ed-full">Certificate in Supercomputing</p>
+                    <p class="ed-uni"><a href="https://www.ed.ac.uk" target="_blank" rel="noopener">The University of Edinburgh<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
+                    <p class="ed-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Edinburgh, Scotland, UK</p>
+                    
+                </article>
+                <article class="ed-card ed-cert ed-dcu">
+                    <div class="ed-top"><span class="ed-logo"><img src="images/edu/dcu.png" alt="Dublin City University logo" width="72" height="72" loading="lazy" decoding="async"></span><span class="ed-yr">2018</span></div>
+                    <h3 class="ed-deg">HPC in the Cloud</h3>
+                    <p class="ed-full">Certificate in HPC in the Cloud</p>
+                    <p class="ed-uni"><a href="https://www.dcu.ie" target="_blank" rel="noopener">Dublin City University<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
+                    <p class="ed-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Dublin, Ireland</p>
+                    
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 09 Contact -->
     <section id="contact" class="section contact is-dark">
         <span class="ct-edge" aria-hidden="true"></span><span class="ct-orb" aria-hidden="true"></span>
         <div class="wrap contact-grid">
             <div>
-                <span class="eyebrow mono"><b>08</b> Get in touch</span>
+                <span class="eyebrow mono"><b>09</b> Get in touch</span>
                 <h2>Let’s talk AI infrastructure<em>.</em></h2>
                 <p class="contact-copy">
                     I'm interested in the platforms and engineering practices behind large-scale AI systems, especially compute, networking, storage,
@@ -2907,6 +3005,7 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
                 <li><a href="#journey">Journey</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#recognition">Recognition</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
