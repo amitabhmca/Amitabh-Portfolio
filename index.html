@@ -1832,6 +1832,337 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
 @media (max-width: 760px) { .ed-group { margin-top: 26px; } }
 @media (max-width: 760px) { .ed-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .ed-card { padding: 22px 20px; } .ed-top { margin-bottom: 16px; } }
 @media (prefers-reduced-motion: reduce) { .ed-card { transition: none; } .ed-card:hover { transform: none; } }
+
+/* ---- header v2: short menu, mega panels, contact button ---- */
+.nav-x a .mm-car { width: 13px; height: 13px; margin-left: 3px; vertical-align: -2px; transition: transform .2s; }
+.has-mega.is-open > a .mm-car { transform: rotate(180deg); }
+.has-mega.is-open > a { color: var(--blue-strong); }
+.mega { position: fixed; left: 50%; top: var(--mm-top, 76px); width: min(1120px, calc(100vw - 48px)); transform: translate(-50%, 8px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s, transform .18s, visibility .18s; z-index: 60; }
+.has-mega.is-open > .mega { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
+.mega::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+.mega-in { display: grid; grid-template-columns: 1fr 1fr 1.05fr; gap: 26px; padding: 24px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 40px 80px -40px rgb(15 23 42 / .55); }
+.mm-h { margin: 0 0 8px 12px; font: 500 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.nav-x .mega a.mm-link { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; color: inherit; white-space: normal; }
+.nav-x .mega a.mm-link:hover, .nav-x .mega a.mm-link:focus-visible { background: var(--blue-wash); }
+.mm-link b { display: block; font: 600 15px/1.3 var(--font-body); color: var(--ink); }
+.mm-link span > span { display: block; margin-top: 2px; font: 400 13.5px/1.45 var(--font-body); color: var(--ink-3); }
+.mm-ico { display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 10px; background: var(--blue-wash); color: var(--blue-strong); }
+.mm-ico svg { width: 18px; height: 18px; }
+.mm-feat { position: relative; overflow: hidden; padding: 22px; border-radius: 18px; color: #fff; background: radial-gradient(120% 90% at 100% 0%, rgb(118 185 0 / .35), transparent 60%), linear-gradient(150deg, #0b1a3a, #10306e); }
+.mm-kick { margin: 0; font: 500 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: #a5c8ff; }
+.mm-big { margin: 12px 0 6px; font: 700 40px/1 var(--font-display); letter-spacing: -.03em; }
+.mm-big em { font-style: normal; color: #a3e635; } .mm-big small { font: 500 13px var(--font-mono); letter-spacing: .1em; color: #a3e635; }
+.mm-txt { margin: 0; font: 15px/1.45 var(--font-body); color: #d6e2ff; }
+.mm-chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.mm-chips span { padding: 5px 9px; border-radius: 999px; font: 500 11.5px/1 var(--font-mono); background: rgb(255 255 255 / .1); border: 1px solid rgb(255 255 255 / .18); }
+.nav-x .mega a.mm-cta { display: inline-flex; margin-top: 16px; padding: 9px 14px; border-radius: 999px; background: #fff; color: #10306e; font: 600 13.5px/1 var(--font-body); }
+.nav-x .mega a.mm-cta:hover { background: #e8f0ff; color: #10306e; }
+.mm-scrim { position: fixed; inset: 0; top: var(--mm-top, 76px); background: rgb(8 15 30 / .22); opacity: 0; visibility: hidden; transition: opacity .18s, visibility .18s; z-index: 45; }
+.mm-scrim.is-on { opacity: 1; visibility: visible; }
+.mm-now .mega, .mm-now .mega *, .mm-now .mm-scrim, .mm-scrim.mm-now { transition: none !important; }
+.nav-cta { display: none; align-items: center; padding: 10px 18px; border-radius: 999px; font: 600 14.5px/1 var(--font-body); color: #fff !important; background: linear-gradient(135deg, #1d4ed8, #2563eb); box-shadow: 0 10px 22px -12px rgb(29 78 216 / .8); white-space: nowrap; transition: transform .2s, box-shadow .2s; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 14px 26px -12px rgb(29 78 216 / .9); }
+@media (min-width: 1201px) { .nav-cta { display: inline-flex; margin: 0 10px 0 12px; } }
+@media (max-width: 1320px) and (min-width: 1201px) { .mega-in { grid-template-columns: 1fr 1fr; } .mm-feat { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { .mega, .mm-scrim, .nav-x a .mm-car, .nav-cta { transition: none; } }
+.nav-x > ul > li > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav-x .mm-ti { width: 15px; height: 15px; flex: none; opacity: .8; }
+.nav-x a.is-active .mm-ti, .nav-x a:hover .mm-ti { opacity: 1; }
+@media (max-width: 1419px) and (min-width: 1201px) { .nav-x > ul > li > a { padding-inline: 8px; gap: 5px; font-size: 13.5px; } .nav-x .mm-car { margin-left: 1px; } .theme-btn .theme-lbl { display: none; } .nav-cta { margin: 0 8px 0 10px; padding-inline: 16px; } }
+@media (max-width: 1299px) and (min-width: 1201px) { .nav-x > ul > li > a { padding-inline: 7px; gap: 4px; font-size: 13px; } .nav-x .mm-ti { width: 14px; height: 14px; } .nav-x .mm-car { width: 11px; height: 11px; } .brand-sub { letter-spacing: .08em; } }
+.mm-logo { display: grid; place-items: center; flex: none; width: 38px; height: 38px; padding: 3px; box-sizing: border-box; border-radius: 10px; background: #fff; border: 1px solid var(--line); }
+html[data-theme="dark"] .mm-logo { border-color: transparent; }
+.mm-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.mm-bdg { width: 46px; height: 46px; object-fit: contain; border-radius: 10px; background: #fff; padding: 3px; box-sizing: border-box; }
+.mm-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line-2); }
+.nav-x .mega a.mm-fl { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); font: 500 13.5px/1 var(--font-body); color: var(--ink-2); }
+.nav-x .mega a.mm-fl:hover { border-color: var(--blue-line); color: var(--blue-strong); background: var(--blue-wash); }
+.mm-fl img { width: 22px; height: 22px; object-fit: contain; border-radius: 6px; background: #fff; }
+.mm-fl svg { width: 16px; height: 16px; color: var(--blue-strong); }
+.mm-fl span { color: var(--ink-3); }
+.mobile-nav a.nav-item, .mn-grp summary > span { display: flex; align-items: center; gap: 10px; }
+.mn-ti { width: 18px; height: 18px; flex: none; color: var(--blue-strong); opacity: .85; }
+
+/* ---- menu effects ---- */
+/* top bar: icon micro-motion, animated gradient underline on hover */
+.nav-x > ul > li > a .mm-ti { transition: transform .35s cubic-bezier(.2,.8,.2,1.4), opacity .2s; }
+.nav-x > ul > li > a:hover .mm-ti, .has-mega.is-open > a .mm-ti { transform: translateY(-2px) rotate(-8deg) scale(1.12); }
+.nav-x > ul > li > a > span { position: relative; }
+.nav-x > ul > li > a > span::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--nvidia)); transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+.nav-x > ul > li > a:hover > span::after, .has-mega.is-open > a > span::after { transform: scaleX(1); }
+.nav-x .nav-pill { box-shadow: 0 0 0 1px color-mix(in srgb, var(--blue) 18%, transparent), 0 6px 18px -8px color-mix(in srgb, var(--blue) 55%, transparent); }
+/* contact button: light sweep + soft breathing glow */
+.nav-cta { position: relative; overflow: hidden; isolation: isolate; animation: ctaGlow 3.2s ease-in-out infinite; }
+.nav-cta::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .45) 50%, transparent 70%); transform: translateX(-120%); animation: ctaSweep 4.5s ease-in-out infinite 1.2s; }
+@keyframes ctaSweep { 0%, 70% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+@keyframes ctaGlow { 0%, 100% { box-shadow: 0 10px 22px -12px rgb(29 78 216 / .8); } 50% { box-shadow: 0 10px 28px -8px rgb(37 99 235 / .75), 0 0 0 4px rgb(37 99 235 / .12); } }
+/* mega panel: drop-in, glowing gradient frame, cursor spotlight */
+.mega { transform: translate(-50%, 10px) scale(.985); transform-origin: 50% 0; transition: opacity .22s ease, transform .32s cubic-bezier(.2,.8,.2,1), visibility .22s; }
+.has-mega.is-open > .mega { transform: translate(-50%, 0) scale(1); }
+.mega-in { position: relative; isolation: isolate; overflow: hidden; }
+.mega-in::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; padding: 1px; background: conic-gradient(from var(--mm-a, 0deg), transparent 0 60%, color-mix(in srgb, var(--blue) 70%, transparent) 75%, color-mix(in srgb, var(--nvidia) 80%, transparent) 85%, transparent 100%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: mmSpin 6s linear infinite; }
+@property --mm-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes mmSpin { to { --mm-a: 360deg; } }
+.mega-in::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--blue) 9%, transparent), transparent 60%); opacity: 0; transition: opacity .3s; }
+.mega-in:hover::after { opacity: 1; }
+/* staggered reveal of rows */
+.mega .mm-col > *, .mega .mm-feat, .mega .mm-foot { opacity: 0; transform: translateY(8px); transition: opacity .3s ease, transform .4s cubic-bezier(.2,.8,.2,1); }
+.has-mega.is-open .mega .mm-col > *, .has-mega.is-open .mega .mm-feat, .has-mega.is-open .mega .mm-foot { opacity: 1; transform: none; }
+.has-mega.is-open .mm-col:nth-child(1) > :nth-child(2) { transition-delay: .04s; } .has-mega.is-open .mm-col:nth-child(1) > :nth-child(3) { transition-delay: .08s; } .has-mega.is-open .mm-col:nth-child(1) > :nth-child(4) { transition-delay: .12s; } .has-mega.is-open .mm-col:nth-child(1) > :nth-child(5) { transition-delay: .16s; }
+.has-mega.is-open .mm-col:nth-child(2) > :nth-child(1) { transition-delay: .06s; } .has-mega.is-open .mm-col:nth-child(2) > :nth-child(2) { transition-delay: .1s; } .has-mega.is-open .mm-col:nth-child(2) > :nth-child(3) { transition-delay: .14s; } .has-mega.is-open .mm-col:nth-child(2) > :nth-child(4) { transition-delay: .18s; } .has-mega.is-open .mm-col:nth-child(2) > :nth-child(5) { transition-delay: .22s; }
+.has-mega.is-open .mega .mm-feat { transition-delay: .12s; } .has-mega.is-open .mega .mm-foot { transition-delay: .22s; }
+/* rows: lift, logo pop, arrow slides in */
+.nav-x .mega a.mm-link { position: relative; transition: background .2s, transform .25s cubic-bezier(.2,.8,.2,1); }
+.nav-x .mega a.mm-link:hover { transform: translateX(4px); }
+.nav-x .mega a.mm-link::after { content: "→"; position: absolute; right: 12px; top: 12px; font: 600 15px/1 var(--font-body); color: var(--blue-strong); opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .25s; }
+.nav-x .mega a.mm-link:hover::after { opacity: 1; transform: none; }
+.mm-logo, .mm-ico { transition: transform .3s cubic-bezier(.2,.8,.2,1.4), box-shadow .3s; }
+.nav-x .mega a.mm-link:hover .mm-logo, .nav-x .mega a.mm-link:hover .mm-ico { transform: scale(1.1) rotate(-4deg); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--blue) 60%, transparent); }
+/* featured card: drifting aurora, shine sweep on hover, floating badges */
+.mm-feat { background-size: 200% 200%, 100% 100%; animation: mmAurora 9s ease-in-out infinite alternate; }
+@keyframes mmAurora { 0% { background-position: 100% 0%, 0 0; } 100% { background-position: 0% 100%, 0 0; } }
+.mm-feat::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / .16) 50%, transparent 65%); transform: translateX(-130%); transition: transform .9s ease; pointer-events: none; }
+.mm-feat:hover::after { transform: translateX(130%); }
+.mm-bdg { transition: transform .3s cubic-bezier(.2,.8,.2,1.4); }
+.has-mega.is-open .mm-bdg { animation: mmFloat 3.2s ease-in-out infinite; }
+.mm-bdg:nth-child(2) { animation-delay: .3s !important; } .mm-bdg:nth-child(3) { animation-delay: .6s !important; } .mm-bdg:nth-child(4) { animation-delay: .9s !important; } .mm-bdg:nth-child(5) { animation-delay: 1.2s !important; }
+@keyframes mmFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.mm-bdg:hover { transform: scale(1.15) !important; animation-play-state: paused; }
+.nav-x .mega a.mm-cta { transition: transform .2s, box-shadow .2s; } .nav-x .mega a.mm-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgb(0 0 0 / .5); }
+.nav-x .mega a.mm-fl { transition: border-color .2s, color .2s, background .2s, transform .2s; } .nav-x .mega a.mm-fl:hover { transform: translateY(-2px); }
+.nav-x .mega a.mm-fl:hover span { transform: translateX(3px); } .mm-fl span { display: inline-block; transition: transform .2s; }
+/* phone menu: groups slide open, items cascade */
+.mn-grp[open] a.nav-item { animation: mnIn .32s cubic-bezier(.2,.8,.2,1) both; }
+.mn-grp[open] a.nav-item:nth-of-type(2) { animation-delay: .05s; } .mn-grp[open] a.nav-item:nth-of-type(3) { animation-delay: .1s; }
+@keyframes mnIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+.mobile-nav.is-open > a.nav-item, .mobile-nav.is-open > .mn-grp { animation: mnIn .3s cubic-bezier(.2,.8,.2,1) both; }
+.mobile-nav.is-open > :nth-child(2) { animation-delay: .03s; } .mobile-nav.is-open > :nth-child(3) { animation-delay: .06s; } .mobile-nav.is-open > :nth-child(4) { animation-delay: .09s; } .mobile-nav.is-open > :nth-child(5) { animation-delay: .12s; } .mobile-nav.is-open > :nth-child(6) { animation-delay: .15s; } .mobile-nav.is-open > :nth-child(7) { animation-delay: .18s; }
+.mobile-nav .mn-ti { transition: transform .3s cubic-bezier(.2,.8,.2,1.4); } .mobile-nav a.nav-item:hover .mn-ti, .mn-grp[open] summary .mn-ti { transform: scale(1.12) rotate(-6deg); }
+.mobile-nav a.mn-contact { position: relative; overflow: hidden; isolation: isolate; }
+.mobile-nav a.mn-contact::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .4) 50%, transparent 70%); transform: translateX(-120%); animation: ctaSweep 4.5s ease-in-out infinite 1s; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-cta, .nav-cta::after, .mobile-nav a.mn-contact::after, .mega-in::before, .mm-feat, .has-mega.is-open .mm-bdg, .mn-grp[open] a.nav-item, .mobile-nav.is-open > * { animation: none !important; }
+  .mega, .mega .mm-col > *, .mega .mm-feat, .mega .mm-foot, .nav-x .mega a.mm-link, .mm-logo, .mm-ico, .nav-x > ul > li > a .mm-ti, .nav-x > ul > li > a > span::after { transition: none !important; }
+  .nav-x .mega a.mm-link:hover, .nav-x .mega a.mm-link:hover .mm-logo, .nav-x .mega a.mm-link:hover .mm-ico, .nav-x > ul > li > a:hover .mm-ti, .has-mega.is-open > a .mm-ti { transform: none; }
+}
+
+
+/* ---- contact: rotating gradient ring, live dot, magnetic hover, drop-down card ---- */
+.cta-wrap { position: relative; display: none; }
+@media (min-width: 1201px) { .cta-wrap { display: inline-flex; margin: 0 10px 0 12px; } .cta-wrap .nav-cta { margin: 0; } }
+@media (max-width: 1419px) and (min-width: 1201px) { .cta-wrap { margin: 0 8px 0 10px; } }
+.cta-wrap .nav-cta { display: inline-flex; gap: 8px; padding: 10px 18px 10px 14px; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s; will-change: transform; }
+.cta-wrap .nav-cta::before { content: ""; position: absolute; inset: -2px; z-index: -2; border-radius: inherit; padding: 2px; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; background: conic-gradient(from var(--cta-a, 0deg), #60a5fa, #76b900, #22d3ee, #2563eb, #60a5fa); animation: ctaSpin 3.5s linear infinite; }
+.cta-wrap .nav-cta > span:last-child, .cta-wrap .nav-cta .cta-ico { position: relative; z-index: 1; }
+.cta-wrap .nav-cta { background: linear-gradient(135deg, #1d4ed8, #2563eb) padding-box, transparent; border: 2px solid transparent; }
+.cta-wrap .nav-cta::after { z-index: 0; }
+@property --cta-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes ctaSpin { to { --cta-a: 360deg; } }
+.cta-wrap .nav-cta > span:last-child { white-space: nowrap; }
+.cta-ico { width: 16px; height: 16px; transition: transform .35s cubic-bezier(.2,.8,.2,1.6); }
+.cta-wrap:hover .cta-ico, .cta-wrap.is-open .cta-ico { animation: ctaWiggle .6s ease; }
+@keyframes ctaWiggle { 0%,100% { transform: rotate(0) } 25% { transform: rotate(-14deg) scale(1.15) } 50% { transform: rotate(10deg) scale(1.15) } 75% { transform: rotate(-6deg) } }
+.cta-dot { position: absolute; top: 5px; right: 6px; z-index: 2; width: 8px; height: 8px; border-radius: 50%; background: #a3e635; box-shadow: 0 0 0 2px #1d4ed8; }
+.cta-dot::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; border: 2px solid #a3e635; animation: ctaPing 2s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ctaPing { 0% { transform: scale(1); opacity: .8 } 80%, 100% { transform: scale(2.4); opacity: 0 } }
+.cta-wrap .nav-cta:hover { box-shadow: 0 16px 30px -12px rgb(37 99 235 / .9), 0 0 0 6px rgb(37 99 235 / .12); }
+.cta-pop { position: absolute; right: 0; top: calc(100% + 12px); width: 340px; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px) scale(.97); transform-origin: 85% 0; transition: opacity .22s, transform .32s cubic-bezier(.2,.8,.2,1), visibility .22s; z-index: 70; }
+.cta-pop::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.cta-wrap.is-open .cta-pop { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+.cta-in { position: relative; overflow: hidden; isolation: isolate; padding: 10px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 40px 70px -36px rgb(15 23 42 / .6); }
+.cta-in::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; padding: 1px; background: conic-gradient(from var(--mm-a, 0deg), transparent 0 60%, color-mix(in srgb, var(--blue) 70%, transparent) 75%, color-mix(in srgb, var(--nvidia) 80%, transparent) 85%, transparent 100%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: mmSpin 6s linear infinite; }
+.cta-head { position: relative; overflow: hidden; margin-bottom: 6px; padding: 16px 16px 14px; border-radius: 14px; color: #fff; background: radial-gradient(120% 90% at 100% 0%, rgb(118 185 0 / .4), transparent 60%), linear-gradient(150deg, #0b1a3a, #10306e); background-size: 200% 200%, 100% 100%; animation: mmAurora 9s ease-in-out infinite alternate; }
+.cta-title { margin: 6px 0 4px; font: 700 24px/1.1 var(--font-display); letter-spacing: -.02em; }
+.cta-sub { margin: 0; font: 14px/1.4 var(--font-body); color: #d6e2ff; }
+a.cta-row { position: relative; display: flex; gap: 12px; align-items: center; padding: 10px; border-radius: 12px; color: inherit; text-decoration: none; opacity: 0; transform: translateY(8px); transition: background .2s, opacity .3s, transform .35s cubic-bezier(.2,.8,.2,1); }
+.cta-wrap.is-open a.cta-row { opacity: 1; transform: none; }
+.cta-wrap.is-open a.cta-row:nth-of-type(2) { transition-delay: .05s, .05s, .05s; } .cta-wrap.is-open a.cta-row:nth-of-type(3) { transition-delay: .1s, .1s, .1s; } .cta-wrap.is-open a.cta-row:nth-of-type(4) { transition-delay: .15s, .15s, .15s; }
+a.cta-row:hover { background: var(--blue-wash); transform: translateX(4px); transition-delay: 0s !important; }
+a.cta-row::after { content: "↗"; position: absolute; right: 12px; font: 600 14px/1 var(--font-body); color: var(--blue-strong); opacity: 0; transform: translate(-4px, 4px); transition: opacity .2s, transform .25s; }
+a.cta-row.cta-all::after { content: "→"; }
+a.cta-row:hover::after { opacity: 1; transform: none; }
+a.cta-row b { display: block; font: 600 14.5px/1.3 var(--font-body); color: var(--ink); }
+a.cta-row span > span { display: block; font: 13px/1.4 var(--font-body); color: var(--ink-3); }
+.cta-ic { display: grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--blue-wash); color: var(--blue-strong); transition: transform .3s cubic-bezier(.2,.8,.2,1.4); }
+.cta-ic .icon { width: 18px; height: 18px; }
+.cta-li .cta-ic { background: #0a66c2; color: #fff; }
+.cta-img { background: #fff; border: 1px solid var(--line); padding: 3px; box-sizing: border-box; }
+.cta-img img { width: 100%; height: 100%; object-fit: contain; }
+a.cta-row:hover .cta-ic { transform: scale(1.12) rotate(-5deg); }
+/* ---- stronger menu effects ---- */
+.nav-x ul { transition: box-shadow .3s; }
+.nav-x ul:hover { box-shadow: 0 0 0 1px color-mix(in srgb, var(--blue) 25%, transparent), 0 12px 30px -16px color-mix(in srgb, var(--blue) 70%, transparent); }
+.nav-x .nav-pill { overflow: hidden; }
+.nav-x .nav-pill::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .55) 50%, transparent 70%); transform: translateX(-120%); animation: ctaSweep 3.8s ease-in-out infinite; }
+html[data-theme="dark"] .nav-x .nav-pill::after { background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .14) 50%, transparent 70%); }
+.mega-in { clip-path: inset(0 0 100% 0 round 24px); transition: clip-path .45s cubic-bezier(.2,.8,.2,1); }
+.has-mega.is-open .mega-in { clip-path: inset(0 0 0 0 round 24px); }
+.mm-feat { transform-style: preserve-3d; transition: transform .25s ease; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .cta-wrap .nav-cta::before, .cta-dot::after, .cta-in::before, .cta-head, .nav-x .nav-pill::after, .cta-wrap:hover .cta-ico { animation: none !important; }
+  .cta-pop, a.cta-row, .cta-wrap .nav-cta, .mega-in, .mm-feat { transition: none !important; }
+  .mega-in, .has-mega.is-open .mega-in { clip-path: none; }
+}
+
+
+/* ---- professional two-tone icons with motion ---- */
+.ico-x .d { fill: currentColor; fill-opacity: .16; }
+.ico-x * { transform-box: fill-box; transform-origin: center; }
+.ico-x [pathLength] { stroke-dasharray: 100; stroke-dashoffset: 0; }
+.ico-x .i-led { stroke-width: 3; color: #76b900; }
+@keyframes icDraw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes icHop { 0%,100% { transform: translateY(0) } 40% { transform: translateY(-2.5px) } 70% { transform: translateY(.5px) } }
+@keyframes icNod { 0%,100% { transform: translateY(0) } 35% { transform: translateY(-1.5px) } 65% { transform: translateY(.8px) } }
+@keyframes icSwing { 0%,100% { transform: rotate(0) } 25% { transform: rotate(12deg) } 55% { transform: rotate(-9deg) } 80% { transform: rotate(4deg) } }
+@keyframes icLift { 0%,100% { transform: translateY(0) } 45% { transform: translateY(-3px) } }
+@keyframes icSpin { from { transform: rotate(0) scale(1) } 50% { transform: rotate(36deg) scale(1.12) } to { transform: rotate(72deg) scale(1) } }
+@keyframes icFlow { to { stroke-dashoffset: -14; } }
+@keyframes icBlink { 0%,100% { opacity: 1 } 50% { opacity: .15 } }
+@keyframes icRise { from { transform: scaleY(.2) } to { transform: scaleY(1) } }
+@keyframes icPulse { 0%,100% { opacity: .35 } 50% { opacity: 1 } }
+@keyframes icType { 0%,60%,100% { transform: translateY(0) } 30% { transform: translateY(-2.2px) } }
+/* where the motion plays: hover on a menu item / row, an open panel's trigger, an open phone group */
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mobile-nav a.nav-item:hover, .mn-grp[open] > summary, .mm-fl:hover) .ico-x [pathLength] { animation: icDraw .7s cubic-bezier(.4,0,.2,1) both; }
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mobile-nav a.nav-item:hover, .mn-grp[open] > summary, .mm-fl:hover) .ico-x .d { animation: icDraw .7s cubic-bezier(.4,0,.2,1) both, icPulseFill .9s ease both; }
+@keyframes icPulseFill { 0% { fill-opacity: 0 } 60% { fill-opacity: .32 } 100% { fill-opacity: .16 } }
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mobile-nav a.nav-item:hover, .mn-grp[open] > summary) .ico-x .i-roof { animation: icDraw .6s both, icHop .7s .25s ease both; }
+:is(.nav-x > ul > li > a:hover, .mm-link:hover, .mobile-nav a.nav-item:hover) .ico-x .i-head { animation: icDraw .6s both, icNod .8s .2s ease both; }
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mn-grp[open] > summary) .ico-x .i-medal { transform-origin: 50% 0; animation: icSwing 1s .1s ease both; }
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mn-grp[open] > summary) .ico-x .i-l1 { animation: icDraw .6s both, icLift .8s .2s ease both; }
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mn-grp[open] > summary) .ico-x .i-handle { animation: icDraw .6s both, icLift .7s .15s ease both; }
+:is(.nav-x > ul > li > a:hover, .has-mega.is-open > a, .mm-link:hover, .mobile-nav a.nav-item:hover) .ico-x .i-tassel { transform-origin: 50% 0; animation: icSwing 1.1s .1s ease both; }
+:is(.mm-link:hover, .mm-fl:hover) .ico-x .i-starb { animation: icDraw .6s both, icSpin .8s .1s ease both; }
+:is(.mm-link:hover, .mm-fl:hover) .ico-x .i-line { animation: icDraw .8s .2s both; }
+.mm-link:hover .ico-x .i-flow, .has-mega.is-open .mm-ico .i-flow { stroke-dasharray: 4 3; animation: icFlow .9s linear infinite; }
+.has-mega.is-open .mm-ico .i-led1 { animation: icBlink 1.4s ease-in-out infinite; } .has-mega.is-open .mm-ico .i-led2 { animation: icBlink 1.4s .7s ease-in-out infinite; }
+.mm-link:hover .ico-x .i-merc { transform-origin: 50% 100%; animation: icRise .8s cubic-bezier(.2,.8,.2,1) both; }
+.has-mega.is-open .mm-ico .i-wave { animation: icPulse 1.6s ease-in-out infinite; }
+.has-mega.is-open .mm-ico .i-pins { animation: icPulse 1.8s ease-in-out infinite; }
+.mm-link:hover .ico-x .i-core { animation: icPulse .8s ease 2; }
+/* panel opening: every row icon draws itself in */
+.has-mega.is-open .mm-ico .ico-x [pathLength]:not(.i-flow) { animation: icDraw .8s .1s cubic-bezier(.4,0,.2,1) both; }
+/* contact chat icon: typing dots */
+.cta-ico .i-dt { transform-box: fill-box; }
+.cta-wrap:hover .cta-ico .i-dt, .cta-wrap.is-open .cta-ico .i-dt { animation: icType 1s ease-in-out infinite; }
+.cta-wrap:hover .cta-ico .i-dt2, .cta-wrap.is-open .cta-ico .i-dt2 { animation-delay: .15s; } .cta-wrap:hover .cta-ico .i-dt3, .cta-wrap.is-open .cta-ico .i-dt3 { animation-delay: .3s; }
+.cta-wrap:hover .cta-ico, .cta-wrap.is-open .cta-ico { animation: none !important; }
+/* icon tiles: duotone wash, gentle lift */
+.mm-ico { background: linear-gradient(145deg, color-mix(in srgb, var(--blue) 16%, transparent), color-mix(in srgb, var(--nvidia) 12%, transparent)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--blue) 18%, transparent); }
+.nav-x .mega a.mm-link:hover .mm-ico { transform: translateY(-2px) scale(1.06); }
+.nav-x > ul > li > a:hover .mm-ti, .has-mega.is-open > a .mm-ti { transform: none; }
+@media (prefers-reduced-motion: reduce) { .ico-x *, .cta-ico .i-dt { animation: none !important; } }
+
+/* phone / tablet drawer groups */
+.mn-grp { border-radius: 10px; }
+.mn-grp summary { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-radius: 10px; font-weight: 500; color: var(--ink-3); cursor: pointer; list-style: none; }
+.mn-grp summary::-webkit-details-marker { display: none; }
+.mn-grp summary .mn-car { width: 16px; height: 16px; transition: transform .2s; }
+.mn-grp[open] summary { color: var(--blue-strong); }
+.mn-grp[open] summary .mn-car { transform: rotate(180deg); }
+.mn-grp a.nav-item { display: block; padding: 10px 12px 10px 26px; font-size: 15px; border-left: 2px solid var(--line-2); margin-left: 14px; border-radius: 0 10px 10px 0; }
+.mobile-nav a.mn-contact { justify-content: center; margin-top: 6px; text-align: center; color: #fff; background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+.mobile-nav a.mn-contact:hover { color: #fff; }
+
+/* ---- 07 Continuous learning: revamped ---- */
+.lg-stats { display: grid; grid-template-columns: auto auto auto minmax(0, 1fr); gap: 0; margin-bottom: 26px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); overflow: hidden; }
+.lg-stats > div { padding: 18px 26px; border-left: 1px solid var(--line-2); }
+.lg-stats > div:first-child { border-left: 0; }
+.lg-stats b { display: block; font: 700 30px/1 var(--font-display); letter-spacing: -.03em; background: linear-gradient(90deg, var(--blue-strong), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lg-stats b i { font-style: normal; margin: 0 4px; font-size: .7em; vertical-align: .1em; }
+.lg-stats span { display: block; margin-top: 6px; font: 500 11.5px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.lg-prov p { margin: 6px 0 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.lg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.lg-card { --tc: var(--blue); position: relative; display: flex; flex-direction: column; padding: 22px 22px 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); overflow: hidden; isolation: isolate; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s; }
+.lg-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--tc), color-mix(in srgb, var(--tc) 30%, var(--nvidia))); transform: scaleX(.25); transform-origin: left; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.lg-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(380px circle at var(--mx, 80%) var(--my, 0%), color-mix(in srgb, var(--tc) 10%, transparent), transparent 65%); opacity: 0; transition: opacity .3s; }
+.lg-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--tc) 35%, var(--line)); box-shadow: 0 26px 50px -32px color-mix(in srgb, var(--tc) 70%, transparent); }
+.lg-card:hover::before, .lg-card.in::before { transform: scaleX(1); }
+.lg-card:hover::after { opacity: 1; }
+.lg-blue { --tc: #2563eb; } .lg-green { --tc: #76b900; } .lg-cyan { --tc: #0891b2; } .lg-violet { --tc: #7c3aed; } .lg-teal { --tc: #0d9488; } .lg-amber { --tc: #d97706; }
+html[data-theme="dark"] .lg-blue { --tc: #60a5fa; } html[data-theme="dark"] .lg-cyan { --tc: #22d3ee; } html[data-theme="dark"] .lg-violet { --tc: #a78bfa; } html[data-theme="dark"] .lg-teal { --tc: #2dd4bf; } html[data-theme="dark"] .lg-amber { --tc: #fbbf24; }
+.lg-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; }
+.lg-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: var(--tc); background: color-mix(in srgb, var(--tc) 13%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tc) 22%, transparent); transition: transform .35s cubic-bezier(.2,.8,.2,1.4); }
+.lg-icon svg { width: 24px; height: 24px; }
+.lg-card:hover .lg-icon { transform: translateY(-2px) rotate(-6deg) scale(1.06); }
+.lg-tt h3 { margin: 0; font-size: 18px; line-height: 1.2; letter-spacing: -.02em; }
+.lg-tt p { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; }
+.lg-yr, .lg-n { font: 500 11.5px/1 var(--font-mono); padding: 5px 8px; border-radius: 999px; }
+.lg-yr { color: var(--tc); background: color-mix(in srgb, var(--tc) 12%, transparent); }
+.lg-n { color: var(--ink-3); border: 1px solid var(--line); }
+.lg-logos { display: flex; }
+.lg-logo { display: grid; place-items: center; width: 44px; height: 44px; padding: 4px; box-sizing: border-box; border-radius: 12px; background: #fff; border: 1px solid var(--line); box-shadow: 0 6px 14px -10px rgb(15 23 42 / .5); transition: transform .3s cubic-bezier(.2,.8,.2,1.4); }
+.lg-logo + .lg-logo { margin-left: -10px; }
+.lg-logo img { width: 100%; height: 100%; object-fit: contain; }
+.lg-card:hover .lg-logo { transform: translateY(-2px); } .lg-card:hover .lg-logo + .lg-logo { transform: translateY(-2px) translateX(6px); }
+.lg-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 6px; }
+.lg-tags span { padding: 4px 9px; border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--ink-2); background: var(--blue-wash); border: 1px solid color-mix(in srgb, var(--tc) 15%, var(--line)); }
+.lg-card ul { margin: 6px 0 0; padding: 0; list-style: none; }
+.lg-card li { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 9px 0; border-top: 1px solid var(--line-2); font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.lg-card li:first-child { border-top: 0; }
+.lg-chk { width: 18px; height: 18px; margin-top: 1px; color: var(--tc); }
+.lg-card li code { font: 500 11px/1 var(--font-mono); padding: 4px 6px; border-radius: 6px; color: var(--ink-3); background: var(--blue-wash); white-space: nowrap; margin-top: 1px; }
+.lg-card li { transition: color .2s, transform .2s; } .lg-card li:hover { color: var(--ink); transform: translateX(3px); }
+/* scroll-in reveal and icon motion */
+.lg-card { opacity: 1; }
+.js-lg .lg-card:not(.in) { opacity: 0; transform: translateY(18px); }
+.js-lg .lg-card.in { transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s; }
+.lg-card.in .lg-icon [pathLength], .lg-card:hover .lg-icon [pathLength] { animation: icDraw .9s cubic-bezier(.4,0,.2,1) both; }
+.lg-card.in li { animation: lgIn .45s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(.25s + var(--k) * .05s); }
+.lg-card.in .lg-chk [pathLength] { animation: icDraw .6s ease both; animation-delay: calc(.35s + var(--k) * .05s); }
+@keyframes lgIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+.lg-card:hover .i-cursor { animation: icBlink 1s steps(1) infinite; }
+.lg-card:hover .i-fan { animation: lgSpin 1.2s linear infinite; stroke-dasharray: 5 3; }
+@keyframes lgSpin { to { transform: rotate(360deg); } }
+.lg-card:hover .i-up { animation: icLift .9s ease infinite; }
+.lg-card:hover .i-ring { animation: icPulse 1.2s ease-in-out infinite; }
+.lg-card:hover .i-vm1 { animation: icPulse 1.2s ease-in-out infinite; } .lg-card:hover .i-vm2 { animation: icPulse 1.2s .6s ease-in-out infinite; }
+.lg-card:hover .i-bar1, .lg-card:hover .i-bar2, .lg-card:hover .i-bar3 { transform-origin: 50% 100%; animation: icRise .6s cubic-bezier(.2,.8,.2,1) both; }
+.lg-card:hover .i-bar2 { animation-delay: .1s; } .lg-card:hover .i-bar3 { animation-delay: .2s; }
+@media (max-width: 1100px) { .lg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lg-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } .lg-prov { grid-column: 1 / -1; border-left: 0 !important; border-top: 1px solid var(--line-2); } }
+@media (max-width: 720px) { .lg-grid { grid-template-columns: minmax(0, 1fr); } .lg-stats > div { padding: 14px 16px; } .lg-stats b { font-size: 24px; } .lg-card { padding: 18px 16px 10px; } .lg-head { gap: 12px; } }
+@media (max-width: 420px) { .lg-stats { grid-template-columns: 1fr 1fr; } .lg-stats > div:nth-child(3) { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line-2); } .lg-card li { grid-template-columns: 18px minmax(0, 1fr); } .lg-card li code { grid-column: 2; justify-self: start; } }
+@media (prefers-reduced-motion: reduce) { .lg-card, .lg-card::before, .lg-icon, .lg-logo, .lg-card li { transition: none !important; } .lg-card *, .lg-card { animation: none !important; } .js-lg .lg-card:not(.in) { opacity: 1; transform: none; } .lg-card:hover { transform: none; } }
+
+/* ---- hero v19: terminal console for summary + AI data center ---- */
+.hero-grid > .rise:first-child > .hero-term { grid-area: side; margin-top: 40px; min-width: 0; }
+.hero-term .hero-actions { margin: 26px 0 0 !important; }
+.tx { position: relative; border-radius: 18px; overflow: hidden; background: #0a0f1e; border: 1px solid #1e2a45; box-shadow: 0 40px 80px -44px rgb(2 6 23 / .75), 0 0 0 1px rgb(255 255 255 / .02) inset; font-family: var(--font-mono); color: #cbd5e1; isolation: isolate; }
+.tx::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 80% at 100% 0%, rgb(118 185 0 / .12), transparent 60%), radial-gradient(50% 70% at 0% 100%, rgb(37 99 235 / .18), transparent 60%); }
+.tx::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgb(255 255 255 / .018) 0 1px, transparent 1px 3px); }
+.tx-bar { display: flex; align-items: center; gap: 8px; padding: 11px 16px; background: #111a30; border-bottom: 1px solid #1e2a45; }
+.tx-bar i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; } .tx-bar i:nth-child(2) { background: #febc2e; } .tx-bar i:nth-child(3) { background: #28c840; }
+.tx-bar span { margin-left: 10px; font-size: 12.5px; color: #8b9bbd; } .tx-bar .tx-tag { margin-left: auto; padding: 2px 8px; border-radius: 6px; font-size: 11px; color: #76b900; background: rgb(118 185 0 / .1); border: 1px solid rgb(118 185 0 / .25); }
+.tx-body { padding: 20px 24px 22px; }
+.tx-cmd { margin: 0 0 8px; font-size: 14.5px; color: #e2e8f0; } .tx-pr { color: #76b900; font-weight: 700; }
+.tx-com { margin-left: 14px; color: #64748b; }
+.tx-out { margin: 0 0 20px; }
+.tx-sum { padding-left: 18px; border-left: 2px solid #1e3a6e; font-family: var(--font-body); font-size: clamp(16px, .9rem + .3vw, 18.5px); line-height: 1.75; color: #dbe5f5; text-wrap: pretty; }
+.tx-sum em { font-style: normal; font-weight: 700; color: #fff; background: linear-gradient(transparent 62%, rgb(118 185 0 / .35) 0); }
+.tx-sum .ps-grad { background: linear-gradient(90deg, #7cb2ff, #a3e635); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 600; }
+.tx-list { list-style: none; padding: 0 0 0 18px; display: grid; gap: 2px; border-left: 2px solid #1e3a6e; }
+.tx-list li { display: grid; grid-template-columns: 18px minmax(0, max-content) 1fr; align-items: baseline; gap: 10px; padding: 5px 0; font-size: 14.5px; }
+.tx-ok { color: #76b900; } .tx-list code { font: inherit; color: #7dd3fc; white-space: nowrap; } .tx-d { color: #8193b2; font-size: 13.5px; }
+.tx-d::before { content: "— "; color: #475569; }
+.tx-last { margin: 0; } .tx-cur { display: inline-block; width: 9px; height: 17px; vertical-align: -3px; background: #76b900; box-shadow: 0 0 8px rgb(118 185 0 / .7); animation: txBlink 1.05s steps(1) infinite; }
+@keyframes txBlink { 50% { opacity: 0; } }
+/* typing reveal, played once when the terminal scrolls into view */
+.tx.tx-play .tx-type { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; max-width: 0; animation: txType .7s steps(22, end) forwards; animation-delay: calc(var(--d, 0) * .55s); }
+.tx.tx-play .tx-cmd:nth-of-type(3) .tx-type { animation-delay: 1.6s; }
+.tx.tx-play .tx-cmd .tx-com, .tx.tx-play .tx-out, .tx.tx-play .tx-last { opacity: 0; animation: txIn .45s ease forwards; }
+.tx.tx-play .tx-sum { animation-delay: .75s; } .tx.tx-play .tx-com { animation-delay: 2.3s; }
+.tx.tx-play .tx-list { opacity: 1; animation: none; } .tx.tx-play .tx-list li { opacity: 0; animation: txIn .35s ease forwards; animation-delay: calc(2.4s + var(--n) * .14s); }
+.tx.tx-play .tx-last { animation-delay: 3.2s; }
+@keyframes txType { to { max-width: 30ch; } } @keyframes txIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.tx-list li { transition: background .2s; border-radius: 6px; } .tx-list li:hover { background: rgb(125 211 252 / .06); } .tx-list li:hover code { color: #bae6fd; }
+@media (max-width: 760px) {
+  .hero-grid > .rise:first-child > .hero-term { margin-top: 30px; }
+  .tx { border-radius: 14px; } .tx-body { padding: 16px 16px 18px; } .tx-bar .tx-tag { display: none; }
+  .tx-com { display: block; margin: 4px 0 0; font-size: 12.5px; }
+  .tx-sum, .tx-list { padding-left: 12px; }
+  .tx-list li { grid-template-columns: 16px minmax(0, 1fr); gap: 4px 8px; font-size: 13.5px; } .tx-list code { white-space: normal; overflow-wrap: anywhere; } .tx-d { grid-column: 2; font-size: 12.5px; } .tx-d::before { content: ""; }
+}
+@media (min-width: 761px) and (max-width: 1099px) { .hero-term .hero-actions { margin-left: 0 !important; } }
+@media (prefers-reduced-motion: reduce) { .tx-cur { animation: none; } .tx.tx-play * { animation: none !important; opacity: 1 !important; max-width: none !important; } }
 </style>
 </head>
 <body>
@@ -1863,18 +2194,16 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
         <nav class="main-nav nav-x" aria-label="Main">
             <ul>
                 <li class="nav-pill" aria-hidden="true"></li>
-                <li><a href="#top">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a class="is-key" href="#credentials">Certifications</a></li>
-                <li><a href="#capabilities">Capabilities</a></li>
-                <li><a href="#journey">Journey</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#recognition">Recognition</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#top"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-house" d="M5 10.2V20h14v-9.8L12 4.8z"/><path pathLength="100" class="i-roof" d="m2.8 11 9.2-7.5 9.2 7.5"/><path pathLength="100" class="i-door" d="M10 20v-5h4v5"/></svg><span>Home</span></a></li>
+                <li><a href="#about"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d i-head" cx="12" cy="8" r="3.8"/><path pathLength="100" class="d i-body" d="M4.5 20.5a7.5 7.5 0 0 1 15 0z"/></svg><span>About</span></a></li>
+                <li class="has-mega"><a href="#credentials" aria-haspopup="true" aria-expanded="false" aria-controls="mm-cred"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="i-medal"><circle pathLength="100" class="d" cx="12" cy="9" r="6"/><path pathLength="100" class="i-star" d="m12 6.1.95 1.9 2.1.3-1.5 1.45.35 2.1L12 10.9l-1.9.95.35-2.1L8.95 8.3l2.1-.3z"/></g><path pathLength="100" class="i-rib" d="m9 14-1.5 7L12 19l4.5 2L15 14"/></svg><span>Credentials</span><svg class="mm-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="mega mega-cred" id="mm-cred" role="region" aria-label="Credentials"><div class="mega-in"><div class="mm-col"><p class="mm-h">NVIDIA &amp; cloud</p><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/nvidia-ncp-aii.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>NVIDIA AI Infrastructure</b><span>6 certifications · first &amp; only in Singapore</span></span></a><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/aws-sa-pro.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Amazon Web Services</b><span>Solutions Architect &amp; DevOps Engineer Professional</span></span></a><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/cka.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Kubernetes</b><span>CKA · CKAD</span></span></a><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/terraform-associate.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>HashiCorp Terraform</b><span>Terraform Associate</span></span></a></div><div class="mm-col"><p class="mm-h">AI platforms &amp; enterprise</p><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/rafay-gpu-cloud-professional.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Rafay</b><span>GPU Cloud Professional · Associate</span></span></a><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/weka-technical-xpert.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>WEKA &amp; BeeGFS</b><span>AI storage platforms</span></span></a><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/rhcsa.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Red Hat · VMware · NetApp</b><span>Enterprise infrastructure</span></span></a><a class="mm-link" href="#credentials"><span class="mm-logo" aria-hidden="true"><img src="badges/prince2-practitioner.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>PRINCE2 · ITIL</b><span>Delivery &amp; service management</span></span></a></div><div class="mm-feat"><p class="mm-kick">Featured</p><p class="mm-big">6× <em>NVIDIA</em></p><p class="mm-txt">Singapore’s first and only professional with six NVIDIA AI Infrastructure certifications.</p><div class="mm-chips"><img class="mm-bdg" src="badges/nvidia-ncp-ari.png" alt="" width="44" height="44" loading="lazy"><img class="mm-bdg" src="badges/nvidia-ncp-aii.png" alt="" width="44" height="44" loading="lazy"><img class="mm-bdg" src="badges/nvidia-ncp-aio.png" alt="" width="44" height="44" loading="lazy"><img class="mm-bdg" src="badges/nvidia-ncp-ain.png" alt="" width="44" height="44" loading="lazy"><img class="mm-bdg" src="badges/nvidia-nca-aiio.png" alt="" width="44" height="44" loading="lazy"></div><a class="mm-cta" href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener">Verify credentials ↗</a></div><div class="mm-foot"><a class="mm-fl" href="#recognition"><svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-starb" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>Recognition<span aria-hidden="true">→</span></a><a class="mm-fl" href="#learning"><img src="badges/lf-ai-tokenomics.png" alt="" width="22" height="22" loading="lazy">Continuous learning<span aria-hidden="true">→</span></a></div></div></div></li>
+                <li class="has-mega"><a href="#capabilities" aria-haspopup="true" aria-expanded="false" aria-controls="mm-skill"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg><span>Expertise</span><svg class="mm-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="mega mega-skill" id="mm-skill" role="region" aria-label="Expertise"><div class="mega-in"><div class="mm-col"><p class="mm-h">Capabilities</p><a class="mm-link" href="#capabilities"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg></span><span><b>The stack, layer by layer</b><span>Compute, networking, storage, orchestration</span></span></a><a class="mm-link" href="#ai-data-center"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d" d="M10 13.5V4a2 2 0 1 1 4 0v9.5a4 4 0 1 1-4 0z"/><path pathLength="100" class="i-merc" d="M12 8v8.5"/><path pathLength="100" class="i-wave" d="M17 5c1 .7 1 1.6 0 2.3M19.5 4c1.6 1.2 1.6 3 0 4.2"/></svg></span><span><b>AI Data Center</b><span>Air-cooled, direct-to-chip &amp; immersion cooling</span></span></a><a class="mm-link" href="#platforms"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="6" y="6" width="12" height="12" rx="2"/><rect pathLength="100" class="i-core" x="9.5" y="9.5" width="5" height="5" rx="1"/><path pathLength="100" class="i-pins" d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><span><b>Platforms &amp; GPUs</b><span>11 NVIDIA GPU models · K40 → B300</span></span></a></div><div class="mm-col"><p class="mm-h">Platforms &amp; tools</p><a class="mm-link" href="#capabilities"><span class="mm-logo" aria-hidden="true"><img src="badges/bright-computing-logo.svg" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Bright Cluster Manager</b><span>HPC &amp; AI cluster management</span></span></a><a class="mm-link" href="#capabilities"><span class="mm-logo" aria-hidden="true"><img src="badges/beegfs-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>BeeGFS &amp; WEKA</b><span>Parallel and AI storage</span></span></a><a class="mm-link" href="#capabilities"><span class="mm-logo" aria-hidden="true"><img src="badges/rafay-certified-associate.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Rafay &amp; Kubernetes</b><span>GPU cloud orchestration</span></span></a></div><div class="mm-feat"><p class="mm-kick">AI factory</p><p class="mm-big">4 <small>pillars</small></p><p class="mm-txt">End to end, from bare-metal compute to turnkey AI systems.</p><div class="mm-chips"><span>AI Compute</span><span>AI Networking</span><span>AI Storage</span><span>AI Benchmarking</span></div><a class="mm-cta" href="#capabilities">Explore capabilities</a></div></div></div></li>
+                <li class="has-mega"><a href="#journey" aria-haspopup="true" aria-expanded="false" aria-controls="mm-exp"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="i-handle" d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect pathLength="100" class="d i-case" x="3" y="7" width="18" height="13" rx="2.5"/><path pathLength="100" class="i-clasp" d="M3 12.5h18M11 12.5h2v2h-2z"/></svg><span>Experience</span><svg class="mm-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="mega mega-exp" id="mm-exp" role="region" aria-label="Experience"><div class="mega-in"><div class="mm-col"><p class="mm-h">Career</p><a class="mm-link" href="#journey"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="6" cy="19" r="2.5"/><circle pathLength="100" class="d" cx="18" cy="5" r="2.5"/><path pathLength="100" class="i-flow" d="M8.5 19H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.5"/></svg></span><span><b>Journey</b><span>24 years, from Linux and networking to AI factories</span></span></a><a class="mm-link" href="#work"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="i-handle" d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect pathLength="100" class="d i-case" x="3" y="7" width="18" height="13" rx="2.5"/><path pathLength="100" class="i-clasp" d="M3 12.5h18M11 12.5h2v2h-2z"/></svg></span><span><b>Selected work</b><span>Systems that stay up</span></span></a></div><div class="mm-col"><p class="mm-h">Supercomputing</p><a class="mm-link" href="#nscc"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="3" y="4" width="18" height="7" rx="2"/><rect pathLength="100" class="d" x="3" y="13" width="18" height="7" rx="2"/><path class="i-led i-led1" d="M7 7.5h.01"/><path class="i-led i-led2" d="M7 16.5h.01"/><path pathLength="100" d="M11 7.5h6M11 16.5h6"/></svg></span><span><b>NSCC Singapore</b><span>Led 4 HPC &amp; AI supercomputers · 37 PFLOPS</span></span></a><a class="mm-link" href="#platforms"><span class="mm-ico" aria-hidden="true"><svg class="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="6" y="6" width="12" height="12" rx="2"/><rect pathLength="100" class="i-core" x="9.5" y="9.5" width="5" height="5" rx="1"/><path pathLength="100" class="i-pins" d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><span><b>Platforms &amp; GPUs</b><span>11 NVIDIA GPU models · K40 → B300</span></span></a></div><div class="mm-feat"><p class="mm-kick">Delivered</p><p class="mm-big">4.134 <small>EFLOPS</small></p><p class="mm-txt">FP16 AI factory capacity delivered on NVIDIA DGX and HGX.</p><div class="mm-chips"><span>DGX</span><span>HGX</span><span>MGX</span></div><a class="mm-cta" href="#highlights">See career highlights</a></div></div></div></li>
+                <li class="has-mega"><a href="#education" aria-haspopup="true" aria-expanded="false" aria-controls="mm-edu"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-board" d="m2 9 10-5 10 5-10 5z"/><path pathLength="100" class="i-crown" d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><g class="i-tassel"><path pathLength="100" d="M22 9v5.5"/><circle pathLength="100" class="d" cx="22" cy="15.5" r="1"/></g></svg><span>Education</span><svg class="mm-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="mega mega-edu" id="mm-edu" role="region" aria-label="Education"><div class="mega-in"><div class="mm-col"><p class="mm-h">Degrees</p><a class="mm-link" href="#education"><span class="mm-logo" aria-hidden="true"><img src="images/edu/ggu.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>MCA · 2003</b><span>Guru Ghasidas University · First Division</span></span></a><a class="mm-link" href="#education"><span class="mm-logo" aria-hidden="true"><img src="images/edu/dhsgsu.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>B.Sc. · 1999</b><span>Dr. Hari Singh Gour University</span></span></a></div><div class="mm-col"><p class="mm-h">Certificates</p><a class="mm-link" href="#education"><span class="mm-logo" aria-hidden="true"><img src="images/edu/uoe.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>Supercomputing · 2018</b><span>The University of Edinburgh</span></span></a><a class="mm-link" href="#education"><span class="mm-logo" aria-hidden="true"><img src="images/edu/dcu.png" alt="" width="36" height="36" loading="lazy" decoding="async"></span><span><b>HPC in the Cloud · 2018</b><span>Dublin City University</span></span></a></div><div class="mm-feat"><p class="mm-kick">Foundation</p><p class="mm-big">MCA <small>first division</small></p><p class="mm-txt">Computer applications on a base of physics, chemistry and mathematics, with supercomputing study in the UK and Ireland.</p><div class="mm-chips"><span>Edinburgh</span><span>Dublin</span></div><a class="mm-cta" href="#education">View education</a></div></div></div></li>
             </ul>
         </nav>
         <div class="header-right">
+            <div class="cta-wrap"><a class="nav-cta" href="#contact" aria-haspopup="true" aria-expanded="false" aria-controls="cta-pop"><span class="cta-dot" aria-hidden="true"></span><svg class="cta-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="i-bub" d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.5-5.2A8.5 8.5 0 1 1 21 12Z" fill="currentColor" fill-opacity=".18"/><path class="i-dt i-dt1" d="M8.5 12h.01" stroke-width="2.6"/><path class="i-dt i-dt2" d="M12 12h.01" stroke-width="2.6"/><path class="i-dt i-dt3" d="M15.5 12h.01" stroke-width="2.6"/></svg><span>Contact</span></a><div class="cta-pop" id="cta-pop" role="region" aria-label="Contact options"><div class="cta-in"><div class="cta-head"><p class="mm-kick">Let’s talk</p><p class="cta-title">AI infrastructure</p><p class="cta-sub">AI factories, supercomputing and HPC, based in Singapore.</p></div><a class="cta-row cta-li" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><span class="cta-ic"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></span><span><b>Connect on LinkedIn</b><span>The fastest way to reach me</span></span></a><a class="cta-row" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><span class="cta-ic cta-img"><img src="badges/nvidia-ncp-aii.png" alt="" width="30" height="30" loading="lazy"></span><span><b>NVIDIA credential wallet</b><span>Verify NVIDIA certifications</span></span></a><a class="cta-row" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer"><span class="cta-ic cta-img"><img src="badges/aws-sa-pro.png" alt="" width="30" height="30" loading="lazy"></span><span><b>Credly wallet</b><span>AWS, Kubernetes and more</span></span></a><a class="cta-row cta-all" href="#contact"><span class="cta-ic"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>All contact options</b><span>Go to the contact section</span></span></a></div></div></div>
             <div class="theme-pick"><button type="button" class="theme-btn" aria-haspopup="true" aria-expanded="false" aria-controls="theme-menu" aria-label="Colour theme"><svg class="ti ti-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ti ti-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg><svg class="ti ti-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span class="theme-lbl">Theme</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="theme-menu" id="theme-menu" role="menu" aria-label="Colour theme"><button type="button" role="menuitemradio" data-theme-set="light" aria-checked="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Light<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><button type="button" role="menuitemradio" data-theme-set="dark" aria-checked="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>Dark<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><button type="button" role="menuitemradio" data-theme-set="system" aria-checked="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>System<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><small>System follows your device setting</small></div></div>
             <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
                 <svg class="icon"><use href="#i-menu"/></svg>
@@ -1882,15 +2211,7 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
         </div>
     </div>
     <nav id="mobile-nav" class="mobile-nav" aria-label="Main">
-        <a class="nav-item" href="#top">Home</a>
-        <a class="nav-item" href="#about">About</a>
-        <a class="nav-item" href="#credentials">Certifications</a>
-        <a class="nav-item" href="#capabilities">Capabilities</a>
-        <a class="nav-item" href="#journey">Journey</a>
-        <a class="nav-item" href="#work">Work</a>
-        <a class="nav-item" href="#recognition">Recognition</a>
-        <a class="nav-item" href="#education">Education</a>
-        <a class="nav-item" href="#contact">Contact</a>
+        <a class="nav-item" href="#top"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-house" d="M5 10.2V20h14v-9.8L12 4.8z"/><path pathLength="100" class="i-roof" d="m2.8 11 9.2-7.5 9.2 7.5"/><path pathLength="100" class="i-door" d="M10 20v-5h4v5"/></svg>Home</a><a class="nav-item" href="#about"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d i-head" cx="12" cy="8" r="3.8"/><path pathLength="100" class="d i-body" d="M4.5 20.5a7.5 7.5 0 0 1 15 0z"/></svg>About</a><details class="mn-grp"><summary><span><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="i-medal"><circle pathLength="100" class="d" cx="12" cy="9" r="6"/><path pathLength="100" class="i-star" d="m12 6.1.95 1.9 2.1.3-1.5 1.45.35 2.1L12 10.9l-1.9.95.35-2.1L8.95 8.3l2.1-.3z"/></g><path pathLength="100" class="i-rib" d="m9 14-1.5 7L12 19l4.5 2L15 14"/></svg>Credentials</span><svg class="mn-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a class="nav-item" href="#credentials">Certifications</a><a class="nav-item" href="#recognition">Recognition</a><a class="nav-item" href="#learning">Continuous learning</a></details><details class="mn-grp"><summary><span><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg>Expertise</span><svg class="mn-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a class="nav-item" href="#capabilities">Capabilities</a><a class="nav-item" href="#ai-data-center">AI Data Center</a><a class="nav-item" href="#platforms">Platforms &amp; GPUs</a></details><details class="mn-grp"><summary><span><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="i-handle" d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect pathLength="100" class="d i-case" x="3" y="7" width="18" height="13" rx="2.5"/><path pathLength="100" class="i-clasp" d="M3 12.5h18M11 12.5h2v2h-2z"/></svg>Experience</span><svg class="mn-car" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a class="nav-item" href="#journey">Journey</a><a class="nav-item" href="#work">Selected work</a><a class="nav-item" href="#nscc">NSCC supercomputers</a></details><a class="nav-item" href="#education"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-board" d="m2 9 10-5 10 5-10 5z"/><path pathLength="100" class="i-crown" d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><g class="i-tassel"><path pathLength="100" d="M22 9v5.5"/><circle pathLength="100" class="d" cx="22" cy="15.5" r="1"/></g></svg>Education</a><a class="nav-item mn-contact" href="#contact">Contact</a>
         <a class="btn btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Credly wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn btn-signal" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> Connect on LinkedIn</a>
@@ -1912,14 +2233,26 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
                         </figure>
                         <div class="hh-wrap"><h1 class="hero-hello"><span class="hh-1">Hi, I’m <span class="hh-name">Amitabh&nbsp;Pandey</span>.</span> <span class="hh-2">AI&nbsp;Factory, Supercomputing &amp;&nbsp;HPC&nbsp;Architect</span></h1></div>
                     </div>
-                    <div class="hero-cool"><div class="hc-label"><span class="hc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13.5V4a2 2 0 1 1 4 0v9.5a4 4 0 1 1-4 0z"/><path d="M12 9v6"/><path d="M18 5h2M18 9h2M18 13h2"/></svg></span><span>AI Data Center</span></div><div class="hc-body ps-lead"><p class="hc-text">Hands-on experience in <em>AI and HPC Data&nbsp;Center</em>: <span class="ps-grad"><span class="nw">Air-Gapped</span></span>, <span class="ps-grad"><span class="nw">Air-Cooled</span></span>, <span class="ps-grad"><span class="nw">Direct-to-Chip</span> Liquid</span> and <span class="ps-grad"><span class="nw">Single-Phase</span> Liquid Immersion Cooling</span>, with <strong>rack&nbsp;CDUs</strong>.</p></div></div>
-                    <div class="hero-side kpi" aria-label="Career highlights"><div class="kpi-h"><span>Career highlights</span><span class=kpi-sg>Singapore</span></div><div class="kpi-grid"><div class="kp kp-b kp-big"><span class="kp-k">Scale · NSCC</span><b class="kp-v">37<small>PFLOPS</small></b><span class="kp-d">Led four HPC &amp; AI supercomputers at Singapore’s NSCC</span></div><div class="kp kp-g kp-big"><span class="kp-k">AI factories</span><b class="kp-v">4.134<small>EFLOPS</small></b><span class="kp-d">FP16 AI factory capacity on NVIDIA DGX &amp; HGX</span></div><div class="kp kp-s "><span class="kp-k">Experience</span><b class="kp-v">24<small>Years</small></b><span class="kp-d">Linux, AI cloud &amp; HPC · 14 on NVIDIA</span></div><a class="kp kp-n  kp-link" href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer" aria-label="Verify NVIDIA credentials (opens in new tab)"><span class="kp-k">NVIDIA certified</span><b class="kp-v">6<small>Certs</small></b><span class="kp-d">AI Infrastructure · first &amp; only in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a><a class="kp kp-p  kp-link" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer" aria-label="Verify Tokenomics badge on Credly (opens in new tab)"><span class="kp-k">AI Tokenomics</span><b class="kp-v">#4<small>World</small></b><span class="kp-d">Ranked #1 in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></div><div class="kpi-foot"><div class="kpi-edu"><span class="kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg></span><p><strong>Educator</strong> — Delivered AI/HPC supercomputing workshops for Singapore universities NUS, NTU, SUTD, SMU, SIT and research institute A*STAR.</p></div><p class="kpi-src">Verified at <a href="https://www.nscc.sg/" target="_blank" rel="noreferrer">nscc.sg</a> · <a href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer">NVIDIA Certification Directory</a> · <a href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer">Tokenomics Foundation (Credly)</a></p></div></div>
                     
-                    <div class="hero-sum"><div class="hc-label"><span class="hc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><span>Professional summary</span></div><p class="hero-lede ps-lead"><em>24 years</em> of experience architecting, operating and scaling Linux, AI&nbsp;Cloud, <span class="ps-grad">High-Performance Computing Grid and Supercomputing infrastructure</span>, with <span class="nw"><em>14 years</em>&nbsp;building</span> AI&nbsp;Factories from <span class="nw">bare-metal</span> compute to turnkey AI&nbsp;Systems across <span class="ps-grad">AI Compute, AI Networking, AI Storage and AI&nbsp;Benchmarking</span>.</p></div>
-                    <div class="hero-actions">
+                    <div id="highlights" class="hero-side kpi" aria-label="Career highlights"><div class="kpi-h"><span>Career highlights</span><span class=kpi-sg>Singapore</span></div><div class="kpi-grid"><div class="kp kp-b kp-big"><span class="kp-k">Scale · NSCC</span><b class="kp-v">37<small>PFLOPS</small></b><span class="kp-d">Led four HPC &amp; AI supercomputers at Singapore’s NSCC</span></div><div class="kp kp-g kp-big"><span class="kp-k">AI factories</span><b class="kp-v">4.134<small>EFLOPS</small></b><span class="kp-d">FP16 AI factory capacity on NVIDIA DGX &amp; HGX</span></div><div class="kp kp-s "><span class="kp-k">Experience</span><b class="kp-v">24<small>Years</small></b><span class="kp-d">Linux, AI cloud &amp; HPC · 14 on NVIDIA</span></div><a class="kp kp-n  kp-link" href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer" aria-label="Verify NVIDIA credentials (opens in new tab)"><span class="kp-k">NVIDIA certified</span><b class="kp-v">6<small>Certs</small></b><span class="kp-d">AI Infrastructure · first &amp; only in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a><a class="kp kp-p  kp-link" href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer" aria-label="Verify Tokenomics badge on Credly (opens in new tab)"><span class="kp-k">AI Tokenomics</span><b class="kp-v">#4<small>World</small></b><span class="kp-d">Ranked #1 in Singapore</span><span class="kp-ver">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></div><div class="kpi-foot"><div class="kpi-edu"><span class="kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg></span><p><strong>Educator</strong> — Delivered AI/HPC supercomputing workshops for Singapore universities NUS, NTU, SUTD, SMU, SIT and research institute A*STAR.</p></div><p class="kpi-src">Verified at <a href="https://www.nscc.sg/" target="_blank" rel="noreferrer">nscc.sg</a> · <a href="https://tinyurl.com/nvidiaCredentials" target="_blank" rel="noopener noreferrer">NVIDIA Certification Directory</a> · <a href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b/linked_in?t=tm05eh" target="_blank" rel="noopener noreferrer">Tokenomics Foundation (Credly)</a></p></div></div>
+                    
+                    <div class="hero-term">
+                        <div class="tx" role="region" aria-label="Professional summary and AI data center experience">
+                            <div class="tx-bar" aria-hidden="true"><i></i><i></i><i></i><span>amitabh@ai-factory: ~</span><span class="tx-tag">bash</span></div>
+                            <div class="tx-body">
+                                <p class="tx-cmd" style="--d:0"><span class="tx-pr" aria-hidden="true">$</span> <span class="tx-type">whoami --summary</span></p>
+                                <p class="tx-out tx-sum" style="--d:1"><em>24 years</em> of experience architecting, operating and scaling Linux, AI&nbsp;Cloud, <span class="ps-grad">High-Performance Computing Grid and Supercomputing infrastructure</span>, with <span class="nw"><em>14 years</em>&nbsp;building</span> AI&nbsp;Factories from <span class="nw">bare-metal</span> compute to turnkey AI&nbsp;Systems across <span class="ps-grad">AI Compute, AI Networking, AI Storage and AI&nbsp;Benchmarking</span>.</p>
+                                <p class="tx-cmd" style="--d:2" id="ai-data-center"><span class="tx-pr" aria-hidden="true">$</span> <span class="tx-type">datacenter --list</span><span class="tx-com"># AI &amp; HPC data centers, hands-on</span></p>
+                                <ul class="tx-out tx-list" style="--d:3"><li style="--n:0"><span class="tx-ok" aria-hidden="true">✔</span><code>air-gapped</code><span class="tx-d">Isolated, secured sites</span></li><li style="--n:1"><span class="tx-ok" aria-hidden="true">✔</span><code>air-cooled</code><span class="tx-d">Airflow and containment</span></li><li style="--n:2"><span class="tx-ok" aria-hidden="true">✔</span><code>direct-to-chip-liquid</code><span class="tx-d">Cold plates on GPUs and CPUs</span></li><li style="--n:3"><span class="tx-ok" aria-hidden="true">✔</span><code>single-phase-liquid-immersion</code><span class="tx-d">Servers in dielectric fluid</span></li><li style="--n:4"><span class="tx-ok" aria-hidden="true">✔</span><code>rack-cdu</code><span class="tx-d">Coolant distribution units</span></li></ul>
+                                <p class="tx-cmd tx-last" style="--d:4" aria-hidden="true"><span class="tx-pr">$</span> <span class="tx-cur"></span></p>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
                         <a class="btn btn-signal" href="#credentials">View certifications <svg class="icon"><use href="#i-arrow-r"/></svg></a>
                         <a class="btn btn-linkedin" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
                     </div>
+                    </div>
+                    
                 </div>
 
                 <aside class="track rise d1" aria-label="NVIDIA AI infrastructure certifications">
@@ -2125,7 +2458,7 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
                     <div class="ap-sep" aria-hidden="true"><span>Impact</span></div>
                     <ul class="ab-impact2" aria-label="Impact"><li class="im-g"><span class="im-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><strong><span class="im-num" data-to="4.134">4.134</span><small>EFLOPS</small></strong><b>AI factories delivered</b><span>FP16 on NVIDIA DGX and HGX</span><i class="im-bar"></i></li><li class="im-g"><span class="im-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4.5v9L12 22l-8-6.5v-9z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><strong><span class="im-num" data-to="6">6</span></strong><b>NVIDIA AI infrastructure credentials</b><span>Singapore’s first and only holder</span><i class="im-bar"></i></li><li class="im-b"><span class="im-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="6" height="18" rx="1"/><rect x="14" y="3" width="6" height="18" rx="1"/><path d="M7 7h.01M7 11h.01M17 7h.01M17 11h.01"/></svg></span><strong><span class="im-num" data-to="4">4</span></strong><b>NSCC supercomputers led</b><span>National Supercomputing Centre Singapore, 37 PFLOPS peak</span><i class="im-bar"></i></li><li class="im-b"><span class="im-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6"/><path d="M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg></span><strong><span class="im-num" data-to="5">5</span></strong><b>Singapore universities</b><span>AI/HPC workshops for NUS, NTU, SUTD, SMU and SIT</span><i class="im-bar"></i></li></ul>
                 </div>
-                <div class="ab-flag">
+                <div class="ab-flag" id="nscc">
                     <div class="nscc-hero" role="group" aria-label="Led 4 HPC and AI supercomputers at the National Supercomputing Centre (NSCC) Singapore">
                         <span class="nh-grid" aria-hidden="true"></span><span class="nh-orb nh-o1" aria-hidden="true"></span><span class="nh-orb nh-o2" aria-hidden="true"></span><span class="nh-sweep" aria-hidden="true"></span>
                         <span class="nh-nodes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
@@ -2185,7 +2518,7 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
 })();
 </script>
                 </div>
-                <div class="ab-plat">
+                <div class="ab-plat" id="platforms">
                 <div class="plat-x">
                 <span class="pv-grid" aria-hidden="true"></span><span class="pv-glow" aria-hidden="true"></span><span class="pv-spot" aria-hidden="true"></span>
                 <div class="kn-head"><div><span>Accelerated computing</span><strong>Platforms &amp; GPUs</strong></div><em>11<small>GPU models · K40 → B300</small></em></div>
@@ -2820,76 +3153,70 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
                 </div>
                 <p>Course completions and vendor training. They are listed here for completeness and not counted as certifications above.</p>
             </div>
-            <div class="learn-grid">
-                <div class="learn">
-                    <h3>Linux Foundation <span>2021–25</span></h3>
-                    <ul>
-                        <li>DevOps &amp; Workflow Management with Argo <code>LFS256</code></li>
-                        <li>CI/CD with Tekton <code>LFS274</code></li>
-                        <li>Intro to AI/ML Toolkits with Kubeflow <code>LFS147</code></li>
-                        <li>Kubernetes Security Essentials <code>LFS260</code></li>
-                        <li>Containers Fundamentals <code>LFS253</code></li>
-                        <li>Kubernetes for Developers <code>LFD259</code></li>
-                        <li>Kubernetes Fundamentals <code>LFS258</code></li>
-                        <li>Fundamentals of Quantum Computing <code>LFQ101</code></li>
-                        <li>Quantum Computing for Senior Leaders <code>LFQ102</code></li>
-                    </ul>
-                </div>
-                <div class="learn">
-                    <h3>NVIDIA <span>2020–24</span></h3>
-                    <ul>
-                        <li>Base Command Manager Administration <code>2024</code></li>
-                        <li>Introduction to Base Command Manager <code>2024</code></li>
-                        <li>NVIDIA AI Enterprise Administration <code>v3.0</code></li>
-                        <li>AI Infrastructure &amp; Operations Fundamentals</li>
-                    </ul>
-                </div>
-                <div class="learn">
-                    <h3>HPC &amp; cloud <span>2018+</span></h3>
-                    <ul>
-                        <li>Supercomputing <code>Edinburgh &amp; PRACE</code></li>
-                        <li>HPC in the Cloud <code>DCU</code></li>
-                        <li>HPC with Containers: Singularity &amp; Docker</li>
-                        <li>IBM Cloud: Microservices with Kubernetes <code>Coursera</code></li>
-                        <li>LXC/LXD Deep Dive <code>A Cloud Guru</code></li>
-                        <li>Python 3 for System Administrators <code>A Cloud Guru</code></li>
-                    </ul>
-                </div>
-                <div class="learn">
-                    <h3>Storage &amp; clustering <span>07</span></h3>
-                    <ul>
-                        <li>IBM Spectrum Scale 4.1 (GPFS) <code>H005G</code></li>
-                        <li>IBM Platform Symphony <code>H050G</code></li>
-                        <li>HPE DMF Administration <code>H6LG1S</code></li>
-                        <li>Oracle Solaris 10 ZFS <code>SA-2290</code></li>
-                        <li>Red Hat Clustering &amp; Storage <code>RH436</code></li>
-                        <li>Red Hat Enterprise Virtualization <code>RH318</code></li>
-                        <li>Veritas Cluster Server <code>5.0</code></li>
-                    </ul>
-                </div>
-                <div class="learn">
-                    <h3>VMware &amp; Solaris <span>07</span></h3>
-                    <ul>
-                        <li>vSphere: Install, Configure, Manage <code>v5.0</code></li>
-                        <li>vSphere: Troubleshooting Workshop <code>v5.1</code></li>
-                        <li>vCloud Director Fundamentals <code>v5.1</code></li>
-                        <li>vCenter Site Recovery Manager <code>v5.1</code></li>
-                        <li>Solaris Containers <code>SA-355</code></li>
-                        <li>Solaris 10 Logical Domains <code>SA-345</code></li>
-                        <li>Opsware Server Automation System</li>
-                    </ul>
-                </div>
-                <div class="learn">
-                    <h3>Management &amp; data <span>05</span></h3>
-                    <ul>
-                        <li>Six Sigma Green Belt</li>
-                        <li>Excel Leadership Training <code>JPMC</code></li>
-                        <li>ITIL Foundation v3</li>
-                        <li>PRINCE2 Foundation &amp; Practitioner</li>
-                        <li>Cloudera Administrator for Apache Hadoop</li>
-                    </ul>
-                </div>
+            
+            <div class="lg-stats">
+                <div><b data-to="38">38</b><span>courses completed</span></div>
+                <div><b>6</b><span>learning tracks</span></div>
+                <div><b>14+</b><span>training providers</span></div>
+                <div class="lg-prov"><span>Providers include</span><p>Linux Foundation · NVIDIA · University of Edinburgh · DCU · IBM · HPE · Red Hat · Oracle · VMware · Veritas · Cloudera · Coursera · A Cloud Guru · AXELOS</p></div>
             </div>
+            <div class="lg-grid">
+                <article class="lg-card lg-blue">
+                    <header class="lg-head">
+                        <span class="lg-icon"><svg class="lg-ico ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="3" y="4" width="18" height="16" rx="2.5"/><path pathLength="100" class="i-prompt" d="m7 9 3 3-3 3"/><path pathLength="100" class="i-cursor" d="M12.5 15H17"/></svg></span>
+                        <div class="lg-tt"><h3>Linux Foundation</h3><p><span class="lg-yr">2021–25</span><span class="lg-n">9 courses</span></p></div>
+                        <div class="lg-logos"></div>
+                    </header>
+                    <div class="lg-tags"><span>Kubernetes</span><span>Cloud native</span><span>Quantum</span></div>
+                    <ul><li style="--k:0"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">DevOps &amp; Workflow Management with Argo</span><code>LFS256</code></li><li style="--k:1"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">CI/CD with Tekton</span><code>LFS274</code></li><li style="--k:2"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Intro to AI/ML Toolkits with Kubeflow</span><code>LFS147</code></li><li style="--k:3"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Kubernetes Security Essentials</span><code>LFS260</code></li><li style="--k:4"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Containers Fundamentals</span><code>LFS253</code></li><li style="--k:5"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Kubernetes for Developers</span><code>LFD259</code></li><li style="--k:6"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Kubernetes Fundamentals</span><code>LFS258</code></li><li style="--k:7"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Fundamentals of Quantum Computing</span><code>LFQ101</code></li><li style="--k:8"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Quantum Computing for Senior Leaders</span><code>LFQ102</code></li></ul>
+                </article>
+                <article class="lg-card lg-green">
+                    <header class="lg-head">
+                        <span class="lg-icon"><svg class="lg-ico ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="2.5" y="7" width="19" height="10" rx="2"/><circle pathLength="100" class="i-fan" cx="8" cy="12" r="2.6"/><circle pathLength="100" class="i-fan" cx="15.5" cy="12" r="2.6"/><path pathLength="100" d="M5 17v2.5M19 17v2.5"/></svg></span>
+                        <div class="lg-tt"><h3>NVIDIA</h3><p><span class="lg-yr">2020–24</span><span class="lg-n">4 courses</span></p></div>
+                        <div class="lg-logos"><span class="lg-logo" title="NVIDIA"><img src="badges/nvidia-intro-ai-datacenter.png" alt="NVIDIA logo" width="40" height="40" loading="lazy" decoding="async"></span></div>
+                    </header>
+                    <div class="lg-tags"><span>Base Command</span><span>AI Enterprise</span></div>
+                    <ul><li style="--k:0"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Base Command Manager Administration</span><code>2024</code></li><li style="--k:1"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Introduction to Base Command Manager</span><code>2024</code></li><li style="--k:2"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">NVIDIA AI Enterprise Administration</span><code>v3.0</code></li><li style="--k:3"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">AI Infrastructure &amp; Operations Fundamentals</span></li></ul>
+                </article>
+                <article class="lg-card lg-cyan">
+                    <header class="lg-head">
+                        <span class="lg-icon"><svg class="lg-ico ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d" d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z"/><path pathLength="100" class="i-up" d="M12 16v-5m-2.2 2.2L12 11l2.2 2.2"/></svg></span>
+                        <div class="lg-tt"><h3>HPC &amp; cloud</h3><p><span class="lg-yr">2018+</span><span class="lg-n">6 courses</span></p></div>
+                        <div class="lg-logos"><span class="lg-logo" title="The University of Edinburgh"><img src="images/edu/uoe.png" alt="The University of Edinburgh logo" width="40" height="40" loading="lazy" decoding="async"></span><span class="lg-logo" title="Dublin City University"><img src="images/edu/dcu.png" alt="Dublin City University logo" width="40" height="40" loading="lazy" decoding="async"></span></div>
+                    </header>
+                    <div class="lg-tags"><span>Edinburgh</span><span>DCU</span><span>IBM · Coursera</span><span>A Cloud Guru</span></div>
+                    <ul><li style="--k:0"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Supercomputing</span><code>Edinburgh &amp; PRACE</code></li><li style="--k:1"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">HPC in the Cloud</span><code>DCU</code></li><li style="--k:2"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">HPC with Containers: Singularity &amp; Docker</span></li><li style="--k:3"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">IBM Cloud: Microservices with Kubernetes</span><code>Coursera</code></li><li style="--k:4"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">LXC/LXD Deep Dive</span><code>A Cloud Guru</code></li><li style="--k:5"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Python 3 for System Administrators</span><code>A Cloud Guru</code></li></ul>
+                </article>
+                <article class="lg-card lg-violet">
+                    <header class="lg-head">
+                        <span class="lg-icon"><svg class="lg-ico ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse class="d" cx="12" cy="6" rx="8" ry="3"/><path pathLength="100" d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path pathLength="100" class="i-ring" d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
+                        <div class="lg-tt"><h3>Storage &amp; clustering</h3><p><span class="lg-n">7 courses</span></p></div>
+                        <div class="lg-logos"><span class="lg-logo" title="Red Hat"><img src="badges/rhcsa.png" alt="Red Hat logo" width="40" height="40" loading="lazy" decoding="async"></span></div>
+                    </header>
+                    <div class="lg-tags"><span>IBM</span><span>HPE</span><span>Oracle</span><span>Red Hat</span><span>Veritas</span></div>
+                    <ul><li style="--k:0"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">IBM Spectrum Scale 4.1 (GPFS)</span><code>H005G</code></li><li style="--k:1"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">IBM Platform Symphony</span><code>H050G</code></li><li style="--k:2"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">HPE DMF Administration</span><code>H6LG1S</code></li><li style="--k:3"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Oracle Solaris 10 ZFS</span><code>SA-2290</code></li><li style="--k:4"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Red Hat Clustering &amp; Storage</span><code>RH436</code></li><li style="--k:5"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Red Hat Enterprise Virtualization</span><code>RH318</code></li><li style="--k:6"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Veritas Cluster Server</span><code>5.0</code></li></ul>
+                </article>
+                <article class="lg-card lg-teal">
+                    <header class="lg-head">
+                        <span class="lg-icon"><svg class="lg-ico ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="3" y="3" width="18" height="12" rx="2"/><rect pathLength="100" class="i-vm1" x="6" y="6" width="5" height="6" rx="1"/><rect pathLength="100" class="i-vm2" x="13" y="6" width="5" height="6" rx="1"/><path pathLength="100" d="M8 21h8M12 15v6"/></svg></span>
+                        <div class="lg-tt"><h3>VMware &amp; Solaris</h3><p><span class="lg-n">7 courses</span></p></div>
+                        <div class="lg-logos"><span class="lg-logo" title="VMware"><img src="badges/vmware-vcp5.png" alt="VMware logo" width="40" height="40" loading="lazy" decoding="async"></span></div>
+                    </header>
+                    <div class="lg-tags"><span>VMware</span><span>Oracle Solaris</span><span>Opsware</span></div>
+                    <ul><li style="--k:0"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">vSphere: Install, Configure, Manage</span><code>v5.0</code></li><li style="--k:1"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">vSphere: Troubleshooting Workshop</span><code>v5.1</code></li><li style="--k:2"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">vCloud Director Fundamentals</span><code>v5.1</code></li><li style="--k:3"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">vCenter Site Recovery Manager</span><code>v5.1</code></li><li style="--k:4"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Solaris Containers</span><code>SA-355</code></li><li style="--k:5"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Solaris 10 Logical Domains</span><code>SA-345</code></li><li style="--k:6"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Opsware Server Automation System</span></li></ul>
+                </article>
+                <article class="lg-card lg-amber">
+                    <header class="lg-head">
+                        <span class="lg-icon"><svg class="lg-ico ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect pathLength="100" class="d" x="3" y="3" width="18" height="18" rx="2.5"/><path pathLength="100" class="i-bar1" d="M8 16v-4"/><path pathLength="100" class="i-bar2" d="M12 16V8"/><path pathLength="100" class="i-bar3" d="M16 16v-6"/></svg></span>
+                        <div class="lg-tt"><h3>Management &amp; data</h3><p><span class="lg-n">5 courses</span></p></div>
+                        <div class="lg-logos"><span class="lg-logo" title="ITIL"><img src="badges/itil-foundation-v3.png" alt="ITIL logo" width="40" height="40" loading="lazy" decoding="async"></span><span class="lg-logo" title="PRINCE2"><img src="badges/prince2-practitioner.png" alt="PRINCE2 logo" width="40" height="40" loading="lazy" decoding="async"></span></div>
+                    </header>
+                    <div class="lg-tags"><span>ITIL</span><span>PRINCE2</span><span>Six Sigma</span><span>Cloudera</span></div>
+                    <ul><li style="--k:0"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Six Sigma Green Belt</span></li><li style="--k:1"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Excel Leadership Training</span><code>JPMC</code></li><li style="--k:2"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">ITIL Foundation v3</span></li><li style="--k:3"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">PRINCE2 Foundation &amp; Practitioner</span></li><li style="--k:4"><svg class="lg-chk ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d" cx="12" cy="12" r="9"/><path pathLength="100" d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg><span class="lg-name">Cloudera Administrator for Apache Hadoop</span></li></ul>
+                </article>
+            </div>
+</div>
         </div>
     </section>
 
@@ -3058,7 +3385,7 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
 (() => {
     const nav = document.querySelector('.nav-x');
     if (!nav) return;
-    const pill = nav.querySelector('.nav-pill'), links = [...nav.querySelectorAll('a[href^="#"]')];
+    const pill = nav.querySelector('.nav-pill'), links = [...nav.querySelectorAll(':scope > ul > li > a[href^="#"]')];
     let active = null;
     const moveTo = (a) => {
         if (!a) { nav.classList.remove('has-pill'); return; }
@@ -3071,14 +3398,14 @@ html[data-theme="dark"] .ed-logo { border-color: transparent; box-shadow: 0 10px
     links.forEach((a) => { a.addEventListener('pointerenter', () => moveTo(a)); a.addEventListener('focus', () => moveTo(a)); });
     nav.addEventListener('pointerleave', () => moveTo(active));
     window.addEventListener('resize', () => moveTo(active));
-    const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const owner = new Map(); const own = (x, a) => { const el = document.querySelector(x.getAttribute('href')); if (el && el.tagName === 'SECTION' && !owner.has(el)) owner.set(el, a); }; links.forEach((a) => own(a, a)); links.forEach((a) => a.parentElement.querySelectorAll('.mega a[href^="#"]').forEach((x) => own(x, a))); const sections = [...owner.keys()];
     if ('IntersectionObserver' in window && sections.length) {
         const seen = new Map();
         const io = new IntersectionObserver((es) => {
             es.forEach((e) => seen.set(e.target, e.isIntersecting ? e.intersectionRatio : 0));
             let best = null, bestR = 0;
             seen.forEach((r, el) => { if (r > bestR) { bestR = r; best = el; } });
-            setActive(best ? links.find((a) => a.getAttribute('href') === '#' + best.id) : null);
+            setActive(best ? owner.get(best) : null);
         }, { rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.01, 0.25, 0.5, 1] });
         sections.forEach((s) => io.observe(s));
     }
@@ -3351,5 +3678,73 @@ document.addEventListener('keydown',function(ev){if(!cur)return;if(ev.key==='Esc
  if(ev.key==='ArrowDown'||ev.key==='ArrowUp'){ev.preventDefault();var it=items(),i=it.indexOf(document.activeElement);i=ev.key==='ArrowDown'?(i+1)%it.length:(i<=0?it.length-1:i-1);it[i].focus()}
  if(ev.key==='Tab'&&!pop.contains(document.activeElement)){close(false)}});
 addEventListener('resize',function(){close(false)});addEventListener('scroll',function(){if(cur)place(cur)},{passive:true});})();</script>
+
+<script>
+/* Header mega menu: open on hover / focus / tap, close on leave, Escape or link click */
+(() => {
+    const items = [...document.querySelectorAll('.nav-x .has-mega')];
+    if (!items.length) return;
+    const header = document.querySelector('.site-header');
+    const scrim = document.createElement('div'); scrim.className = 'mm-scrim'; document.body.appendChild(scrim);
+    let timer = null, openLi = null;
+    const ul = document.querySelector('.nav-x > ul');
+    /* The menu bar uses backdrop-filter, which makes it the containing block for fixed panels, so offsets are measured from it. */
+    const place = () => { const u = ul.getBoundingClientRect(), hb = header.getBoundingClientRect().bottom; document.documentElement.style.setProperty('--mm-top', Math.round(hb) + 'px'); items.forEach((li) => { const m = li.querySelector('.mega'); m.style.left = Math.round(innerWidth / 2 - u.left) + 'px'; m.style.top = Math.round(hb + 8 - u.top) + 'px'; }); };
+    const open = (li) => { const cwp = document.querySelector('.cta-wrap.is-open'); if (cwp) { cwp.classList.remove('is-open'); cwp.querySelector('.nav-cta').setAttribute('aria-expanded', 'false'); } clearTimeout(timer); if (openLi && openLi !== li) close(openLi, true); place(); li.classList.add('is-open'); li.firstElementChild.setAttribute('aria-expanded', 'true'); scrim.classList.add('is-on'); openLi = li; };
+    const close = (li, keepScrim) => { if (!li) return; li.classList.remove('is-open'); li.firstElementChild.setAttribute('aria-expanded', 'false'); if (!keepScrim) scrim.classList.remove('is-on'); if (openLi === li) openLi = null; };
+    const shut = (li) => { document.documentElement.classList.add('mm-now'); scrim.classList.add('mm-now'); close(li); requestAnimationFrame(() => requestAnimationFrame(() => { document.documentElement.classList.remove('mm-now'); scrim.classList.remove('mm-now'); })); };
+    const later = (li) => { clearTimeout(timer); timer = setTimeout(() => close(li), 160); };
+    items.forEach((li) => {
+        const a = li.firstElementChild;
+        li.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'touch') open(li); });
+        li.addEventListener('pointerleave', (e) => { if (e.pointerType !== 'touch') later(li); });
+        a.addEventListener('click', (e) => { if (!li.classList.contains('is-open') || matchMedia('(hover: none)').matches && openLi !== li) { e.preventDefault(); open(li); } else { shut(li); } });
+        li.addEventListener('focusin', () => open(li));
+        li.addEventListener('focusout', (e) => { if (!li.contains(e.relatedTarget)) later(li); });
+        li.querySelectorAll('.mega a').forEach((x) => x.addEventListener('click', () => shut(li)));
+    });
+    scrim.addEventListener('click', () => close(openLi));
+    document.querySelectorAll('.nav-x > ul > li:not(.has-mega) > a').forEach((a) => a.addEventListener('click', () => { if (openLi) shut(openLi); }));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && openLi) { const a = openLi.firstElementChild; close(openLi); a.focus(); } });
+    window.addEventListener('scroll', () => { if (openLi) place(); }, { passive: true });
+    const cw = document.querySelector('.cta-wrap');
+    if (cw) {
+        const btn = cw.querySelector('.nav-cta'); let ct = null;
+        const copen = () => { clearTimeout(ct); if (openLi) shut(openLi); cw.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); };
+        const cclose = () => { cw.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); btn.style.transform = ''; };
+        cw.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'touch') copen(); });
+        cw.addEventListener('pointerleave', (e) => { if (e.pointerType !== 'touch') { ct = setTimeout(cclose, 180); btn.style.transform = ''; } });
+        cw.addEventListener('focusin', copen);
+        cw.addEventListener('focusout', (e) => { if (!cw.contains(e.relatedTarget)) ct = setTimeout(cclose, 120); });
+        btn.addEventListener('click', (e) => { if (matchMedia('(hover: none)').matches && !cw.classList.contains('is-open')) { e.preventDefault(); copen(); } else cclose(); });
+        cw.querySelectorAll('.cta-pop a').forEach((a) => a.addEventListener('click', cclose));
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && cw.classList.contains('is-open')) { cclose(); btn.focus(); } });
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) btn.addEventListener('pointermove', (e) => { const r = btn.getBoundingClientRect(); const dx = (e.clientX - r.left - r.width / 2) / r.width, dy = (e.clientY - r.top - r.height / 2) / r.height; btn.style.transform = `translate(${dx * 6}px, ${dy * 4}px)`; });
+    }
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.mm-feat').forEach((c) => { c.addEventListener('pointermove', (e) => { const r = c.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`; }); c.addEventListener('pointerleave', () => { c.style.transform = ''; }); });
+    document.querySelectorAll('.mega-in').forEach((p) => p.addEventListener('pointermove', (e) => { const r = p.getBoundingClientRect(); p.style.setProperty('--mx', (e.clientX - r.left) + 'px'); p.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+    window.addEventListener('resize', () => { if (openLi) close(openLi); place(); });
+    place();
+})();
+</script>
+
+<script>
+/* Continuous learning: reveal cards as they scroll in, spotlight follows the cursor */
+(() => {
+    const cards = document.querySelectorAll('.lg-card'); if (!cards.length) return;
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-lg');
+        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { const i = [...cards].indexOf(e.target); setTimeout(() => e.target.classList.add('in'), (i % 3) * 110); io.unobserve(e.target); } }), { threshold: .15 });
+        cards.forEach((c) => io.observe(c));
+    } else cards.forEach((c) => c.classList.add('in'));
+    cards.forEach((c) => c.addEventListener('pointermove', (e) => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+})();
+</script>
+
+<script>
+/* Hero terminal: play the typing reveal once, when it first scrolls into view */
+(() => { const t = document.querySelector('.tx'); if (!t || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { t.classList.add('tx-play'); io.disconnect(); } }, { threshold: .25 }); io.observe(t); })();
+</script>
 </body>
 </html>
