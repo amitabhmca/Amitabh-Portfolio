@@ -1748,6 +1748,24 @@ html[data-theme="dark"] .hero-lede.ps-lead .ps-grad { background-image: linear-g
 @media (max-width: 1099px) { .hero-grid > .rise:first-child { grid-template-areas: "kick" "id" "lead" "actions" "cool" "kpi" !important; } }
 @media (max-width: 760px) { .hero-grid > .rise:first-child > .hero-cool { grid-template-columns: minmax(0, 1fr); gap: 14px; } .hc-label br { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-grid > .rise:first-child > .hero-cool { animation: none !important; } }
+
+/* ---- hero v12: single column — heading beside photo, summary full width ---- */
+@media (min-width: 1100px) {
+  .hero-grid > .rise:first-child { grid-template-columns: minmax(0, 1fr) !important; grid-template-areas: "kick" "id" "side" "actions" "cool" "kpi" !important; grid-template-rows: auto !important; }
+  .hero-grid > .rise:first-child > .hero-id { gap: 36px; }
+  .hero h1.hero-hello .hh-1 { font-size: min(7cqi, 52px); }
+  .hero h1.hero-hello .hh-2 { font-size: min(3.9cqi, 34px); white-space: nowrap; margin-top: .3em; }
+  .hero-grid > .rise:first-child > .hero-lede.ps-lead { grid-area: side !important; margin-top: 40px !important; max-width: none !important; }
+  .hero-grid > .rise:first-child > .hero-actions { margin-top: 30px !important; }
+}
+
+/* ---- hero v16: every phone keeps the heading beside the photo (as on wider phones) ---- */
+@media (max-width: 420px) {
+  .hero-id { flex-direction: row !important; align-items: center !important; gap: clamp(12px, 4vw, 16px) !important; }
+  .hh-wrap { flex: 1 1 auto !important; width: auto !important; min-width: 0; }
+  .portrait { width: clamp(84px, 27vw, 120px) !important; }
+}
+@media (min-width: 721px) and (max-width: 1099px) { .hero-id { gap: 32px !important; } }
 </style>
 </head>
 <body>
