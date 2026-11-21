@@ -2638,6 +2638,26 @@ html[data-theme="dark"] .abB-st li:nth-child(1) { --c: #5b8cff !important; } htm
 html[data-theme="dark"] .abL-st li:nth-child(1) { --c: #5b8cff !important; } html[data-theme="dark"] .abL-st li:nth-child(2) { --c: #22d3ee !important; } html[data-theme="dark"] .abL-st li:nth-child(3) { --c: #a3e635 !important; } html[data-theme="dark"] .abL-st li:nth-child(4) { --c: #a78bfa !important; } html[data-theme="dark"] .abL-st li:nth-child(5) { --c: #fb923c !important; }
 @media (max-width: 1000px) { .abL-st { justify-content: flex-start; } }
 @media (max-width: 560px) { .abL-body p { font-size: 16px !important; } .abL-sign svg { width: 170px; } }
+
+/* v48 About letter: ruled writing-paper lines */
+.abL { --row: 34px; }
+.abL-ruled { position: relative; margin-top: 18px; padding-bottom: 1px; background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--row) - 1px), color-mix(in srgb, var(--blue) 16%, transparent) calc(var(--row) - 1px) var(--row)); }
+html[data-theme="dark"] .abL-ruled { background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--row) - 1px), rgb(148 163 184 / .16) calc(var(--row) - 1px) var(--row)); }
+.abL-ruled::before { content: ""; position: absolute; top: 0; bottom: 0; left: -14px; width: 1px; background: rgb(239 68 68 / .38); }
+.abL-ruled .abL-hi { margin: 0; font-size: 19px; line-height: var(--row); }
+.abL-ruled .abL-op { margin: 0; font-size: clamp(21px, 1rem + .75vw, 27px); line-height: var(--row); }
+.abL-ruled .abL-body { margin: var(--row) 0 0; }
+.abL-ruled .abL-body p { line-height: var(--row) !important; margin: 0 !important; }
+.abL-ruled .abL-body p + p { margin-top: var(--row) !important; }
+.abL-ruled + .abL-sig { margin-top: 22px; }
+@media (max-width: 560px) { .abL { --row: 32px; } .abL-ruled::before { left: -10px; } .abL-ruled .abL-op { font-size: 21px; } }
+
+/* v48b full-width rules + stronger margin line */
+.abL { --pad: clamp(24px, 3.6vw, 48px); padding-left: var(--pad); padding-right: var(--pad); }
+.abL-ruled { margin-left: calc(-1 * var(--pad)); margin-right: calc(-1 * var(--pad)); padding-left: var(--pad); padding-right: var(--pad); }
+.abL-ruled::before { left: calc(var(--pad) - 14px); background: rgb(239 68 68 / .5); }
+html[data-theme="dark"] .abL-ruled::before { background: rgb(248 113 113 / .45); }
+@media (max-width: 560px) { .abL-ruled::before { left: calc(var(--pad) - 10px); } }
 </style>
 </head>
 <body>
@@ -2886,9 +2906,11 @@ html[data-theme="dark"] .abL-st li:nth-child(1) { --c: #5b8cff !important; } htm
                     </div>
                     <article class="abL" aria-label="A note from Amitabh">
                         <div class="abL-mh"><b>A note from Amitabh</b><span>Singapore</span></div>
+                        <div class="abL-ruled">
                         <p class="abL-hi"><span aria-hidden="true">👋</span> Hi, I’m Amitabh Pandey.</p>
                         <p class="abL-op">I design, build &amp; scale AI factories and supercomputers, from initial design through commissioning.</p>
                         <div class="ab-story about-copy abL-body"><p>My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.</p><p class="ab-arch">I architect AI factories across both hardware and software: compute, networking and storage on one side, and orchestration, scheduling and observability on the other. I also build the operating processes that keep services running. The common thread is a systems perspective, designing and operating the foundations that applications and AI&nbsp;workloads depend&nbsp;on.</p></div>
+                        </div>
                         <div class="abL-sig">
                             <div class="abL-sign"><svg viewBox="0 0 240 80" role="img" aria-label="Signature of Amitabh Pandey"><path d="M10 58C24 20 34 12 38 20S30 60 26 62 44 30 52 34 50 58 58 52 66 34 70 40 68 58 76 54 84 26 88 30 82 60 90 56 100 36 106 40 102 58 110 54 118 34 124 38 120 58 130 52C140 44 150 40 160 44S190 52 230 34"/></svg><small>Amitabh Pandey</small></div>
                             <ol class="abL-st" aria-label="GPU infrastructure lifecycle"><li style="--c:#2563eb">Design<em>Day 0</em></li><li style="--c:#0891b2">Build<em>Day 1</em></li><li style="--c:#65a30d">Validate</li><li style="--c:#7c3aed">Benchmark</li><li style="--c:#ea580c">Scale<em>Day 2</em></li></ol>
