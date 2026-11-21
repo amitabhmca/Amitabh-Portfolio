@@ -2664,6 +2664,19 @@ html[data-theme="dark"] .abL-ruled::before { background: rgb(248 113 113 / .45);
 .abL-ruled .abL-body p { text-align: justify; text-wrap: wrap !important; hyphens: auto; -webkit-hyphens: auto; word-spacing: -.01em; }
 
 @media (max-width: 600px) { .abL-ruled .abL-body p { text-align: left; hyphens: manual; -webkit-hyphens: manual; word-spacing: normal; } }
+
+/* v50 letter: lifecycle flow strip below signature */
+.abL-flow { margin-top: 22px; }
+.abL-flow .ai-flow { margin-top: 0; }
+.abL-flow .ai-verbs { justify-content: center; }
+@container (max-width: 470px) { .abL-flow .ai-verbs { flex-wrap: wrap; justify-content: center; gap: 6px; } .abL-flow .ai-verbs li { flex: 0 0 auto; font-size: 13px; padding: 6px 11px; } }
+
+/* v51 letter: "AI Factory Workflow" heading above the lifecycle strip */
+.abL-fh { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; font: 500 12px var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+.abL-fh::before { content: ""; flex: 0 0 8px; height: 8px; border-radius: 2px; background: linear-gradient(135deg, #3b82f6, #76b900); box-shadow: 0 0 10px rgb(118 185 0 / .55); }
+.abL-fh::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, color-mix(in srgb, var(--blue) 35%, transparent), transparent); }
+html[data-theme="dark"] .abL-fh { color: #a3e635; }
+html[data-theme="dark"] .abL-fh::after { background: linear-gradient(90deg, rgb(163 230 53 / .35), transparent); }
 </style>
 </head>
 <body>
@@ -2919,10 +2932,58 @@ html[data-theme="dark"] .abL-ruled::before { background: rgb(248 113 113 / .45);
                         </div>
                         <div class="abL-sig">
                             <div class="abL-sign"><svg viewBox="0 0 240 80" role="img" aria-label="Signature of Amitabh Pandey"><path d="M10 58C24 20 34 12 38 20S30 60 26 62 44 30 52 34 50 58 58 52 66 34 70 40 68 58 76 54 84 26 88 30 82 60 90 56 100 36 106 40 102 58 110 54 118 34 124 38 120 58 130 52C140 44 150 40 160 44S190 52 230 34"/></svg><small>Amitabh Pandey</small></div>
-                            <ol class="abL-st" aria-label="GPU infrastructure lifecycle"><li style="--c:#2563eb">Design<em>Day 0</em></li><li style="--c:#0891b2">Build<em>Day 1</em></li><li style="--c:#65a30d">Validate</li><li style="--c:#7c3aed">Benchmark</li><li style="--c:#ea580c">Scale<em>Day 2</em></li></ol>
+
                         </div>
+                        <div class="abL-flow">
+                        <h3 class="abL-fh">AI Factory Workflow</h3>
+                    <div class="ai-flow">
+                        <svg class="ai-circuit" viewBox="0 0 704 96" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                            <path class="base" d="M0 20H90V48H210V16H330V70H470V30H590V60H704"/><path class="base" d="M0 76H140V50H260V84H400V56H520V84H640V40H704"/><path class="base" d="M0 48H60V82H180V30H300V60H430V20H560V76H704"/>
+                            <path class="pulse" d="M0 20H90V48H210V16H330V70H470V30H590V60H704"/><path class="pulse" style="animation-delay:-1.1s" d="M0 76H140V50H260V84H400V56H520V84H640V40H704"/><path class="pulse" style="animation-delay:-2.2s" d="M0 48H60V82H180V30H300V60H430V20H560V76H704"/>
+                        </svg>
+                        <div class="ai-particles" aria-hidden="true"></div>
+                        <ol class="ai-verbs" aria-label="GPU infrastructure lifecycle">
+                        <li style="--i:0">Design</li>
+                        <li style="--i:1">Build</li>
+                        <li style="--i:2">Validate</li>
+                        <li style="--i:3">Benchmark</li>
+                        <li style="--i:4">Scale</li>
+                    </ol>
+                    </div>
+                        </div>
+<script>
+                /* Lifecycle pills: play the entrance once when scrolled into view */
+                (() => {
+                    const ol = document.querySelector('.ai-verbs');
+                    if (!ol || !('IntersectionObserver' in window)) return;
+                    ol.classList.add('ai-fx');
+                    const pf = document.querySelector('.ai-particles');
+                    if (pf && !matchMedia('(prefers-reduced-motion: reduce)').matches) for (let i = 0; i < 34; i++) { const d = document.createElement('i'), z = 2 + Math.random() * 3; d.style.cssText = `left:${Math.random() * 100}%;width:${z}px;height:${z}px;animation-duration:${3 + Math.random() * 4}s;animation-delay:${-Math.random() * 6}s`; pf.appendChild(d); }
+                    new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { ol.classList.add('is-in'); o.disconnect(); } }, { threshold: 0.6 }).observe(ol);
+                })();
+                </script>
                     </article>
                 </div>
+<script>
+/* Letter statement: shrink slightly until it fits on two ruled lines (wide letters only) */
+(() => {
+    const el = document.querySelector('.abL-ruled .abL-op');
+    if (!el) return;
+    const fit = () => {
+        el.style.fontSize = '';
+        const box = el.closest('.abL-ruled');
+        if (!box || box.clientWidth < 500) return;
+        const row = parseFloat(getComputedStyle(el).lineHeight) || 34;
+        let size = parseFloat(getComputedStyle(el).fontSize), n = 0;
+        while (el.offsetHeight > row * 2 + 1 && size > 19 && n++ < 40) { size -= 0.25; el.style.fontSize = size + 'px'; }
+        if (el.offsetHeight > row * 2 + 1) el.style.fontSize = '';
+    };
+    let t; const later = () => { clearTimeout(t); t = setTimeout(fit, 80); };
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    addEventListener('load', fit); addEventListener('resize', later);
+})();
+</script>
 <script>
 /* About letter: draw the signature once when it scrolls into view */
 (() => {
