@@ -2209,6 +2209,30 @@ html[data-theme="dark"] .km-s { --c: #c4b5fd; --w: #241a3d; } html[data-theme="d
 .kpi.is-in-2 .kpi-kf > div:nth-child(2) .kpim-bar::after { transition-delay: .12s; } .kpi.is-in-2 .kpi-kf > div:nth-child(3) .kpim-bar::after { transition-delay: .24s; } .kpi.is-in-2 .kpi-kf > div:nth-child(4) .kpim-bar::after { transition-delay: .36s; } .kpi.is-in-2 .kpi-kf > div:nth-child(5) .kpim-bar::after { transition-delay: .48s; }
 html[data-theme="dark"] .kpi .kpi-kf .kf-a { --w: #33240b; } html[data-theme="dark"] .kpi .kpi-kf .kf-v { --w: #241a3d; } html[data-theme="dark"] .kpi .kpi-kf .kf-r { --w: #3a1513; }
 @media (prefers-reduced-motion: reduce) { .kpi .kpi-kf > div:hover { transform: none; } }
+.ph-ai{--p:#76b900}.ph-hpc{--p:#0ea5e9}.ph-ent{--p:#2563eb}.ph-lx{--p:#8b5cf6}
+/* 6 */
+.f6{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}.f6-sp{flex:1}
+.f6-b{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);font:600 13px var(--font-body);color:var(--ink-2);cursor:pointer;transition:all .2s}
+.f6-b i{width:9px;height:9px;border-radius:50%;background:var(--p)}.f6-b:hover{border-color:var(--blue-line);transform:translateY(-1px)}.f6-b.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.s6{position:relative;display:grid;grid-template-columns:24px 1fr;gap:18px}
+.s6-rail{position:relative;width:4px;margin:0 auto;border-radius:4px;background:var(--line)}.s6-fill{position:absolute;left:0;top:0;width:100%;height:var(--pr,0%);border-radius:4px;background:linear-gradient(180deg,#76b900,#0ea5e9,#2563eb,#8b5cf6)}
+.s6-l{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.s6-i{position:relative;transition:opacity .35s,transform .35s}.s6-i.hide{display:none}
+.s6-n{position:absolute;left:-33px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--p);box-shadow:0 0 0 4px var(--bg,transparent)}
+.s6-c{border-radius:16px;background:var(--card);border:1px solid var(--line);box-shadow:0 16px 30px -28px rgb(15 23 42/.5);transition:border-color .2s,box-shadow .2s}
+.s6-c[open],.s6-c:hover{border-color:var(--blue-line);box-shadow:0 22px 40px -28px rgb(37 99 235/.5)}
+.s6-c summary{display:grid;grid-template-columns:150px 1fr auto;grid-template-areas:"w b d" "w c d";gap:2px 16px;align-items:center;padding:16px 20px;cursor:pointer;list-style:none}.s6-c summary::-webkit-details-marker{display:none}
+.s6-when{grid-area:w;font:500 12px var(--font-mono);color:var(--ink-3)}.s6-c b{grid-area:b;font:700 16px var(--font-display);color:var(--ink)}.s6-co{grid-area:c;font-size:13.5px;color:var(--ink-3)}
+.s6-dur{grid-area:d;padding:5px 10px;border-radius:999px;font:600 12px var(--font-mono);color:var(--blue-strong);background:var(--blue-wash)}
+.s6-more{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0 20px 18px 186px;animation:s6in .3s ease}
+.s6-more p{margin:0;font-size:13.5px;color:var(--ink-2)}.s6-more p b{display:block;margin-bottom:3px;font:500 10.5px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.s6-more a{color:var(--blue-strong);font-weight:600}
+@keyframes s6in{from{opacity:0;transform:translateY(-4px)}}
+
+.s6-more{grid-template-columns:minmax(0,2fr) minmax(0,1.1fr) minmax(0,1fr)}
+.s6-sp{color:var(--ink)!important;font-weight:600}
+@media (max-width:900px){.s6-c summary{grid-template-columns:1fr auto;grid-template-areas:"w d" "b b" "c c"}.s6-more{grid-template-columns:1fr;padding:0 20px 18px}}
+@media (max-width:600px){.f6-sp{display:none}.s6{grid-template-columns:14px 1fr;gap:16px}.s6-n{left:-27px}}
+@media (prefers-reduced-motion:reduce){.s6-more{animation:none}}
 </style>
 </head>
 <body>
@@ -2969,92 +2993,18 @@ html[data-theme="dark"] .kpi .kpi-kf .kf-a { --w: #33240b; } html[data-theme="da
                 </div>
     </section>
 
-    <!-- 06 Journey -->
+    <!-- 06 Experience -->
     <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>06</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="journey" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
-                <div>
-                    <span class="eyebrow mono"><b>06</b> Journey</span>
-                    <h2>Through every generation of infrastructure.</h2>
-                </div>
-                <p>Each stage added a layer, from Linux and network resilience to enterprise operations, cloud and Kubernetes, and now AI factories. <a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Full role history on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a></p>
+                <div><span class="eyebrow mono"><b>06</b> Experience</span><h2>11 roles, from Linux to AI&nbsp;factories.</h2></div>
+                <p>Two countries, from New Delhi and Bangalore to Singapore, growing from Linux support into HPC, national supercomputing and NVIDIA AI factories.</p>
             </div>
-            <div class="tl-filter" role="group" aria-label="Filter journey">
-                <button type="button" class="is-on" data-f="all">All</button>
-                <button type="button" data-f="ai"><i class="tl-ai"></i>AI &amp; GPU</button>
-                <button type="button" data-f="cloud"><i class="tl-cloud"></i>Cloud</button>
-                <button type="button" data-f="hpc"><i class="tl-hpc"></i>HPC</button>
-                <button type="button" data-f="ent"><i class="tl-ent"></i>Enterprise</button>
+            <div class="x6">
+                <div class="f6" role="group" aria-label="Filter roles"><button type="button" class="f6-b on" data-f="all" aria-pressed="true">All 11</button><button type="button" class="f6-b" data-f="ai" aria-pressed="false"><i class="ph-ai"></i>AI factories</button><button type="button" class="f6-b" data-f="hpc" aria-pressed="false"><i class="ph-hpc"></i>HPC & supercomputing</button><button type="button" class="f6-b" data-f="ent" aria-pressed="false"><i class="ph-ent"></i>Enterprise Unix/Linux</button><button type="button" class="f6-b" data-f="lx" aria-pressed="false"><i class="ph-lx"></i>Linux & internet</button><span class="f6-sp"></span><button type="button" class="f6-b" data-c="Singapore" aria-pressed="false">Singapore</button><button type="button" class="f6-b" data-c="India" aria-pressed="false">India</button></div>
+                <div class="s6"><div class="s6-rail" aria-hidden="true"><i class="s6-fill"></i></div><ol class="s6-l"><li class="s6-i" data-ph="ai" data-c="Singapore"><span class="s6-n ph-ai" aria-hidden="true"></span><details class="s6-c" open><summary><span class="s6-when">Jun 2026 – Present</span><b>AI Systems & Platform Lead</b><span class="s6-co">YTL PowerSeraya · Singapore</span><span class="s6-dur">5 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>NVIDIA MGX AI Factories</p><p><b>Company</b>YTL PowerSeraya Pte. Limited</p><p><b>Note</b>YTL AI Cloud</p></div></details></li><li class="s6-i" data-ph="ai" data-c="Singapore"><span class="s6-n ph-ai" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Sep 2024 – Jun 2026</span><b>HPC Engineer</b><span class="s6-co">Firmus · Singapore</span><span class="s6-dur">1 yr 10 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>NVIDIA HGX AI Factories / AI Supercomputing</p><p><b>Company</b>Firmus Metal International Pte. Ltd.</p><p><b>Note</b><a href="https://firmus.co" target="_blank" rel="noopener">firmus.co ↗</a></p></div></details></li><li class="s6-i" data-ph="hpc" data-c="Singapore"><span class="s6-n ph-hpc" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Jun 2017 – Sep 2024</span><b>Senior Engineer – Onsite</b><span class="s6-co">Fujitsu · Singapore</span><span class="s6-dur">7 yrs 3 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>NVIDIA DGX-1 | DGX SuperPOD H100 | HPE Cray Exascale Supercomputer | GPFS | Lustre</p><p><b>Company</b>Fujitsu Asia Pte. Ltd.</p><p><b>Client</b>National Supercomputing Centre, Singapore</p></div></details></li><li class="s6-i" data-ph="hpc" data-c="Singapore"><span class="s6-n ph-hpc" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Jan 2015 – Jun 2017</span><b>Associate – HPC (Grid Computing) · Linux Administrator</b><span class="s6-co">J.P. Morgan · Singapore</span><span class="s6-dur">2 yrs 5 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>IBM Spectrum [Symphony | LSF | GPFS], NVIDIA Tesla K80</p><p><b>Company</b>J.P. Morgan Chase Bank, N.A.</p></div></details></li><li class="s6-i" data-ph="ent" data-c="Singapore"><span class="s6-n ph-ent" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Jun 2012 – Dec 2014</span><b>Assistant Vice President (AVP)</b><span class="s6-co">Markit · Singapore</span><span class="s6-dur">2 yrs 7 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Linux, VMware, NetApp</p><p><b>Company</b>Markit Asia Pte. Ltd.</p></div></details></li><li class="s6-i" data-ph="ent" data-c="Singapore"><span class="s6-n ph-ent" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Jun 2011 – Jun 2012</span><b>Senior Unix Administrator</b><span class="s6-co">Optimum Solution · Singapore</span><span class="s6-dur">1 yr</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Linux, Solaris</p><p><b>Company</b>Optimum Solution Pte. Ltd.</p><p><b>Client</b>Deutsche Bank AG, Singapore</p></div></details></li><li class="s6-i" data-ph="ent" data-c="Bangalore"><span class="s6-n ph-ent" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Nov 2006 – Jun 2011</span><b>Tech Ops Technician – Regional Team Lead</b><span class="s6-co">J.P. Morgan India · Bangalore, India</span><span class="s6-dur">4 yrs 8 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Unix, Linux, VMware, KVM</p><p><b>Company</b>J.P. Morgan Services (I) Pvt. Ltd.</p></div></details></li><li class="s6-i" data-ph="lx" data-c="Bangalore"><span class="s6-n ph-lx" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Jan 2006 – Oct 2006</span><b>Systems Administrator</b><span class="s6-co">Mercantila · Bangalore, India</span><span class="s6-dur">10 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Linux, FreeBSD, OpenBSD</p><p><b>Company</b>Mercantila Software Services Pvt. Ltd.</p></div></details></li><li class="s6-i" data-ph="lx" data-c="Bangalore"><span class="s6-n ph-lx" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Aug 2004 – Dec 2005</span><b>Technical Support Engineer</b><span class="s6-co">Microland · Bangalore, India</span><span class="s6-dur">1 yr 5 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Linux Administration &amp; Automation</p><p><b>Company</b>Microland Ltd.</p><p><b>Client</b>GE (General Electric), Singapore</p></div></details></li><li class="s6-i" data-ph="lx" data-c="New Delhi"><span class="s6-n ph-lx" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Mar 2004 – Aug 2004</span><b>Technical Support</b><span class="s6-co">Excel Internet · New Delhi, India</span><span class="s6-dur">6 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Linux, FreeBSD Web Hosting (cPanel, Plesk, Ensim)</p><p><b>Company</b>Excel Internet Pvt. Ltd.</p></div></details></li><li class="s6-i" data-ph="lx" data-c="New Delhi"><span class="s6-n ph-lx" aria-hidden="true"></span><details class="s6-c"><summary><span class="s6-when">Dec 2003 – Feb 2004</span><b>Trainee Software Developer</b><span class="s6-co">Acumen Software · New Delhi, India</span><span class="s6-dur">3 mo</span></summary><div class="s6-more"><p class="s6-sp"><b>Specialism</b>Web Hosting (cPanel, Plesk)</p><p><b>Company</b>Acumen Software</p></div></details></li></ol></div>
             </div>
-            <ol class="tl" data-filter="all">
-                <li class="tl-rail" aria-hidden="true"><span></span></li>
-                <li class="tl-item tl-ai is-now" style="--i:0">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V10l5 3V4h3v17H3Z"/><path d="M7 17h2M12 17h2M17 17h1"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">Now</span><span class="tl-tag">AI &amp; GPU</span><span class="tl-live"><i></i>Current</span></div>
-                        <h3>AI Factory &amp; HPC infrastructure</h3>
-                        <p>Platform architecture and leadership at an AI infrastructure company (associated with Firmus Technologies).</p>
-                    </article>
-                </li>
-                <li class="tl-item tl-ai" style="--i:1">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 8.2 5-3 5 3-1.5-8.2"/><path d="m9.5 9 1.7 1.7L14.5 7.5"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2026</span><span class="tl-tag">AI &amp; GPU</span></div>
-                        <h3>NVIDIA AI infrastructure track</h3>
-                        <p>Earned NVIDIA certifications in AI Networking, AI Infrastructure &amp; Operations, AI Operations and AI Infrastructure from January to March. AI Tokenomics Fundamentals followed in September, then NVIDIA-Certified Professional: AI Rack and Interconnect in October.</p>
-                        <div class="tl-chips"><span>NCP-AIN</span><span>NCA-AIIO</span><span>NCP-AIO</span><span>NCP-AII</span><span>NCP-ARI</span></div>
-                    </article>
-                </li>
-                <li class="tl-item tl-ai" style="--i:2">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2024–25</span><span class="tl-tag">AI &amp; GPU</span></div>
-                        <h3>GPU cloud &amp; parallel storage</h3>
-                        <p>Certified BeeGFS System Engineer (2024) and Rafay Certified GPU Cloud Professional (2025), with NVIDIA Base Command Manager, Kubeflow, Argo and Tekton training.</p>
-                    </article>
-                </li>
-                <li class="tl-item tl-cloud" style="--i:3">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5H7Z"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2020–21</span><span class="tl-tag">Cloud</span></div>
-                        <h3>Cloud &amp; Kubernetes</h3>
-                        <p>Five AWS certifications in three months, including Solutions Architect and DevOps Engineer Professional, then CKA, CKAD, Terraform Associate and Bright Cluster Manager.</p>
-                    </article>
-                </li>
-                <li class="tl-item tl-hpc" style="--i:4">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2018</span><span class="tl-tag">HPC</span></div>
-                        <h3>Supercomputing study</h3>
-                        <p>Supercomputing with The University of Edinburgh &amp; PRACE, and High Performance Computing in the Cloud with Dublin City University.</p>
-                    </article>
-                </li>
-                <li class="tl-item tl-ent" style="--i:5">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2012–14</span><span class="tl-tag">Enterprise</span></div>
-                        <h3>Virtualization, storage &amp; delivery</h3>
-                        <p>VMware Certified Professional on vSphere 5 and NetApp NCDA in 2012; PRINCE2 Foundation and Registered Practitioner in 2014.</p>
-                    </article>
-                </li>
-                <li class="tl-item tl-ent" style="--i:6">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2007–09</span><span class="tl-tag">Enterprise</span></div>
-                        <h3>J.P. Morgan · Bengaluru</h3>
-                        <p>Service Milestone Award (2007) and an Outstanding Performance Award for DST server patching (2009). ITIL Foundation v3 (2007).</p>
-                    </article>
-                </li>
-                <li class="tl-item tl-ent" style="--i:7">
-                    <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 16.5h.01M11 16.5h.01M17 13V9"/><path d="M14.2 6.2a4 4 0 0 1 5.6 0M12.4 4.2a6.8 6.8 0 0 1 9.2 0"/></svg></span>
-                    <article class="tl-card">
-                        <div class="tl-meta"><span class="tl-yr">2006</span><span class="tl-tag">Enterprise</span></div>
-                        <h3>Mercantila Software Services · Bangalore</h3>
-                        <p>Built an open-source Linux router and firewall with ISP failover. Best Performer award.</p>
-                    </article>
-                </li>
-            </ol>
         </div>
     </section>
 
@@ -3748,6 +3698,12 @@ addEventListener('resize',function(){close(false)});addEventListener('scroll',fu
 (() => { const c = document.querySelector('.kpi-grid'); if (!c) return; if (!('IntersectionObserver' in window)) { c.classList.add('is-in'); return; }
   const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { c.classList.add('is-in'); io.disconnect(); } }, { threshold: .4 }); io.observe(c);
   const k2 = document.querySelector('.kpi-kf'), kp = document.querySelector('.kpi'); if (k2 && kp) { const io2 = new IntersectionObserver((es) => { if (es[0].isIntersecting) { kp.classList.add('is-in-2'); io2.disconnect(); } }, { threshold: .4 }); io2.observe(k2); } })();
+</script>
+<script>
+/* Experience: filters, expanding roles and a scroll-progress line */
+(()=>{const x6=document.querySelector('.x6');if(!x6)return;const items=[...x6.querySelectorAll('.s6-i')];
+x6.querySelectorAll('.f6-b').forEach(b=>b.addEventListener('click',()=>{x6.querySelectorAll('.f6-b').forEach(o=>{o.classList.toggle('on',o===b);o.setAttribute('aria-pressed',o===b)});const f=b.dataset.f,c=b.dataset.c;items.forEach(i=>i.classList.toggle('hide',!(f==='all'||(f&&i.dataset.ph===f)||(c&&(c==='India'?i.dataset.c!=='Singapore':i.dataset.c===c)))));upd()}));
+const fill=x6.querySelector('.s6-fill'),list=x6.querySelector('.s6-l');function upd(){const r=list.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.6-r.top)/r.height));fill.style.setProperty('--pr',(p*100).toFixed(1)+'%')}addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd()})();
 </script>
 </body>
 </html>
