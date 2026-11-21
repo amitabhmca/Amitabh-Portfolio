@@ -2658,6 +2658,12 @@ html[data-theme="dark"] .abL-ruled { background-image: repeating-linear-gradient
 .abL-ruled::before { left: calc(var(--pad) - 14px); background: rgb(239 68 68 / .5); }
 html[data-theme="dark"] .abL-ruled::before { background: rgb(248 113 113 / .45); }
 @media (max-width: 560px) { .abL-ruled::before { left: calc(var(--pad) - 10px); } }
+
+/* v49 letter text fills complete lines */
+.abL-ruled .abL-op { text-wrap: wrap; }
+.abL-ruled .abL-body p { text-align: justify; text-wrap: wrap !important; hyphens: auto; -webkit-hyphens: auto; word-spacing: -.01em; }
+
+@media (max-width: 600px) { .abL-ruled .abL-body p { text-align: left; hyphens: manual; -webkit-hyphens: manual; word-spacing: normal; } }
 </style>
 </head>
 <body>
@@ -2908,8 +2914,8 @@ html[data-theme="dark"] .abL-ruled::before { background: rgb(248 113 113 / .45);
                         <div class="abL-mh"><b>A note from Amitabh</b><span>Singapore</span></div>
                         <div class="abL-ruled">
                         <p class="abL-hi"><span aria-hidden="true">👋</span> Hi, I’m Amitabh Pandey.</p>
-                        <p class="abL-op">I design, build &amp; scale AI factories and supercomputers, from initial design through commissioning.</p>
-                        <div class="ab-story about-copy abL-body"><p>My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.</p><p class="ab-arch">I architect AI factories across both hardware and software: compute, networking and storage on one side, and orchestration, scheduling and observability on the other. I also build the operating processes that keep services running. The common thread is a systems perspective, designing and operating the foundations that applications and AI&nbsp;workloads depend&nbsp;on.</p></div>
+                        <p class="abL-op">I design, build &amp; scale AI factories, Supercomputers, HPC Systems from initial design to commissioning.</p>
+                        <div class="ab-story about-copy abL-body"><p>My professional path has followed the evolution of enterprise computing: from Linux servers, network engineering and operational resilience to virtualization, cloud systems, high-performance computing and, increasingly, AI infrastructure.</p><p class="ab-arch">I architect AI factories across both hardware and software: compute, networking and storage on one side, and orchestration, scheduling and observability on the other. I also build the operating processes that keep services running. The common thread is a systems perspective, designing and operating the foundations that applications and AI workloads depend on.</p></div>
                         </div>
                         <div class="abL-sig">
                             <div class="abL-sign"><svg viewBox="0 0 240 80" role="img" aria-label="Signature of Amitabh Pandey"><path d="M10 58C24 20 34 12 38 20S30 60 26 62 44 30 52 34 50 58 58 52 66 34 70 40 68 58 76 54 84 26 88 30 82 60 90 56 100 36 106 40 102 58 110 54 118 34 124 38 120 58 130 52C140 44 150 40 160 44S190 52 230 34"/></svg><small>Amitabh Pandey</small></div>
