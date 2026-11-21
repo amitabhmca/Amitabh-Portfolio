@@ -2502,6 +2502,22 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
 .ws-st b { transition: color .25s; }
 .ws-st::before { background: linear-gradient(90deg, #3b82f6, #06b6d4, #76b900); }
 @media (prefers-reduced-motion: reduce) { .ws-st .ws-lg { animation: none; } .ws-st:hover .ws-lg::after { transition: none; } }
+
+/* v35 · NSCC: one combined card */
+.sc-host .ab-flag { grid-template-columns: minmax(0, 1fr); }
+.sc-host .nscc-x { padding: 16px; }
+.nx-head { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 6px 8px 16px; margin-bottom: 8px; border-bottom: 1px dashed rgb(255 255 255 / .14); }
+.nx-hl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; }
+.nx-hl .nh-live { flex: none; }
+.nx-nscc { padding: 3px 12px; border-radius: 999px; font: 800 16px var(--font-display); letter-spacing: .02em; color: #fff; background: linear-gradient(135deg, #ff3b30, #b3140d); box-shadow: 0 6px 18px -6px rgb(226 35 26 / .8); }
+.nx-ht { font: 800 clamp(20px, 1rem + 1vw, 28px)/1.15 var(--font-display); letter-spacing: -.025em; background: linear-gradient(100deg, #fff 0%, #fff 45%, #ffb3ad 70%, #fff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nx-hc { font: 600 15px var(--font-display); color: rgb(255 255 255 / .8); padding-left: 12px; border-left: 1px solid rgb(255 255 255 / .2); }
+.nx-hm { font: normal 500 12px var(--font-mono); letter-spacing: .06em; color: rgb(255 255 255 / .65); }
+@media (min-width: 1001px) {
+  .sc-host .nx-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
+  .sc-host .nscc-x .nx-item + .nx-item { margin-top: 0; }
+}
+@media (max-width: 640px) { .nx-hc { padding-left: 0; border-left: 0; } .nx-hm { flex-basis: 100%; } }
 </style>
 </head>
 <body>
@@ -2753,17 +2769,11 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
     <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>02</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="supercomputing" class="section is-alt sec-sc">
         <div class="wrap">
-            <div class="section-head"><div><span class="eyebrow mono"><b>02</b> AI Supercomputing Infrastructure – National Supercomputing Centre, Singapore</span><h2 class="h2-sc">Led Singapore’s four national supercomputers: <span class="h2-sc-l">ASPIRE1, ASPIRE1&nbsp;AI, ASPIRE2A and ASPIRE2A+</span></h2></div></div>
+            <div class="section-head"><div><span class="eyebrow mono"><b>02</b> AI Supercomputing Infrastructure – National Supercomputing Centre, Singapore</span><h2 class="h2-sc">Led Singapore’s four national supercomputers.</h2></div></div>
             <div class="ab sc-host"><div class="ab-flag" id="nscc">
-                    <div class="nscc-hero" role="group" aria-label="Led 4 HPC and AI supercomputers at the National Supercomputing Centre (NSCC) Singapore">
-                        <span class="nh-grid" aria-hidden="true"></span><span class="nh-orb nh-o1" aria-hidden="true"></span><span class="nh-orb nh-o2" aria-hidden="true"></span><span class="nh-sweep" aria-hidden="true"></span>
-                        <span class="nh-nodes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                        <span class="nh-kicker"><span class="nh-live"></span>Led 4 HPC | AI supercomputers at</span>
-                        <strong class="nh-title">National Supercomputing Centre</strong>
-                        <span class="nh-sub"><b>NSCC</b><span>Singapore</span><em>4 systems · 37 PFLOPS peak</em></span>
-                    </div>
                     <div class="nscc-x">
                     <span class="nx-grid" aria-hidden="true"></span><span class="nx-glow" aria-hidden="true"></span><span class="nx-scan" aria-hidden="true"></span>
+                    <div class="nx-head"><span class="nx-hl"><span class="nh-live" aria-hidden="true"></span><b class="nx-nscc">NSCC</b><strong class="nx-ht">National Supercomputing Centre</strong><span class="nx-hc">Singapore</span></span></div>
                     <ol class="nx-list" aria-label="NSCC supercomputers">
                         <li class="nx-item nx-cpu nx-fujitsu" style="--i:0; --w:5%">
                             <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
