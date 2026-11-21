@@ -2490,6 +2490,18 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
 @media (max-width: 480px) { .ws-lg { width: 100%; max-width: 150px; height: 58px; } }
 .ws-lg:has(img) .ws-mono { visibility: hidden; }
 @media (min-width: 861px) and (max-width: 1100px) { .ps-pipe > .ps-end { font-size: 11px; letter-spacing: .06em; padding: 10px 8px; } }
+
+/* v34 · workshop logo tiles in the site palette (blue → cyan → green) */
+@property --wsA { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.ws-st .ws-lg { border: 2px solid transparent; background: linear-gradient(#fff, #fff) padding-box, conic-gradient(from var(--wsA), #3b82f6, #06b6d4, #76b900, #06b6d4, #3b82f6) border-box; box-shadow: 0 0 0 4px rgb(6 182 212 / .14), 0 10px 24px -14px rgb(6 182 212 / .6); animation: wsSpin 6s linear infinite paused; }
+@keyframes wsSpin { to { --wsA: 360deg; } }
+.ws-st .ws-lg::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / .75) 50%, transparent 65%); transform: translateX(-130%); }
+.ws-st:hover .ws-lg { transform: translateY(-3px) scale(1.04); animation-play-state: running; box-shadow: 0 0 0 5px rgb(118 185 0 / .16), 0 0 26px rgb(6 182 212 / .45), 0 16px 30px -14px rgb(59 130 246 / .7); }
+.ws-st:hover .ws-lg::after { transform: translateX(130%); transition: transform .9s ease; }
+.ws-st:hover b { color: #bef264; }
+.ws-st b { transition: color .25s; }
+.ws-st::before { background: linear-gradient(90deg, #3b82f6, #06b6d4, #76b900); }
+@media (prefers-reduced-motion: reduce) { .ws-st .ws-lg { animation: none; } .ws-st:hover .ws-lg::after { transition: none; } }
 </style>
 </head>
 <body>
