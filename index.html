@@ -2341,6 +2341,41 @@ html[data-theme="dark"] .hs-pt:nth-child(3) .hs-dot { color: #22d3ee; } html[dat
   .hs-bar { display: none; } .hs-pts { grid-template-columns: 1fr 1fr; row-gap: 20px; margin-top: 24px; } .hs-dot { margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .hs-bar i::after { animation: none; display: none; } .js-hr .hr-rib > div, .js-hr .hs-pt { opacity: 1; transform: none; } .hs-dot { transition: none; } }
+
+/* hero v21 · professional summary: headline + AI factory pipeline */
+.hr-ps { position: relative; margin-top: 18px; padding: clamp(22px, 3vw, 34px) clamp(20px, 3vw, 34px) 0; border-radius: 22px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 24px 50px -38px rgb(15 23 42 / .5); overflow: hidden; }
+.hr-ps::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, #3b82f6, #06b6d4, #76b900); }
+.ps-eye { margin: 0; font: 500 12px var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+.ps-h { margin: 10px 0 12px; font: 800 clamp(26px, 1.1rem + 2.3vw, 46px)/1.08 var(--font-display); letter-spacing: -.035em; color: var(--ink); max-width: 24ch; }
+.ps-g { white-space: nowrap; background: linear-gradient(90deg, #3b82f6, #06b6d4 55%, #76b900); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ps-sub { margin: 0; max-width: 72ch; font-size: clamp(16px, .95rem + .25vw, 18.5px); line-height: 1.6; color: var(--ink-3); text-wrap: pretty; }
+.ps-sub strong { color: var(--ink); font-weight: 600; }
+.ps-pipe { display: flex; align-items: center; gap: 14px; margin: clamp(22px, 2.6vw, 30px) calc(-1 * clamp(20px, 3vw, 34px)) 0; padding: 22px clamp(20px, 3vw, 34px) 20px; background: linear-gradient(180deg, #111a30, #0b1222); border-top: 1px solid rgb(255 255 255 / .06); }
+.ps-end { flex: none; font: 500 12px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; padding: 10px 12px; border: 1px dashed rgb(255 255 255 / .28); border-radius: 10px; color: #cbd5e1; white-space: nowrap; }
+.ps-end.ps-fin { border-style: solid; border-color: #76b900; color: #bef264; background: rgb(118 185 0 / .1); }
+.ps-end i { font-style: normal; }
+.ps-sts { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; padding: 0; list-style: none; }
+.ps-st { position: relative; text-align: center; padding: 0 4px; }
+.ps-st::before { content: ""; position: absolute; left: 0; right: 0; top: 21px; height: 2px; background: linear-gradient(90deg, #3b82f6, #76b900); opacity: .55; }
+.ps-st::after { content: ""; position: absolute; left: 0; top: 20px; width: 24px; height: 4px; border-radius: 4px; background: #fff; box-shadow: 0 0 10px #fff; opacity: 0; animation: psPk 2.6s linear infinite; animation-delay: calc(var(--k) * .65s); }
+@keyframes psPk { 0% { left: 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { left: calc(100% - 24px); opacity: 0; } }
+.ps-nd { position: relative; z-index: 1; margin: 0 auto; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #0b1222; border: 2px solid var(--c); color: var(--c); box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 16%, transparent); transition: transform .25s, box-shadow .25s; }
+.ps-st:hover .ps-nd { transform: scale(1.08); box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 24%, transparent), 0 0 22px color-mix(in srgb, var(--c) 45%, transparent); }
+.ps-nd svg { width: 20px; height: 20px; }
+.ps-st b { display: block; margin-top: 9px; font: 600 14px var(--font-body); color: #fff; }
+.ps-st small { font: 400 11.5px var(--font-mono); color: #94a3b8; }
+html.js-hr .ps-st { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; transition-delay: calc(var(--k) * .12s); }
+html.js-hr .hr-ps.in .ps-st { opacity: 1; transform: none; }
+@media (max-width: 520px) { .ps-g { white-space: normal; } }
+@media (max-width: 860px) {
+  .ps-pipe { flex-direction: column; align-items: stretch; gap: 16px; }
+  .ps-end { text-align: center; }
+}
+@media (max-width: 560px) {
+  .ps-sts { grid-template-columns: 1fr 1fr; gap: 18px 8px; }
+  .ps-st::before, .ps-st::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ps-st::after { display: none; } html.js-hr .ps-st { opacity: 1; transform: none; transition: none; } }
 </style>
 </head>
 <body>
@@ -2416,19 +2451,17 @@ html[data-theme="dark"] .hs-pt:nth-child(3) .hs-dot { color: #22d3ee; } html[dat
                     
                     <div class="hero-term">
                     <div class="hr-rib" aria-label="Career at a glance">
-                        <div><b data-n="24">24</b><small>yrs</small><span>Linux, AI cloud, HPC</span></div>
-                        <div><b data-n="14">14</b><small>yrs</small><span>AI factories</span></div>
+                        <div><b data-n="24">24</b><small>years</small><span>Linux, AI cloud, HPC</span></div>
+                        <div><b data-n="14">14</b><small>years</small><span>AI factories</span></div>
                         <div><b data-n="4">4</b><span>AI factory pillars</span></div>
                         <div><b data-n="4">4</b><span>Data-center environments</span></div>
                     </div>
-                        <div class="tx" role="region" aria-label="Professional summary">
-                            <div class="tx-bar" aria-hidden="true"><i></i><i></i><i></i><span>amitabh@ai-factory: ~</span><span class="tx-tag">bash</span></div>
-                            <div class="tx-body">
-                                <p class="tx-cmd" style="--d:0"><span class="tx-pr" aria-hidden="true">$</span> <span class="tx-type">whoami --summary</span></p>
-                                <p class="tx-out tx-sum" style="--d:1"><em>24 years</em> of experience architecting, operating and scaling Linux, AI&nbsp;Cloud, <span class="ps-grad">High-Performance Computing Grid and Supercomputing infrastructure</span>, with <span class="nw"><em>14 years</em>&nbsp;building</span> AI&nbsp;Factories from <span class="nw">bare-metal</span> compute to turnkey AI&nbsp;Systems across <span class="ps-grad">AI Compute, AI Networking, AI Storage and AI&nbsp;Benchmarking</span>.</p>
-                                <p class="tx-cmd tx-last" style="--d:2" aria-hidden="true"><span class="tx-pr">$</span> <span class="tx-cur"></span></p>
-                            </div>
-                        </div>
+                        <section class="hr-ps" aria-label="Professional summary">
+                            <p class="ps-eye">Professional summary</p>
+                            <h2 class="ps-h">Building <span class="ps-g">AI Factories end to end</span>, from <span class="nw">bare&#8209;metal</span> compute to turnkey AI&nbsp;Systems.</h2>
+                            <p class="ps-sub">Architecting, operating and scaling <strong>Linux, AI&nbsp;Cloud, High-Performance Computing Grid and Supercomputing infrastructure</strong>.</p>
+                            <div class="ps-pipe"><span class="ps-end">Bare&#8209;metal compute</span><ol class="ps-sts"><li class="ps-st" style="--c:#60a5fa;--k:0"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><b>AI Compute</b><small>stage 1</small></li><li class="ps-st" style="--c:#22d3ee;--k:1"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5 6.5 17M12 11.5l5.5 5.5"/></svg></span><b>AI Networking</b><small>stage 2</small></li><li class="ps-st" style="--c:#a78bfa;--k:2"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><b>AI Storage</b><small>stage 3</small></li><li class="ps-st" style="--c:#a3e635;--k:3"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"/><path d="M3.3 17a9 9 0 1 1 17.4 0"/><circle cx="12" cy="14" r="1.5"/></svg></span><b>AI Benchmarking</b><small>stage 4</small></li></ol><span class="ps-end ps-fin">Turnkey AI Systems <i aria-hidden="true">✓</i></span></div>
+                        </section>
                         <div class="hr-sp" id="ai-data-center">
                         <div class="hs-head"><span class="hs-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13.5V4a2 2 0 1 1 4 0v9.5a4 4 0 1 1-4 0z"/><path d="M12 8v8.5"/></svg></span><p>AI Data Center · Cooling spectrum</p><span class="hs-cdu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2" fill="currentColor" fill-opacity=".14"/><path d="M9 6.5h6M9 10h6"/><circle cx="12" cy="16" r="2"/></svg>with rack CDUs</span></div>
                         <div class="hs-bar" aria-hidden="true"><span>Air</span><i></i><span>Liquid</span></div>
@@ -3843,6 +3876,12 @@ if(!RM)x.querySelectorAll('.s6-c').forEach(c=>{c.addEventListener('pointermove',
 <script>
 (()=>{const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;if(RM||!('IntersectionObserver' in window))return;document.documentElement.classList.add('js-hr');
 const els=[document.querySelector('.hr-rib'),document.querySelector('.hs-pts')].filter(Boolean);const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');io.unobserve(el);el.querySelectorAll('[data-n]').forEach(n=>{const t=+n.dataset.n;let s0=null;const f=ts=>{s0=s0||ts;const p=Math.min(1,(ts-s0)/1000);n.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}),{threshold:.3});els.forEach(e=>io.observe(e))})();
+</script>
+<script>
+(() => { const p = document.querySelector('.hr-ps'); if (!p) return;
+  if (!document.documentElement.classList.contains('js-hr') || !('IntersectionObserver' in window)) { p.classList.add('in'); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { p.classList.add('in'); io.disconnect(); } }), { threshold: .25 });
+  io.observe(p); })();
 </script>
 </body>
 </html>
