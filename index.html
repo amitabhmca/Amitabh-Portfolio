@@ -2518,6 +2518,14 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
   .sc-host .nscc-x .nx-item + .nx-item { margin-top: 0; }
 }
 @media (max-width: 640px) { .nx-hc { padding-left: 0; border-left: 0; } .nx-hm { flex-basis: 100%; } }
+
+/* v36 · NSCC block inside the Professional summary */
+.hero .hr-ps .ps-sc { margin: clamp(20px, 2.4vw, 26px) 0 0; padding: clamp(18px, 2.2vw, 24px) 0 clamp(20px, 2.4vw, 26px); border-top: 1px solid var(--line); }
+.ps-sc .hs-head p { flex: 1 1 0; min-width: 0; }
+.psc-sub { margin: 10px 0 14px; font: 300 clamp(16px, .95rem + .3vw, 19px)/1.5 "Fraunces", Georgia, serif; color: var(--ink-3); }
+.ps-sc .nscc-x { margin-top: 0; }
+#supercomputing { scroll-margin-top: 84px; }
+@media (max-width: 760px) { .ps-sc .hs-head { align-items: flex-start; } .ps-sc .hs-head p { font-size: 11px; letter-spacing: .1em; line-height: 1.5; padding-top: 2px; } .ps-sc .nscc-x { margin-inline: -6px; } }
 </style>
 </head>
 <body>
@@ -2607,6 +2615,62 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
                         <div class="hs-head"><span class="hs-ic" style="background:linear-gradient(135deg,#8b5cf6,#2563eb 50%,#76b900)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" fill="currentColor" fill-opacity=".14"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><p>Domains</p><span class="hs-cdu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Dec 2003 → Today</span></div>
                         <div class="hs-bar" aria-hidden="true"><span>2003</span><i style="background:linear-gradient(90deg,#8b5cf6,#2563eb 35%,#0ea5e9 65%,#76b900)"></i><span>Today</span></div>
                         <ol class="hs-pts"><li class="hs-pt hs-c" style="--k:0;--c:#8b5cf6;--ci:#6d28d9;--cd:#c4b5fd"><span class="hs-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="11" height="18" rx="1.5" fill="currentColor" fill-opacity=".14"/><path d="M15 9h5v12h-5M8 7h3M8 11h3M8 15h3"/></svg></span><b>Enterprise</b><span>Linux · Unix · BSD</span></li><li class="hs-pt hs-c" style="--k:1;--c:#2563eb;--ci:#1d4ed8;--cd:#93c5fd"><span class="hs-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18L12 4 3 10z" fill="currentColor" fill-opacity=".14"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span><b>Finance</b><span>J.P.&nbsp;Morgan · Deutsche&nbsp;Bank · Markit</span></li><li class="hs-pt hs-c" style="--k:2;--c:#0ea5e9;--ci:#0369a1;--cd:#7dd3fc"><span class="hs-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="6" rx="1.5" fill="currentColor" fill-opacity=".14"/><rect x="4" y="15" width="16" height="6" rx="1.5" fill="currentColor" fill-opacity=".14"/><path d="M8 6h.01M8 18h.01M12 9v6"/></svg></span><b>Supercomputing</b><span>NSCC · DGX · Cray Supercomputer</span></li><li class="hs-pt hs-c" style="--k:3;--c:#76b900;--ci:#4d7c0f;--cd:#a3e635"><span class="hs-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor" fill-opacity=".14"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><b>AI Factory</b><span>NVIDIA DGX, HGX &amp; MGX</span></li></ol>
+                    </div>
+                        <div class="ps-sc sc-host" id="supercomputing" aria-label="AI Supercomputing Infrastructure">
+                        <div class="hs-head"><span class="hs-ic" style="background:linear-gradient(135deg,#ff3b30,#2563eb 55%,#76b900)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2" fill="currentColor" fill-opacity=".14"/><rect x="3" y="13" width="18" height="7" rx="2" fill="currentColor" fill-opacity=".14"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></span><p>AI Supercomputing Infrastructure – National Supercomputing Centre, Singapore</p></div>
+                        <p class="psc-sub">Led Singapore’s four national supercomputers.</p>
+                        <div class="nscc-x">
+                    <span class="nx-grid" aria-hidden="true"></span><span class="nx-glow" aria-hidden="true"></span><span class="nx-scan" aria-hidden="true"></span>
+                    <div class="nx-head"><span class="nx-hl"><span class="nh-live" aria-hidden="true"></span><b class="nx-nscc">NSCC</b><strong class="nx-ht">National Supercomputing Centre</strong><span class="nx-hc">Singapore</span></span></div>
+                    <ol class="nx-list" aria-label="NSCC supercomputers">
+                        <li class="nx-item nx-cpu nx-fujitsu" style="--i:0; --w:5%">
+                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 8.5h16M4 14.5h16"/><path d="M7.5 5.5h.01M7.5 11.5h.01M7.5 17.5h.01M11 5.5h5.5M11 11.5h5.5M11 17.5h5.5"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE1 <em>HPC</em></span><span class="nx-plat"><b class="nx-brand">Fujitsu</b> Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="1">1</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-gpu nx-nvidia" style="--i:1; --w:30%">
+                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE1 AI <em>AI</em></span><span class="nx-plat"><b class="nx-brand">NVIDIA</b> DGX-1 V100 AI Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="6">6</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-cpu nx-hpe" style="--i:2; --w:50%">
+                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE2A <em>HPC</em></span><span class="nx-plat"><b class="nx-brand">HPE Cray</b> Exascale Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="10">10</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                        <li class="nx-item nx-gpu nx-nvidia" style="--i:3; --w:100%">
+                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
+                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="16" y="9.5" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><rect x="16" y="16" width="5" height="5" rx="1"/></svg></span>
+                            <span class="nx-main"><span class="nx-name">ASPIRE2A+ <em>AI</em></span><span class="nx-plat"><b class="nx-brand">NVIDIA</b> DGX SuperPOD H100 Supercomputer</span></span>
+                            <span class="nx-peak"><b><span class="nx-num" data-to="20">20</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
+                        </li>
+                    </ol>
+                    <div class="nx-foot"><span><i class="nx-dot nx-fujitsu"></i>Fujitsu <i class="nx-dot nx-hpe"></i>HPE Cray <i class="nx-dot nx-nvidia"></i>NVIDIA</span><span>Σ <b>37 PFLOPS</b> peak across 4 systems</span></div>
+                    </div>
+<script>
+/* NSCC systems: animate bars and count up PFLOPS when scrolled into view */
+(() => {
+    const box = document.querySelector('.nscc-x');
+    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    box.classList.add('nx-anim');
+    const nums = box.querySelectorAll('.nx-num');
+    nums.forEach((n) => (n.textContent = '0'));
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        box.classList.add('is-in');
+        nums.forEach((n) => {
+            const to = +n.dataset.to, t0 = performance.now(), d = 1300;
+            const tick = (t) => { const k = Math.min(1, (t - t0) / d); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+            requestAnimationFrame(tick);
+        });
+        io.disconnect();
+    }), { threshold: 0.3 });
+    io.observe(box);
+})();
+</script>
                     </div>
                             <div class="ps-pipe" id="ai-factory-pillars"><div class="ws-in" aria-label="Supercomputing workshops"><h3 class="ps-ph">AI / HPC Supercomputing Workshop</h3><p class="ws-sub">Delivered AI/HPC supercomputing workshops across Singapore Universities and Research Institutes</p><ol class="ws-sts"><li class="ws-st" style="--c:#ef7c00;--c2:#003d7c;--k:0"><span class="ws-lg" title="National University of Singapore"><span class="ws-mono" aria-hidden="true">NUS</span><img src="images/uni/nus.png" alt="NUS logo" loading="lazy" onerror="this.remove()"></span><b>NUS</b></li><li class="ws-st" style="--c:#d71920;--c2:#181c62;--k:1"><span class="ws-lg" title="Nanyang Technological University"><span class="ws-mono" aria-hidden="true">NTU</span><img src="images/uni/ntu.png" alt="NTU logo" loading="lazy" onerror="this.remove()"></span><b>NTU</b></li><li class="ws-st" style="--c:#d0103a;--c2:#5b2a86;--k:2"><span class="ws-lg" title="Singapore University of Technology &amp; Design"><span class="ws-mono" aria-hidden="true">SUTD</span><img src="images/uni/sutd.png" alt="SUTD logo" loading="lazy" onerror="this.remove()"></span><b>SUTD</b></li><li class="ws-st" style="--c:#8a704c;--c2:#151c55;--k:3"><span class="ws-lg" title="Singapore Management University"><span class="ws-mono" aria-hidden="true">SMU</span><img src="images/uni/smu.png" alt="SMU logo" loading="lazy" onerror="this.remove()"></span><b>SMU</b></li><li class="ws-st" style="--c:#e2231a;--c2:#1f3c88;--k:4"><span class="ws-lg" title="Singapore Institute of Technology"><span class="ws-mono" aria-hidden="true">SIT</span><img src="images/uni/sit.png" alt="SIT logo" loading="lazy" onerror="this.remove()"></span><b>SIT</b></li><li class="ws-st" style="--c:#e30613;--c2:#00539b;--k:5"><span class="ws-lg" title="Agency for Science, Technology &amp; Research"><span class="ws-mono" aria-hidden="true">A*STAR</span><img src="images/uni/astar.png" alt="A*STAR logo" loading="lazy" onerror="this.remove()"></span><b>A*STAR</b></li></ol></div><span class="ps-sep" aria-hidden="true"></span><h3 class="ps-ph">NVIDIA AI Factory Stack</h3><span class="ps-end">Bare&#8209;metal compute</span><ol class="ps-sts"><li class="ps-st" style="--c:#60a5fa;--k:0"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span><b>AI Compute</b><small>stage 1</small></li><li class="ps-st" style="--c:#22d3ee;--k:1"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5 6.5 17M12 11.5l5.5 5.5"/></svg></span><b>AI Networking</b><small>stage 2</small></li><li class="ps-st" style="--c:#a78bfa;--k:2"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><b>AI Storage</b><small>stage 3</small></li><li class="ps-st" style="--c:#a3e635;--k:3"><span class="ps-nd" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"/><path d="M3.3 17a9 9 0 1 1 17.4 0"/><circle cx="12" cy="14" r="1.5"/></svg></span><b>AI Benchmarking</b><small>stage 4</small></li></ol><span class="ps-end ps-fin">Turnkey AI Systems <i aria-hidden="true">✓</i></span></div>
                         </section>
@@ -2764,74 +2828,12 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 04 Certifications -->
-    <!-- 02 Supercomputing -->
+    <!-- 03 Certifications -->
+    <!-- 02 Accelerators -->
     <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>02</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="supercomputing" class="section is-alt sec-sc">
+    <section id="accelerators" class="section is-alt sec-ac">
         <div class="wrap">
-            <div class="section-head"><div><span class="eyebrow mono"><b>02</b> AI Supercomputing Infrastructure – National Supercomputing Centre, Singapore</span><h2 class="h2-sc">Led Singapore’s four national supercomputers.</h2></div></div>
-            <div class="ab sc-host"><div class="ab-flag" id="nscc">
-                    <div class="nscc-x">
-                    <span class="nx-grid" aria-hidden="true"></span><span class="nx-glow" aria-hidden="true"></span><span class="nx-scan" aria-hidden="true"></span>
-                    <div class="nx-head"><span class="nx-hl"><span class="nh-live" aria-hidden="true"></span><b class="nx-nscc">NSCC</b><strong class="nx-ht">National Supercomputing Centre</strong><span class="nx-hc">Singapore</span></span></div>
-                    <ol class="nx-list" aria-label="NSCC supercomputers">
-                        <li class="nx-item nx-cpu nx-fujitsu" style="--i:0; --w:5%">
-                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 8.5h16M4 14.5h16"/><path d="M7.5 5.5h.01M7.5 11.5h.01M7.5 17.5h.01M11 5.5h5.5M11 11.5h5.5M11 17.5h5.5"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE1 <em>HPC</em></span><span class="nx-plat"><b class="nx-brand">Fujitsu</b> Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="1">1</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                        <li class="nx-item nx-gpu nx-nvidia" style="--i:1; --w:30%">
-                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="8" cy="12" r=".8"/><path d="M14 9.5h5M14 12h5M14 14.5h3M6 18v2.5M10 18v2.5M14 18v2.5M18 18v2.5"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE1 AI <em>AI</em></span><span class="nx-plat"><b class="nx-brand">NVIDIA</b> DGX-1 V100 AI Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="6">6</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                        <li class="nx-item nx-cpu nx-hpe" style="--i:2; --w:50%">
-                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="5.5" height="17" rx="1.2"/><rect x="9.25" y="4" width="5.5" height="17" rx="1.2"/><rect x="16" y="4" width="5.5" height="17" rx="1.2"/><path d="M4 8h2.5M10.75 8h2.5M17.5 8h2.5M4 11h2.5M10.75 11h2.5M17.5 11h2.5M2 21h20"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE2A <em>HPC</em></span><span class="nx-plat"><b class="nx-brand">HPE Cray</b> Exascale Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="10">10</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                        <li class="nx-item nx-gpu nx-nvidia" style="--i:3; --w:100%">
-                            <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
-                            <span class="nx-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="16" y="9.5" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><rect x="16" y="16" width="5" height="5" rx="1"/></svg></span>
-                            <span class="nx-main"><span class="nx-name">ASPIRE2A+ <em>AI</em></span><span class="nx-plat"><b class="nx-brand">NVIDIA</b> DGX SuperPOD H100 Supercomputer</span></span>
-                            <span class="nx-peak"><b><span class="nx-num" data-to="20">20</span> <small>PFLOPS</small></b><span class="nx-bar"><i></i></span></span>
-                        </li>
-                    </ol>
-                    <div class="nx-foot"><span><i class="nx-dot nx-fujitsu"></i>Fujitsu <i class="nx-dot nx-hpe"></i>HPE Cray <i class="nx-dot nx-nvidia"></i>NVIDIA</span><span>Σ <b>37 PFLOPS</b> peak across 4 systems</span></div>
-                    </div>
-<script>
-/* NSCC systems: animate bars and count up PFLOPS when scrolled into view */
-(() => {
-    const box = document.querySelector('.nscc-x');
-    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-    box.classList.add('nx-anim');
-    const nums = box.querySelectorAll('.nx-num');
-    nums.forEach((n) => (n.textContent = '0'));
-    const io = new IntersectionObserver((es) => es.forEach((e) => {
-        if (!e.isIntersecting) return;
-        box.classList.add('is-in');
-        nums.forEach((n) => {
-            const to = +n.dataset.to, t0 = performance.now(), d = 1300;
-            const tick = (t) => { const k = Math.min(1, (t - t0) / d); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
-            requestAnimationFrame(tick);
-        });
-        io.disconnect();
-    }), { threshold: 0.3 });
-    io.observe(box);
-})();
-</script>
-                </div></div>
-        </div>
-    </section>
-
-    <!-- 03 Accelerators -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>03</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="accelerators" class="section sec-ac">
-        <div class="wrap">
-            <div class="section-head"><div><span class="eyebrow mono"><b>03</b> NVIDIA AI Accelerators</span><h2 class="h2-line h2-long">Every NVIDIA generation, from Kepler to Blackwell&nbsp;Ultra.</h2></div></div>
+            <div class="section-head"><div><span class="eyebrow mono"><b>02</b> NVIDIA AI Accelerators</span><h2 class="h2-line h2-long">Every NVIDIA generation, from Kepler to Blackwell&nbsp;Ultra.</h2></div></div>
             <div class="ab ac-host"><div class="ab-plat" id="platforms">
                 <div class="plat-x">
                 <span class="pv-grid" aria-hidden="true"></span><span class="pv-glow" aria-hidden="true"></span><span class="pv-spot" aria-hidden="true"></span>
@@ -2872,14 +2874,14 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>04</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="credentials" class="section is-alt">
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>03</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="credentials" class="section">
         <div class="cr-sweep" aria-hidden="true"></div><div class="cr-cells" aria-hidden="true"><i class="c-b"></i><i class="c-a"></i><i class="c-g"></i><i class="c-b"></i><i class="c-a"></i><i class="c-g"></i><i class="c-b"></i><i class="c-a"></i><i class="c-g"></i><i class="c-b"></i><i class="c-a"></i><i class="c-g"></i><i class="c-b"></i><i class="c-a"></i></div><div class="cr-spot" aria-hidden="true"></div>
         <div class="cr-fx" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>04</b> Certifications</span>
+                    <span class="eyebrow mono"><b>03</b> Certifications</span>
                     <h2>Certified where AI infrastructure is built.</h2>
                 </div>
                 <p>Exam-based certifications first, ordered by relevance to AI factories today. NVIDIA credentials link to their issuer records; other digital badges link to Credly.</p>
@@ -3187,13 +3189,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 05 Capabilities -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>05</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="capabilities" class="section">
+    <!-- 04 Capabilities -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>04</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="capabilities" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>05</b> Capabilities</span>
+                    <span class="eyebrow mono"><b>04</b> Capabilities</span>
                     <h2>The stack, layer by layer.</h2>
                 </div>
                 <p>Every layer of an AI factory, from the platform down to the operating system, and the certifications that back each one. The highlighted layers are the current focus.</p>
@@ -3283,12 +3285,12 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
                 </div>
     </section>
 
-    <!-- 06 Experience -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>06</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="journey" class="section is-alt">
+    <!-- 05 Experience -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>05</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="journey" class="section">
         <div class="wrap">
             <div class="section-head">
-                <div><span class="eyebrow mono"><b>06</b> Experience</span><h2>11 roles, from Linux to AI&nbsp;factories.</h2></div>
+                <div><span class="eyebrow mono"><b>05</b> Experience</span><h2>11 roles, from Linux to AI&nbsp;factories.</h2></div>
                 <p>Two countries, from New Delhi and Bangalore to Singapore, growing from Linux support into HPC, national supercomputing and NVIDIA AI factories.</p>
             </div>
             <div class="x6">
@@ -3298,13 +3300,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 07 Work -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>07</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="work" class="section">
+    <!-- 06 Work -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>06</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="work" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>07</b> Selected work</span>
+                    <span class="eyebrow mono"><b>06</b> Selected work</span>
                     <h2>Systems that stay up.</h2>
                 </div>
                 <p><a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Projects on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a></p>
@@ -3342,13 +3344,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 08 Recognition -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>08</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="recognition" class="section is-alt">
+    <!-- 07 Recognition -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>07</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="recognition" class="section">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>08</b> Recognition</span>
+                    <span class="eyebrow mono"><b>07</b> Recognition</span>
                     <h2>Recognition through delivery.</h2>
                 </div>
                 <p>Awards and appreciation earned for operational work, leadership and delivering on time.</p>
@@ -3380,13 +3382,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 09 Learning -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>09</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="learning" class="section">
+    <!-- 08 Learning -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>08</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="learning" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>09</b> Continuous learning</span>
+                    <span class="eyebrow mono"><b>08</b> Continuous learning</span>
                     <h2>Courses, kept apart from the exams.</h2>
                 </div>
                 <p>Course completions and vendor training. They are listed here for completeness and not counted as certifications above.</p>
@@ -3459,13 +3461,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
     </section>
 
 
-    <!-- 10 Education -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>10</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="education" class="section is-alt">
+    <!-- 09 Education -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>09</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <section id="education" class="section">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>10</b> Education</span>
+                    <span class="eyebrow mono"><b>09</b> Education</span>
                     <h2>Grounded in computing and science.</h2>
                 </div>
                 <p>A master’s in computer applications on a foundation of physics, chemistry and mathematics, extended with supercomputing and HPC study in the UK and Ireland.</p>
@@ -3511,12 +3513,12 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 11 Contact -->
+    <!-- 10 Contact -->
     <section id="contact" class="section contact is-dark">
         <span class="ct-edge" aria-hidden="true"></span><span class="ct-orb" aria-hidden="true"></span>
         <div class="wrap contact-grid">
             <div>
-                <span class="eyebrow mono"><b>11</b> Get in touch</span>
+                <span class="eyebrow mono"><b>10</b> Get in touch</span>
                 <h2>Let’s talk AI infrastructure<em>.</em></h2>
                 <p class="contact-copy">
                     I'm interested in the platforms and engineering practices behind large-scale AI systems, especially compute, networking, storage,
