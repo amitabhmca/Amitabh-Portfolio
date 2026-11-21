@@ -2542,6 +2542,23 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
 
 /* v39 · NSCC line in the hero-name font */
 .hero .psc-sub { margin: 12px 0 16px; font: 700 clamp(22px, 1rem + 1.2vw, 32px)/1.2 var(--font-display); letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
+
+/* v41 · menu option A: theme switcher as icon button */
+.theme-btn .theme-lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .main-nav { display: flex; margin-inline: auto; }
+  .menu-toggle { display: none; }
+  .nav-x > ul > li > a { padding-inline: 7px; gap: 4px; font-size: 13px; }
+  .nav-x .mm-ti { width: 14px; height: 14px; }
+  .brand-sub { display: none; }
+  .cta-wrap { display: inline-flex; margin: 0 8px 0 10px; }
+  .cta-wrap .nav-cta { margin: 0; padding: 9px 14px 9px 12px; font-size: 13.5px; }
+}
+
+/* v42 · keep the badge ribbon in its own painted box (prevents it drawing over About while scrolling) */
+.ribbon { position: relative; z-index: 1; isolation: isolate; overflow: hidden; contain: paint; }
+.marquee-track { will-change: transform; backface-visibility: hidden; }
+.site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: color-mix(in srgb, var(--card) 95%, transparent); }
 </style>
 </head>
 <body>
@@ -2573,11 +2590,10 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         <nav class="main-nav nav-x" aria-label="Main">
             <ul>
                 <li class="nav-pill" aria-hidden="true"></li>
-                <li><a href="#top"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-house" d="M5 10.2V20h14v-9.8L12 4.8z"/><path pathLength="100" class="i-roof" d="m2.8 11 9.2-7.5 9.2 7.5"/><path pathLength="100" class="i-door" d="M10 20v-5h4v5"/></svg><span>Home</span></a></li>
                 <li><a href="#about"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d i-head" cx="12" cy="8" r="3.8"/><path pathLength="100" class="d i-body" d="M4.5 20.5a7.5 7.5 0 0 1 15 0z"/></svg><span>About</span></a></li>
-                <li><a href="#credentials"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="i-medal"><circle pathLength="100" class="d" cx="12" cy="9" r="6"/><path pathLength="100" class="i-star" d="m12 6.1.95 1.9 2.1.3-1.5 1.45.35 2.1L12 10.9l-1.9.95.35-2.1L8.95 8.3l2.1-.3z"/></g><path pathLength="100" class="i-rib" d="m9 14-1.5 7L12 19l4.5 2L15 14"/></svg><span>Credentials</span></a></li>
-                <li><a href="#capabilities"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg><span>Expertise</span></a></li>
+                <li><a href="#accelerators"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg><span>Expertise</span></a></li>
                 <li><a href="#journey"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="i-handle" d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect pathLength="100" class="d i-case" x="3" y="7" width="18" height="13" rx="2.5"/><path pathLength="100" class="i-clasp" d="M3 12.5h18M11 12.5h2v2h-2z"/></svg><span>Experience</span></a></li>
+                <li><a href="#credentials"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="i-medal"><circle pathLength="100" class="d" cx="12" cy="9" r="6"/><path pathLength="100" class="i-star" d="m12 6.1.95 1.9 2.1.3-1.5 1.45.35 2.1L12 10.9l-1.9.95.35-2.1L8.95 8.3l2.1-.3z"/></g><path pathLength="100" class="i-rib" d="m9 14-1.5 7L12 19l4.5 2L15 14"/></svg><span>Certifications</span></a></li>
                 <li><a href="#education"><svg class="mm-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-board" d="m2 9 10-5 10 5-10 5z"/><path pathLength="100" class="i-crown" d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><g class="i-tassel"><path pathLength="100" d="M22 9v5.5"/><circle pathLength="100" class="d" cx="22" cy="15.5" r="1"/></g></svg><span>Education</span></a></li>
             </ul>
         </nav>
@@ -2590,7 +2606,7 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </div>
     <nav id="mobile-nav" class="mobile-nav" aria-label="Main">
-        <a class="nav-item" href="#top"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-house" d="M5 10.2V20h14v-9.8L12 4.8z"/><path pathLength="100" class="i-roof" d="m2.8 11 9.2-7.5 9.2 7.5"/><path pathLength="100" class="i-door" d="M10 20v-5h4v5"/></svg>Home</a><a class="nav-item" href="#about"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d i-head" cx="12" cy="8" r="3.8"/><path pathLength="100" class="d i-body" d="M4.5 20.5a7.5 7.5 0 0 1 15 0z"/></svg>About</a><a class="nav-item" href="#credentials"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="i-medal"><circle pathLength="100" class="d" cx="12" cy="9" r="6"/><path pathLength="100" class="i-star" d="m12 6.1.95 1.9 2.1.3-1.5 1.45.35 2.1L12 10.9l-1.9.95.35-2.1L8.95 8.3l2.1-.3z"/></g><path pathLength="100" class="i-rib" d="m9 14-1.5 7L12 19l4.5 2L15 14"/></svg>Credentials</a><a class="nav-item" href="#capabilities"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg>Expertise</a><a class="nav-item" href="#journey"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="i-handle" d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect pathLength="100" class="d i-case" x="3" y="7" width="18" height="13" rx="2.5"/><path pathLength="100" class="i-clasp" d="M3 12.5h18M11 12.5h2v2h-2z"/></svg>Experience</a><a class="nav-item" href="#education"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-board" d="m2 9 10-5 10 5-10 5z"/><path pathLength="100" class="i-crown" d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><g class="i-tassel"><path pathLength="100" d="M22 9v5.5"/><circle pathLength="100" class="d" cx="22" cy="15.5" r="1"/></g></svg>Education</a><a class="nav-item mn-contact" href="#contact">Contact</a>
+        <a class="nav-item" href="#about"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="100" class="d i-head" cx="12" cy="8" r="3.8"/><path pathLength="100" class="d i-body" d="M4.5 20.5a7.5 7.5 0 0 1 15 0z"/></svg>About</a><a class="nav-item" href="#accelerators"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-l1" d="m12 3 9 5-9 5-9-5z"/><path pathLength="100" class="i-l2" d="m3 12 9 5 9-5"/><path pathLength="100" class="i-l3" d="m3 16 9 5 9-5"/></svg>Expertise</a><a class="nav-item" href="#journey"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="i-handle" d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect pathLength="100" class="d i-case" x="3" y="7" width="18" height="13" rx="2.5"/><path pathLength="100" class="i-clasp" d="M3 12.5h18M11 12.5h2v2h-2z"/></svg>Experience</a><a class="nav-item" href="#credentials"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="i-medal"><circle pathLength="100" class="d" cx="12" cy="9" r="6"/><path pathLength="100" class="i-star" d="m12 6.1.95 1.9 2.1.3-1.5 1.45.35 2.1L12 10.9l-1.9.95.35-2.1L8.95 8.3l2.1-.3z"/></g><path pathLength="100" class="i-rib" d="m9 14-1.5 7L12 19l4.5 2L15 14"/></svg>Certifications</a><a class="nav-item" href="#education"><svg class="mn-ti ico-x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" class="d i-board" d="m2 9 10-5 10 5-10 5z"/><path pathLength="100" class="i-crown" d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><g class="i-tassel"><path pathLength="100" d="M22 9v5.5"/><circle pathLength="100" class="d" cx="22" cy="15.5" r="1"/></g></svg>Education</a><a class="nav-item mn-contact" href="#contact">Contact</a>
         <a class="btn btn-nvidia" href="https://www.credential.net/profile/amitabhmca/wallet" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg> NVIDIA wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn" href="https://www.credly.com/users/amitabh-pandey" target="_blank" rel="noreferrer">Credly wallet <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
         <a class="btn btn-signal" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-linkedin"/></svg> Connect on LinkedIn</a>
@@ -3205,108 +3221,12 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 04 Capabilities -->
+    <!-- 04 Experience -->
     <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>04</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="capabilities" class="section is-alt">
+    <section id="journey" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
-                <div>
-                    <span class="eyebrow mono"><b>04</b> Capabilities</span>
-                    <h2>The stack, layer by layer.</h2>
-                </div>
-                <p>Every layer of an AI factory, from the platform down to the operating system, and the certifications that back each one. The highlighted layers are the current focus.</p>
-            </div>
-
-            <div class="stack">
-                <div class="stack-cap mono"><b>↑ Workloads &amp; platform</b><span>skills · backed by</span></div>
-
-                <div class="layer">
-                    <span class="layer-ix">L7</span>
-                    <div><h3>AI platform &amp; economics</h3><p>Running GPU capacity as a cloud service and measuring the value of the tokens it produces.</p></div>
-                    <div class="chips"><span>GPU cloud platforms</span><span>Kubernetes cluster lifecycle</span><span>AI tokenomics</span><span>Kubeflow</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <a href="https://www.credly.com/badges/c9d189a7-f789-4067-8b57-424b208b318c" target="_blank" rel="noreferrer">Rafay GPU Cloud Pro</a>
-                        <a href="https://www.credly.com/badges/3a28a911-05e0-4cd2-aea4-4c3d5636b1d8" target="_blank" rel="noreferrer">Rafay Associate</a>
-                        <a href="https://www.credly.com/badges/44bf1035-7cea-43b4-b77c-a859330bb21b" target="_blank" rel="noreferrer">AI Tokenomics</a>
-                    </div></div>
-                </div>
-
-                <div class="layer is-core">
-                    <span class="layer-ix">L6</span>
-                    <div><h3>AI compute &amp; operations</h3><p>GPU clusters for training and inference, and the cluster management that keeps them running.</p><span class="core-tag">Core focus</span></div>
-                    <div class="chips"><span>GPU infrastructure</span><span>Rack &amp; interconnect deployment</span><span>AI cluster operations</span><span>Base Command Manager</span><span>Bright Cluster Manager</span><span>HPC</span><span>DGX · HGX · MGX</span><span>Slurm &amp; PBS Pro</span><span>Run:ai &amp; KAI</span><span>xCAT &amp; Warewulf</span><span>HPE HPCM</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <a href="https://credential.nvidia.com/f6d357cc-a7d3-4caa-8c11-a9c7968f1faa" target="_blank" rel="noreferrer">NCP-ARI</a>
-                        <a href="https://credential.nvidia.com/5e0afc7d-471b-4c30-a4f6-f71ef4bc761e" target="_blank" rel="noreferrer">NCP-AII</a>
-                        <a href="https://credential.nvidia.com/250a727e-8280-4a31-aad9-b1e5886d46c7" target="_blank" rel="noreferrer">NCP-AIO</a>
-                        <a href="https://credential.nvidia.com/e8455c5c-7cfa-4f63-8a02-37ea5b690d3d" target="_blank" rel="noreferrer">NCA-AIIO</a>
-                        <span>Bright ×4</span>
-                    </div></div>
-                </div>
-
-                <div class="layer is-core">
-                    <span class="layer-ix">L5</span>
-                    <div><h3>AI networking</h3><p>High-bandwidth fabrics that connect GPUs, on a long record in routing, segmentation and failover.</p><span class="core-tag">Core focus</span></div>
-                    <div class="chips"><span>Mellanox InfiniBand</span><span>Spectrum-X</span><span>NVLink &amp; NVSwitch</span><span>BlueField-3 &amp; DOCA</span><span>Cumulus</span><span>AI fabrics</span><span>Routing &amp; VLAN</span><span>Firewalls &amp; VPN</span><span>WAN failover</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <a href="https://credential.nvidia.com/e92e82a9-4c79-4b2d-9fc6-17c51301bd9a" target="_blank" rel="noreferrer">NCP-AIN</a>
-                        <span>2006 router project</span>
-                    </div></div>
-                </div>
-
-                <div class="layer is-core">
-                    <span class="layer-ix">L4</span>
-                    <div><h3>Storage &amp; parallel file systems</h3><p>Feeding data to GPUs fast enough, from parallel file systems to enterprise arrays.</p><span class="core-tag">Core focus</span></div>
-                    <div class="chips"><span>BeeGFS</span><span>WEKA</span><span>Spectrum Scale (GPFS)</span><span>Lustre</span><span>NetApp ONTAP</span><span>HPE DMF</span><span>ZFS</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <span>BeeGFS Engineer</span>
-                        <span>WEKA Xpert</span>
-                        <a href="https://www.credly.com/badges/147618cb-8186-4291-982a-ae00b41c139b" target="_blank" rel="noreferrer">NetApp NCDA</a>
-                    </div></div>
-                </div>
-
-                <div class="layer">
-                    <span class="layer-ix">L3</span>
-                    <div><h3>Cloud native &amp; automation</h3><p>Containers, orchestration and infrastructure as code, on public cloud and on premises.</p></div>
-                    <div class="chips"><span>Kubernetes</span><span>AWS</span><span>Terraform</span><span>Argo</span><span>Tekton</span><span>Containers</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <a href="https://www.credly.com/badges/434bbf9d-7832-4eba-8361-c55e58e38108" target="_blank" rel="noreferrer">CKA</a>
-                        <a href="https://www.credly.com/badges/6647e7b8-38b7-41cc-955c-78439c498539" target="_blank" rel="noreferrer">CKAD</a>
-                        <a href="https://www.credly.com/badges/79c37040-79ea-4b3d-81f3-1081c4aafc4c" target="_blank" rel="noreferrer">AWS SA Pro</a>
-                        <a href="https://www.credly.com/badges/26829b3c-0d7a-4fdf-abf5-11b99a051221" target="_blank" rel="noreferrer">AWS DevOps Pro</a>
-                        <a href="https://www.credly.com/badges/f791a663-7b91-4f11-af83-d46b4bf733e9" target="_blank" rel="noreferrer">Terraform</a>
-                    </div></div>
-                </div>
-
-                <div class="layer">
-                    <span class="layer-ix">L2</span>
-                    <div><h3>Virtualization &amp; Linux</h3><p>The operating layer underneath it all: Linux, Unix and enterprise virtualization.</p></div>
-                    <div class="chips"><span>RHEL</span><span>Linux / FreeBSD</span><span>Solaris</span><span>VMware vSphere</span><span>vCloud &amp; SRM</span><span>Citrix XenServer</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <span>RHCSA</span><span>VCP-510</span><span>VCP-Cloud</span><span>Citrix CCA</span>
-                    </div></div>
-                </div>
-
-                <div class="layer">
-                    <span class="layer-ix">L1</span>
-                    <div><h3>Delivery &amp; service management</h3><p>Running infrastructure as a service: change, continuity, coordination and leadership.</p></div>
-                    <div class="chips"><span>PRINCE2</span><span>ITIL</span><span>Patching &amp; change</span><span>Project coordination</span><span>Six Sigma Green Belt course</span></div>
-                    <div class="proof-wrap"><span class="proof-label mono">Backed by</span><div class="proof">
-                        <span>PRINCE2 Practitioner</span><span>ITIL v3</span>
-                    </div></div>
-                </div>
-
-                <div class="stack-base mono"><span>↓ Bare metal &amp; data centre</span><span>24+ years deep</span></div>
-            </div>
-                </div>
-    </section>
-
-    <!-- 05 Experience -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>05</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="journey" class="section">
-        <div class="wrap">
-            <div class="section-head">
-                <div><span class="eyebrow mono"><b>05</b> Experience</span><h2>11 roles, from Linux to AI&nbsp;factories.</h2></div>
+                <div><span class="eyebrow mono"><b>04</b> Experience</span><h2>11 roles, from Linux to AI&nbsp;factories.</h2></div>
                 <p>Two countries, from New Delhi and Bangalore to Singapore, growing from Linux support into HPC, national supercomputing and NVIDIA AI factories.</p>
             </div>
             <div class="x6">
@@ -3316,57 +3236,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 06 Work -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>06</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
-    <section id="work" class="section is-alt">
-        <div class="wrap">
-            <div class="section-head">
-                <div>
-                    <span class="eyebrow mono"><b>06</b> Selected work</span>
-                    <h2>Systems that stay up.</h2>
-                </div>
-                <p><a class="arrow-link" href="https://www.linkedin.com/in/amitabhmca/" target="_blank" rel="noreferrer">Projects on LinkedIn <svg class="icon"><use href="#i-arrow-ur"/></svg></a></p>
-            </div>
-            <div class="work-grid">
-                <article class="work is-feature">
-                    <div>
-                        <span class="mono">Completed · Mar – May 2006 · Mercantila Software Services</span>
-                        <h3>Open-source Linux router &amp; firewall</h3>
-                        <p>A Linux-based routing and firewall platform bringing monitoring, segmentation, traffic control, intrusion detection and ISP failover into a single network design.</p>
-                        <div class="chips"><span>Linux</span><span>FreeBSD</span><span>iptables</span><span>OpenVPN</span><span>Snort</span><span>Squid</span></div>
-                    </div>
-                    <ul class="points">
-                        <li>Four NICs: one LAN, two WAN, one DMZ</li>
-                        <li>Security policy and routing with iptables</li>
-                        <li>DMZ and VLAN segmentation of Linux servers</li>
-                        <li>Site connectivity over an OpenVPN tunnel</li>
-                        <li>Snort IDS, Squid and class-based queuing</li>
-                        <li>Automatic failover to a secondary ISP</li>
-                    </ul>
-                </article>
-                <article class="work">
-                    <span class="mono">Focus area · Current</span>
-                    <h3>AI Factory &amp; HPC infrastructure</h3>
-                    <p>The compute, networking, storage and operating practices underpinning modern AI factories and high-performance computing systems.</p>
-                    <div class="chips"><span>AI factory</span><span>HPC</span><span>GPU</span><span>InfiniBand</span></div>
-                </article>
-                <article class="work">
-                    <span class="mono">Focus area · Career foundation</span>
-                    <h3>Enterprise infrastructure operations</h3>
-                    <p>Infrastructure operations, virtualization, patching and service delivery, including recognition from J.P. Morgan and specialist vendor training.</p>
-                    <div class="chips"><span>Virtualization</span><span>Patching</span><span>ITIL</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- 07 Recognition -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>07</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <!-- 05 Recognition -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>05</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="recognition" class="section">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>07</b> Recognition</span>
+                    <span class="eyebrow mono"><b>05</b> Recognition</span>
                     <h2>Recognition through delivery.</h2>
                 </div>
                 <p>Awards and appreciation earned for operational work, leadership and delivering on time.</p>
@@ -3398,13 +3274,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 08 Learning -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>08</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <!-- 06 Learning -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>06</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="learning" class="section is-alt">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>08</b> Continuous learning</span>
+                    <span class="eyebrow mono"><b>06</b> Continuous learning</span>
                     <h2>Courses, kept apart from the exams.</h2>
                 </div>
                 <p>Course completions and vendor training. They are listed here for completeness and not counted as certifications above.</p>
@@ -3477,13 +3353,13 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
     </section>
 
 
-    <!-- 09 Education -->
-    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>09</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
+    <!-- 07 Education -->
+    <div class="sx-wrap"><div class="sx-div" aria-hidden="true"><span class="sx-line sx-l"></span><span class="sx-tag"><b>07</b></span><span class="sx-line sx-r"></span><i class="sx-dot"></i></div></div>
     <section id="education" class="section">
         <div class="wrap">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow mono"><b>09</b> Education</span>
+                    <span class="eyebrow mono"><b>07</b> Education</span>
                     <h2>Grounded in computing and science.</h2>
                 </div>
                 <p>A master’s in computer applications on a foundation of physics, chemistry and mathematics, extended with supercomputing and HPC study in the UK and Ireland.</p>
@@ -3529,12 +3405,12 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
         </div>
     </section>
 
-    <!-- 10 Contact -->
+    <!-- 08 Contact -->
     <section id="contact" class="section contact is-dark">
         <span class="ct-edge" aria-hidden="true"></span><span class="ct-orb" aria-hidden="true"></span>
         <div class="wrap contact-grid">
             <div>
-                <span class="eyebrow mono"><b>10</b> Get in touch</span>
+                <span class="eyebrow mono"><b>08</b> Get in touch</span>
                 <h2>Let’s talk AI infrastructure<em>.</em></h2>
                 <p class="contact-copy">
                     I'm interested in the platforms and engineering practices behind large-scale AI systems, especially compute, networking, storage,
@@ -3584,9 +3460,9 @@ html.js-hr .ws-in.in .ws-st { opacity: 1; transform: none; }
                 <li><a href="#top">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#credentials">Certifications</a></li>
-                <li><a href="#capabilities">Capabilities</a></li>
+                
                 <li><a href="#journey">Journey</a></li>
-                <li><a href="#work">Work</a></li>
+                
                 <li><a href="#recognition">Recognition</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
