@@ -2814,7 +2814,44 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
 /* v68 hero: even space above the photo and below its certified tag */
 .hero .hero-grid > .rise:first-child > .hero-id { margin-bottom: 14px; }
 @media (max-width: 760px) { .hero .hero-grid > .rise:first-child > .hero-id { margin-bottom: 11px; } }
+
+/* v70 header logo effects: E2 rotating ring + E3 online dot + E4 hover lift & underline + E6 typed title + E8 flip to "AP" */
+@property --brand-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.brand { position: relative; }
+.brand-mark { background: conic-gradient(from var(--brand-a), #2563eb, #06b6d4, #76b900, #a3e635, #2563eb); perspective: 260px; transition: transform .45s cubic-bezier(.3,1.4,.5,1), box-shadow .45s; }
+.brand-flip { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.3,1.3,.5,1); }
+.brand-flip > .brand-photo, .brand-mono { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.brand-mono { display: grid; place-items: center; border-radius: 8px; transform: rotateY(180deg); background: linear-gradient(135deg, #1d4ed8, #0b1a3d); font: 800 13px/1 var(--font-display); letter-spacing: -.02em; color: transparent; }
+.brand-mono { background-image: linear-gradient(135deg, #1d4ed8, #0b1a3d); }
+.brand-mono::before { content: "AP"; background: linear-gradient(90deg, #93c5fd, #a3e635); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand-dot { position: absolute; right: -3px; bottom: -3px; z-index: 2; width: 10px; height: 10px; border-radius: 50%; background: #22c55e; border: 2px solid var(--card); box-shadow: 0 0 0 0 rgb(34 197 94 / .6); }
+.brand:hover .brand-mark { transform: translateY(-2px) rotate(-4deg) scale(1.08); box-shadow: 0 10px 22px -8px rgb(118 185 0 / .7); }
+.brand:hover .brand-flip { transform: rotateY(180deg); }
+.brand-name { position: relative; }
+.brand-name::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--nvidia)); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+.brand:hover .brand-name::after, .brand:focus-visible .brand-name::after { transform: scaleX(1); }
+.brand-type { position: relative; display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .brand-mark { animation: brand-spin 5s linear infinite; }
+  .brand-dot { animation: brand-pulse 2.2s infinite; }
+  html.js-brand .brand-type { clip-path: inset(0 100% 0 0); animation: brand-type 1.6s steps(26, end) .5s forwards; }
+  html.js-brand .brand-type::after { content: ""; position: absolute; top: 1px; bottom: 1px; right: -5px; width: 5px; background: var(--nvidia); animation: brand-cur .7s steps(1) 2.1s 4, brand-cur-out .01s 4.9s forwards; }
+}
+@keyframes brand-spin { to { --brand-a: 360deg; } }
+@keyframes brand-pulse { 70% { box-shadow: 0 0 0 6px rgb(34 197 94 / 0); } 100% { box-shadow: 0 0 0 0 rgb(34 197 94 / 0); } }
+@keyframes brand-type { to { clip-path: inset(0 -8px 0 0); } }
+@keyframes brand-cur { 50% { opacity: 0; } }
+@keyframes brand-cur-out { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .brand-mark, .brand-flip, .brand-name::after { transition: none; } .brand:hover .brand-mark { transform: none; } }
+
+/* v70b E8: back of the flip is the photo, mirrored */
+.brand-flip > .brand-back { transform: rotateY(180deg) scaleX(-1); }
+
+/* v71 logo photo: dedicated sharp 240px pre-cropped image, no CSS up-scaling (prevents blur inside the 3D flip) */
+.brand-flip .brand-photo img { transform: none; width: 100%; height: 100%; object-fit: cover; image-rendering: auto; }
+.brand:hover .brand-mark { transform: translateY(-2px) rotate(-4deg); }
 </style>
+<script>document.documentElement.classList.add("js-brand");</script>
 </head>
 <body>
 <!-- Inline icon sprite -->
@@ -2839,8 +2876,8 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
 <header class="site-header">
     <div class="wrap header-row">
         <a href="#top" class="brand" aria-label="Amitabh Pandey — home">
-            <span class="brand-mark" aria-hidden="true"><span class="brand-photo"><img src="images/amitabh-pandey.jpg" alt="" width="34" height="34"></span></span>
-            <span class="brand-name"><span class="brand-title">Amitabh <b>Pandey</b></span><span class="brand-sub">AI Factory | HPC Architect</span></span>
+            <span class="brand-mark" aria-hidden="true"><span class="brand-flip"><span class="brand-photo"><img src="images/amitabh-pandey-logo.jpg" alt="" width="240" height="240" decoding="async"></span><span class="brand-photo brand-back"><img src="images/amitabh-pandey-logo.jpg" alt="" width="240" height="240" decoding="async"></span></span><span class="brand-dot"></span></span>
+            <span class="brand-name"><span class="brand-title">Amitabh <b>Pandey</b></span><span class="brand-sub"><span class="brand-type">AI Factory | HPC Architect</span></span></span>
         </a>
         <nav class="main-nav nav-x" aria-label="Main">
             <ul>
