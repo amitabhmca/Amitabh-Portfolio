@@ -2988,6 +2988,21 @@ html[data-theme="dark"] .contact-link .ico.ico-credly, html[data-theme="dark"] .
 .contact-link .ico.ico-nv, .ff-ico.ff-ico-nv { background: #fff; border: 1px solid var(--line); box-shadow: 0 6px 14px -10px rgb(118 185 0 / .7); }
 .nv-tile { display: block; width: 66%; height: auto; }
 html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-ico.ff-ico-nv { border-color: rgb(255 255 255 / .14); }
+
+/* v83 Tier 3: certificate thumbnails (gold frame, shine, seal) open in the viewer */
+.found-tr { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.found-tr .fc-stack { display: flex; align-items: flex-end; }
+.hpc-cert.fc-mini { width: auto; max-width: none; height: auto; padding: 3px; border-radius: 4px; margin: 0; transform: none; flex: none; }
+.hpc-cert.fc-mini img { display: block; height: 46px; width: auto; border-radius: 1px; }
+.hpc-cert.fc-mini::before { display: none; }
+.hpc-cert.fc-mini::after { width: 18px; height: 18px; right: -7px; top: -7px; font-size: 9px; box-shadow: 0 0 0 2px #fff, 0 4px 8px -3px rgb(0 0 0 / .45); }
+.fc-stack .fc-mini + .fc-mini { margin-left: -12px; transform: rotate(5deg) translateY(2px); }
+.fc-stack .fc-mini:first-child { transform: rotate(-3deg); z-index: 1; }
+.fc-stack .fc-mini:first-child::after { display: none; }
+.found .hpc-cert.fc-mini:hover, .found .hpc-cert.fc-mini:focus-visible { transform: translateY(-3px) rotate(0); z-index: 3; box-shadow: 0 14px 24px -12px #000, 0 0 16px -4px rgb(250 204 21 / .55); }
+.found-tr:not(:has(.found-date)) { padding-top: 0; }
+@media (max-width: 760px) { .hpc-cert.fc-mini img { height: 40px; } }
+@media (max-width: 700px) { .found-tr { align-items: flex-start; } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3626,51 +3641,51 @@ html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-i
                 </div>
                 <div class="found-grid">
                     <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/rhcsa.png" alt="Red Hat Certified System Administrator badge" width="62" height="62" loading="lazy" /></span></div>
-                        <h4>Red Hat Certified System Administrator</h4>
-                        <p>Linux systems administration on Red Hat Enterprise Linux.</p>
-                        <div class="found-foot"><span class="cert-issuer">Red Hat</span><span class="muted">Certificate</span></div>
-                    </article>
-                    <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/vmware-vcp5.png" alt="VMware Certified Professional – Data Center Virtualization legacy logo" width="62" height="62" loading="lazy" /></span><span class="found-date">Jul 2012</span></div>
-                        <h4>VMware Certified Professional on vSphere 5</h4>
-                        <p>VCP-510: enterprise virtualization on vSphere.</p>
-                        <div class="found-foot"><span class="cert-issuer">VMware</span><span class="muted">Certificate</span></div>
-                    </article>
-                    <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/vmware-vcp-cloud.png" alt="VMware Certified Professional – Cloud legacy logo" width="62" height="62" loading="lazy" /></span></div>
-                        <h4>VMware Certified Professional – Cloud</h4>
-                        <p>VCP-Cloud: private cloud infrastructure on VMware.</p>
-                        <div class="found-foot"><span class="cert-issuer">VMware</span><span class="muted">Certificate</span></div>
-                    </article>
-                    <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/netapp-ncda.png" alt="NetApp NCDA badge" width="62" height="62" loading="lazy" /></span><span class="found-date">Jul 2012</span></div>
-                        <h4>NetApp Certified Data Administrator</h4>
-                        <p>Data ONTAP 7-Mode storage administration.</p>
-                        <div class="found-foot"><span class="cert-issuer">NetApp</span><a class="verify" href="https://www.credly.com/badges/147618cb-8186-4291-982a-ae00b41c139b" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
-                    </article>
-                    <article class="found">
-                        <div class="found-top"><span class="plate citrix-plate"><img src="badges/citrix-cca.png" alt="Citrix Certified Administrator legacy logo" width="62" height="62" loading="lazy" /></span></div>
-                        <h4>Citrix Certified Administrator for XenServer 6</h4>
-                        <p>Server virtualization on Citrix XenServer.</p>
-                        <div class="found-foot"><span class="cert-issuer">Citrix</span><span class="muted">Certificate</span></div>
-                    </article>
-                    <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/prince2-practitioner.png" alt="PRINCE2 Practitioner badge" width="62" height="62" loading="lazy" /></span><span class="found-date">Jun 2014</span></div>
+                        <div class="found-top"><span class="plate"><img src="badges/prince2-practitioner.png" alt="PRINCE2 Practitioner badge" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Jun 2014</span><span class="fc-stack"><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/prince2-practitioner-2014.jpg" data-group="t3" data-cap="PRINCE2® Registered Practitioner · AXELOS / PeopleCert, Jun 2014" aria-label="View certificate: PRINCE2® Registered Practitioner · AXELOS / PeopleCert, Jun 2014"><img src="images/certs/prince2-practitioner-2014.jpg" alt="PRINCE2 Registered Practitioner certificate for Amitabh Pandey, June 2014" width="611" height="819" loading="lazy" decoding="async"></button><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/prince2-foundation-2014.jpg" data-group="t3" data-cap="PRINCE2® Foundation · AXELOS / PeopleCert, Jun 2014" aria-label="View certificate: PRINCE2® Foundation · AXELOS / PeopleCert, Jun 2014"><img src="images/certs/prince2-foundation-2014.jpg" alt="PRINCE2 Foundation certificate for Amitabh Pandey, June 2014" width="614" height="821" loading="lazy" decoding="async"></button></span></div></div>
                         <h4>PRINCE2® Registered Practitioner</h4>
                         <p>Project management, with PRINCE2® Foundation.</p>
                         <div class="found-foot"><span class="cert-issuer">PeopleCert</span><span class="muted">Certificate</span></div>
                     </article>
                     <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/itil-foundation-v3.png" alt="ITIL Foundation V3 logo" width="62" height="62" loading="lazy" /></span><span class="found-date">Dec 2007</span></div>
-                        <h4>ITIL Foundation v3</h4>
-                        <p>IT service management fundamentals.</p>
+                        <div class="found-top"><span class="plate"><img src="badges/vmware-vcp-cloud.png" alt="VMware Certified Professional – Cloud legacy logo" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Oct 2013</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/vmware-vcp-cloud-2013.jpg" data-group="t3" data-cap="VMware Certified Professional – Cloud · VMware, Oct 2013" aria-label="View certificate: VMware Certified Professional – Cloud · VMware, Oct 2013"><img src="images/certs/vmware-vcp-cloud-2013.jpg" alt="VMware Certified Professional Cloud certificate for Amitabh Pandey, October 2013" width="1122" height="870" loading="lazy" decoding="async"></button></div></div>
+                        <h4>VMware Certified Professional – Cloud</h4>
+                        <p>VCP-Cloud: private cloud infrastructure on VMware.</p>
+                        <div class="found-foot"><span class="cert-issuer">VMware</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/exin-cloud-foundation.png" alt="EXIN Cloud Computing Foundation badge" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Jul 2013</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/exin-cloud-foundation-2013.jpg" data-group="t3" data-cap="EXIN Cloud Computing Foundation · EXIN, Jul 2013" aria-label="View certificate: EXIN Cloud Computing Foundation · EXIN, Jul 2013"><img src="images/certs/exin-cloud-foundation-2013.jpg" alt="EXIN Cloud Computing Foundation certificate for Amitabh Pandey, July 2013" width="992" height="1340" loading="lazy" decoding="async"></button></div></div>
+                        <h4>EXIN Cloud Computing Foundation</h4>
+                        <p>Cloud computing concepts and service models.</p>
                         <div class="found-foot"><span class="cert-issuer">EXIN</span><span class="muted">Certificate</span></div>
                     </article>
                     <article class="found">
-                        <div class="found-top"><span class="plate"><img src="badges/exin-cloud-foundation.png" alt="EXIN Cloud Computing Foundation badge" width="62" height="62" loading="lazy" /></span></div>
-                        <h4>EXIN Cloud Computing Foundation</h4>
-                        <p>Cloud computing concepts and service models.</p>
+                        <div class="found-top"><span class="plate citrix-plate"><img src="badges/citrix-cca.png" alt="Citrix Certified Administrator legacy logo" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Aug 2012</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/citrix-cca-xenserver-2012.jpg" data-group="t3" data-cap="Citrix Certified Administrator for XenServer 6 · Citrix, Aug 2012" aria-label="View certificate: Citrix Certified Administrator for XenServer 6 · Citrix, Aug 2012"><img src="images/certs/citrix-cca-xenserver-2012.jpg" alt="Citrix Certified Administrator for Citrix XenServer 6 certificate for Amitabh Pandey, August 2012" width="1124" height="867" loading="lazy" decoding="async"></button></div></div>
+                        <h4>Citrix Certified Administrator for XenServer 6</h4>
+                        <p>Server virtualization on Citrix XenServer.</p>
+                        <div class="found-foot"><span class="cert-issuer">Citrix</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/netapp-ncda.png" alt="NetApp NCDA badge" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Jul 2012</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/netapp-ncda-2012.jpg" data-group="t3" data-cap="NetApp Certified Data Management Administrator · NetApp, Jul 2012" aria-label="View certificate: NetApp Certified Data Management Administrator · NetApp, Jul 2012"><img src="images/certs/netapp-ncda-2012.jpg" alt="NetApp Certified Data Management Administrator certificate for Amitabh Pandey, July 2012" width="1124" height="871" loading="lazy" decoding="async"></button></div></div>
+                        <h4>NetApp Certified Data Management Administrator</h4>
+                        <p>Data ONTAP 7-Mode storage administration.</p>
+                        <div class="found-foot"><span class="cert-issuer">NetApp</span><a class="verify" href="https://www.credly.com/badges/147618cb-8186-4291-982a-ae00b41c139b" target="_blank" rel="noreferrer">Verify <svg class="icon"><use href="#i-arrow-ur"/></svg></a></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/vmware-vcp5.png" alt="VMware Certified Professional – Data Center Virtualization legacy logo" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Jul 2012</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/vmware-vcp510-2012.jpg" data-group="t3" data-cap="VMware Certified Professional on vSphere 5 · VMware, Jul 2012" aria-label="View certificate: VMware Certified Professional on vSphere 5 · VMware, Jul 2012"><img src="images/certs/vmware-vcp510-2012.jpg" alt="VMware Certified Professional vSphere 5 certificate for Amitabh Pandey, July 2012" width="1356" height="1014" loading="lazy" decoding="async"></button></div></div>
+                        <h4>VMware Certified Professional on vSphere 5</h4>
+                        <p>VCP-510: enterprise virtualization on vSphere.</p>
+                        <div class="found-foot"><span class="cert-issuer">VMware</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/rhcsa.png" alt="Red Hat Certified System Administrator badge" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Jun 2009</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/rhcsa-2009.jpg" data-group="t3" data-cap="Red Hat Certified System Administrator · Red Hat, Jun 2009" aria-label="View certificate: Red Hat Certified System Administrator · Red Hat, Jun 2009"><img src="images/certs/rhcsa-2009.jpg" alt="Red Hat RHCSA certificate for Amitabh Pandey, Red Hat Enterprise Linux 5, June 2009" width="1056" height="801" loading="lazy" decoding="async"></button></div></div>
+                        <h4>Red Hat Certified System Administrator</h4>
+                        <p>Linux systems administration on Red Hat Enterprise Linux.</p>
+                        <div class="found-foot"><span class="cert-issuer">Red Hat</span><span class="muted">Certificate</span></div>
+                    </article>
+                    <article class="found">
+                        <div class="found-top"><span class="plate"><img src="badges/itil-foundation-v3.png" alt="ITIL Foundation V3 logo" width="62" height="62" loading="lazy" /></span><div class="found-tr"><span class="found-date">Dec 2007</span><button type="button" class="hpc-cert fc-mini" data-cert="images/certs/itil-v3-foundation-2007.jpg" data-group="t3" data-cap="ITIL® v3 Foundation · EXIN, Dec 2007" aria-label="View certificate: ITIL® v3 Foundation · EXIN, Dec 2007"><img src="images/certs/itil-v3-foundation-2007.jpg" alt="EXIN ITIL version 3 Foundation certificate for Amitabh Pandey, December 2007" width="599" height="845" loading="lazy" decoding="async"></button></div></div>
+                        <h4>ITIL Foundation v3</h4>
+                        <p>IT service management fundamentals.</p>
                         <div class="found-foot"><span class="cert-issuer">EXIN</span><span class="muted">Certificate</span></div>
                     </article>
                 </div>
