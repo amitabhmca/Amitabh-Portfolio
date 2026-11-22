@@ -2854,6 +2854,23 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
 /* v72 summary headline on one line; script scales it to the card width */
 .hero .hr-ps .ps-h { white-space: nowrap; text-wrap: nowrap; }
 .hero .hr-ps .ps-h .ps-g, .hero .hr-ps .ps-h .nw { white-space: nowrap; }
+
+/* v73 BeeGFS card: certificate as the card image (layout A) + full-size viewer */
+@media (min-width: 761px) { .hpc-grid .hpc-media { height: 196px; } }
+.hpc-media.is-cert { height: 196px; padding: 16px 18px; }
+.hpc-cert { all: unset; display: block; width: min(100%, 216px); margin-left: 18px; cursor: zoom-in; border-radius: 4px; transform: rotate(-1.5deg); box-shadow: 0 14px 30px -16px rgb(15 23 42 / .55); background: #fff; transition: transform .3s ease, box-shadow .3s ease; }
+.hpc-cert img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.hpc:hover .hpc-media .hpc-cert img, .hpc:hover .hpc-media .hpc-chip img { transform: none; }
+.hpc:hover .hpc-cert { transform: rotate(0deg) scale(1.04); box-shadow: 0 20px 40px -18px rgb(15 23 42 / .6); }
+.hpc-cert:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.hpc-chip { position: absolute; top: 12px; left: 12px; z-index: 1; display: flex; align-items: center; height: 34px; padding: 4px 8px; border-radius: 8px; background: #fff; border: 1px solid var(--line); box-shadow: 0 6px 14px -10px rgb(15 23 42 / .5); }
+.hpc-chip img { width: auto; height: 24px; }
+.cert-lb { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; background: rgb(2 6 23 / .78); backdrop-filter: blur(4px); }
+.cert-lb[hidden] { display: none; }
+.cert-lb img { width: min(960px, 94vw); height: auto; max-height: 88vh; object-fit: contain; border-radius: 6px; box-shadow: 0 30px 80px rgb(0 0 0 / .5); background: #fff; }
+.cert-lb-x { position: absolute; top: 16px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: #0d1b33; font: 700 18px/1 system-ui, sans-serif; cursor: pointer; }
+.cert-lb-x:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .hpc-cert { transition: none; } .hpc:hover .hpc-cert { transform: rotate(-1.5deg); } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3359,7 +3376,7 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
                 <div class="hpc-grid">
                     <article class="hpc">
                         <!-- Official product logo; a public engineer badge was not available. -->
-                        <div class="hpc-media"><img class="hpc-logo" src="badges/beegfs-logo.png" alt="BeeGFS logo" width="158" height="100" loading="lazy" /></div>
+                        <div class="hpc-media is-cert"><button type="button" class="hpc-cert" data-cert="images/certs/beegfs-certificate.jpg" aria-label="View BeeGFS certificate full size"><img src="images/certs/beegfs-certificate.jpg" alt="BeeGFS System Admin Certification for Amitabh Pandey, 18 October 2024" width="1265" height="905" loading="lazy" decoding="async" /></button><span class="hpc-chip"><img src="badges/beegfs-logo.png" alt="BeeGFS logo" width="158" height="100" loading="lazy" /></span></div>
                         <div class="hpc-body">
                             <span class="cert-issuer">ThinkParQ</span>
                             <h4>BeeGFS</h4>
@@ -4264,6 +4281,22 @@ const els=[document.querySelector('.hr-rib'),...document.querySelectorAll('.hs-p
     fit();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     let t; addEventListener('resize', () => { cancelAnimationFrame(t); t = requestAnimationFrame(fit); });
+})();
+</script>
+<div class="cert-lb" id="cert-lb" role="dialog" aria-modal="true" aria-label="Certificate" hidden><button type="button" class="cert-lb-x" aria-label="Close">&#10005;</button><img alt="" /></div>
+<script>
+/* Certificate viewer: click a certificate to see it full size */
+(() => {
+    const lb = document.getElementById('cert-lb'); if (!lb) return;
+    const img = lb.querySelector('img'), x = lb.querySelector('.cert-lb-x'); let last = null;
+    const close = () => { lb.hidden = true; document.body.style.overflow = ''; if (last) last.focus(); };
+    document.querySelectorAll('[data-cert]').forEach((b) => b.addEventListener('click', () => {
+        last = b; img.src = b.dataset.cert; img.alt = b.querySelector('img')?.alt || 'Certificate';
+        lb.hidden = false; document.body.style.overflow = 'hidden'; x.focus();
+    }));
+    x.addEventListener('click', close);
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
 })();
 </script>
 </body>
