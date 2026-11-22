@@ -2958,6 +2958,24 @@ html[data-theme="dark"] .hpc-wall-logo.is-dark { display: block; }
 .aw-lg img { display: block; height: 20px; width: auto; max-width: 120px; object-fit: contain; }
 .aw-lg img[src$="fujitsu.png"] { height: 24px; }
 html[data-theme="dark"] .aw-lg { border-color: rgb(255 255 255 / .12); box-shadow: 0 6px 16px -10px rgb(0 0 0 / .8); }
+
+/* v80 Education certificates: framed certificate panel on the right */
+.ed-cert.has-img { padding-right: 230px; min-height: 280px; }
+.ed-cmedia { position: absolute; top: 3px; right: 0; bottom: 0; width: 200px; display: grid; place-items: center; padding: 18px 22px; background: radial-gradient(90% 70% at 50% 0, #1e3a8a, #050a17 75%); border-left: 1px solid #0b1226; }
+.ed-cmedia .hpc-cert { width: 100%; margin: 0; transform: none; }
+.ed-cmedia .hpc-cert img { width: 100%; height: auto; }
+.ed-cert.has-img:hover .ed-cmedia .hpc-cert { transform: translateY(-4px); box-shadow: 0 26px 44px -18px #000, 0 0 22px -6px rgb(250 204 21 / .45); }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .ed-cert.has-img { padding-right: 30px; min-height: 0; }
+  .ed-cmedia { position: static; flex-grow: 1; width: auto; margin: 22px -30px -28px; padding: 24px 22px; border-left: 0; border-top: 1px solid #0b1226; }
+  .ed-cmedia .hpc-cert { width: min(52%, 200px); }
+}
+@media (max-width: 760px) {
+  .ed-cert.has-img { padding-right: 20px; min-height: 0; }
+  .ed-cmedia { position: static; flex-grow: 1; width: auto; margin: 18px -20px -22px; padding: 22px 18px; border-left: 0; border-top: 1px solid #0b1226; }
+  .ed-cmedia .hpc-cert { width: min(62%, 220px); }
+}
+@media (prefers-reduced-motion: reduce) { .ed-cert.has-img:hover .ed-cmedia .hpc-cert { transform: none; } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3817,21 +3835,21 @@ html[data-theme="dark"] .aw-lg { border-color: rgb(255 255 255 / .12); box-shado
             </div>
             <p class="ed-group">Certificates</p>
             <div class="ed-grid">
-                <article class="ed-card ed-cert ed-uoe">
+                <article class="ed-card ed-cert ed-uoe has-img">
                     <div class="ed-top"><span class="ed-logo"><img src="images/edu/uoe.png" alt="The University of Edinburgh logo" width="72" height="72" loading="lazy" decoding="async"></span><span class="ed-yr">2018</span></div>
                     <h3 class="ed-deg">Supercomputing</h3>
                     <p class="ed-full">Certificate in Supercomputing</p>
                     <p class="ed-uni"><a href="https://www.ed.ac.uk" target="_blank" rel="noopener">The University of Edinburgh<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
                     <p class="ed-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Edinburgh, Scotland, UK</p>
-                    
+                    <div class="ed-cmedia"><button type="button" class="hpc-cert" data-cert="images/certs/supercomputing-uoe-2018.jpg" data-group="edu" data-cap="Certificate of Achievement · Supercomputing, PRACE · The University of Edinburgh · SURFsara, Feb 2018" aria-label="View the Certificate in Supercomputing"><img src="images/certs/supercomputing-uoe-2018.jpg" alt="FutureLearn Certificate of Achievement for Amitabh Pandey, Supercomputing, by PRACE, The University of Edinburgh and SURFsara, February 2018" width="607" height="855" loading="lazy" decoding="async"></button></div>
                 </article>
-                <article class="ed-card ed-cert ed-dcu">
+                <article class="ed-card ed-cert ed-dcu has-img">
                     <div class="ed-top"><span class="ed-logo"><img src="images/edu/dcu.png" alt="Dublin City University logo" width="72" height="72" loading="lazy" decoding="async"></span><span class="ed-yr">2018</span></div>
                     <h3 class="ed-deg">HPC in the Cloud</h3>
                     <p class="ed-full">Certificate in HPC in the Cloud</p>
                     <p class="ed-uni"><a href="https://www.dcu.ie" target="_blank" rel="noopener">Dublin City University<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
                     <p class="ed-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Dublin, Ireland</p>
-                    
+                    <div class="ed-cmedia"><button type="button" class="hpc-cert" data-cert="images/certs/hpc-cloud-dcu-2018.jpg" data-group="edu" data-cap="Certificate of Achievement · High Performance Computing in the Cloud, Dublin City University · University College Cork, Feb 2018" aria-label="View the Certificate in HPC in the Cloud"><img src="images/certs/hpc-cloud-dcu-2018.jpg" alt="FutureLearn Certificate of Achievement for Amitabh Pandey, High Performance Computing in the Cloud, by Dublin City University, Cloud Lightning and University College Cork, February 2018" width="607" height="866" loading="lazy" decoding="async"></button></div>
                 </article>
             </div>
         </div>
