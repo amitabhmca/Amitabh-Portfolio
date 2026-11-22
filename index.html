@@ -2871,6 +2871,71 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
 .cert-lb-x { position: absolute; top: 16px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: #0d1b33; font: 700 18px/1 system-ui, sans-serif; cursor: pointer; }
 .cert-lb-x:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .hpc-cert { transition: none; } .hpc:hover .hpc-cert { transform: rotate(-1.5deg); } }
+
+/* v74 Bright: full-width certificate wall; BeeGFS + WEKA as a pair above */
+.hpc-grid:has(.hpc.is-wall) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.hpc.is-wall { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 2fr); }
+.hpc.is-wall .hpc-body { justify-content: center; padding: 22px 24px; }
+.hpc-wall-logo { display: block; width: 170px; height: auto; margin: -26px 0 -10px -16px; }
+.hpc-wall-meta { margin-top: 4px; font: 500 12px var(--font-mono); letter-spacing: .04em; color: var(--blue); }
+.hpc-wall-gal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: end; padding: 22px 18px; border-left: 1px solid var(--line-2); background: radial-gradient(circle at 50% 45%, var(--card) 25%, var(--blue-wash-2)); }
+.hpc-wall-gal figure { margin: 0; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.hpc-wall-gal .hpc-cert { width: 100%; margin: 0; transform: none; box-shadow: 0 10px 22px -14px rgb(15 23 42 / .55); }
+.hpc.is-wall:hover .hpc-cert { transform: none; }
+.hpc-wall-gal .hpc-cert:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -16px rgb(15 23 42 / .6); }
+.hpc-wall-gal figcaption { display: flex; flex-direction: column; gap: 1px; font-size: 13px; line-height: 1.3; }
+.hpc-wall-gal figcaption b { color: var(--ink); }
+.hpc-wall-gal figcaption span { font: 500 11.5px var(--font-mono); color: var(--blue); }
+@media (max-width: 1000px) { .hpc.is-wall { grid-template-columns: minmax(0, 1fr); } .hpc-wall-gal { border-left: 0; border-top: 1px solid var(--line-2); } }
+@media (max-width: 760px) { .hpc-grid:has(.hpc.is-wall) { grid-template-columns: minmax(0, 1fr); } .hpc-wall-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 18px 16px; } }
+/* gallery controls in the certificate viewer */
+.cert-lb figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.cert-lb figcaption { color: #e2e8f0; font: 600 14px var(--font-body); text-align: center; }
+.cert-lb figcaption:empty { display: none; }
+.cert-lb-nav { position: absolute; top: 50%; translate: 0 -50%; width: 46px; height: 46px; border-radius: 50%; border: 0; background: #fff; color: #0d1b33; font: 700 22px/1 system-ui, sans-serif; cursor: pointer; }
+.cert-lb-nav[hidden] { display: none; }
+.cert-lb-prev { left: 16px; } .cert-lb-next { right: 16px; }
+.cert-lb-nav:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* v74b tighter spacing across the Bright certificate wall */
+.hpc-wall-gal { gap: 10px; padding: 18px 10px; }
+@media (max-width: 760px) { .hpc-wall-gal { gap: 10px; padding: 16px 10px; } }
+
+/* v74c viewer: size the box to the certificate itself (no white side bands) */
+.cert-lb img { width: auto; height: auto; max-width: min(960px, 92vw); max-height: 82vh; object-fit: initial; background: none; }
+
+/* v74d Bright wall: uniform thumbnails, tops aligned, equal space above/below */
+.hpc-wall-gal { align-items: start; align-content: center; padding-top: 18px; padding-bottom: 18px; }
+.hpc-wall-gal .hpc-cert { aspect-ratio: 1133 / 779; overflow: hidden; }
+.hpc-wall-gal .hpc-cert img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+/* v75 certificates: F4 gold frame on dark spotlight + F5 shine sweep + F12 gold verified seal */
+.hpc-media.is-cert, .hpc-wall-gal { background: radial-gradient(70% 95% at 50% 0, #1e3a8a, #050a17 72%); border-color: #0b1226; }
+.hpc-media.is-cert { border-bottom-color: #0b1226; }
+.hpc-cert { position: relative; padding: 5px; border-radius: 5px; background: linear-gradient(135deg, #fde68a, #b45309 35%, #fef3c7 50%, #a16207 75%, #fde68a); box-shadow: 0 20px 40px -18px #000, 0 0 0 1px rgb(255 255 255 / .08); }
+.hpc-cert img { border-radius: 2px; }
+.hpc-wall-gal .hpc-cert { aspect-ratio: auto; overflow: visible; box-shadow: 0 20px 40px -18px #000, 0 0 0 1px rgb(255 255 255 / .08); }
+.hpc-wall-gal .hpc-cert img { aspect-ratio: 1133 / 779; height: auto; object-fit: cover; }
+.hpc-cert::before { content: ""; position: absolute; inset: 5px; z-index: 1; border-radius: 2px; pointer-events: none; background: linear-gradient(115deg, transparent 40%, rgb(255 255 255 / .7) 50%, transparent 60%) no-repeat; background-size: 250% 100%; background-position: 160% 0; }
+.hpc-cert::after { content: "\2713"; position: absolute; right: -9px; top: -9px; z-index: 2; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; color: #fff; font: 800 13px/1 var(--font-body); background: radial-gradient(circle at 35% 35%, #fde68a, #d97706 60%, #92400e); box-shadow: 0 0 0 2.5px #fff, 0 6px 12px -4px rgb(0 0 0 / .5); }
+.hpc-wall-gal figcaption b { color: #fff; }
+.hpc-wall-gal figcaption span { color: #facc15; }
+.hpc-wall-gal .hpc-cert:hover, .hpc.is-wall .hpc-cert:hover { transform: translateY(-4px); box-shadow: 0 26px 44px -18px #000, 0 0 22px -6px rgb(250 204 21 / .45); }
+@media (prefers-reduced-motion: no-preference) {
+  .hpc-cert::before { animation: cert-shine 6s ease-in-out infinite; }
+  .hpc-wall-gal figure:nth-child(2) .hpc-cert::before { animation-delay: .7s; }
+  .hpc-wall-gal figure:nth-child(3) .hpc-cert::before { animation-delay: 1.4s; }
+  .hpc-wall-gal figure:nth-child(4) .hpc-cert::before { animation-delay: 2.1s; }
+}
+@keyframes cert-shine { 0%, 60% { background-position: 160% 0; } 90%, 100% { background-position: -60% 0; } }
+.hpc-cert { box-sizing: border-box; }
+.hpc-wall-gal { gap: 18px; padding: 24px 22px; }
+@media (max-width: 760px) { .hpc-wall-gal { gap: 18px; padding: 22px 18px; } }
+
+/* v76b Bright logo: white-text variant in dark mode */
+.hpc-wall-logo.is-dark { display: none; }
+html[data-theme="dark"] .hpc-wall-logo:not(.is-dark) { display: none; }
+html[data-theme="dark"] .hpc-wall-logo.is-dark { display: block; }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3376,7 +3441,7 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
                 <div class="hpc-grid">
                     <article class="hpc">
                         <!-- Official product logo; a public engineer badge was not available. -->
-                        <div class="hpc-media is-cert"><button type="button" class="hpc-cert" data-cert="images/certs/beegfs-certificate.jpg" aria-label="View BeeGFS certificate full size"><img src="images/certs/beegfs-certificate.jpg" alt="BeeGFS System Admin Certification for Amitabh Pandey, 18 October 2024" width="1265" height="905" loading="lazy" decoding="async" /></button><span class="hpc-chip"><img src="badges/beegfs-logo.png" alt="BeeGFS logo" width="158" height="100" loading="lazy" /></span></div>
+                        <div class="hpc-media is-cert"><button type="button" class="hpc-cert" data-cert="images/certs/beegfs-certificate.jpg" aria-label="View BeeGFS certificate full size"><img src="images/certs/beegfs-certificate.jpg" alt="BeeGFS System Admin Certification for Amitabh Pandey, 18 October 2024" width="1247" height="877" loading="lazy" decoding="async" /></button><span class="hpc-chip"><img src="badges/beegfs-logo.png" alt="BeeGFS logo" width="158" height="100" loading="lazy" /></span></div>
                         <div class="hpc-body">
                             <span class="cert-issuer">ThinkParQ</span>
                             <h4>BeeGFS</h4>
@@ -3401,19 +3466,20 @@ html[data-theme="dark"] .s6-cl-lg { border-color: rgb(255 255 255 / .12); }
                             </ul>
                         </div>
                     </article>
-                    <article class="hpc">
-                        <!-- Official issuer logo for the four historical Bright certifications. -->
-                        <div class="hpc-media is-wide"><img src="badges/bright-computing-logo.svg" alt="Bright Computing logo" width="300" height="169" loading="lazy" /></div>
+                    <article class="hpc is-wall">
                         <div class="hpc-body">
+                            <img class="hpc-wall-logo" src="badges/bright-computing-logo.svg" alt="Bright Computing logo" width="300" height="169" loading="lazy" />
+                            <img class="hpc-wall-logo is-dark" src="badges/bright-computing-logo-dark.svg" alt="" aria-hidden="true" width="300" height="169" loading="lazy" />
                             <span class="cert-issuer">Bright Computing · now NVIDIA</span>
                             <h4>Bright Cluster Manager</h4>
                             <p>HPC cluster provisioning and management, now NVIDIA Base Command Manager.</p>
-                            <ul class="hpc-items is-two">
-                                <li><b>Basic Admin</b><span>Aug 2021</span></li>
-                                <li><b>OpenStack</b><span>Aug 2021</span></li>
-                                <li><b>Data Science</b><span>Aug 2021</span></li>
-                                <li><b>Bright 8.0 Admin</b><span>Apr 2020</span></li>
-                            </ul>
+                            <span class="hpc-wall-meta">4 certifications · 2020 – 2021</span>
+                        </div>
+                        <div class="hpc-wall-gal">
+                            <figure><button type="button" class="hpc-cert" data-cert="images/certs/bright-admin-2021.jpg" data-group="bright" data-cap="Bright Cluster Manager Basic Administration · Aug 2021" aria-label="View certificate: Bright Cluster Manager Basic Administration"><img src="images/certs/bright-admin-2021.jpg" alt="Bright Cluster Manager Basic Administration certificate, Aug 2021" width="1133" height="779" loading="lazy" decoding="async" /></button><figcaption><b>Basic Admin</b><span>Aug 2021</span></figcaption></figure>
+                            <figure><button type="button" class="hpc-cert" data-cert="images/certs/bright-openstack-2021.jpg" data-group="bright" data-cap="Bright Cluster Manager for OpenStack · Aug 2021" aria-label="View certificate: Bright Cluster Manager for OpenStack"><img src="images/certs/bright-openstack-2021.jpg" alt="Bright Cluster Manager for OpenStack certificate, Aug 2021" width="1133" height="779" loading="lazy" decoding="async" /></button><figcaption><b>OpenStack</b><span>Aug 2021</span></figcaption></figure>
+                            <figure><button type="button" class="hpc-cert" data-cert="images/certs/bright-data-science-2021.jpg" data-group="bright" data-cap="Bright Cluster Manager for Data Science · Aug 2021" aria-label="View certificate: Bright Cluster Manager for Data Science"><img src="images/certs/bright-data-science-2021.jpg" alt="Bright Cluster Manager for Data Science certificate, Aug 2021" width="1133" height="779" loading="lazy" decoding="async" /></button><figcaption><b>Data Science</b><span>Aug 2021</span></figcaption></figure>
+                            <figure><button type="button" class="hpc-cert" data-cert="images/certs/bright-8-admin-2020.jpg" data-group="bright" data-cap="Bright 8.0 Basic Administration · Apr 2020" aria-label="View certificate: Bright 8.0 Basic Administration"><img src="images/certs/bright-8-admin-2020.jpg" alt="Bright 8.0 Basic Administration certificate, Apr 2020" width="1133" height="779" loading="lazy" decoding="async" /></button><figcaption><b>Bright 8.0 Admin</b><span>Apr 2020</span></figcaption></figure>
                         </div>
                     </article>
                 </div>
@@ -4283,20 +4349,29 @@ const els=[document.querySelector('.hr-rib'),...document.querySelectorAll('.hs-p
     let t; addEventListener('resize', () => { cancelAnimationFrame(t); t = requestAnimationFrame(fit); });
 })();
 </script>
-<div class="cert-lb" id="cert-lb" role="dialog" aria-modal="true" aria-label="Certificate" hidden><button type="button" class="cert-lb-x" aria-label="Close">&#10005;</button><img alt="" /></div>
+<div class="cert-lb" id="cert-lb" role="dialog" aria-modal="true" aria-label="Certificate" hidden><button type="button" class="cert-lb-x" aria-label="Close">&#10005;</button><button type="button" class="cert-lb-nav cert-lb-prev" aria-label="Previous certificate" hidden>&#8249;</button><figure><img alt="" /><figcaption></figcaption></figure><button type="button" class="cert-lb-nav cert-lb-next" aria-label="Next certificate" hidden>&#8250;</button></div>
 <script>
-/* Certificate viewer: click a certificate to see it full size */
+/* Certificate viewer: click a certificate to see it full size; grouped certificates get previous/next */
 (() => {
     const lb = document.getElementById('cert-lb'); if (!lb) return;
-    const img = lb.querySelector('img'), x = lb.querySelector('.cert-lb-x'); let last = null;
+    const img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), x = lb.querySelector('.cert-lb-x');
+    const pv = lb.querySelector('.cert-lb-prev'), nx = lb.querySelector('.cert-lb-next');
+    let list = [], k = 0, last = null;
+    const show = () => { const b = list[k]; img.src = b.dataset.cert; img.alt = b.querySelector('img')?.alt || 'Certificate';
+        cap.textContent = b.dataset.cap ? b.dataset.cap + (list.length > 1 ? '  ·  ' + (k + 1) + ' / ' + list.length : '') : '';
+        pv.hidden = nx.hidden = list.length < 2; };
     const close = () => { lb.hidden = true; document.body.style.overflow = ''; if (last) last.focus(); };
     document.querySelectorAll('[data-cert]').forEach((b) => b.addEventListener('click', () => {
-        last = b; img.src = b.dataset.cert; img.alt = b.querySelector('img')?.alt || 'Certificate';
-        lb.hidden = false; document.body.style.overflow = 'hidden'; x.focus();
+        last = b; const g = b.dataset.group;
+        list = g ? [...document.querySelectorAll('[data-cert][data-group="' + g + '"]')] : [b]; k = list.indexOf(b);
+        show(); lb.hidden = false; document.body.style.overflow = 'hidden'; x.focus();
     }));
+    pv.addEventListener('click', () => { k = (k + list.length - 1) % list.length; show(); });
+    nx.addEventListener('click', () => { k = (k + 1) % list.length; show(); });
     x.addEventListener('click', close);
     lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-    addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
+    addEventListener('keydown', (e) => { if (lb.hidden) return; if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft' && !pv.hidden) pv.click(); if (e.key === 'ArrowRight' && !nx.hidden) nx.click(); });
 })();
 </script>
 </body>
