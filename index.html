@@ -3037,6 +3037,22 @@ html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-i
 @media (max-width: 420px) { .cert-lb-zoom { gap: 0; padding: 3px; max-width: calc(100vw - 24px); } .cert-lb-zoom button, .cert-lb-zoom .cz-orig { min-width: 32px; height: 34px; } .cert-lb-zoom .cz-fit { padding: 0 7px; } .cz-val { min-width: 40px; font-size: 12px; } .cz-sep { margin: 0 2px; } }
 @media (max-width: 600px) { .cz-map { width: 84px; } }
 @media (prefers-reduced-motion: reduce) { .cz-map { transition: none; } }
+
+/* v86 About: sub-headline under "AI Infrastructure & Leadership is my craft." */
+#about .ab-sub { margin: 14px 0 0; max-width: none; color: var(--ink-3); font: 500 clamp(1.02rem, 1.4vw, 1.22rem)/1.5 var(--font-body); }
+#about .ab-br { display: none; }
+#about .ab-nw { white-space: nowrap; }
+@media (max-width: 1099px) { #about .ab-br { display: inline; } }
+#about .ab-sub b { font-weight: 700; color: var(--ink); background: linear-gradient(90deg, var(--blue), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) { #about .ab-sub b { color: var(--blue); } }
+
+/* v86b About: the line is now the section heading */
+#about .section-head h2.ab-sub { margin: 14px 0 0; max-width: none; color: var(--ink); font: 700 clamp(1.5rem, 2.9vw, 2.5rem)/1.2 var(--font-display); letter-spacing: -.02em; }
+#about .section-head h2.ab-sub .ab-br { display: inline; }
+#about .section-head h2.ab-sub b { font-weight: 800; }
+@media (max-width: 767px) { #about .section-head h2.ab-sub { white-space: normal; overflow-wrap: break-word; } }
+@media (min-width: 768px) { #about .section-head h2.ab-sub { white-space: nowrap; } }
+@media (max-width: 760px) { #about .section-head h2.ab-sub { font-size: clamp(1.35rem, 6.2vw, 1.7rem); } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3267,7 +3283,7 @@ html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-i
             <div class="section-head">
                 <div>
                     <span class="eyebrow mono"><b>01</b> About</span>
-                    <h2 class="h2-line">AI Infrastructure &amp; Leadership is my craft.</h2>
+                    <h2 class="ab-sub">Enterprise Linux to supercomputers and AI&nbsp;factories. <br class="ab-br"><b>Architect by craft, <span class="ab-nw">leader by practice.</span></b></h2>
                 </div>
             </div>
             <div class="ab">
