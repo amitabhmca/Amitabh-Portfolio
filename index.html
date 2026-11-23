@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#ffffff" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Amitabh Pandey — AI Factory | HPC Architect" />
-<meta property="og:description" content="NVIDIA-Certified AI Infrastructure professional. From enterprise Linux to AI factories" />
+<meta property="og:description" content="Enterprise Linux to supercomputers and AI factories. Architect by craft, leader by practice." />
 <meta property="og:url" content="https://amitabhpandey.com/" />
 <meta property="og:site_name" content="Amitabh Pandey" />
 <meta property="og:image" content="https://amitabhpandey.com/images/og-image-v3.jpg" />
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Amitabh Pandey — AI Factory | HPC Architect" />
 <meta name="twitter:image" content="https://amitabhpandey.com/images/og-image-v3.jpg" />
-<meta name="twitter:description" content="NVIDIA-Certified AI Infrastructure professional. From enterprise Linux to AI factories" />
+<meta name="twitter:description" content="Enterprise Linux to supercomputers and AI factories. Architect by craft, leader by practice." />
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
@@ -3053,6 +3053,14 @@ html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-i
 @media (max-width: 767px) { #about .section-head h2.ab-sub { white-space: normal; overflow-wrap: break-word; } }
 @media (min-width: 768px) { #about .section-head h2.ab-sub { white-space: nowrap; } }
 @media (max-width: 760px) { #about .section-head h2.ab-sub { font-size: clamp(1.35rem, 6.2vw, 1.7rem); } }
+
+/* v87 Hero motto: career line + signature line under the name */
+.hero-motto { margin: 12px 0 0; display: flex; flex-direction: column; gap: 4px; }
+.hero-motto .hm-1 { color: var(--ink-3); font: 500 clamp(14.5px, .7rem + .45vw, 17px)/1.4 var(--font-body); }
+.hero-motto .hm-2 { position: relative; align-self: flex-start; padding-left: 14px; font: 700 clamp(15px, .72rem + .5vw, 18px)/1.35 var(--font-display); letter-spacing: -.01em; background: linear-gradient(90deg, var(--blue), var(--nvidia)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-motto .hm-2::before { content: ""; position: absolute; left: 0; top: .2em; bottom: .2em; width: 3px; border-radius: 3px; background: linear-gradient(180deg, var(--blue), var(--nvidia)); }
+.hero-motto .ab-nw { white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) { .hero-motto { animation: hm-in .7s .35s both ease-out; } @keyframes hm-in { from { opacity: 0; transform: translateY(6px); } } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3123,7 +3131,7 @@ html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-i
                             <span class="portrait-frame"><img src="images/amitabh-pandey.jpg" alt="Portrait of " width="400" height="400" fetchpriority="high" /></span>
                             <figcaption class="portrait-tag">6× NVIDIA<span class="tag-long">&nbsp;certified</span></figcaption>
                         </figure>
-                        <div class="hh-wrap"><h1 class="hero-hello"><span class="hh-1">Hi, I’m <span class="hh-name">Amitabh&nbsp;Pandey</span>.</span> <span class="hh-2">AI&nbsp;Factory, AI&nbsp;Supercomputing &amp;&nbsp;HPC&nbsp;Architect</span></h1></div>
+                        <div class="hh-wrap"><h1 class="hero-hello"><span class="hh-1">Hi, I’m <span class="hh-name">Amitabh&nbsp;Pandey</span>.</span> <span class="hh-2">AI&nbsp;Factory, AI&nbsp;Supercomputing &amp;&nbsp;HPC&nbsp;Architect</span></h1><p class="hero-motto"><span class="hm-1">Enterprise Linux to supercomputers and AI&nbsp;factories.</span> <span class="hm-2">Architect by craft, <span class="ab-nw">leader by practice.</span></span></p></div>
                     </div>
                     
                     
