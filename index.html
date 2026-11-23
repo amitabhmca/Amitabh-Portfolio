@@ -3150,6 +3150,13 @@ html[data-theme="dark"] .hm-stack .hs-m .hs-t { background-image: linear-gradien
 .hero-motto { margin-top: 14px; }
 .hero-motto .hm-2.hm-stack { margin-top: 12px; }
 @media (max-width: 767px) { .hero h1.hero-hello .hh-2 { margin-top: .4em; } .hero-motto { margin-top: 12px; } }
+
+/* v94 About heading: megawatts line + quiet engine sub-line */
+#about .section-head h2.ab-sub.ab-new { white-space: normal !important; font-size: clamp(1.6rem, 2.7vw, 2.15rem); line-height: 1.14; text-wrap: balance; }
+#about .section-head h2.ab-sub.ab-new > b { display: block; margin-top: .75em; font: 700 clamp(1.02rem, 1.55vw, 1.35rem)/1.4 var(--font-display); letter-spacing: -.01em; text-wrap: pretty; }
+
+/* v94b About sub-line on one line from tablet up */
+@media (min-width: 768px) { #about .section-head h2.ab-sub.ab-new > b { white-space: nowrap; font-size: clamp(14px, 1.45vw, 18.5px); } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3380,7 +3387,7 @@ html[data-theme="dark"] .hm-stack .hs-m .hs-t { background-image: linear-gradien
             <div class="section-head">
                 <div>
                     <span class="eyebrow mono"><b>01</b> About</span>
-                    <h2 class="ab-sub">From enterprise computing to AI&nbsp;factories, AI&nbsp;supercomputing and&nbsp;HPC. <br class="ab-br"><b>Architect by craft, <span class="ab-nw">leader by practice.</span></b></h2>
+                    <h2 class="ab-sub ab-new">I turn energy into intelligence. <b>The quiet engine behind ambitious&nbsp;AI. <span class="ab-nw">Rack to runtime,</span> accountable to the&nbsp;end.</b></h2>
                 </div>
             </div>
             <div class="ab">
