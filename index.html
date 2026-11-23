@@ -3003,6 +3003,40 @@ html[data-theme="dark"] .contact-link .ico.ico-nv, html[data-theme="dark"] .ff-i
 .found-tr:not(:has(.found-date)) { padding-top: 0; }
 @media (max-width: 760px) { .hpc-cert.fc-mini img { height: 40px; } }
 @media (max-width: 700px) { .found-tr { align-items: flex-start; } }
+
+/* v84 certificate viewer: zoom in / out, pan */
+.cert-lb-stage { position: relative; overflow: hidden; border-radius: 6px; box-shadow: 0 30px 80px rgb(0 0 0 / .5); background: #fff; line-height: 0; cursor: zoom-in; touch-action: none; user-select: none; }
+.cert-lb-stage.is-zoomed { cursor: grab; }
+.cert-lb-stage.is-zoomed:active { cursor: grabbing; }
+.cert-lb-stage img { display: block; box-shadow: none; border-radius: 0; transform-origin: 50% 50%; transition: transform .18s ease; will-change: transform; }
+.cert-lb-stage.is-zoomed img { transition: none; }
+.cert-lb img { max-height: 74vh; }
+.cert-lb-zoom { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: rgb(255 255 255 / .96); box-shadow: 0 10px 30px -10px rgb(0 0 0 / .6); }
+.cert-lb-zoom button { min-width: 36px; height: 36px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent; color: #0d1b33; font: 700 18px/1 system-ui, sans-serif; cursor: pointer; }
+.cert-lb-zoom .cz-fit { font: 600 13px/1 var(--font-body); }
+.cert-lb-zoom button:hover:not(:disabled) { background: #e8eefc; }
+.cert-lb-zoom button:disabled { opacity: .35; cursor: default; }
+.cert-lb-zoom button:focus-visible { outline: 3px solid var(--blue); outline-offset: 1px; }
+.cz-val { min-width: 48px; text-align: center; color: #0d1b33; font: 600 13px/1 var(--font-mono); }
+@media (prefers-reduced-motion: reduce) { .cert-lb-stage img { transition: none; } }
+
+/* v85 certificate viewer extras: mini-map, full screen, open original */
+.cz-sep { width: 1px; height: 22px; margin: 0 4px; background: #cbd5e1; }
+.cert-lb-zoom .cz-full, .cert-lb-zoom .cz-orig { display: inline-grid; place-items: center; min-width: 36px; height: 36px; padding: 0; border-radius: 999px; color: #0d1b33; }
+.cert-lb-zoom .cz-orig:hover { background: #e8eefc; }
+.cert-lb-zoom .cz-orig:focus-visible { outline: 3px solid var(--blue); outline-offset: 1px; }
+.cert-lb-zoom [hidden] { display: none !important; }
+.cz-full .fs-out { display: none; } .cert-lb.is-full .cz-full .fs-in { display: none; } .cert-lb.is-full .cz-full .fs-out { display: inline; }
+.cz-map { position: absolute; z-index: 3; right: 10px; bottom: 10px; width: 120px; line-height: 0; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 0 0 2px #fff, 0 10px 24px -8px rgb(0 0 0 / .6); opacity: 0; pointer-events: none; transition: opacity .15s; cursor: pointer; touch-action: none; }
+.cz-map.show { opacity: 1; pointer-events: auto; }
+.cz-map img { display: block; width: 100%; height: auto; transform: none !important; opacity: .75; }
+.cz-map i { position: absolute; border: 2px solid #1d4ed8; background: rgb(29 78 216 / .12); border-radius: 2px; pointer-events: none; }
+.cert-lb.is-full { padding: 12px; background: #020617; }
+.cert-lb.is-full img { max-width: 96vw; max-height: 84vh; }
+.cert-lb.is-full .cz-map img { max-width: none; max-height: none; }
+@media (max-width: 420px) { .cert-lb-zoom { gap: 0; padding: 3px; max-width: calc(100vw - 24px); } .cert-lb-zoom button, .cert-lb-zoom .cz-orig { min-width: 32px; height: 34px; } .cert-lb-zoom .cz-fit { padding: 0 7px; } .cz-val { min-width: 40px; font-size: 12px; } .cz-sep { margin: 0 2px; } }
+@media (max-width: 600px) { .cz-map { width: 84px; } }
+@media (prefers-reduced-motion: reduce) { .cz-map { transition: none; } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -4418,7 +4452,7 @@ const els=[document.querySelector('.hr-rib'),...document.querySelectorAll('.hs-p
     let t; addEventListener('resize', () => { cancelAnimationFrame(t); t = requestAnimationFrame(fit); });
 })();
 </script>
-<div class="cert-lb" id="cert-lb" role="dialog" aria-modal="true" aria-label="Certificate" hidden><button type="button" class="cert-lb-x" aria-label="Close">&#10005;</button><button type="button" class="cert-lb-nav cert-lb-prev" aria-label="Previous certificate" hidden>&#8249;</button><figure><img alt="" /><figcaption></figcaption></figure><button type="button" class="cert-lb-nav cert-lb-next" aria-label="Next certificate" hidden>&#8250;</button></div>
+<div class="cert-lb" id="cert-lb" role="dialog" aria-modal="true" aria-label="Certificate" hidden><button type="button" class="cert-lb-x" aria-label="Close">&#10005;</button><button type="button" class="cert-lb-nav cert-lb-prev" aria-label="Previous certificate" hidden>&#8249;</button><figure><div class="cert-lb-stage"><img alt="" draggable="false" /><span class="cz-map" aria-hidden="true"><img alt="" draggable="false" /><i></i></span></div><div class="cert-lb-zoom" role="toolbar" aria-label="Zoom"><button type="button" class="cz-out" aria-label="Zoom out">&#8722;</button><output class="cz-val" aria-live="polite">100%</output><button type="button" class="cz-in" aria-label="Zoom in">+</button><button type="button" class="cz-fit" aria-label="Fit to screen">Fit</button><span class="cz-sep" aria-hidden="true"></span><button type="button" class="cz-full" aria-label="Full screen" title="Full screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="fs-in" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path class="fs-out" d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button><a class="cz-orig" href="#" target="_blank" rel="noopener" aria-label="Open original in a new tab" title="Open original"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg></a></div><figcaption></figcaption></figure><button type="button" class="cert-lb-nav cert-lb-next" aria-label="Next certificate" hidden>&#8250;</button></div>
 <script>
 /* Certificate viewer: click a certificate to see it full size; grouped certificates get previous/next */
 (() => {
@@ -4441,6 +4475,65 @@ const els=[document.querySelector('.hr-rib'),...document.querySelectorAll('.hs-p
     lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
     addEventListener('keydown', (e) => { if (lb.hidden) return; if (e.key === 'Escape') close();
         if (e.key === 'ArrowLeft' && !pv.hidden) pv.click(); if (e.key === 'ArrowRight' && !nx.hidden) nx.click(); });
+
+    /* Zoom: buttons, + / - / 0 keys, mouse wheel, double-click, pinch; drag to pan when zoomed */
+    const st = lb.querySelector('.cert-lb-stage'), zo = lb.querySelector('.cz-out'), zi = lb.querySelector('.cz-in'),
+          zf = lb.querySelector('.cz-fit'), zv = lb.querySelector('.cz-val');
+    const MIN = 1, MAX = 4; let z = 1, tx = 0, ty = 0;
+    const clamp = () => { const w = st.clientWidth, h = st.clientHeight, mx = (z - 1) * w / 2, my = (z - 1) * h / 2;
+        tx = Math.max(-mx, Math.min(mx, tx)); ty = Math.max(-my, Math.min(my, ty)); };
+    let paint = () => { clamp(); img.style.transform = z === 1 ? '' : `translate(${tx}px, ${ty}px) scale(${z})`;
+        zv.textContent = Math.round(z * 100) + '%'; zo.disabled = z <= MIN; zi.disabled = z >= MAX; zf.disabled = z === 1;
+        st.classList.toggle('is-zoomed', z > 1); };
+    const zoomTo = (nz, cx, cy) => { nz = Math.max(MIN, Math.min(MAX, Math.round(nz * 100) / 100));
+        const r = st.getBoundingClientRect(), px = (cx ?? r.left + r.width / 2) - r.left - r.width / 2,
+              py = (cy ?? r.top + r.height / 2) - r.top - r.height / 2;
+        tx = px - (px - tx) * nz / z; ty = py - (py - ty) * nz / z; z = nz; if (z === 1) tx = ty = 0; paint(); };
+    const reset = () => { z = 1; tx = ty = 0; paint(); };
+    zi.addEventListener('click', () => zoomTo(z * 1.5)); zo.addEventListener('click', () => zoomTo(z / 1.5)); zf.addEventListener('click', reset);
+    [pv, nx, x].forEach((b) => b.addEventListener('click', reset));
+    document.querySelectorAll('[data-cert]').forEach((b) => b.addEventListener('click', reset));
+    addEventListener('keydown', (e) => { if (lb.hidden) return;
+        if (e.key === '+' || e.key === '=') { e.preventDefault(); zoomTo(z * 1.5); }
+        else if (e.key === '-' || e.key === '_') { e.preventDefault(); zoomTo(z / 1.5); }
+        else if (e.key === '0') { e.preventDefault(); reset(); } });
+    st.addEventListener('wheel', (e) => { e.preventDefault(); zoomTo(z * (e.deltaY < 0 ? 1.2 : 1 / 1.2), e.clientX, e.clientY); }, { passive: false });
+    st.addEventListener('dblclick', (e) => { z > 1 ? reset() : zoomTo(2.5, e.clientX, e.clientY); });
+    const pts = new Map(); let pinch = 0, drag = null;
+    st.addEventListener('pointerdown', (e) => { pts.set(e.pointerId, e); st.setPointerCapture(e.pointerId);
+        if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY); drag = null; }
+        else if (z > 1) drag = { x: e.clientX - tx, y: e.clientY - ty }; });
+    st.addEventListener('pointermove', (e) => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, e);
+        if (pts.size === 2 && pinch) { const [a, b] = [...pts.values()], d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+            zoomTo(z * d / pinch, (a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2); pinch = d; }
+        else if (drag) { tx = e.clientX - drag.x; ty = e.clientY - drag.y; paint(); } });
+    const up = (e) => { pts.delete(e.pointerId); if (pts.size < 2) pinch = 0; if (!pts.size) drag = null; };
+    st.addEventListener('pointerup', up); st.addEventListener('pointercancel', up);
+    addEventListener('resize', () => { if (!lb.hidden) paint(); });
+
+    /* Extras: mini-map, full screen, open original */
+    const fullB = lb.querySelector('.cz-full'), orig = lb.querySelector('.cz-orig'),
+          map = lb.querySelector('.cz-map'), mapImg = map.querySelector('img'), box = map.querySelector('i');
+    const drawMap = () => { map.classList.toggle('show', z > 1); if (z <= 1) return;
+        const w = st.clientWidth, h = st.clientHeight, mw = map.clientWidth, mh = map.clientHeight;
+        const bw = mw / z, bh = mh / z, cx = mw / 2 - tx / z * (mw / w), cy = mh / 2 - ty / z * (mh / h);
+        box.style.width = bw + 'px'; box.style.height = bh + 'px'; box.style.left = (cx - bw / 2) + 'px'; box.style.top = (cy - bh / 2) + 'px'; };
+    const paint0 = paint; paint = () => { paint0(); drawMap(); };
+    const mapTo = (e) => { const m = map.getBoundingClientRect(), w = st.clientWidth, h = st.clientHeight;
+        tx = -((e.clientX - m.left) / m.width - .5) * w * z; ty = -((e.clientY - m.top) / m.height - .5) * h * z; paint(); };
+    map.addEventListener('pointerdown', (e) => { e.stopPropagation(); map.setPointerCapture(e.pointerId); mapTo(e);
+        const mv = (ev) => mapTo(ev), end = () => { map.removeEventListener('pointermove', mv); map.removeEventListener('pointerup', end); };
+        map.addEventListener('pointermove', mv); map.addEventListener('pointerup', end); });
+    const sync = () => { const src = img.getAttribute('src') || ''; mapImg.src = src; orig.href = src; };
+    new MutationObserver(sync).observe(img, { attributes: true, attributeFilter: ['src'] }); sync();
+    if (!document.fullscreenEnabled) fullB.hidden = true;
+    fullB.addEventListener('click', () => { document.fullscreenElement ? document.exitFullscreen() : lb.requestFullscreen?.().catch(() => {}); });
+    document.addEventListener('fullscreenchange', () => { const on = document.fullscreenElement === lb;
+        lb.classList.toggle('is-full', on); fullB.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen'); fullB.title = on ? 'Exit full screen' : 'Full screen';
+        setTimeout(paint, 60); });
+    const close0 = close; x.addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen(); });
+    addEventListener('keydown', (e) => { if (lb.hidden) return; if (e.key === 'f' || e.key === 'F') fullB.click(); });
+    paint();
 })();
 </script>
 </body>
