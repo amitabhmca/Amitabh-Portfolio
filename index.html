@@ -3205,6 +3205,27 @@ html[data-theme="dark"] .abL-sign8 .sg-fl { stroke: #a9c1ff; }
 .nscc-x .nx-lead .blk-h { margin: 0; }
 .nscc-x .nx-lead .nx-proof { margin: 6px 0 0; }
 @media (max-width: 640px) { .nscc-x .nx-head.nx-head-logo { flex-wrap: wrap; } }
+
+/* v98 phone hero: photo beside the name, career line + roles full width underneath */
+@media (max-width: 600px) {
+  .hero-id { display: grid !important; grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(14px, 4vw, 18px) !important; row-gap: 0 !important; align-items: center !important; }
+  .hero-id > .portrait { grid-column: 1; grid-row: 1; width: clamp(92px, 25vw, 112px) !important; align-self: center; }
+  .hero-id > .hh-wrap { display: contents; }
+  .hero-id .hero-hello { grid-column: 2; grid-row: 1; margin: 0; align-self: center; }
+  .hero h1.hero-hello .hh-1 { font-size: clamp(23px, 6.9vw, 32px) !important; line-height: 1.08; }
+  .hero h1.hero-hello .hh-2 { font-size: clamp(14px, 4.1vw, 18px) !important; white-space: normal !important; margin-top: .35em !important; }
+  .hero-id .hero-motto { grid-column: 1 / -1; grid-row: 2; margin-top: 26px !important; }
+  .hero-motto .hm-1 { font-size: clamp(15px, 4.3vw, 17px); }
+  .hero-motto .hm-2.hm-stack { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; column-gap: 14px !important; row-gap: 16px !important; margin-top: 18px; }
+  .hm-stack .hs-r { align-items: flex-start; }
+  .hm-stack .hs-c { white-space: normal; line-height: 1.35; }
+}
+@media (max-width: 600px) {
+  .hero h1.hero-hello .hh-1 { white-space: normal !important; }
+  .hero h1.hero-hello .hh-name { display: inline-block; white-space: nowrap; }
+}
+@media (max-width: 480px) { .hero-motto .hm-2.hm-stack { grid-template-columns: 1fr !important; row-gap: 14px !important; } .hm-stack .hs-r { align-items: center; } .hm-stack .hs-c { white-space: nowrap; } }
+@media (max-width: 359px) { .hm-stack .hs-c { white-space: normal; } }
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
