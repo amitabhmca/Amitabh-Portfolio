@@ -3226,6 +3226,11 @@ html[data-theme="dark"] .abL-sign8 .sg-fl { stroke: #a9c1ff; }
 }
 @media (max-width: 480px) { .hero-motto .hm-2.hm-stack { grid-template-columns: 1fr !important; row-gap: 14px !important; } .hm-stack .hs-r { align-items: center; } .hm-stack .hs-c { white-space: nowrap; } }
 @media (max-width: 359px) { .hm-stack .hs-c { white-space: normal; } }
+
+/* v99 phones: summary headline wraps to two readable lines instead of shrinking */
+@media (max-width: 600px) {
+  .hero .hr-ps .ps-h { white-space: normal; text-wrap: balance; font-size: clamp(23px, 6.6vw, 30px); line-height: 1.15; }
+}
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -4631,6 +4636,7 @@ const els=[document.querySelector('.hr-rib'),...document.querySelectorAll('.hs-p
     if (!h) return;
     const fit = () => {
         h.style.fontSize = '';
+        if (innerWidth <= 600) return;
         const max = parseFloat(getComputedStyle(h).fontSize), avail = h.clientWidth;
         const r = document.createRange(); r.selectNodeContents(h);
         const tw = r.getBoundingClientRect().width;
