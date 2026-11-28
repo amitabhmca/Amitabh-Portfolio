@@ -3352,6 +3352,30 @@ html[data-theme="dark"] .hero-motto { --cl-ink: #eef3ff; --cl-mute: #a9b8d6; --c
   .hero-id .hro-tx small { white-space: nowrap; font-size: 9.5px; letter-spacing: .04em; }
   .hero-id .hro-tx small .cs { margin: 0 .4em; }
 }
+
+/* v103 NSCC: 37 PFLOPS as an equation (1 + 6 + 10 + 20 = 37), fits beside the logo */
+.nscc-x .nx-lead .nx-proof.nx-eq { margin: 4px 0 0; line-height: 1; }
+.nx-eq .eq { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 6px 8px; }
+.nx-eq [data-v="f"] { --c: #ff5468; } .nx-eq [data-v="n"] { --c: #a3e635; } .nx-eq [data-v="h"] { --c: #2ee6b6; }
+.nx-eq .t { display: grid; justify-items: start; gap: 2px; }
+.nx-eq .tv { display: inline-flex; align-items: baseline; gap: .3em; white-space: nowrap; }
+.nx-eq .t b { font-family: var(--font-display); font-size: 18px; line-height: 1; font-weight: 800; color: var(--c); letter-spacing: -.02em; }
+.nx-eq .u { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .1em; color: var(--c); opacity: .8; }
+.nx-eq .t small { font-family: var(--font-mono); font-size: 8.5px; line-height: 1.1; letter-spacing: .06em; text-transform: uppercase; color: #8fa3c4; white-space: nowrap; }
+.nx-eq .op { font-family: var(--font-display); font-size: 15px; line-height: 1.2; color: #64748b; }
+.nx-eq .tot b { font-size: 20px; background: linear-gradient(90deg, #60a5fa, #22d3ee, #a3e635); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nx-eq .tot .u { color: #a3e635; opacity: 1; }
+.nx-eq .tot small { color: #cbd5e1; }
+@media (max-width: 760px) { .nscc-x .nx-lead .nx-proof.nx-eq { margin-top: 12px; } }
+@media (max-width: 600px) {
+  .nx-eq .eq { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 6px; max-width: 380px; }
+  .nx-eq .op { display: none; }
+  .nx-eq .tv { flex-direction: column; align-items: flex-start; gap: 3px; }
+  .nx-eq .t small { white-space: normal; }
+  .nx-eq .tot { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; padding-top: 10px; border-top: 1px dashed rgb(255 255 255 / .15); }
+  .nx-eq .tot .tv { flex-direction: row; align-items: baseline; }
+  .nx-eq .tot b { font-size: 24px; }
+}
 </style>
 <script>document.documentElement.classList.add("js-brand");</script>
 </head>
@@ -3454,7 +3478,7 @@ html[data-theme="dark"] .hero-motto { --cl-ink: #eef3ff; --cl-mute: #a9b8d6; --c
                         <div class="nscc-x">
                     <span class="nx-grid" aria-hidden="true"></span><span class="nx-glow" aria-hidden="true"></span><span class="nx-scan" aria-hidden="true"></span>
                     <div class="nx-intro"><h3 class="ps-ph">NSCC – National Supercomputing Centre, Singapore</h3></div>
-                    <div class="nx-head nx-head-logo"><a class="nx-logo-nscc" href="https://www.nscc.sg" target="_blank" rel="noopener noreferrer" aria-label="National Supercomputing Centre Singapore (opens in a new tab)"><img src="images/brands/nscc.png" alt="NSCC Singapore logo" width="480" height="185" loading="lazy" decoding="async"></a><div class="nx-lead"><p class="blk-h">Led Singapore’s <span class="blk-gd">four national supercomputers</span>.</p><p class="blk-p nx-proof"><b>37 PFLOPS</b> across ASPIRE1, ASPIRE1 AI, ASPIRE2A and ASPIRE2A+</p></div></div>
+                    <div class="nx-head nx-head-logo"><a class="nx-logo-nscc" href="https://www.nscc.sg" target="_blank" rel="noopener noreferrer" aria-label="National Supercomputing Centre Singapore (opens in a new tab)"><img src="images/brands/nscc.png" alt="NSCC Singapore logo" width="480" height="185" loading="lazy" decoding="async"></a><div class="nx-lead"><p class="blk-h">Led Singapore’s <span class="blk-gd">four national supercomputers</span>.</p><p class="blk-p nx-proof nx-eq"><span class="sr-c">37 PFLOPS combined peak: 1 PFLOPS ASPIRE1, 6 PFLOPS ASPIRE1 AI, 10 PFLOPS ASPIRE2A and 20 PFLOPS ASPIRE2A+.</span><span class="eq" aria-hidden="true"><span class="t" data-v="f"><span class="tv"><b>1</b><span class="u">PFLOPS</span></span><small>ASPIRE1</small></span><span class="op">+</span><span class="t" data-v="n"><span class="tv"><b>6</b><span class="u">PFLOPS</span></span><small>ASPIRE1 AI</small></span><span class="op">+</span><span class="t" data-v="h"><span class="tv"><b>10</b><span class="u">PFLOPS</span></span><small>ASPIRE2A</small></span><span class="op">+</span><span class="t" data-v="n"><span class="tv"><b>20</b><span class="u">PFLOPS</span></span><small>ASPIRE2A+</small></span><span class="op">=</span><span class="t tot"><span class="tv"><b class="n" data-to="37">37</b><span class="u">PFLOPS</span></span><small>Combined peak</small></span></span></p></div></div>
                     <ol class="nx-list" aria-label="NSCC supercomputers">
                         <li class="nx-item nx-cpu nx-fujitsu" style="--i:0; --w:5%">
                             <span class="nx-led" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -4899,6 +4923,16 @@ const els=[document.querySelector('.hr-rib'),...document.querySelectorAll('.hs-p
   if ('IntersectionObserver' in window) new IntersectionObserver((es) => { vis = es[0].isIntersecting; if (vis) start(); else cancelAnimationFrame(raf); }).observe(id);
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 150); });
   start();
+})();
+</script>
+<script>
+/* v103 NSCC: count the 37 up when it scrolls into view */
+(() => {
+  const b = document.querySelector('.nx-eq .n'); if (!b || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const to = +b.dataset.to; b.textContent = '0';
+  const io = new IntersectionObserver((es) => { if (!es[0].isIntersecting) return; io.disconnect(); const t0 = performance.now();
+    const tk = (t) => { const k = Math.min(1, (t - t0) / 1200); b.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tk); }; requestAnimationFrame(tk); }, { threshold: .6 });
+  io.observe(b);
 })();
 </script>
 </body>
